@@ -55,4 +55,20 @@ public class SwaggerConfiguration {
                 .pathsToMatch("/api/hashtag/**")
                 .build();
     }
+
+    @Bean
+    public GroupedOpenApi tripApi() {
+        return GroupedOpenApi.builder()
+                .group("trip")
+                .pathsToMatch("/api/trip/**")
+                .build();
+    }
+
+    @Bean
+    public GroupedOpenApi graphApi() {
+        return GroupedOpenApi.builder()
+                .group("graph")
+                .pathsToMatch("/api/graph/**")
+                .build();
+    }
 }
