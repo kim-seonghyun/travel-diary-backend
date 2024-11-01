@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.trip.trip.mapper.TripMapper">
+
+    <resultMap id="onlyTrip" type="com.ssafy.trip.trip.entity.Trip">
+        <id property="id" column="id" />
+        <result property="locationId" column="location_id" />
+        <result property="placeId" column="place_id" />
+        <result property="facilityName" column="facility_name" />
+        <result property="facilityIntroduction" column="facility_introduction" />
+        <result property="phoneNumber" column="phone_number" />
+        <result property="webPageUrl" column="web_page_url" />
+    </resultMap>
+
+    <resultMap id="placeTrip" type="com.ssafy.trip.trip.entity.Trip">
+        <id property="id" column="id"/>
+        <result property="locationId" column="location_id"/>
+        <result property="placeId" column="place_id"/>
+        <result property="facilityName" column="facility_name"/>
+        <result property="facilityIntroduction" column="facility_introduction"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <result property="webPageUrl" column="web_page_url"/>
+
+        <!-- Place 필드 매핑: Trip 내부의 place 속성에 매핑 -->
+        <association property="place" javaType="com.ssafy.trip.trip.entity.Place">
+            <id property="id" column="place_id"/>
+            <result property="roadAddress" column="road_address"/>
+            <result property="streetNumberAddress" column="street_number_address"/>
+            <result property="latitude" column="latitude"/>
+            <result property="longitude" column="longitude"/>
+        </association>
+    </resultMap>
+    <!-- Trip 필드 매핑 -->
+
+    <select id="getDetail" parameterType="Long" resultMap="placeTrip">
+        select
+        ct.id,
+        ct.location_id,
+        ct.place_id,
+        ct.facility_name,
+        ct.facility_introduction,
+        ct.phone_number,
+        ct.web_page_url,
+        p.id as place_id,
+        p.road_address,
+        p.street_number_address,
+        p.latitude,
+        p.longitude
+        from camp_trip ct
+        join place p
+        on ct.place_id = p.id
+        where ct.id = #{tripId}
+    </select>
+
+    <select id="getCampTripListByLocate" parameterType="Long" resultMap="placeTrip">
+        select
+            ct.id,
+            ct.location_id,
+            ct.place_id,
+            ct.facility_name,
+            ct.facility_introduction,
+            ct.phone_number,
+            ct.web_page_url,
+            p.id as place_id,
+            p.road_address,
+            p.street_number_address,
+            p.latitude,
+            p.longitude
+        from camp_trip ct
+        join place p
+        on ct.place_id = p.id
+        where ct.location_id = #{locateId}
+    </select>
+
+    <select id="getAllCampTripList" resultMap="placeTrip">
+        select
+            ct.id,
+            ct.location_id,
+            ct.place_id,
+            ct.facility_name,
+            ct.facility_introduction,
+            ct.phone_number,
+            ct.web_page_url,
+            p.id as place_id,
+            p.road_address,
+            p.street_number_address,
+            p.latitude,
+            p.longitude
+        from camp_trip ct
+        join place p
+        on ct.place_id = p.id
+
+    </select>
+
+
+</mapper>

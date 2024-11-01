@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/trip
+    username: root
+    password: 9908
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.ssafy.trip

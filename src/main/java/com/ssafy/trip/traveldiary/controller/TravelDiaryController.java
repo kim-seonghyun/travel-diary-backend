@@ -1,0 +1,69 @@
+package com.ssafy.trip.traveldiary.controller;
+
+import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegistRequest;
+import com.ssafy.trip.traveldiary.dto.request.TravelDiaryUpdateRequest;
+import com.ssafy.trip.traveldiary.dto.response.TravelDiaryDetailResponse;
+import com.ssafy.trip.traveldiary.dto.response.TravelDiaryListResponse;
+import com.ssafy.trip.traveldiary.service.TravelDiaryService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/travel-diary")
+public class TravelDiaryController {
+    private final TravelDiaryService service;
+
+    @Autowired
+    public TravelDiaryController(TravelDiaryService service) {
+        this.service = service;
+    }
+
+    @Operation(summary = "여행 일지 등록", description = "새로운 여행 일지를 등록합니다.")
+    @PostMapping("/regist")
+    public ResponseEntity<Void> regist(@Parameter(description = "여행 일지 등록 요청 객체", required = true) @RequestBody TravelDiaryRegistRequest request){
+        service.regist(request);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+
+
+    @Operation(summary = "여행 일지 목록 조회", description = "모든 여행 일지 목록을 조회합니다.")
+    @GetMapping("/list")
+    public ResponseEntity<List<TravelDiaryListResponse>> list(){
+        List<TravelDiaryListResponse> response = service.selectAll();
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @Operation(summary = "여행 일지 상세 조회", description = "특정 여행 일지의 상세 정보를 조회합니다.")
+    @GetMapping("/detail/{id}")
+    public ResponseEntity<TravelDiaryDetailResponse> detail(@Parameter(description = "조회할 여행 일지의 ID", required = true)  @PathVariable Long id){
+        TravelDiaryDetailResponse response = service.selectById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @Operation(summary = "여행 일지 수정", description = "기존의 여행 일지를 수정합니다.")
+    @PutMapping("/update")
+    public ResponseEntity<Void> update(@Parameter(description = "여행 일지 수정 요청 객체", required = true)  @RequestBody TravelDiaryUpdateRequest request){
+        service.update(request);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @Operation(summary = "여행 일지 삭제", description = "특정 여행 일지를 삭제합니다.")
+    @DeleteMapping("/delete/{travelDiaryId}")
+    public ResponseEntity<Void> delete(@Parameter(description = "삭제할 여행 일지의 ID", required = true) @PathVariable long travelDiaryId){
+        service.delete(travelDiaryId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+}
