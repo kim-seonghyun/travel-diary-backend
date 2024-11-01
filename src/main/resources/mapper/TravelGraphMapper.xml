@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.trip.travelgraph.mapper.TravelGraphMapper">
+
+    <resultMap id="graph" type="com.ssafy.trip.travelgraph.entity.TravelGraph">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="mountain" column="mountain"/>
+        <result property="sea" column="sea"/>
+        <result property="valley" column="valley"/>
+        <result property="city" column="city"/>
+        <result property="festival" column="festival"/>
+    </resultMap>
+
+    <select id="findTravelGraphByUserId" parameterType="Long" resultMap="graph">
+        select * from travel_graph where user_id = #{id}
+    </select>
+
+    <insert id="generateTravelGraph" parameterType="Long">
+        insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+        values (#{id}, 0,0,0,0,0)
+    </insert>
+
+
+</mapper>
