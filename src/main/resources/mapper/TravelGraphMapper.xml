@@ -19,6 +19,30 @@
         select * from travel_graph where user_id = #{id}
     </select>
 
+    <update id="calculateTravelDegree" parameterType="map">
+        update travel_graph
+        <set>
+            <foreach collection="tagList" item="tag" separator=",">
+                <if test="tag eq 'mountain'">
+                    mountain = mountain + 1
+                </if>
+                <if test="tag eq 'sea'">
+                    sea = sea + 1
+                </if>
+                <if test="tag eq 'valley'">
+                    valley = valley + 1
+                </if>
+                <if test="tag eq 'city'">
+                    city = city + 1
+                </if>
+                <if test="tag eq 'festival'">
+                    festival = festival + 1
+                </if>
+            </foreach>
+        </set>
+        where user_id = #{userId}
+    </update>
+
     <insert id="generateTravelGraph" parameterType="Long">
         insert into travel_graph(user_id, mountain, sea, valley, city, festival)
         values (#{id}, 0,0,0,0,0)
