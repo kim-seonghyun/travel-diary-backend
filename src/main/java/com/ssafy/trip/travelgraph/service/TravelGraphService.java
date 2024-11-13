@@ -3,7 +3,12 @@ package com.ssafy.trip.travelgraph.service;
 import com.ssafy.trip.travelgraph.dto.response.TravelGraphResponse;
 import com.ssafy.trip.travelgraph.entity.TravelGraph;
 import com.ssafy.trip.travelgraph.mapper.TravelGraphMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class TravelGraphService {
@@ -25,6 +30,11 @@ public class TravelGraphService {
                 .mountain(travelGraphEntity.getMountain())
                 .build();
 
+    }
+
+    public void calculateTravelDegree(Map<String, Object> map) {
+        // validation
+        travelGraphMapper.calculateTravelDegree(map);
     }
 
     public void generateGraph(Long userId) {
