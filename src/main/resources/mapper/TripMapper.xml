@@ -49,7 +49,7 @@
         p.street_number_address,
         p.latitude,
         p.longitude
-        from camp_trip ct
+        from trip ct
         join place p
         on ct.place_id = p.id
         where ct.id = #{tripId}
@@ -69,7 +69,7 @@
             p.street_number_address,
             p.latitude,
             p.longitude
-        from camp_trip ct
+        from trip ct
         join place p
         on ct.place_id = p.id
         where ct.location_id = #{locateId}
@@ -89,7 +89,7 @@
             p.street_number_address,
             p.latitude,
             p.longitude
-        from camp_trip ct
+        from trip ct
         join place p
         on ct.place_id = p.id
 

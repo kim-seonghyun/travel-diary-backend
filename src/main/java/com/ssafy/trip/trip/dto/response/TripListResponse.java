@@ -15,4 +15,6 @@ public class TripListResponse {
 
     private String roadAddress;
 
+    private String webPageUrl;
+
 }

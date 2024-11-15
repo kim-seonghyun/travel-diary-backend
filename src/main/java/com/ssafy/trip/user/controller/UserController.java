@@ -12,9 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 @RequestMapping("/api/user")
 public class UserController {
-
     private final UserService userService;
     private final TravelGraphService travelGraphService;
 
@@ -22,6 +22,7 @@ public class UserController {
         this.userService = userService;
         this.travelGraphService = travelGraphService;
     }
+
     @Operation(summary = "회원가입", description = "새로운 사용자를 등록하고 여행 그래프를 생성합니다.")
     @PostMapping("/join")
     public ResponseEntity<String> join(@Parameter(description = "회원가입 요청 정보", required = true)
@@ -42,6 +43,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(loggedUser);
     }
+
     @Operation(summary = "회원 탈퇴", description = "현재 세션의 사용자 정보를 바탕으로 해당 사용자를 탈퇴 처리합니다.")
     @PostMapping("/withdraw")
     public ResponseEntity<String> withDrawUser(HttpSession session) {
