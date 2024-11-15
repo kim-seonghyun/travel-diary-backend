@@ -8,7 +8,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< src/main/java/com/ssafy/trip/travelgraph/controller/TravelGraphController.java
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

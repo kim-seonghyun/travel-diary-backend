@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Service
 public class UserService {
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     public UserService(UserMapper userMapper) {
         this.userMapper = userMapper;
@@ -24,6 +24,7 @@ public class UserService {
                 .email(userRequest.getEmail())
                 .role(userRequest.getRole())
                 .createdAt(LocalDateTime.now())
+                .dotori(0L)
                 .build();
 
         return userMapper.join(userEntity);

@@ -43,6 +43,7 @@ public class TripService {
             tripDto.setPhoneNumber(trip.getPhoneNumber());
             tripDto.setFacilityName(trip.getFacilityName());
             tripDto.setRoadAddress(trip.getPlace().getRoadAddress());
+            tripDto.setWebPageUrl(trip.getWebPageUrl());
             responseList.add(tripDto);
         }
         return responseList;
@@ -60,6 +61,7 @@ public class TripService {
             tripDto.setPhoneNumber(trip.getPhoneNumber());
             tripDto.setFacilityName(trip.getFacilityName());
             tripDto.setRoadAddress(trip.getPlace().getRoadAddress());
+            tripDto.setWebPageUrl(trip.getWebPageUrl());
             responseList.add(tripDto);
         }
         return responseList;

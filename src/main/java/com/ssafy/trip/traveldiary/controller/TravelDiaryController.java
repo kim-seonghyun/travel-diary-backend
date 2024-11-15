@@ -37,8 +37,6 @@ public class TravelDiaryController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-
-
     @Operation(summary = "여행 일지 목록 조회", description = "모든 여행 일지 목록을 조회합니다.")
     @GetMapping("/list")
     public ResponseEntity<List<TravelDiaryListResponse>> list(){

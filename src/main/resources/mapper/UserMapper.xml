@@ -16,9 +16,9 @@
     </resultMap>
 
     <insert id="join" parameterType="com.ssafy.trip.user.entity.User" useGeneratedKeys="true" keyProperty="id">
-        insert into user(name, email,password,role,created_at)
+        insert into user(name, email,password,role,created_at, dotori)
         values
-        (#{name}, #{email}, #{password}, #{role}, now());
+        (#{name}, #{email}, #{password}, #{role}, now(), #{dotori});
     </insert>
 
     <select id="login" parameterType="Map" resultMap="user">
