@@ -1,7 +1,6 @@
 package com.ssafy.trip.traveldiary.service;
 
 import com.ssafy.trip.post.mapper.PostMapper;
-import com.ssafy.trip.posthashtag.mapper.PostHashtagMapper;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegistRequest;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryUpdateRequest;
 import com.ssafy.trip.traveldiary.dto.response.TravelDiaryDetailResponse;
@@ -26,7 +25,7 @@ public class TravelDiaryService {
     }
 
     public List<TravelDiaryListResponse> selectAll() {
-        return  mapper.selectAll();
+        return mapper.selectAll();
 
     }
 
