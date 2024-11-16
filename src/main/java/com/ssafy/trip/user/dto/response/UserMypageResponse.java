@@ -4,12 +4,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
-@Builder
 @Getter
+@Builder
 @ToString
-public class UserResponse {
+public class UserMypageResponse {
     private Long id;
     private String name;
     private String email;
     private Long dotori;
+    private Long mountain;
+    private Long sea;
+    private Long valley;
+    private Long city;
+    private Long festival;
 }

@@ -45,7 +45,7 @@
 
     <insert id="generateTravelGraph" parameterType="Long">
         insert into travel_graph(user_id, mountain, sea, valley, city, festival)
-        values (#{id}, 0,0,0,0,0)
+        values (#{userId}, 0,0,0,0,0)
     </insert>
 
 

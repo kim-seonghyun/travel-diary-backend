@@ -8,18 +8,18 @@
     <resultMap id="user" type="com.ssafy.trip.user.entity.User">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
-        <result property="name" column="name"/>
         <result property="email" column="email"/>
         <result property="password" column="password"/>
         <result property="role" column="role"/>
         <result property="createdAt" column="created_at"/>
+        <result property="dotori" column="dotori"/>
     </resultMap>
 
     <insert id="join" parameterType="com.ssafy.trip.user.entity.User" useGeneratedKeys="true" keyProperty="id">
-        insert into user(name, email,password,role,created_at, dotori)
-        values
-        (#{name}, #{email}, #{password}, #{role}, now(), #{dotori});
+        INSERT INTO user (name, email, password, role, created_at, dotori)
+        VALUES (#{name}, #{email}, #{password}, #{role}, now(), #{dotori});
     </insert>
+
 
     <select id="login" parameterType="Map" resultMap="user">
         select * from user where email = #{email} and password = #{password}

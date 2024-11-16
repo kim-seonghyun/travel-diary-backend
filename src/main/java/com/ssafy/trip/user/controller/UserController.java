@@ -2,6 +2,7 @@ package com.ssafy.trip.user.controller;
 
 import com.ssafy.trip.travelgraph.service.TravelGraphService;
 import com.ssafy.trip.user.dto.request.UserRequest;
+import com.ssafy.trip.user.dto.response.UserMypageResponse;
 import com.ssafy.trip.user.dto.response.UserResponse;
 import com.ssafy.trip.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,7 +30,8 @@ public class UserController {
                                                    @RequestBody UserRequest userRequest) {
         //validation
         Long userId = userService.join(userRequest);
-        travelGraphService.generateGraph(userId);
+        UserResponse loggedUser = userService.login(userRequest.getEmail(), userRequest.getPassword());
+        travelGraphService.generateGraph(loggedUser.getId());
 
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
@@ -53,10 +55,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
-//    @GetMapping("/mypage")
-//    public ResponseEntity<TravelGraphResponse> mypage(HttpSession session){
-//
-//        //validation
-//
-//    }
+    @GetMapping("/mypage")
+    public ResponseEntity<UserMypageResponse> mypage(HttpSession session){
+        //validation
+        UserResponse loggedUser = (UserResponse) session.getAttribute("userInfo");
+        UserMypageResponse mypage = userService.getMypage(loggedUser);
+        System.out.println(mypage);
+        return ResponseEntity.status(HttpStatus.OK).body(mypage);
+    }
 }
