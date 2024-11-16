@@ -28,6 +28,9 @@ public class TripService {
                 .phoneNumber(tripEntity.getPhoneNumber())
                 .roadAddress(tripEntity.getPlace().getRoadAddress())
                 .webPageUrl(tripEntity.getWebPageUrl())
+                .latitude(tripEntity.getPlace().getLatitude())
+                .longitude(tripEntity.getPlace().getLongitude())
+                .streetNumberAddress(tripEntity.getPlace().getStreetNumberAddress())
                 .build();
     }
 
