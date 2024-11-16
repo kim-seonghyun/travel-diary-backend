@@ -7,6 +7,7 @@ import lombok.Data;
 public class TravelDiaryListResponse {
     private long id;
     private long userId;
+    private String username;
     private String field;
     private String title;
     private String description;

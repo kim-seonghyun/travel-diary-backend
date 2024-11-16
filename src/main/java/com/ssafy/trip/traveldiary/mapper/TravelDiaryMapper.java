@@ -16,7 +16,8 @@ public interface TravelDiaryMapper {
 
     @Insert("INSERT INTO travel_diary (field, title, description, created_at, updated_at, user_id) VALUES (#{field}, #{title}, #{description}, #{createdAt}, #{updatedAt}, #{userId})")
     void regist(TravelDiaryRegistRequest request);
-    @Select("select * from travel_diary")
+
+    @Select("select td.*, u.name as username from travel_diary td JOIN user u on td.user_id = u.id")
     List<TravelDiaryListResponse> selectAll();
 
     @Select("select * from travel_diary where id = #{travelDiaryId}")
