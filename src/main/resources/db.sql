@@ -5,10 +5,18 @@ USE tripspring;
 -- 기존 테이블 삭제
 DROP TABLE IF EXISTS `post_hashtag`;
 DROP TABLE IF EXISTS `hashtag`;
-DROP TABLE IF EXISTS `post`;
+drop table if EXISTS `purchase`;
 DROP TABLE IF EXISTS `travel_diary`;
-DROP TABLE IF EXISTS `user`;
 DROP TABLE IF EXISTS `travel_graph`;
+DROP TABLE IF EXISTS `post`;
+drop table if exists `answers`;
+drop table if exists `questions`;
+drop table if EXISTS `cash_to_dotori`;
+DROP TABLE IF EXISTS `user`;
+drop table if exists `trip`;
+drop table if EXISTS `location`;
+drop table if EXISTS `place`;
+
 
 use tripspring;
 
@@ -18,7 +26,8 @@ CREATE TABLE `user` (
     `email`    varchar(100)    NOT NULL,
     `password`    varchar(50)    NOT NULL,
     `role`    varchar(10)    NOT NULL,
-    `created_at`    Date    NOT NULL
+    `created_at`    Date    NOT NULL,
+    `dotori` bigint NOT NULL
 );
 
 
@@ -33,8 +42,6 @@ CREATE TABLE `travel_graph` (
     foreign key(`user_id`) references `user`(`id`)
 );
 
-select * from travel_graph;
-
 -- `travel_diary` 테이블 생성
 CREATE TABLE `travel_diary` (
     `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -44,6 +51,8 @@ CREATE TABLE `travel_diary` (
     `created_at` DATE NULL,
     `updated_at` DATE NULL,
     `user_id` BIGINT NOT NULL,
+     `for_sale`    boolean    NOT NULL,
+      `dotori_price` bigint    NULL,
     FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
@@ -56,10 +65,9 @@ CREATE TABLE `post` (
     `updated_at` DATE NULL,
     `diary_id` BIGINT NOT NULL,
     `user_id` BIGINT NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`) on delete cascade
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
-select * from post;
 
 -- `hashtag` 테이블 생성
 CREATE TABLE `hashtag` (
@@ -91,7 +99,7 @@ CREATE TABLE `place` (
     PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `camp_trip` (
+CREATE TABLE `trip` (
     `id` bigint NOT NULL AUTO_INCREMENT,
     `location_id` bigint NOT NULL,
     `place_id` bigint NOT NULL,
@@ -103,6 +111,89 @@ CREATE TABLE `camp_trip` (
     FOREIGN KEY (`location_id`) REFERENCES `location`(`id`),
     FOREIGN KEY (`place_id`) REFERENCES `place`(`id`) 
 );
+
+CREATE TABLE `purchase` (
+    `id`    bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `traveldiary_id`    bigint    NOT NULL,
+    `user_id`    bigint    NOT NULL,
+    `purchase_at`    Date    NOT NULL,
+    `buy_price`    bigint    NOT NULL,
+    FOREIGN KEY (`traveldiary_id`) REFERENCES `travel_diary`(`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)  on delete cascade
+);
+
+CREATE TABLE `cash_to_dotori`(
+    `id` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `user_id`    bigint    NOT NULL,
+    `recharge_at`    Date    NOT NULL,
+    `buy_quantity`    bigint    NOT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)  on delete cascade
+);
+
+
+CREATE TABLE `questions` (
+                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                           user_id BIGINT NOT NULL,
+                           title VARCHAR(200) NOT NULL,
+                           category VARCHAR(50) NOT NULL,
+                           body TEXT NOT NULL,
+                           image_url VARCHAR(255),
+                           created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                           FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+CREATE TABLE `answers` (
+                         id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                         question_id BIGINT NOT NULL,
+                         user_id BIGINT NOT NULL,
+                         body TEXT NOT NULL,
+                         image_url VARCHAR(255),
+                         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                         FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE,
+                         FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+);
+
+insert into user(name,email,password,role,created_at,dotori)
+values("테스트유저1","ssafy1@naver.com","1234", "user","2024-11-16", 23);
+
+insert into user(name,email,password,role,created_at,dotori)
+values("테스트유저2","ssafy2@naver.com","1234", "user","2024-11-16", 23);
+
+insert into user(name,email,password,role,created_at,dotori)
+values("테스트유저3","ssafy3@naver.com","1234", "user","2024-11-16", 23);
+
+insert into user(name,email,password,role,created_at,dotori)
+values("테스트유저4","ssafy4@naver.com","1234", "user","2024-11-16", 23);
+
+insert into user(name,email,password,role,created_at,dotori)
+values("테스트유저5","ssafy5@naver.com","1234", "user","2024-11-16", 23);
+
+insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+values(1,23,10,40,32,60);
+
+insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+values(2,100,100,40,32,60);
+
+insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+values(3,23,66,40,80,60);
+
+insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+values(4,1,1,1,32,60);
+
+insert into travel_graph(user_id, mountain, sea, valley, city, festival)
+values(5,53,90,40,10,80);
+
+
+INSERT INTO questions (user_id, title, category, body, image_url) VALUES
+                                                                      (1, 'Vue.js 질문', 'Frontend', 'Vue.js 관련 질문', NULL),
+                                                                      (2, 'Node.js 이슈', 'Backend', '오류 해결 방법', NULL);
+
+INSERT INTO answers (question_id, user_id, body, image_url) VALUES
+                                                                (1, 2, 'Vue CLI 사용해 보세요', NULL),
+                                                                (2, 1, 'npm 업데이트 하세요', NULL);
+
+
+
 
 INSERT INTO `location` (`name`) VALUES
 ('서울특별시'),
@@ -124,10 +215,6 @@ INSERT INTO `location` (`name`) VALUES
 ('제주특별자치도')
 ;
 
-
-
-
-
 INSERT INTO `place` (`road_address`, `street_number_address`, `latitude`, `longitude`)
 VALUES
 ('서울특별시 성동구 서울숲2길 30', '서울 성동구 서울숲 2길 30', 37.544579, 127.037218),
@@ -141,15 +228,108 @@ VALUES
 ('경기도 가평군 가평읍 북한강변로 1037', '경기 가평군 가평읍 북한강변로 1037', 37.832540, 127.513661),
 ('강원도 춘천시 스포츠타운길 245', '강원 춘천시 스포츠타운길 245', 37.899265, 127.723082);
 
-INSERT INTO `camp_trip` (`location_id`, `place_id`, `facility_name`, `facility_introduction`, `phone_number`, `web_page_url`)
+INSERT INTO `trip` (`location_id`, `place_id`, `facility_name`, `facility_introduction`, `phone_number`, `web_page_url`)
 VALUES
-(1, 1, '서울 숲 캠핑장', '서울 도심 속에서 숲과 함께 즐길 수 있는 힐링 캠핑장입니다.', '010-1111-1111', 'http://seoulforestcamp.com'),
-(2, 2, '부산 바닷가 캠핑장', '부산 해변과 가까워 여름철 인기 있는 캠핑 장소입니다.', '010-2222-2222', 'http://busanseacamp.com'),
-(3, 3, '대구 힐링 캠핑장', '자연을 만끽할 수 있는 한적한 캠핑장입니다.', '010-3333-3333', 'http://daeguhealingcamp.com'),
-(4, 4, '인천 갯벌 캠핑장', '갯벌 체험과 캠핑을 동시에 즐길 수 있는 곳입니다.', '010-4444-4444', 'http://incheontidelandcamp.com'),
-(5, 5, '광주 수목원 캠핑장', '수목원과 함께하는 친환경 캠핑장입니다.', '010-5555-5555', 'http://gwangjuarboretumcamp.com'),
-(6, 6, '대전 별빛 캠핑장', '밤하늘 별을 보며 힐링할 수 있는 캠핑장입니다.', '010-6666-6666', 'http://daejeonstarlightcamp.com'),
-(7, 7, '울산 계곡 캠핑장', '맑은 계곡과 함께하는 시원한 캠핑장입니다.', '010-7777-7777', 'http://ulsanvalleycamp.com'),
-(8, 8, '세종 자연 캠핑장', '자연과 하나 되어 힐링할 수 있는 캠핑장입니다.', '010-8888-8888', 'http://sejongnaturecamp.com'),
-(9, 9, '경기 호수 캠핑장', '호수 옆에서 캠핑을 즐길 수 있는 낭만적인 장소입니다.', '010-9999-9999', 'http://gyeonggilakecamp.com'),
-(10, 10, '강원 산속 캠핑장', '깊은 산 속에서 자연을 느낄 수 있는 캠핑장입니다.', '010-1010-1010', 'http://gangwonnaturecamp.com');
+(1, 1, '서울 숲 캠핑장', '서울 도심 속에서 숲과 함께 즐길 수 있는 힐링 캠핑장입니다.', '010-1111-1111', 'https://cdn.pixabay.com/photo/2017/08/20/01/33/jeju-2660438_1280.jpg'),
+(2, 2, '부산 바닷가 캠핑장', '부산 해변과 가까워 여름철 인기 있는 캠핑 장소입니다.', '010-2222-2222', 'https://cdn.pixabay.com/photo/2018/07/05/11/31/lake-3518141_1280.jpg'),
+(3, 3, '대구 힐링 캠핑장', '자연을 만끽할 수 있는 한적한 캠핑장입니다.', '010-3333-3333', 'https://images.unsplash.com/photo-1699155759120-ce739f8a365a?q=80&w=2871&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(4, 4, '인천 갯벌 캠핑장', '갯벌 체험과 캠핑을 동시에 즐길 수 있는 곳입니다.', '010-4444-4444', 'https://plus.unsplash.com/premium_photo-1663954865235-48f409396fe3?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(5, 5, '광주 수목원 캠핑장', '수목원과 함께하는 친환경 캠핑장입니다.', '010-5555-5555', 'https://images.unsplash.com/photo-1565149394348-c56457810899?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(6, 6, '대전 별빛 캠핑장', '밤하늘 별을 보며 힐링할 수 있는 캠핑장입니다.', '010-6666-6666', 'https://images.unsplash.com/photo-1673179559763-eefd6251e662?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(7, 7, '울산 계곡 캠핑장', '맑은 계곡과 함께하는 시원한 캠핑장입니다.', '010-7777-7777', 'https://images.unsplash.com/photo-1441084473581-e5aa160f8e0f?q=80&w=1918&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(8, 8, '세종 자연 캠핑장', '자연과 하나 되어 힐링할 수 있는 캠핑장입니다.', '010-8888-8888', 'https://images.unsplash.com/photo-1651375562197-fddb0348a55a?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
+(9, 9, '경기 호수 캠핑장', '호수 옆에서 캠핑을 즐길 수 있는 낭만적인 장소입니다.', '010-9999-9999', 'https://cdn.pixabay.com/photo/2018/09/09/08/24/sunset-3664096_1280.jpg'),
+(10, 10, '강원 산속 캠핑장', '깊은 산 속에서 자연을 느낄 수 있는 캠핑장입니다.', '010-1010-1010', 'https://cdn.pixabay.com/photo/2018/04/30/10/24/mountain-3362342_1280.jpg');
+
+
+
+
+
+-- travel_diary sql query
+
+INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
+VALUES
+('Nature', 'Exploring the Alps', 'A detailed account of my hiking trip in the Alps.', '2024-11-01', '2024-11-01', 1, TRUE, 500);
+
+INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
+VALUES
+('City', 'Tokyo Adventures', 'A guide to the best ramen shops and hidden gems in Tokyo.', '2024-10-25', '2024-11-10', 2, FALSE, NULL);
+
+INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
+VALUES
+('Beach', 'Maldives Paradise', 'My relaxing vacation in the Maldives with tips for travelers.', '2024-09-15', '2024-09-18', 3, TRUE, 1000);
+
+INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
+VALUES
+('Culture', 'Experiencing Bali', 'A dive into Bali\'s culture, including temples and traditions.', '2024-08-05', '2024-08-07', 4, TRUE, 750);
+
+INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
+VALUES
+('Adventure', 'Amazon Rainforest Expedition', 'A thrilling adventure through the Amazon rainforest.', '2024-07-20', '2024-07-22', 5, FALSE, NULL);
+
+
+-- post insert query
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+VALUES
+('Discovering Italy', 'A wonderful journey through Rome and Venice.', '2024-10-15', '2024-10-16', 1, 1);
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+VALUES
+('Mountain Adventures', 'My thrilling experience climbing Mount Everest.', '2024-09-10', '2024-09-11', 2, 1);
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+VALUES
+('Cultural Wonders', 'Exploring the ancient temples of Angkor Wat.', '2024-08-01', '2024-08-05', 3, 1);
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+VALUES
+('City Lights', 'The vibrant nightlife and food scene in Seoul.', '2024-07-20', '2024-07-22', 3, 2);
+
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+VALUES
+('Beach Escapade', 'A relaxing retreat on the beaches of Phuket.', '2024-06-15', '2024-06-18',3, 2);
+
+-- hashtag insert query
+
+INSERT INTO `hashtag` (`tag`)
+VALUES
+('Travel');
+
+INSERT INTO `hashtag` (`tag`)
+VALUES
+('Adventure');
+
+INSERT INTO `hashtag` (`tag`)
+VALUES
+('Nature');
+
+INSERT INTO `hashtag` (`tag`)
+VALUES
+('Culture');
+
+INSERT INTO `hashtag` (`tag`)
+VALUES
+('Beach');
+
+-- post hashtag insert query
+
+INSERT INTO `post_hashtag` (`post_id`, `hashtag_id`)
+VALUES
+(1, 1);
+
+INSERT INTO `post_hashtag` (`post_id`, `hashtag_id`)
+VALUES
+(1, 2);
+
+INSERT INTO `post_hashtag` (`post_id`, `hashtag_id`)
+VALUES
+(2, 3);
+
+INSERT INTO `post_hashtag` (`post_id`, `hashtag_id`)
+VALUES
+(3, 3);
+
+INSERT INTO `post_hashtag` (`post_id`, `hashtag_id`)
+VALUES
+(4, 5);
