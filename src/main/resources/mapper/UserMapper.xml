@@ -15,11 +15,35 @@
         <result property="dotori" column="dotori"/>
     </resultMap>
 
+    <resultMap id="refreshToken" type="com.ssafy.trip.user.dto.response.RefreshTokenResponse">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="token" column="token"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="expiresAt" column="expires_at"/>
+    </resultMap>
+
     <insert id="join" parameterType="com.ssafy.trip.user.entity.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user (name, email, password, role, created_at, dotori)
         VALUES (#{name}, #{email}, #{password}, #{role}, now(), #{dotori});
     </insert>
+    
+    <select id="selectByUserId" parameterType="Long" resultMap="user">
+        select * from user where id = #{userId}
+    </select>
+    
+    <insert id="registerRefreshToken" parameterType="map">
+        insert into refresh_token (user_id, token, created_at, expires_at)
+        values (#{userId}, #{refreshToken}, now(), #{expiration})
+    </insert>
 
+    <select id="searchRefreshTokenByUserId" parameterType="Long" resultMap="refreshToken">
+        select * from refresh_token where user_id = #{userId}
+    </select>
+
+    <delete id="deleteRefreshTokenByUserId" parameterType="Long">
+        delete from refresh_token where user_id = #{userId}
+    </delete>
 
     <select id="login" parameterType="Map" resultMap="user">
         select * from user where email = #{email} and password = #{password}
@@ -28,6 +52,4 @@
     <delete id="deleteUser" parameterType="Long">
         delete from user where id = #{id}
     </delete>
-
-
 </mapper>
