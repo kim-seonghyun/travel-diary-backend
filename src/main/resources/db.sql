@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS `post`;
 drop table if exists `answers`;
 drop table if exists `questions`;
 drop table if EXISTS `cash_to_dotori`;
+drop table if EXISTS `refresh_token`;
 DROP TABLE IF EXISTS `user`;
 drop table if exists `trip`;
 drop table if EXISTS `location`;
@@ -51,8 +52,8 @@ CREATE TABLE `travel_diary` (
                                 `created_at` DATE NULL,
                                 `updated_at` DATE NULL,
                                 `user_id` BIGINT NOT NULL,
-                                `for_sale`    boolean    NOT NULL,
-                                `dotori_price` bigint    NULL,
+                                `for_sale` ENUM('sale', 'notsale') NOT NULL,
+                                `dotori_price` BIGINT NULL,
                                 FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
@@ -259,23 +260,23 @@ VALUES
 
 INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
 VALUES
-    ('Nature', 'Exploring the Alps', 'A detailed account of my hiking trip in the Alps.', '2024-11-01', '2024-11-01', 1, TRUE, 500);
+    ('Nature', 'Exploring the Alps', 'A detailed account of my hiking trip in the Alps.', '2024-11-01', '2024-11-01', 1, 'sale', 500);
 
 INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
 VALUES
-    ('City', 'Tokyo Adventures', 'A guide to the best ramen shops and hidden gems in Tokyo.', '2024-10-25', '2024-11-10', 2, FALSE, NULL);
+    ('City', 'Tokyo Adventures', 'A guide to the best ramen shops and hidden gems in Tokyo.', '2024-10-25', '2024-11-10', 2, 'notsale', NULL);
 
 INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
 VALUES
-    ('Beach', 'Maldives Paradise', 'My relaxing vacation in the Maldives with tips for travelers.', '2024-09-15', '2024-09-18', 3, TRUE, 1000);
+    ('Beach', 'Maldives Paradise', 'My relaxing vacation in the Maldives with tips for travelers.', '2024-09-15', '2024-09-18', 3, 'sale', 1000);
 
 INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
 VALUES
-    ('Culture', 'Experiencing Bali', 'A dive into Bali\'s culture, including temples and traditions.', '2024-08-05', '2024-08-07', 4, TRUE, 750);
+    ('Culture', 'Experiencing Bali', 'A dive into Bali\'s culture, including temples and traditions.', '2024-08-05', '2024-08-07', 4, 'sale', 750);
 
 INSERT INTO `travel_diary` (`field`, `title`, `description`, `created_at`, `updated_at`, `user_id`, `for_sale`, `dotori_price`)
 VALUES
-    ('Adventure', 'Amazon Rainforest Expedition', 'A thrilling adventure through the Amazon rainforest.', '2024-07-20', '2024-07-22', 5, FALSE, NULL);
+    ('Adventure', 'Amazon Rainforest Expedition', 'A thrilling adventure through the Amazon rainforest.', '2024-07-20', '2024-07-22', 5, 'notsale', NULL);
 
 
 -- post insert query
