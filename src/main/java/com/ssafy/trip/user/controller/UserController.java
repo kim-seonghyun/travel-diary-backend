@@ -49,16 +49,17 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "이메일과 비밀번호를 사용하여 로그인하고 세션에 사용자 정보를 저장합니다.")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Parameter(description = "사용자 이메일", required = true) @RequestParam("email") String email, @Parameter(description = "사용자 비밀번호", required = true) @RequestParam("password") String password) {
+    public ResponseEntity<?> login(@RequestBody @Parameter(description = "사용자 이메일", required = true) String email, @Parameter(description = "사용자 비밀번호", required = true) String password) {
         //validation
         UserResponse loggedUser = userService.login(email, password);
         List<String> role = List.of("user");
         String accessToken = jwtUtil.generateAccessToken(loggedUser, role);
         String refreshToken = jwtUtil.generateRefreshToken(loggedUser, role);
 
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
         map.put("accessToken", accessToken);
         map.put("refreshToken", refreshToken);
+        map.put("user", loggedUser);
 
         Claims claims = jwtUtil.parseToken(refreshToken);
 
@@ -90,18 +91,12 @@ public class UserController {
     @GetMapping("/mypage")
     public ResponseEntity<UserMypageResponse> mypage(@RequestHeader("Authorization") String accessToken) {
         //validation
-        System.out.println(accessToken);
         accessToken = accessToken.substring(7);
         Claims claim = jwtUtil.parseToken(accessToken);
-        System.out.println(accessToken);
-        System.out.println(claim.get("userId", Long.class));
 
         UserResponse loggedUser = userService.findByUserId(claim.get("userId", Long.class));
-        System.out.println(loggedUser);
-
 
         UserMypageResponse mypage = userService.getMypage(loggedUser);
-        System.out.println(mypage);
         return ResponseEntity.status(HttpStatus.OK).body(mypage);
     }
 
