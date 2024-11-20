@@ -1,6 +1,7 @@
 package com.ssafy.trip.user.controller;
 
 import com.ssafy.trip.travelgraph.service.TravelGraphService;
+import com.ssafy.trip.user.dto.request.UserLoginRequest;
 import com.ssafy.trip.user.dto.request.UserRequest;
 import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
 import com.ssafy.trip.user.dto.response.UserMypageResponse;
@@ -49,9 +50,9 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "이메일과 비밀번호를 사용하여 로그인하고 세션에 사용자 정보를 저장합니다.")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Parameter(description = "사용자 이메일", required = true) String email, @Parameter(description = "사용자 비밀번호", required = true) String password) {
+    public ResponseEntity<?> login(@RequestBody @Parameter(description = "사용자 로그인", required = true) UserLoginRequest userLoginRequest) {
         //validation
-        UserResponse loggedUser = userService.login(email, password);
+        UserResponse loggedUser = userService.login(userLoginRequest.getEmail(), userLoginRequest.getPassword());
         List<String> role = List.of("user");
         String accessToken = jwtUtil.generateAccessToken(loggedUser, role);
         String refreshToken = jwtUtil.generateRefreshToken(loggedUser, role);
