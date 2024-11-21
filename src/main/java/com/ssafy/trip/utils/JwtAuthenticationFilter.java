@@ -28,7 +28,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = getTokenFromRequest(request);
-
         if (token != null && !jwtUtil.isTokenExpired(token)) {
             // 토큰 검증 후, 인증 처리
             Claims claim = jwtUtil.parseToken(token);
@@ -38,7 +37,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             List<GrantedAuthority> auth = roles.stream()
                     .map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());
-
             SecurityContextHolder.getContext().setAuthentication
                     (new UsernamePasswordAuthenticationToken(name, null, auth));
         }
