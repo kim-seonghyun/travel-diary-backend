@@ -42,7 +42,6 @@ public class UserService {
     public UserMypageResponse getMypage(UserResponse user) {
         //validation
         TravelGraph travelGraphEntity = travelGraphMapper.findTravelGraphByUserId(user.getId());
-        System.out.println("suerID : " + user.getId());
 
         UserMypageResponse mypage = UserMypageResponse.builder()
                 .id(user.getId())
@@ -59,7 +58,7 @@ public class UserService {
     }
 
     public UserResponse findByUserId(Long userId) {
-        System.out.println(userId);
+
         User userEntity = Optional.ofNullable(userMapper.selectByUserId(userId))
                 .orElseThrow(() -> new NoSuchElementException("userEntity가 존재 하지 않음"));
 
