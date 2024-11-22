@@ -15,6 +15,7 @@ public interface QuestionMapper {
 
     @Select(value = "select q.*, u.name as username from questions q join user u on q.user_id = u.id where q.id = #{id}")
     QuestionResponse selectById(Long id);
+
     @Insert(value = "insert into questions(user_id, title, category, body, image_url) values (#{userId}, #{title}, #{category}, #{body}, #{imageUrl})")
     void insert(QuestionRegisterDto questionRegisterDto);
 }

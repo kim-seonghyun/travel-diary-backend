@@ -26,8 +26,8 @@ public class QuestionService {
 
 
     public QuestionDetailResponse getQuestionDetail(Long id) {
-        QuestionResponse questionResponse =  questionMapper.selectById(id);
-        List<AnswerResponse> answerResponse =answerMapper.selectByQuestionId(id);
+        QuestionResponse questionResponse = questionMapper.selectById(id);
+        List<AnswerResponse> answerResponse = answerMapper.selectByQuestionId(id);
 
         return new QuestionDetailResponse(questionResponse, answerResponse);
     }
