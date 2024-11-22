@@ -57,32 +57,12 @@ CREATE TABLE `travel_diary` (
                                 FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
--- `post` 테이블 생성
-CREATE TABLE `post` (
-                        `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
-                        `title` VARCHAR(255) NULL,
-                        `content` VARCHAR(255) NULL,
-                        `created_at` DATE NULL,
-                        `updated_at` DATE NULL,
-                        `diary_id` BIGINT NOT NULL,
-                        `user_id` BIGINT NOT NULL,
-                        FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
-);
 
 
 -- `hashtag` 테이블 생성
 CREATE TABLE `hashtag` (
                            `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                            `tag` VARCHAR(255) NULL
-);
-
--- `post_hashtag` 테이블 생성
-CREATE TABLE `post_hashtag` (
-                                `post_id` BIGINT NOT NULL,
-                                `hashtag_id` BIGINT NOT NULL,
-                                PRIMARY KEY (`post_id`, `hashtag_id`),
-                                FOREIGN KEY (`post_id`) REFERENCES `post`(`id`),
-                                FOREIGN KEY (`hashtag_id`) REFERENCES `hashtag`(`id`)
 );
 
 CREATE TABLE `location` (
@@ -112,6 +92,31 @@ CREATE TABLE `trip` (
                         FOREIGN KEY (`location_id`) REFERENCES `location`(`id`),
                         FOREIGN KEY (`place_id`) REFERENCES `place`(`id`)
 );
+
+-- `post` 테이블 생성
+CREATE TABLE `post` (
+                        `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
+                        `title` VARCHAR(255) NULL,
+                        `content` VARCHAR(255) NULL,
+                        `created_at` DATE NULL,
+                        `updated_at` DATE NULL,
+                        `diary_id` BIGINT NOT NULL,
+                        `user_id` BIGINT NOT NULL,
+                        `trip_id` BIGINT NOT NULL,
+                        FOREIGN KEY (`user_id`) REFERENCES `user`(`id`),
+                        FOREIGN KEY (`trip_id`) REFERENCES trip(`id`)
+);
+
+-- `post_hashtag` 테이블 생성
+CREATE TABLE `post_hashtag` (
+                                `post_id` BIGINT NOT NULL,
+                                `hashtag_id` BIGINT NOT NULL,
+                                PRIMARY KEY (`post_id`, `hashtag_id`),
+                                FOREIGN KEY (`post_id`) REFERENCES `post`(`id`),
+                                FOREIGN KEY (`hashtag_id`) REFERENCES `hashtag`(`id`)
+);
+
+
 
 CREATE TABLE `purchase` (
                             `id`    bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -287,25 +292,25 @@ VALUES
 
 -- post insert query
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id` )
 VALUES
-    ('Discovering Italy', 'A wonderful journey through Rome and Venice.', '2024-10-15', '2024-10-16', 1, 1);
+    ('Discovering Italy', 'A wonderful journey through Rome and Venice.', '2024-10-15', '2024-10-16', 1, 1, 1);
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
 VALUES
-    ('Mountain Adventures', 'My thrilling experience climbing Mount Everest.', '2024-09-10', '2024-09-11', 2, 1);
+    ('Mountain Adventures', 'My thrilling experience climbing Mount Everest.', '2024-09-10', '2024-09-11', 2, 1, 1);
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
 VALUES
-    ('Cultural Wonders', 'Exploring the ancient temples of Angkor Wat.', '2024-08-01', '2024-08-05', 3, 1);
+    ('Cultural Wonders', 'Exploring the ancient temples of Angkor Wat.', '2024-08-01', '2024-08-05', 3, 1, 1);
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
 VALUES
-    ('City Lights', 'The vibrant nightlife and food scene in Seoul.', '2024-07-20', '2024-07-22', 3, 2);
+    ('City Lights', 'The vibrant nightlife and food scene in Seoul.', '2024-07-20', '2024-07-22', 3, 2, 2);
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`)
+INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
 VALUES
-    ('Beach Escapade', 'A relaxing retreat on the beaches of Phuket.', '2024-06-15', '2024-06-18',3, 2);
+    ('Beach Escapade', 'A relaxing retreat on the beaches of Phuket.', '2024-06-15', '2024-06-18',3, 2, 4);
 
 -- hashtag insert query
 
