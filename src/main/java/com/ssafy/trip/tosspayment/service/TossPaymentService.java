@@ -2,7 +2,9 @@ package com.ssafy.trip.tosspayment.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.trip.tosspayment.dto.request.CancelPaymentRequest;
 import com.ssafy.trip.tosspayment.dto.request.ConfirmPaymentRequest;
+import com.ssafy.trip.tosspayment.dto.response.BillsResponse;
 import com.ssafy.trip.tosspayment.dto.response.PaymentResponse;
 import com.ssafy.trip.tosspayment.entity.CashToDotori;
 import com.ssafy.trip.tosspayment.mapper.TossPaymentMapper;
@@ -15,6 +17,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -42,9 +45,25 @@ public class TossPaymentService {
                 .orderId(paymentResponse.getOrderId())
                 .orderName(paymentResponse.getOrderName())
                 .userId(paymentResponse.getUserId())
+                .paymentId(paymentResponse.getPaymentId())
                 .build();
 
         tossPaymentMapper.savePayment(cashToDotoriEntity);
+    }
+
+    public void cancelPayment(Long id) throws IllegalAccessException {
+        if(id == null || id == 0){
+            throw new IllegalAccessException("잘못된 접근입니다");
+        }
+        tossPaymentMapper.cancelPayment(id);
+    }
+
+    public List<BillsResponse> searchBillsByUserId(Long userId) throws IllegalAccessException {
+        if(userId == null || userId == 0){
+            throw new IllegalAccessException("잘못된 접근입니다");
+        }
+        System.out.println(userId);
+        return tossPaymentMapper.searchBillsByUserId(userId);
     }
 
 
@@ -61,6 +80,25 @@ public class TossPaymentService {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://api.tosspayments.com/v1/payments/confirm"))
+                .header("Authorization", "Basic "+ auth)
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+
+        return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    public HttpResponse<String> paymentCancel(CancelPaymentRequest cancelPaymentRequest) throws IOException, InterruptedException {
+        JsonNode json = objectMapper.createObjectNode()
+                .put("cancelReason", cancelPaymentRequest.getCancelReason());
+
+        String requestBody = objectMapper.writeValueAsString(json);
+        // 이거 숨겨야함;;;
+        String secreteKey = "test_sk_ex6BJGQOVDk9Mw4M99eO3W4w2zNb";
+        String auth = Base64.getEncoder().encodeToString((secreteKey+":").getBytes());
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("https://api.tosspayments.com/v1/payments/"+cancelPaymentRequest.getPaymentId()+"/cancel"))
                 .header("Authorization", "Basic "+ auth)
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(requestBody))
