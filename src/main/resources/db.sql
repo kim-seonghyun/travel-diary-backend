@@ -140,19 +140,19 @@ CREATE TABLE `purchase`
     FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) on delete cascade
 );
 
-CREATE TABLE `cash_to_dotori`
-(
-    `id`              bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `user_id`         bigint             NOT NULL,
-    `recharge_at`     Date               NOT NULL,
-    `quantity`        bigint             NOT NULL,
-    `order_id`        varchar(255)       NOT NULL,
-    `order_name`      varchar(255)       NOT NULL,
-    `status`          varchar(30)        NOT NULL,
-    `provider`        varchar(30)        NOT NULL,
-    `amount`          bigint             NOT NULL,
-    `discount_amount` bigint             NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) on delete cascade
+CREATE TABLE `cash_to_dotori`(
+                                 `id` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                                 `user_id`    bigint    NOT NULL,
+                                 `recharge_at`    Date    NOT NULL,
+                                 `quantity`    bigint    NOT NULL,
+                                 `order_id`    varchar(255)    NOT NULL,
+                                 `order_name`    varchar(255)    NOT NULL,
+                                 `status`    varchar(30)    NOT NULL,
+                                 `provider`    varchar(30)    NOT NULL,
+                                 `amount`    bigint    NOT NULL,
+                                 `discount_amount`    bigint    NOT NULL,
+                                 `payment_id`    varchar(255)    NOT NULL,
+								FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)  on delete cascade
 );
 
 
