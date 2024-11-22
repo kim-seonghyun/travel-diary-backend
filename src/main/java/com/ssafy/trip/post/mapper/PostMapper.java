@@ -21,6 +21,13 @@ public interface PostMapper {
 
     @Select("select * from post")
     List<PostListResponse> list();
+
+    @Select("select * from post where trip_id = #{tripId}")
+    List<PostListResponse> getListOnlyThree(Long tripId);
+
+    @Select("select * from post where trip_id = #{tripId} order by created_at desc limit 3")
+    List<PostListResponse> getListByTripId(Long tripId);
+
     @Select("select * from post where id = #{postId}")
     PostDetailResponse selectById(Long postId);
 

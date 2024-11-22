@@ -6,7 +6,9 @@ import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.mapper.PostMapper;
 import com.ssafy.trip.posthashtag.mapper.PostHashtagMapper;
+
 import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +27,14 @@ public class PostService {
 
     public List<PostListResponse> list() {
         return mapper.list();
+    }
+
+    public List<PostListResponse> getListByTripId(Long tripId) {
+        return mapper.getListByTripId(tripId);
+    }
+
+    public List<PostListResponse> getListOnlyThree(Long tripId) {
+        return mapper.getListOnlyThree(tripId);
     }
 
     public PostDetailResponse detail(Long postId) {
