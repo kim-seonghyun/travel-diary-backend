@@ -1,8 +1,9 @@
 package com.ssafy.trip.utils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import org.apache.commons.fileupload.FileUploadException;
+import java.util.UUID;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,9 +44,14 @@ public class ImageUtils {
      *
      * @param file MultipartFile type
      */
-    public static void upload(MultipartFile file) {
+    public static String upload(MultipartFile file) {
+        String uniqueFileName = UUID.randomUUID().toString();
         if (file.isEmpty()) {
-            return;
+            try {
+                throw new FileNotFoundException("파일을 찾지 못했습니다");
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
         try {
             File uploadDir = new File(IMAGE_DIR);
@@ -53,12 +59,13 @@ public class ImageUtils {
                 uploadDir.mkdirs();
             }
 
-            String filePath = IMAGE_DIR + File.separator + file.getOriginalFilename();
+            String filePath = IMAGE_DIR + File.separator + uniqueFileName;
             file.transferTo(new File(filePath));
+            return uniqueFileName;
         } catch (IOException e) {
             try {
-                throw new FileUploadException("파일 업로드 중 문제가 발생했습니다");
-            } catch (FileUploadException ex) {
+                throw new FileNotFoundException("파일을 찾지 못했습니다.");
+            } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
         }
