@@ -16,5 +16,6 @@ public class PaymentResponse {
     private String orderName;
     private Long quantity;
     private String status;
+    private String paymentId;
     private EasyPay easyPay;
 }

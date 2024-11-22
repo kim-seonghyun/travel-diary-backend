@@ -1,7 +1,9 @@
 package com.ssafy.trip.tosspayment.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ssafy.trip.tosspayment.dto.request.CancelPaymentRequest;
 import com.ssafy.trip.tosspayment.dto.request.ConfirmPaymentRequest;
+import com.ssafy.trip.tosspayment.dto.response.BillsResponse;
 import com.ssafy.trip.tosspayment.dto.response.PaymentResponse;
 import com.ssafy.trip.tosspayment.service.TossPaymentService;
 import com.ssafy.trip.utils.JwtUtil;
@@ -11,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
@@ -27,8 +30,24 @@ public class TossPaymentController {
         this.objectMapper = objectMapper;
     }
 
+    @GetMapping("/bills")
+    public ResponseEntity<?> getBills(@RequestHeader("Authorization") String accessToken) {
+
+        try {
+            accessToken = accessToken.substring(7);
+            Claims claim = jwtUtil.parseToken(accessToken);
+
+            List<BillsResponse> bills = tossPaymentService.searchBillsByUserId(claim.get("userId", Long.class));
+
+            return ResponseEntity.status(HttpStatus.OK).body(bills);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+    }
+
     @PostMapping("/confirm")
-    public ResponseEntity<?> confrim(@RequestBody ConfirmPaymentRequest confirmPaymentRequest,
+    public ResponseEntity<?> confirm(@RequestBody ConfirmPaymentRequest confirmPaymentRequest,
                                      @RequestHeader("Authorization") String accessToken) {
 
         try {
@@ -50,6 +69,7 @@ public class TossPaymentController {
 
             paymentResponse.setUserId(userId);
             paymentResponse.setQuantity(quantity);
+            paymentResponse.setPaymentId(confirmPaymentRequest.getPaymentKey());
 
             if (response.statusCode() == 200) {
                 tossPaymentService.savePayment(paymentResponse);
@@ -61,7 +81,34 @@ public class TossPaymentController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("NULL");
     }
+
+    @PostMapping("/cancel")
+    public ResponseEntity<?> cancel(@RequestBody CancelPaymentRequest cancelPaymentRequest,
+                                    @RequestHeader("Authorization") String accessToken) {
+
+        try {
+            HttpResponse<String> response = tossPaymentService.paymentCancel(cancelPaymentRequest);
+            accessToken = accessToken.substring(7);
+            Claims claim = jwtUtil.parseToken(accessToken);
+            Long userId = claim.get("userId", Long.class);
+
+
+            PaymentResponse paymentResponse = objectMapper.readValue(response.body(), PaymentResponse.class);
+
+            if (response.statusCode() == 200) {
+                tossPaymentService.cancelPayment(cancelPaymentRequest.getId());
+                return ResponseEntity.status(HttpStatus.OK).body(paymentResponse);
+            } else {
+                throw new IllegalAccessException("결제 취소를 실패했습니다.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("NULL");
+    }
+
+
 }
