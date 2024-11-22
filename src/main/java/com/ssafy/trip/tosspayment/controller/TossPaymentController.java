@@ -50,7 +50,6 @@ public class TossPaymentController {
 
             paymentResponse.setUserId(userId);
             paymentResponse.setQuantity(quantity);
-            tossPaymentService.savePayment(paymentResponse);
 
             if (response.statusCode() == 200) {
                 tossPaymentService.savePayment(paymentResponse);
