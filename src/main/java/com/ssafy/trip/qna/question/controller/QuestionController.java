@@ -1,6 +1,7 @@
 package com.ssafy.trip.qna.question.controller;
 
 import com.ssafy.trip.qna.answer.dto.request.AnswerRegisterRequest;
+import com.ssafy.trip.qna.answer.dto.response.AnswerResponse;
 import com.ssafy.trip.qna.answer.service.AnswerService;
 import com.ssafy.trip.qna.question.dto.request.QuestionDto;
 import com.ssafy.trip.qna.question.dto.request.QuestionRegisterDto;
@@ -56,8 +57,8 @@ public class QuestionController {
     }
 
     @PostMapping("/{id}/answer")
-    public ResponseEntity<Void> registerAnswer(@RequestBody AnswerRegisterRequest answerDto) {
-        answerService.registerAnswer(answerDto);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<AnswerResponse> registerAnswer(@RequestBody AnswerRegisterRequest answerDto) {
+        AnswerResponse response = answerService.registerAnswer(answerDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }

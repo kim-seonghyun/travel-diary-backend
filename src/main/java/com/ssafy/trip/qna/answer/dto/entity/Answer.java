@@ -9,6 +9,5 @@ public class Answer {
     private Long questionId;
     private Long userId;
     private String body;
-    private String imageUrl;
     private LocalDateTime createdAt;
 }
