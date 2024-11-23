@@ -8,6 +8,8 @@ DROP TABLE IF EXISTS `hashtag`;
 drop table if EXISTS `purchase`;
 DROP TABLE IF EXISTS `travel_diary`;
 DROP TABLE IF EXISTS `travel_graph`;
+drop table if exists `post_like`;
+drop table if exists `post_view`;
 DROP TABLE IF EXISTS `post`;
 drop table if exists `answers`;
 drop table if exists `questions`;
@@ -103,16 +105,11 @@ CREATE TABLE `trip`
 CREATE TABLE `post`
 (
     `id`         BIGINT AUTO_INCREMENT PRIMARY KEY,
-    `title`      VARCHAR(255) NULL,
     `content`    VARCHAR(255) NULL,
-    `created_at` DATE         NULL     default CURRENT_TIMESTAMP,
-    `updated_at` DATE         NULL     default CURRENT_TIMESTAMP,
-    `diary_id`   BIGINT       NOT NULL,
+    `created_at` DATETIME     NULL default NOW(),
     `user_id`    BIGINT       NOT NULL,
     `trip_id`    BIGINT       NOT NULL,
-    `image_url`  VARCHAR(255) NULL,
-    `likes`      bigint       NOT NULL default 0,
-    `views`      bigint       NOT NULL default 0,
+    `post_image` VARCHAR(255) NOT NULL,
     FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
     FOREIGN KEY (`trip_id`) REFERENCES trip (`id`)
 );
@@ -127,7 +124,24 @@ CREATE TABLE `post_hashtag`
     FOREIGN KEY (`hashtag_id`) REFERENCES `hashtag` (`id`)
 );
 
+CREATE TABLE post_like
+(
+    user_id bigint NOT NULL,
+    post_id bigint NOT NULL,
+    PRIMARY KEY (user_id, post_id),
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
+);
 
+CREATE TABLE post_view
+(
+    user_id     bigint NOT NULL,
+    post_id     bigint NOT NULL,
+    views_count INT DEFAULT 1,
+    PRIMARY KEY (user_id, post_id),
+    FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
+    FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
+);
 
 CREATE TABLE `purchase`
 (
@@ -140,19 +154,20 @@ CREATE TABLE `purchase`
     FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) on delete cascade
 );
 
-CREATE TABLE `cash_to_dotori`(
-                                 `id` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                                 `user_id`    bigint    NOT NULL,
-                                 `recharge_at`    Date    NOT NULL,
-                                 `quantity`    bigint    NOT NULL,
-                                 `order_id`    varchar(255)    NOT NULL,
-                                 `order_name`    varchar(255)    NOT NULL,
-                                 `status`    varchar(30)    NOT NULL,
-                                 `provider`    varchar(30)    NOT NULL,
-                                 `amount`    bigint    NOT NULL,
-                                 `discount_amount`    bigint    NOT NULL,
-                                 `payment_id`    varchar(255)    NOT NULL,
-								FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)  on delete cascade
+CREATE TABLE `cash_to_dotori`
+(
+    `id`              bigint PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `user_id`         bigint             NOT NULL,
+    `recharge_at`     Date               NOT NULL,
+    `quantity`        bigint             NOT NULL,
+    `order_id`        varchar(255)       NOT NULL,
+    `order_name`      varchar(255)       NOT NULL,
+    `status`          varchar(30)        NOT NULL,
+    `provider`        varchar(30)        NOT NULL,
+    `amount`          bigint             NOT NULL,
+    `discount_amount` bigint             NOT NULL,
+    `payment_id`      varchar(255)       NOT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) on delete cascade
 );
 
 
@@ -317,21 +332,17 @@ VALUES ('Adventure', 'Amazon Rainforest Expedition', 'A thrilling adventure thro
 
 -- post insert query
 
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
-VALUES ('Discovering Italy', 'A wonderful journey through Rome and Venice.', '2024-10-15', '2024-10-16', 1, 1, 1);
-
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
-VALUES ('Mountain Adventures', 'My thrilling experience climbing Mount Everest.', '2024-09-10', '2024-09-11', 2, 1, 1);
-
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
-VALUES ('Cultural Wonders', 'Exploring the ancient temples of Angkor Wat.', '2024-08-01', '2024-08-05', 3, 1, 1);
-
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
-VALUES ('City Lights', 'The vibrant nightlife and food scene in Seoul.', '2024-07-20', '2024-07-22', 3, 2, 2);
-
-INSERT INTO `post` (`title`, `content`, `created_at`, `updated_at`, `diary_id`, `user_id`, `trip_id`)
-VALUES ('Beach Escapade', 'A relaxing retreat on the beaches of Phuket.', '2024-06-15', '2024-06-18', 3, 2, 4);
-
+INSERT INTO `post` (`content`, `created_at`, `user_id`, `trip_id`, `post_image`)
+VALUES ('Exploring the mountains', NOW(), 1, 1, 'image1.jpg'),
+       ('Night in the city', NOW(), 2, 2, 'image2.jpg'),
+       ('Relaxing by the sea', NOW(), 3, 3, 'image3.jpg'),
+       ('Found a hidden waterfall', NOW(), 4, 4, 'image4.jpg'),
+       ('Journey through the dunes', NOW(), 5, 5, 'image5.jpg'),
+       ('Snowy landscapes and hot cocoa', NOW(), 3, 1, 'image6.jpg'),
+       ('Camping in the woods', NOW(), 5, 2, 'image7.jpg'),
+       ('Exploring tropical islands', NOW(), 4, 3, 'image8.jpg'),
+       ('Visited historical landmarks', NOW(), 3, 4, 'image9.jpg'),
+       ('Driving across the country', NOW(), 1, 5, 'image10.jpg');
 -- hashtag insert query
 
 INSERT INTO `hashtag` (`tag`)
