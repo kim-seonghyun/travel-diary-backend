@@ -81,9 +81,21 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<String> logout(@RequestBody Long userId) {
-        UserResponse user = userService.findByUserId(userId);
-        userService.deleteRefreshToken(userId);
+    public ResponseEntity<String> logout(@RequestHeader("Authorization")  String accessToken) {
+
+        accessToken = accessToken.substring(7);
+        Claims claim = jwtUtil.parseToken(accessToken);
+
+        try{
+            Long userId = claim.get("userId", Long.class);
+            UserResponse user = userService.findByUserId(userId);
+            if (user != null) {
+                userService.deleteRefreshToken(userId);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         // 완전한 로그아웃하려면 클라이언트에 저장된 토큰도 제거해야함.
         return ResponseEntity.status(HttpStatus.OK).body("logout complete");
@@ -97,6 +109,7 @@ public class UserController {
 
         UserResponse loggedUser = userService.findByUserId(claim.get("userId", Long.class));
 
+        System.out.println("Mypage Call");
         UserMypageResponse mypage = userService.getMypage(loggedUser);
         return ResponseEntity.status(HttpStatus.OK).body(mypage);
     }
