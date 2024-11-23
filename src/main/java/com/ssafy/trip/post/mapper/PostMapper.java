@@ -1,6 +1,6 @@
 package com.ssafy.trip.post.mapper;
 
-import com.ssafy.trip.post.dto.request.PostRegistRequest;
+import com.ssafy.trip.post.dto.entity.Post;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -16,8 +17,9 @@ public interface PostMapper {
     @Delete("delete from post where diary_id = #{travelDiaryId}")
     void deleteByTravelDiaryId(long travelDiaryId);
 
-    @Insert("insert into post(title, content, created_at, updated_at, diary_id, user_id) values (#{title},#{content},#{createdAt},#{updatedAt},#{diaryId},#{userId})")
-    void regist(PostRegistRequest request);
+    @Insert("insert into post(content, user_id, trip_id, post_image) values (#{content},#{userId},#{tripId}, #{postImage})")
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    void regist(Post request);
 
     @Select("select * from post")
     List<PostListResponse> list();

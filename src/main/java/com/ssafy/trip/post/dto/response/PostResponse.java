@@ -4,12 +4,13 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class PostDetailResponse {
+public class PostResponse {
     private long id;
-    private String content;
-    private LocalDateTime createdAt;
-    private Long tripId;
-    private String facilityName;
+    private String username;
+    private String location;
+    private LocalDateTime timeAgo;
+    private String description;
+    private long diaryId;
     private long userId;
     private String postImage;
 }

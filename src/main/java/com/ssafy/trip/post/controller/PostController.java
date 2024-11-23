@@ -5,15 +5,23 @@ import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.service.PostService;
+import com.ssafy.trip.utils.ImageUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "Post API", description = "Post 관련 API")
 @RestController
@@ -26,11 +34,16 @@ public class PostController {
     }
 
     @Operation(summary = "Post 등록", description = "이 API는 새로운 Post를 등록합니다.")
-    @PostMapping("/regist")
-    public ResponseEntity<Void> regist(@Parameter(description = "Post 등록 요청 객체", required = true)
-                                       @RequestBody PostRegistRequest request) {
-        postService.regist(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    @PostMapping(value = "/regist")
+    public ResponseEntity<PostDetailResponse> regist(@Parameter(description = "Post 등록 요청 객체", required = true)
+                                                     @RequestPart(value = "image") MultipartFile image,
+                                                     @RequestPart(value = "request") PostRegistRequest request) {
+        String filename = ImageUtils.upload(image);
+        request.setPostImage(filename);
+        System.out.println(request);
+        PostDetailResponse response = postService.regist(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @Operation(summary = "Post 목록 조회", description = "이 API는 모든 Post 목록을 반환합니다.")
