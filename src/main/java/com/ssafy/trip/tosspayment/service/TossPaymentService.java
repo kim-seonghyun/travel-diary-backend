@@ -8,6 +8,9 @@ import com.ssafy.trip.tosspayment.dto.response.BillsResponse;
 import com.ssafy.trip.tosspayment.dto.response.PaymentResponse;
 import com.ssafy.trip.tosspayment.entity.CashToDotori;
 import com.ssafy.trip.tosspayment.mapper.TossPaymentMapper;
+import com.ssafy.trip.user.dto.response.UserResponse;
+import com.ssafy.trip.user.entity.User;
+import com.ssafy.trip.user.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,10 +26,12 @@ import java.util.NoSuchElementException;
 @Service
 public class TossPaymentService {
     private final TossPaymentMapper tossPaymentMapper;
+    private final UserService userService;
     private final ObjectMapper objectMapper;
 
-    public TossPaymentService(TossPaymentMapper tossPaymentMapper, ObjectMapper objectMapper) {
+    public TossPaymentService(TossPaymentMapper tossPaymentMapper, UserService userService, ObjectMapper objectMapper) {
         this.tossPaymentMapper = tossPaymentMapper;
+        this.userService = userService;
         this.objectMapper = objectMapper;
     }
 
@@ -62,8 +67,44 @@ public class TossPaymentService {
         if(userId == null || userId == 0){
             throw new IllegalAccessException("잘못된 접근입니다");
         }
-        System.out.println(userId);
+
         return tossPaymentMapper.searchBillsByUserId(userId);
+    }
+
+    public void addDotoriToUser(Long userId, Long quantity) {
+
+        if (userId == null || userId <= 0) {
+            throw new IllegalArgumentException("존재하지 않거나 잘못된 유저 아이디입니다");
+        }
+
+        if (quantity == null || quantity <= 0) {
+            throw new IllegalArgumentException("도토리 수량은 1 이상이어야 합니다.");
+        }
+
+        try{
+            tossPaymentMapper.addDotoriToUser(userId, quantity);
+        }catch(Exception e) {
+            throw new RuntimeException("도토리 추가에 실패했습니다.", e);
+        }
+    }
+
+    public void deleteDotoriToUser(Long userId, Long id) {
+
+        if (userId == null || userId <= 0) {
+            throw new IllegalArgumentException("존재하지 않거나 잘못된 유저 아이디입니다");
+        }
+
+        Long quantity = tossPaymentMapper.getQuantityDotori(id);
+
+        if (quantity == null || quantity <= 0) {
+            throw new IllegalArgumentException("도토리 수량은 1 이상이어야 합니다.");
+        }
+
+        try{
+            tossPaymentMapper.deleteDotoriToUser(userId, quantity);
+        }catch(Exception e) {
+            throw new RuntimeException("도토리 제거에 실패했습니다.", e);
+        }
     }
 
 
@@ -88,7 +129,15 @@ public class TossPaymentService {
         return HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
     }
 
-    public HttpResponse<String> paymentCancel(CancelPaymentRequest cancelPaymentRequest) throws IOException, InterruptedException {
+    public HttpResponse<String> paymentCancel(CancelPaymentRequest cancelPaymentRequest, Long userId) throws IOException, InterruptedException, IllegalAccessException {
+
+        UserResponse user = userService.findByUserId(userId);
+        Long quantity = tossPaymentMapper.getQuantityDotori(cancelPaymentRequest.getId());
+
+        if (user.getDotori() < quantity) {
+            throw new IllegalAccessException("환불 불가 : 소유하신 도토리가 부족합니다");
+        }
+
         JsonNode json = objectMapper.createObjectNode()
                 .put("cancelReason", cancelPaymentRequest.getCancelReason());
 

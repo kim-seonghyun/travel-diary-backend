@@ -19,4 +19,12 @@ public interface TossPaymentMapper {
 
     List<BillsResponse> searchBillsByUserId(Long userId);
 
+    @Update("update user set dotori = dotori + #{quantity} where id = #{userId}")
+    void addDotoriToUser(Long userId, Long quantity);
+
+    @Update("update user set dotori = dotori - #{quantity} where id = #{userId}")
+    void deleteDotoriToUser(Long userId, Long quantity);
+
+    @Select("select quantity from cash_to_dotori where id = #{id}")
+    Long getQuantityDotori(Long id);
 }
