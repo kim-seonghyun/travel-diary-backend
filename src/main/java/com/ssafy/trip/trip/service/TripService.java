@@ -18,7 +18,7 @@ public class TripService {
         this.tripMapper = tripMapper;
     }
 
-    public TripDetailResponse getDetail(Long tripId){
+    public TripDetailResponse getDetail(Long tripId) {
         //validation
         Trip tripEntity = tripMapper.getDetail(tripId);
         return TripDetailResponse.builder()
@@ -34,10 +34,18 @@ public class TripService {
                 .build();
     }
 
-    public List<TripListResponse> searchAllList(){
+    public Long getTotalCount() {
+        return tripMapper.getTotalCount();
+    }
+
+    public Long getTotalCountByLocation(Long locationId) {
+        return tripMapper.getTotalCountByLocation(locationId);
+    }
+
+    public List<TripListResponse> searchAllList(Long currentPage, Long showPage) {
         //validation
 
-        List<Trip> tripList = tripMapper.getAllCampTripList();
+        List<Trip> tripList = tripMapper.getAllTripListPagination(currentPage, showPage);
         List<TripListResponse> responseList = new ArrayList<>();
 
         for (Trip trip : tripList) {
@@ -52,10 +60,10 @@ public class TripService {
         return responseList;
     }
 
-    public List<TripListResponse> searchListByLocate(Long locateId){
+    public List<TripListResponse> searchListByLocate(Long locationId, Long currentPage, Long showPage) {
         //validation
 
-        List<Trip> tripList = tripMapper.getCampTripListByLocate(locateId);
+        List<Trip> tripList = tripMapper.getCampTripListByLocate(locationId, currentPage, showPage);
         List<TripListResponse> responseList = new ArrayList<>();
 
         for (Trip trip : tripList) {

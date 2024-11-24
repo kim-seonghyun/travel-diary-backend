@@ -55,7 +55,7 @@
         where ct.id = #{tripId}
     </select>
 
-    <select id="getCampTripListByLocate" parameterType="Long" resultMap="placeTrip">
+    <select id="getCampTripListByLocate" parameterType="map" resultMap="placeTrip">
         select
             ct.id,
             ct.location_id,
@@ -72,7 +72,8 @@
         from trip ct
         join place p
         on ct.place_id = p.id
-        where ct.location_id = #{locateId}
+        where ct.location_id = #{locationId}
+        LIMIT #{showPage} OFFSET #{currentPage}
     </select>
 
     <select id="getAllCampTripList" resultMap="placeTrip">
@@ -93,6 +94,26 @@
         join place p
         on ct.place_id = p.id
 
+    </select>
+
+    <select id="getAllTripListPagination" parameterType="map" resultMap="placeTrip">
+        select
+            ct.id,
+            ct.location_id,
+            ct.place_id,
+            ct.facility_name,
+            ct.facility_introduction,
+            ct.phone_number,
+            ct.web_page_url,
+            p.id as place_id,
+            p.road_address,
+            p.street_number_address,
+            p.latitude,
+            p.longitude
+        from trip ct
+        join place p
+        on ct.place_id = p.id
+        LIMIT #{showPage} OFFSET #{currentPage}
     </select>
 
 

@@ -109,7 +109,6 @@ public class UserController {
 
         UserResponse loggedUser = userService.findByUserId(claim.get("userId", Long.class));
 
-        System.out.println("Mypage Call");
         UserMypageResponse mypage = userService.getMypage(loggedUser);
         return ResponseEntity.status(HttpStatus.OK).body(mypage);
     }
