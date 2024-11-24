@@ -24,16 +24,31 @@ public class TripController {
 
     @Operation(summary = "전체 여행 목록 조회", description = "모든 여행 목록을 조회합니다.")
     @GetMapping("/search")
-    public ResponseEntity<List<TripListResponse>> getAllTripList(){
-        List<TripListResponse> tripList = tripService.searchAllList();
+    public ResponseEntity<List<TripListResponse>> getAllTripList(@RequestParam("currentPage") Long currentPage){
+        currentPage = (currentPage - 1) * 16;
+        List<TripListResponse> tripList = tripService.searchAllList(currentPage, 16L);
         return ResponseEntity.status(HttpStatus.OK).body(tripList);
+    }
+
+    @GetMapping("/total")
+    public ResponseEntity<Long> getTotalCount(){
+        Long totalCount = tripService.getTotalCount();
+        return ResponseEntity.status(HttpStatus.OK).body(totalCount);
+    }
+
+    @GetMapping("/total/{locationId}")
+    public ResponseEntity<Long> getTotalCountByLocation(@PathVariable("locationId") Long locationId){
+        Long totalCount = tripService.getTotalCountByLocation(locationId);
+        return ResponseEntity.status(HttpStatus.OK).body(totalCount);
     }
 
     @Operation(summary = "지역별 여행 목록 조회", description = "특정 지역 ID에 해당하는 여행 목록을 조회합니다.")
     @GetMapping("/search/locate")
-    public ResponseEntity<List<TripListResponse>> getTripListByLocate(@Parameter(description = "조회할 지역의 ID", required = true) @RequestParam("locateId") Long locateId){
-        List<TripListResponse> tripList = tripService.searchListByLocate(locateId);
+    public ResponseEntity<List<TripListResponse>> getTripListByLocate(@Parameter(description = "조회할 지역의 ID", required = true) @RequestParam("locationId") Long locationId, @RequestParam("currentPage") Long currentPage){
 
+        currentPage = (currentPage - 1) * 16;
+
+        List<TripListResponse> tripList = tripService.searchListByLocate(locationId, currentPage, 16L);
         return ResponseEntity.status(HttpStatus.OK).body(tripList);
     }
 
