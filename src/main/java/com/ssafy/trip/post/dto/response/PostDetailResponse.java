@@ -11,5 +11,6 @@ public class PostDetailResponse {
     private Long tripId;
     private String facilityName;
     private long userId;
+    private String username;
     private String postImage;
 }

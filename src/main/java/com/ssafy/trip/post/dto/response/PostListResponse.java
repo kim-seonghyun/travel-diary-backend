@@ -6,10 +6,11 @@ import lombok.Data;
 @Data
 public class PostListResponse {
     private long id;
-    private String title;
     private String content;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-    private long diaryId;
+    private Long tripId;
+    private String facilityName;
     private long userId;
+    private String username;
+    private String postImage;
 }

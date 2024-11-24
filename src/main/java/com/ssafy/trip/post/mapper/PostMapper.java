@@ -21,7 +21,21 @@ public interface PostMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void regist(Post request);
 
-    @Select("select * from post")
+    @Select("SELECT " +
+            "    p.post_image AS postImage, " +
+            "    p.trip_id AS tripId, " +
+            "    p.created_at AS createdAt, " +
+            "    t.facility_name AS facilityName, " +
+            "    p.user_id AS userId, " +
+            "    u.name AS username, " +
+            "    p.id AS id, " +
+            "    p.content AS content " +
+            "FROM " +
+            "    post p " +
+            "JOIN " +
+            "    trip t ON p.trip_id = t.id " +
+            "JOIN " +
+            "    user u ON p.user_id = u.id")
     List<PostListResponse> list();
 
     @Select("select * from post where trip_id = #{tripId}")
@@ -30,7 +44,21 @@ public interface PostMapper {
     @Select("select * from post where trip_id = #{tripId} order by created_at desc limit 3")
     List<PostListResponse> getListByTripId(Long tripId);
 
-    @Select("select * from post where id = #{postId}")
+    @Select("SELECT \n" +
+            "    p.post_image AS postImage,\n" +
+            "    p.trip_id AS tripId,\n" +
+            "    p.created_at AS createdAt,\n" +
+            "    t.facility_name AS facilityName,\n" +
+            "    p.user_id AS userId,\n" +
+            "    u.name AS username\n" +
+            "FROM \n" +
+            "    posts p\n" +
+            "JOIN \n" +
+            "    trips t ON p.trip_id = t.trip_id\n" +
+            "JOIN \n" +
+            "    users u ON p.user_id = u.user_id\n" +
+            "WHERE \n" +
+            "    p.post_id = #{postId};")
     PostDetailResponse selectById(Long postId);
 
     @Update("update post set title = #{title}, content = #{content} where id = #{id}")
