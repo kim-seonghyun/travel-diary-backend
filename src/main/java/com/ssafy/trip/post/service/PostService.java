@@ -1,5 +1,7 @@
 package com.ssafy.trip.post.service;
 
+import com.ssafy.trip.comment.dto.response.CommentListResponse;
+import com.ssafy.trip.comment.mapper.CommentMapper;
 import com.ssafy.trip.post.dto.entity.Post;
 import com.ssafy.trip.post.dto.request.PostRegistRequest;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
@@ -16,13 +18,16 @@ import org.springframework.stereotype.Service;
 public class PostService {
     private final PostMapper mapper;
     private final PostHashtagMapper postHashtagMapper;
+    private final CommentMapper commentMapper;
 
     private final TripMapper tripMapper;
 
-    public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, TripMapper tripMapper
+    public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, CommentMapper commentMapper,
+                       TripMapper tripMapper
     ) {
         this.mapper = mapper;
         this.postHashtagMapper = postHashtagMapper;
+        this.commentMapper = commentMapper;
         this.tripMapper = tripMapper;
     }
 
@@ -58,7 +63,10 @@ public class PostService {
     }
 
     public PostDetailResponse detail(Long postId) {
-        return mapper.selectById(postId);
+        PostDetailResponse response = mapper.selectById(postId);
+        List<CommentListResponse> commentListResponse = commentMapper.selectByPostIdIncludeUserName(postId);
+        response.setComments(commentListResponse);
+        return response;
     }
 
     public void update(PostUpdateRequest request) {

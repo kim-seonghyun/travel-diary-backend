@@ -50,7 +50,9 @@ public interface PostMapper {
             "    p.created_at AS createdAt,\n" +
             "    t.facility_name AS facilityName,\n" +
             "    p.user_id AS userId,\n" +
-            "    u.name AS username\n" +
+            "    u.name AS username,\n" +
+            "    p.content AS content,\n" +  // 쉼표 추가
+            "    p.id AS id\n" +
             "FROM \n" +
             "    post p\n" +
             "JOIN \n" +
