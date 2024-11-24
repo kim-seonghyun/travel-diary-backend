@@ -4,15 +4,14 @@ import com.ssafy.trip.trip.dto.response.TripDetailResponse;
 import com.ssafy.trip.trip.dto.response.TripListResponse;
 import com.ssafy.trip.trip.entity.Trip;
 import com.ssafy.trip.trip.mapper.TripMapper;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class TripService {
 
-    private TripMapper tripMapper;
+    private final TripMapper tripMapper;
 
     public TripService(TripMapper tripMapper) {
         this.tripMapper = tripMapper;
@@ -40,6 +39,10 @@ public class TripService {
 
     public Long getTotalCountByLocation(Long locationId) {
         return tripMapper.getTotalCountByLocation(locationId);
+    }
+
+    public List<TripListResponse> searchAllTripsWithoutPagination() {
+        return tripMapper.searchAllTripList();
     }
 
     public List<TripListResponse> searchAllList(Long currentPage, Long showPage) {
