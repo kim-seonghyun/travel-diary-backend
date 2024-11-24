@@ -40,7 +40,6 @@ public class PostController {
                                                      @RequestPart(value = "request") PostRegistRequest request) {
         String filename = ImageUtils.upload(image);
         request.setPostImage(filename);
-        System.out.println(request);
         PostDetailResponse response = postService.regist(request);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
@@ -56,8 +55,6 @@ public class PostController {
     @GetMapping("/list/All/{tripId}")
     public ResponseEntity<List<PostListResponse>> getListByTripId(@PathVariable Long tripId) {
         List<PostListResponse> posts = postService.getListByTripId(tripId);
-        System.out.println(tripId);
-        System.out.println(posts.get(0).getContent());
         return ResponseEntity.status(HttpStatus.OK).body(posts);
     }
 
@@ -71,6 +68,7 @@ public class PostController {
     @GetMapping("/detail/{postId}")
     public ResponseEntity<PostDetailResponse> detail(@PathVariable Long postId) {
         PostDetailResponse post = postService.detail(postId);
+        System.out.println(post);
         return ResponseEntity.status(HttpStatus.OK).body(post);
     }
 

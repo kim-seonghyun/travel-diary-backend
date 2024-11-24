@@ -19,7 +19,8 @@ public class PostService {
 
     private final TripMapper tripMapper;
 
-    public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, TripMapper tripMapper) {
+    public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, TripMapper tripMapper
+    ) {
         this.mapper = mapper;
         this.postHashtagMapper = postHashtagMapper;
         this.tripMapper = tripMapper;
