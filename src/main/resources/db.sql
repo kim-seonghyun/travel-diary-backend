@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS `hashtag`;
 drop table if EXISTS `purchase`;
 DROP TABLE IF EXISTS `travel_diary`;
 DROP TABLE IF EXISTS `travel_graph`;
+drop table if exists `comment`;
 drop table if exists `post_like`;
 drop table if exists `post_view`;
 DROP TABLE IF EXISTS `post`;
@@ -141,6 +142,17 @@ CREATE TABLE post_view
     PRIMARY KEY (user_id, post_id),
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (post_id) REFERENCES post (id) ON DELETE CASCADE
+);
+
+CREATE TABLE `comment`
+(
+    `id`         bigint   NOT NULL primary key auto_increment,
+    `post_id`    bigint   NOT NULL,
+    `user_id`    bigint   NOT NULL,
+    `content`    TEXT     NULL,
+    `created_at` DATETIME NULL default CURRENT_TIMESTAMP,
+    FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
+    FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 );
 
 CREATE TABLE `purchase`

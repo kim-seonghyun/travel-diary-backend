@@ -52,13 +52,13 @@ public interface PostMapper {
             "    p.user_id AS userId,\n" +
             "    u.name AS username\n" +
             "FROM \n" +
-            "    posts p\n" +
+            "    post p\n" +
             "JOIN \n" +
-            "    trips t ON p.trip_id = t.trip_id\n" +
+            "    trip t ON p.trip_id = t.id\n" +
             "JOIN \n" +
-            "    users u ON p.user_id = u.user_id\n" +
+            "    user u ON p.user_id = u.id\n" +
             "WHERE \n" +
-            "    p.post_id = #{postId};")
+            "    p.id = #{postId};")
     PostDetailResponse selectById(Long postId);
 
     @Update("update post set title = #{title}, content = #{content} where id = #{id}")
