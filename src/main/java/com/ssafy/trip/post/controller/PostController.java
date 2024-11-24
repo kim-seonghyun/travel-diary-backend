@@ -68,7 +68,6 @@ public class PostController {
     @GetMapping("/detail/{postId}")
     public ResponseEntity<PostDetailResponse> detail(@PathVariable Long postId) {
         PostDetailResponse post = postService.detail(postId);
-        System.out.println(post);
         return ResponseEntity.status(HttpStatus.OK).body(post);
     }
 
