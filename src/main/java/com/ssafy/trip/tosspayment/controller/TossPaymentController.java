@@ -6,6 +6,7 @@ import com.ssafy.trip.tosspayment.dto.request.ConfirmPaymentRequest;
 import com.ssafy.trip.tosspayment.dto.response.BillsResponse;
 import com.ssafy.trip.tosspayment.dto.response.PaymentResponse;
 import com.ssafy.trip.tosspayment.service.TossPaymentService;
+import com.ssafy.trip.user.service.UserService;
 import com.ssafy.trip.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.http.HttpStatus;
@@ -21,13 +22,15 @@ import java.util.List;
 public class TossPaymentController {
 
     private final TossPaymentService tossPaymentService;
+    private final UserService userService;
     private final JwtUtil jwtUtil;
     private ObjectMapper objectMapper;
 
-    public TossPaymentController(TossPaymentService tossPaymentService, JwtUtil jwtUtil, ObjectMapper objectMapper) {
+    public TossPaymentController(TossPaymentService tossPaymentService, JwtUtil jwtUtil, ObjectMapper objectMapper, UserService userService) {
         this.tossPaymentService = tossPaymentService;
         this.jwtUtil = jwtUtil;
         this.objectMapper = objectMapper;
+        this.userService = userService;
     }
 
     @GetMapping("/bills")
@@ -73,6 +76,8 @@ public class TossPaymentController {
 
             if (response.statusCode() == 200) {
                 tossPaymentService.savePayment(paymentResponse);
+                tossPaymentService.addDotoriToUser(userId, quantity); // 도토리 추가
+
                 return ResponseEntity.status(HttpStatus.OK).body(paymentResponse);
             } else {
                 throw new IllegalAccessException("결제 서버와 연결되지 않았습니다.");
@@ -89,16 +94,19 @@ public class TossPaymentController {
                                     @RequestHeader("Authorization") String accessToken) {
 
         try {
-            HttpResponse<String> response = tossPaymentService.paymentCancel(cancelPaymentRequest);
             accessToken = accessToken.substring(7);
             Claims claim = jwtUtil.parseToken(accessToken);
             Long userId = claim.get("userId", Long.class);
 
+            HttpResponse<String> response = tossPaymentService.paymentCancel(cancelPaymentRequest, userId);
+
 
             PaymentResponse paymentResponse = objectMapper.readValue(response.body(), PaymentResponse.class);
+            Long quantity = paymentResponse.getQuantity();
 
             if (response.statusCode() == 200) {
                 tossPaymentService.cancelPayment(cancelPaymentRequest.getId());
+                tossPaymentService.deleteDotoriToUser(userId, cancelPaymentRequest.getId()); // 도토리 삭제
                 return ResponseEntity.status(HttpStatus.OK).body(paymentResponse);
             } else {
                 throw new IllegalAccessException("결제 취소를 실패했습니다.");
