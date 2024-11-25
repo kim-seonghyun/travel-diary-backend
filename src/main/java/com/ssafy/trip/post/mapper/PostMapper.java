@@ -29,13 +29,18 @@ public interface PostMapper {
             "    p.user_id AS userId, " +
             "    u.name AS username, " +
             "    p.id AS id, " +
-            "    p.content AS content " +
+            "    p.content AS content, " +
+            "    COALESCE(SUM(pv.views_count), 0) AS viewsCount " +
             "FROM " +
             "    post p " +
             "JOIN " +
             "    trip t ON p.trip_id = t.id " +
             "JOIN " +
-            "    user u ON p.user_id = u.id")
+            "    user u ON p.user_id = u.id " +
+            "LEFT JOIN " +
+            "    post_view pv ON p.id = pv.post_id " +
+            "GROUP BY " +
+            "    p.id, p.post_image, p.trip_id, p.created_at, t.facility_name, p.user_id, u.name, p.content")
     List<PostListResponse> list();
 
     @Select("select * from post where trip_id = #{tripId}")
@@ -68,4 +73,10 @@ public interface PostMapper {
 
     @Delete("delete from post where id = #{postId}")
     void deleteByPostId(Long postId);
+
+    @Insert("INSERT INTO post_view(post_id, user_id) VALUES(#{postId}, #{userId}) ON DUPLICATE KEY UPDATE views_count = views_count + 1")
+    void incrementView(Long postId, Long userId);
+
+    @Select("select count(pv.views_count) from post_view pv where pv.post_id = #{postId}")
+    int getViewsCount(Long postId);
 }

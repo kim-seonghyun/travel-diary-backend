@@ -19,12 +19,10 @@ public class PostService {
     private final PostMapper mapper;
     private final PostHashtagMapper postHashtagMapper;
     private final CommentMapper commentMapper;
-
     private final TripMapper tripMapper;
 
     public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, CommentMapper commentMapper,
-                       TripMapper tripMapper
-    ) {
+                       TripMapper tripMapper) {
         this.mapper = mapper;
         this.postHashtagMapper = postHashtagMapper;
         this.commentMapper = commentMapper;
@@ -66,6 +64,7 @@ public class PostService {
         PostDetailResponse response = mapper.selectById(postId);
         List<CommentListResponse> commentListResponse = commentMapper.selectByPostIdIncludeUserName(postId);
         response.setComments(commentListResponse);
+
         return response;
     }
 
@@ -76,5 +75,9 @@ public class PostService {
     public void delete(Long postId) {
         postHashtagMapper.deleteByPostId(postId);
         mapper.deleteByPostId(postId);
+    }
+
+    public void incrementView(Long postId, Long userId) {
+        mapper.incrementView(postId, userId);
     }
 }
