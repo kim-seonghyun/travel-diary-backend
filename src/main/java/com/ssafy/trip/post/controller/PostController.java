@@ -4,6 +4,7 @@ import com.ssafy.trip.post.dto.request.PostRegistRequest;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
+import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
 import com.ssafy.trip.post.service.PostService;
 import com.ssafy.trip.utils.ImageUtils;
 import com.ssafy.trip.utils.JwtUtil;
@@ -38,6 +39,12 @@ public class PostController {
         this.jwtUtil = jwtUtil;
     }
 
+    @GetMapping("/location-list/{userId}")
+    public ResponseEntity<List<PostLocationResponseDto>> getPostLocation(@PathVariable Long userId) {
+        List<PostLocationResponseDto> postLocation = postService.getPostLocation(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(postLocation);
+    }
+
     @Operation(summary = "Post 등록", description = "이 API는 새로운 Post를 등록합니다.")
     @PostMapping(value = "/regist")
     public ResponseEntity<PostDetailResponse> regist(@Parameter(description = "Post 등록 요청 객체", required = true)
@@ -46,7 +53,6 @@ public class PostController {
         String filename = ImageUtils.upload(image);
         request.setPostImage(filename);
         PostDetailResponse response = postService.regist(request);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

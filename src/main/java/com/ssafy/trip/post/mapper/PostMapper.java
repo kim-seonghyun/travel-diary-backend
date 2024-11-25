@@ -4,6 +4,7 @@ import com.ssafy.trip.post.dto.entity.Post;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
+import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -91,4 +92,18 @@ public interface PostMapper {
 
     @Delete("DELETE FROM post_like WHERE post_id = #{postId} AND user_id = #{userId}")
     void decrementLikes(Long postId, Long userId);
+
+    @Select("""
+                SELECT 
+                    p.id AS id,
+                    t.facility_name AS facilityName,
+                    p.created_at AS createdAt
+                FROM 
+                    post p
+                JOIN 
+                    trip t ON p.trip_id = t.id
+                WHERE 
+                    p.user_id = #{userId}
+            """)
+    List<PostLocationResponseDto> getPostLocation(Long userId);
 }

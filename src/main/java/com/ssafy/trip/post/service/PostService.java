@@ -7,6 +7,7 @@ import com.ssafy.trip.post.dto.request.PostRegistRequest;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
+import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
 import com.ssafy.trip.post.mapper.PostMapper;
 import com.ssafy.trip.posthashtag.mapper.PostHashtagMapper;
 import com.ssafy.trip.trip.mapper.TripMapper;
@@ -87,5 +88,9 @@ public class PostService {
         } else {
             mapper.incrementLikes(postId, userId);
         }
+    }
+
+    public List<PostLocationResponseDto> getPostLocation(Long userId) {
+        return mapper.getPostLocation(userId);
     }
 }

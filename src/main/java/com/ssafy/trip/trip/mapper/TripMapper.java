@@ -1,5 +1,6 @@
 package com.ssafy.trip.trip.mapper;
 
+import com.ssafy.trip.trip.dto.response.LocationResponseDto;
 import com.ssafy.trip.trip.dto.response.TripListResponse;
 import com.ssafy.trip.trip.entity.Trip;
 import java.util.List;
@@ -33,4 +34,7 @@ public interface TripMapper {
 
     @Select(value = "select * from trip")
     List<TripListResponse> searchAllTripList();
+
+    @Select(value = "select * from location")
+    List<LocationResponseDto> searchAllLocationList();
 }

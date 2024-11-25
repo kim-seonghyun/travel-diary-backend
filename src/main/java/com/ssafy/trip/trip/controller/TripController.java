@@ -1,5 +1,6 @@
 package com.ssafy.trip.trip.controller;
 
+import com.ssafy.trip.trip.dto.response.LocationResponseDto;
 import com.ssafy.trip.trip.dto.response.TripDetailResponse;
 import com.ssafy.trip.trip.dto.response.TripListResponse;
 import com.ssafy.trip.trip.service.TripService;
@@ -76,6 +77,12 @@ public class TripController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(detailResponse);
+    }
+
+    @GetMapping("/locations")
+    public ResponseEntity<List<LocationResponseDto>> searchAllLocationList() {
+        List<LocationResponseDto> locationList = tripService.searchAllLocationList();
+        return ResponseEntity.status(HttpStatus.OK).body(locationList);
     }
 
 }
