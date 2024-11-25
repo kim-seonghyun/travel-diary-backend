@@ -43,15 +43,25 @@ public class TravelDiaryController {
         String imageName = ImageUtils.upload(image);
         request.setImageName(imageName);
         request.setSelectedPosts(selectedPosts);
-        System.out.println(request);
         service.register(request);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+
+    //{
+    //    "id": 1,
+    //    "title": "무진장 단독 상품만 골랐다",
+    //    "description": "패딩 vs 패딩 코트",
+    //    "userId": 1,
+    //    "username": "user1",
+    //    "createdAt": "2024-11-24",
+    //    "imageName": "https://source.unsplash.com/random/800x600"
+    //  },
     @Operation(summary = "여행 일지 목록 조회", description = "모든 여행 일지 목록을 조회합니다.")
     @GetMapping("/list")
     public ResponseEntity<List<TravelDiaryListResponse>> list() {
         List<TravelDiaryListResponse> response = service.selectAll();
+        System.out.println(response);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
