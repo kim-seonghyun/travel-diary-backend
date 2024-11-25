@@ -20,7 +20,9 @@ public interface TravelDiaryMapper {
     @Insert("INSERT INTO travel_diary (field, title, description, created_at, updated_at, user_id) VALUES (#{field}, #{title}, #{description}, #{createdAt}, #{updatedAt}, #{userId})")
     void regist(TravelDiaryRegisterRequest request);
 
-    @Select("select td.*, u.name as username from travel_diary td JOIN user u on td.user_id = u.id")
+    @Select("SELECT td.id, td.user_id AS userId, u.name as username, td.title, td.image_name AS imageName, td.description, td.created_at AS createdAt " +
+            "FROM travel_diary td " +
+            "JOIN user u ON td.user_id = u.id")
     List<TravelDiaryListResponse> selectAll();
 
     @Select("select * from travel_diary where id = #{travelDiaryId}")

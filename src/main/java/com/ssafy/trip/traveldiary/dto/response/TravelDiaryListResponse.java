@@ -8,9 +8,8 @@ public class TravelDiaryListResponse {
     private long id;
     private long userId;
     private String username;
-    private String field;
     private String title;
+    private String imageName;
     private String description;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }
