@@ -8,8 +8,13 @@ import com.ssafy.trip.user.dto.response.UserMypageResponse;
 import com.ssafy.trip.user.entity.User;
 import com.ssafy.trip.user.dto.response.UserResponse;
 import com.ssafy.trip.user.mapper.UserMapper;
+import com.ssafy.trip.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -19,10 +24,14 @@ import java.util.Optional;
 public class UserService {
     private final UserMapper userMapper;
     private final TravelGraphMapper travelGraphMapper;
+    private final JwtUtil jwtUtil;
+    private final EmailService emailService;
 
-    public UserService(UserMapper userMapper, TravelGraphMapper travelGraphMapper) {
+    public UserService(UserMapper userMapper, TravelGraphMapper travelGraphMapper, JwtUtil jwtUtil, EmailService emailService) {
         this.userMapper = userMapper;
         this.travelGraphMapper = travelGraphMapper;
+        this.jwtUtil = jwtUtil;
+        this.emailService = emailService;
     }
 
     public void updateDotoriByUserId(Long userId, Long newDotori) {
@@ -33,6 +42,47 @@ public class UserService {
         }
         userMapper.updateDotoriByUserId(userId, newDotori);
     }
+
+    public void requestResetPassword(String email) {
+        // 비밀번호 변경요청
+        String resetToken = jwtUtil.generateResetToken(email);
+        emailService.sendPasswordResetEmail(email, resetToken);
+        userMapper.saveResetToken(resetToken);
+    }
+
+    public boolean validateResetToken(String token) {
+        String validationToken = userMapper.findByToken(token);
+        if (validationToken == null || jwtUtil.isTokenExpired(validationToken)) {
+            return false;
+        }
+        return true;
+    }
+
+    public void resetPassword(String resetToken, String newPassword) {
+
+        System.out.println(resetToken);
+        if (!validateResetToken(resetToken)) {
+            throw new JwtException("잘못된 인증 접근입니다");
+        }
+
+        Claims claim = jwtUtil.parseToken(resetToken);
+        String email = claim.get("email", String.class);
+
+        if (email == null) {
+            throw new IllegalArgumentException("유효하지 않은 토큰입니다.");
+        }
+
+        User userEntity = userMapper.findByEmail(email);
+
+        if (userEntity == null) {
+            throw new IllegalArgumentException("사용자를 찾을 수 없습니다.");
+        }
+
+        userEntity.setPassword(newPassword);
+        userMapper.updatePassword(userEntity.getId(), newPassword);
+        userMapper.deleteResetToken(resetToken);
+    }
+
 
     public Long join(UserRequest userRequest) {
         // validation
@@ -48,8 +98,8 @@ public class UserService {
         return userMapper.join(userEntity);
     }
 
-    public void setProfileImg(Long userId, String imageName){
-        if(imageName == null || userId == null || userId == 0){
+    public void setProfileImg(Long userId, String imageName) {
+        if (imageName == null || userId == null || userId == 0) {
             throw new IllegalArgumentException("존재하지 않는 이미지 또는 유저 입니다");
         }
 

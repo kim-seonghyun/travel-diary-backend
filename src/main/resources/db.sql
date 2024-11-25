@@ -217,6 +217,12 @@ CREATE TABLE refresh_token
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
+CREATE TABLE reset_token
+(
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    token      VARCHAR(255) NOT NULL,
+);
+
 
 insert into user(name, email, password, role, created_at, dotori)
 values ("테스트유저1", "ssafy1@naver.com", "1234", "user", "2024-11-16", 23);

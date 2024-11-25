@@ -19,13 +19,16 @@ public class JwtUtil {
     private final Key key;
     private final Long expiration;
     private final Long refreshExpiration;
+    private final Long resetExpiration;
 
     public JwtUtil(@Value("${jwt.secret}") String secret,
                    @Value("${jwt.expiration}") Long expiration,
-                   @Value("${jwt.refreshExpiration}") Long refreshExpiration) {
+                   @Value("${jwt.refreshExpiration}") Long refreshExpiration,
+                   @Value("${jwt.resetExpiration}") Long resetExpiration) {
         this.key = Keys.hmacShaKeyFor(secret.getBytes());
         this.expiration = expiration;
         this.refreshExpiration = refreshExpiration;
+        this.resetExpiration = resetExpiration;
     }
 
     // 엑세스 토큰을 발급한다.
@@ -40,6 +43,19 @@ public class JwtUtil {
                 .setIssuedAt(new Date())
                 .setClaims(claim)
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    // 리셋 토큰을 발급한다.
+    public String generateResetToken(String email) {
+        Map<String, Object> claim = new HashMap<>();
+        claim.put("email", email);
+
+        return Jwts.builder()
+                .setIssuedAt(new Date())
+                .setClaims(claim)
+                .setExpiration(new Date(System.currentTimeMillis() + resetExpiration))
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
