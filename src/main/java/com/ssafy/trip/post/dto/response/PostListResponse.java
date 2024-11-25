@@ -13,5 +13,6 @@ public class PostListResponse {
     private long userId;
     private String username;
     private String postImage;
+    private int postLikes;
     private int viewsCount;
 }

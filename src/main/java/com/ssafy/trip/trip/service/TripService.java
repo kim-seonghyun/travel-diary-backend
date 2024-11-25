@@ -1,5 +1,6 @@
 package com.ssafy.trip.trip.service;
 
+import com.ssafy.trip.trip.dto.response.LocationResponseDto;
 import com.ssafy.trip.trip.dto.response.TripDetailResponse;
 import com.ssafy.trip.trip.dto.response.TripListResponse;
 import com.ssafy.trip.trip.entity.Trip;
@@ -82,4 +83,7 @@ public class TripService {
     }
 
 
+    public List<LocationResponseDto> searchAllLocationList() {
+        return tripMapper.searchAllLocationList();
+    }
 }

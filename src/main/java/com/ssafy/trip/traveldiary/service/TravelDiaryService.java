@@ -1,7 +1,8 @@
 package com.ssafy.trip.traveldiary.service;
 
 import com.ssafy.trip.post.mapper.PostMapper;
-import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegistRequest;
+import com.ssafy.trip.traveldiary.dto.entity.TravelDiary;
+import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegisterRequest;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryUpdateRequest;
 import com.ssafy.trip.traveldiary.dto.response.TravelDiaryDetailResponse;
 import com.ssafy.trip.traveldiary.dto.response.TravelDiaryListResponse;
@@ -20,10 +21,6 @@ public class TravelDiaryService {
     }
 
 
-    public void regist(TravelDiaryRegistRequest request) {
-        mapper.regist(request);
-    }
-
     public List<TravelDiaryListResponse> selectAll() {
         return mapper.selectAll();
 
@@ -40,5 +37,20 @@ public class TravelDiaryService {
 
     public TravelDiaryDetailResponse selectById(long travelDiaryId) {
         return mapper.selectById(travelDiaryId);
+    }
+
+    public void register(TravelDiaryRegisterRequest request) {
+        TravelDiary travelDiary = new TravelDiary();
+        travelDiary.setTitle(request.getTitle());
+        travelDiary.setLocationId(request.getLocationId());
+        travelDiary.setDescription(request.getDescription());
+        travelDiary.setDotoriPrice(request.getDotoriPrice());
+        travelDiary.setForSale(request.getForSale());
+        travelDiary.setCreatedAt(request.getCreatedAt());
+        travelDiary.setUpdatedAt(request.getUpdatedAt());
+        travelDiary.setUserId(request.getUserId());
+        travelDiary.setImageName(request.getImageName());
+        mapper.insert(travelDiary);
+        mapper.insertTravelDiaryPosts(travelDiary.getId(), request.getSelectedPosts());
     }
 }

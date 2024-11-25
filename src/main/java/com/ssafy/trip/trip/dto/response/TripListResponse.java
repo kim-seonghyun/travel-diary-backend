@@ -6,7 +6,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TripListResponse {
-
     private Long id;
 
     private String facilityName;
@@ -16,5 +15,4 @@ public class TripListResponse {
     private String roadAddress;
 
     private String webPageUrl;
-
 }
