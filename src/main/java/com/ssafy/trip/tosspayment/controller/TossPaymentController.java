@@ -22,15 +22,15 @@ import java.util.List;
 public class TossPaymentController {
 
     private final TossPaymentService tossPaymentService;
-    private final UserService userService;
+    // private final UserService userService;
     private final JwtUtil jwtUtil;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     public TossPaymentController(TossPaymentService tossPaymentService, JwtUtil jwtUtil, ObjectMapper objectMapper, UserService userService) {
         this.tossPaymentService = tossPaymentService;
         this.jwtUtil = jwtUtil;
         this.objectMapper = objectMapper;
-        this.userService = userService;
+        //this.userService = userService;
     }
 
     @GetMapping("/bills")
@@ -61,7 +61,6 @@ public class TossPaymentController {
 
             PaymentResponse paymentResponse = objectMapper.readValue(response.body(), PaymentResponse.class);
             Long quantity = confirmPaymentRequest.getAmount();
-
             if (quantity == 1000) {
                 quantity = 10L;
             } else if (quantity == 4000) {

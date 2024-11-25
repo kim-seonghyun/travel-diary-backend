@@ -17,4 +17,5 @@ public class UserMypageResponse {
     private Long valley;
     private Long city;
     private Long festival;
+    private String profileImg;
 }
