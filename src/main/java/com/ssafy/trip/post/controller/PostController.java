@@ -6,6 +6,8 @@ import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.service.PostService;
 import com.ssafy.trip.utils.ImageUtils;
+import com.ssafy.trip.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,9 +31,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/post")
 public class PostController {
     private final PostService postService;
+    private final JwtUtil jwtUtil;
 
-    public PostController(PostService postService) {
+    public PostController(PostService postService, JwtUtil jwtUtil) {
         this.postService = postService;
+        this.jwtUtil = jwtUtil;
     }
 
     @Operation(summary = "Post 등록", description = "이 API는 새로운 Post를 등록합니다.")
@@ -84,6 +89,17 @@ public class PostController {
     public ResponseEntity<Void> delete(@Parameter(description = "삭제할 Post의 ID", required = true)
                                        @PathVariable Long postId) {
         postService.delete(postId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/{postId}/increment-view")
+    public ResponseEntity<Void> incrementView(@RequestHeader("Authorization") String accessToken,
+                                              @PathVariable Long postId) {
+        accessToken = accessToken.substring(7); // "Bearer " 제거
+        Claims claims = jwtUtil.parseToken(accessToken);
+        Long userId = claims.get("userId", Long.class);
+
+        postService.incrementView(postId, userId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
