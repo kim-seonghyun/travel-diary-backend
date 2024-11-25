@@ -80,4 +80,12 @@ public class PostService {
     public void incrementView(Long postId, Long userId) {
         mapper.incrementView(postId, userId);
     }
+
+    public void incrementLikes(Long postId, Long userId) {
+        if (mapper.isLiked(postId, userId) == 1) {
+            mapper.decrementLikes(postId, userId);
+        } else {
+            mapper.incrementLikes(postId, userId);
+        }
+    }
 }
