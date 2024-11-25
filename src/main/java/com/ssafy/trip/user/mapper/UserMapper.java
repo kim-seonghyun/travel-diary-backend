@@ -30,4 +30,6 @@ public interface UserMapper {
 
     void deleteUser(Long id);
 
+    void updateDotoriByUserId(@Param("userId") Long userId, @Param("newDotori") Long newDotori);
+
 }

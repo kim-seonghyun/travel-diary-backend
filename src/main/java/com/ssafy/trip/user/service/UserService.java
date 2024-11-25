@@ -25,6 +25,15 @@ public class UserService {
         this.travelGraphMapper = travelGraphMapper;
     }
 
+    public void updateDotoriByUserId(Long userId, Long newDotori) {
+
+        User user = userMapper.selectByUserId(userId);
+        if (user == null) {
+            throw new IllegalArgumentException("존재하지 않은 유저 아이디입니다.");
+        }
+        userMapper.updateDotoriByUserId(userId, newDotori);
+    }
+
     public Long join(UserRequest userRequest) {
         // validation
         User userEntity = User.builder()
