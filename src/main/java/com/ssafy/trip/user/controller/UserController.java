@@ -1,6 +1,8 @@
 package com.ssafy.trip.user.controller;
 
 import com.ssafy.trip.travelgraph.service.TravelGraphService;
+import com.ssafy.trip.user.dto.request.PasswordResetConfirmRequest;
+import com.ssafy.trip.user.dto.request.PasswordResetReqeust;
 import com.ssafy.trip.user.dto.request.UserLoginRequest;
 import com.ssafy.trip.user.dto.request.UserRequest;
 import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
@@ -127,6 +129,29 @@ public class UserController {
 
         UserMypageResponse mypage = userService.getMypage(loggedUser);
         return ResponseEntity.status(HttpStatus.OK).body(mypage);
+    }
+
+    // 1. 비밀번호 재설정 요청
+    @PostMapping("/reset/password")
+    public ResponseEntity<String> requestPasswordReset(@RequestBody PasswordResetReqeust passwordResetReqeust) {
+        userService.requestResetPassword(passwordResetReqeust.getEmail());
+        return ResponseEntity.status(HttpStatus.OK).body("비밀번호 재설정 링크가 이메일로 발송되었습니다.");
+    }
+
+    @PostMapping("/reset/confirm-password")
+    public ResponseEntity<String> confirmResetPassword(@RequestBody PasswordResetConfirmRequest passwordResetConfirmRequest) {
+
+        if(passwordResetConfirmRequest ==  null) {
+            throw new IllegalArgumentException("입력된 비밀번호 변경 정보가 없습니다.");
+        }
+
+        try {
+            System.out.println(passwordResetConfirmRequest);
+            userService.resetPassword(passwordResetConfirmRequest.getToken(), passwordResetConfirmRequest.getNewPassword());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("비밀번호 변경완료");
     }
 
     @PostMapping("/token/refresh")

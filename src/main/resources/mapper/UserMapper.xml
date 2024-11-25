@@ -36,6 +36,10 @@
     <select id="selectByUserId" parameterType="Long" resultMap="user">
         select * from user where id = #{userId}
     </select>
+
+    <select id="findByEmail" parameterType="String" resultMap="user">
+        select * from user where email = #{email}
+    </select>
     
     <insert id="registerRefreshToken" parameterType="map">
         insert into refresh_token (user_id, token, created_at, expires_at)
@@ -50,7 +54,7 @@
         delete from refresh_token where user_id = #{userId}
     </delete>
 
-    <select id="login" parameterType="Map" resultMap="user">
+    <select id="login" parameterType="map" resultMap="user">
         select * from user where email = #{email} and password = #{password}
     </select>
 

@@ -2,9 +2,7 @@ package com.ssafy.trip.user.mapper;
 
 import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
 import com.ssafy.trip.user.entity.User;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 
@@ -17,8 +15,22 @@ public interface UserMapper {
     void setProfileImg(Long userId, String imageName);
 
     User login(String email, String password);
-    // 리프레시토큰 삭제하기.
+
+    @Update("update user set password = #{newPassword} where id = #{id}")
+    void updatePassword(Long id, String newPassword);
+
+    User findByEmail(String email);
+
+    @Select("select token from reset_token where token = #{token}")
+    String findByToken(String token);
+
     void deleteRefreshTokenByUserId(Long userId);
+
+    @Select("insert into reset_token(token) values (#{resetToken})")
+    void saveResetToken(String resetToken);
+
+    @Delete("delete from reset_token where token = #{resetToken}")
+    void deleteResetToken(String resetToken);
 
     User selectByUserId(Long userId);
 
