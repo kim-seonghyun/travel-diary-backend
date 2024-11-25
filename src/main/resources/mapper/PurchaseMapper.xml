@@ -13,11 +13,11 @@
         <result property="buyPrice" column="buy_price"/>
     </resultMap>
 
-    <insert id="addPurchaseHistory" parameterType="com.ssafy.trip.purchase.entity.Purchase">
+    <insert id="addPurchaseHistory" parameterType="com.ssafy.trip.purchase.dto.request.PurchaseRequest">
         insert into
         purchase(traveldiary_id, user_id, purchase_at, buy_price)
         values
-        (#{traveldiaryId}, #{userId}, #{purchaseAt}, #{buyPrice})
+        (#{traveldiaryId}, #{userId}, now(), #{buyPrice})
     </insert>
 
     <select id="isVerifyPurchase" resultMap="purchase">

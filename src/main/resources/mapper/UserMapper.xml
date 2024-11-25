@@ -28,6 +28,10 @@
         INSERT INTO user (name, email, password, role, created_at, dotori)
         VALUES (#{name}, #{email}, #{password}, #{role}, now(), #{dotori});
     </insert>
+
+    <update id="updateDotoriByUserId" parameterType="map">
+        update user set dotori = #{newDotori} where id = #{userId}
+    </update>
     
     <select id="selectByUserId" parameterType="Long" resultMap="user">
         select * from user where id = #{userId}
