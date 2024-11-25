@@ -7,6 +7,7 @@ import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
 import com.ssafy.trip.user.dto.response.UserMypageResponse;
 import com.ssafy.trip.user.dto.response.UserResponse;
 import com.ssafy.trip.user.service.UserService;
+import com.ssafy.trip.utils.ImageUtils;
 import com.ssafy.trip.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -16,6 +17,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -71,6 +73,22 @@ public class UserController {
                 .body(map);
     }
 
+    @PostMapping("/upload/image")
+    public ResponseEntity<String> uploadProfileImg(@RequestHeader("Authorization")  String accessToken, @RequestPart("image") MultipartFile image) {
+
+        String imageName = ImageUtils.upload(image);
+        String token = accessToken.substring(7);
+        Claims claim = jwtUtil.parseToken(token);
+        Long userId = claim.get("userId", Long.class);
+
+        try{
+            userService.setProfileImg(userId, imageName);
+        }catch (Exception e){
+            throw new IllegalArgumentException("업로드를 다시 시도해 주세요", e);
+        }
+        return ResponseEntity.status(HttpStatus.OK).body("프로필 이미지 업데이트 완료");
+    }
+
     @Operation(summary = "회원 탈퇴", description = "현재 세션의 사용자 정보를 바탕으로 해당 사용자를 탈퇴 처리합니다.")
     @PostMapping("/withdraw")
     public ResponseEntity<String> withDrawUser(HttpSession session) {
@@ -96,8 +114,6 @@ public class UserController {
             e.printStackTrace();
         }
 
-
-        // 완전한 로그아웃하려면 클라이언트에 저장된 토큰도 제거해야함.
         return ResponseEntity.status(HttpStatus.OK).body("logout complete");
     }
 

@@ -24,4 +24,5 @@ public class User {
 
     private Long dotori;
 
+    private String profileImg;
 }

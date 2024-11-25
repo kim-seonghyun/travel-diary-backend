@@ -4,6 +4,7 @@ import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
 import com.ssafy.trip.user.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.Date;
 
@@ -11,6 +12,9 @@ import java.util.Date;
 public interface UserMapper {
 
     Long join(User user);
+
+    @Update("update user set profile_img = #{imageName} where id = #{userId}")
+    void setProfileImg(Long userId, String imageName);
 
     User login(String email, String password);
     // 리프레시토큰 삭제하기.

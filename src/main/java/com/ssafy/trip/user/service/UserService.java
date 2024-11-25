@@ -39,6 +39,14 @@ public class UserService {
         return userMapper.join(userEntity);
     }
 
+    public void setProfileImg(Long userId, String imageName){
+        if(imageName == null || userId == null || userId == 0){
+            throw new IllegalArgumentException("존재하지 않는 이미지 또는 유저 입니다");
+        }
+
+        userMapper.setProfileImg(userId, imageName);
+    }
+
     public UserMypageResponse getMypage(UserResponse user) {
         //validation
         TravelGraph travelGraphEntity = travelGraphMapper.findTravelGraphByUserId(user.getId());
@@ -48,6 +56,7 @@ public class UserService {
                 .name(user.getName())
                 .email(user.getEmail())
                 .dotori(user.getDotori())
+                .profileImg(user.getProfileImg())
                 .sea(travelGraphEntity.getSea())
                 .city(travelGraphEntity.getCity())
                 .festival(travelGraphEntity.getFestival())
@@ -67,6 +76,7 @@ public class UserService {
                 .name(userEntity.getName())
                 .dotori(userEntity.getDotori())
                 .email(userEntity.getEmail())
+                .profileImg(userEntity.getProfileImg())
                 .build();
     }
 
