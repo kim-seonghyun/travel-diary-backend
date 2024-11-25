@@ -24,6 +24,7 @@ public class CommentController {
     @PostMapping("/{postId}/register")
     public ResponseEntity<CommentResponseDto> registerComment(@RequestBody CommentRegisterDto commentRegisterDto) {
         CommentResponseDto dto = commentService.registerComment(commentRegisterDto);
+
         return ResponseEntity.ok().body(dto);
     }
 

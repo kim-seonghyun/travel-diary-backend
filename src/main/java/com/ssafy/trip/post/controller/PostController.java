@@ -95,11 +95,22 @@ public class PostController {
     @GetMapping("/{postId}/increment-view")
     public ResponseEntity<Void> incrementView(@RequestHeader("Authorization") String accessToken,
                                               @PathVariable Long postId) {
-        accessToken = accessToken.substring(7); // "Bearer " 제거
+        accessToken = accessToken.substring(7);
         Claims claims = jwtUtil.parseToken(accessToken);
         Long userId = claims.get("userId", Long.class);
 
         postService.incrementView(postId, userId);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/{postId}/increment-likes")
+    public ResponseEntity<Void> incrementLikes(@RequestHeader("Authorization") String accessToken,
+                                               @PathVariable Long postId) {
+        accessToken = accessToken.substring(7);
+        Claims claims = jwtUtil.parseToken(accessToken);
+        Long userId = claims.get("userId", Long.class);
+
+        postService.incrementLikes(postId, userId);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
