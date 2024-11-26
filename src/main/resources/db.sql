@@ -35,7 +35,7 @@ CREATE TABLE `answers` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE CASCADE,
   CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,8 +45,56 @@ CREATE TABLE `answers` (
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
 INSERT INTO `answers` VALUES
-(1,1,2,'Vue CLI 사용해 보세요',NULL,'2024-11-23 21:13:08'),
-(2,2,1,'npm 업데이트 하세요',NULL,'2024-11-23 21:13:08');
+(1,1,2,'Redux는 대규모 애플리케이션에서 상태 관리를 체계적으로 할 수 있게 해주지만, 설정이 복잡할 수 있습니다. Context API는 설정이 간단하지만 상태가 많은 경우 성능 이슈가 발생할 수 있습니다. 프로젝트 규모에 따라 선택하는 것이 좋습니다.',NULL,'2024-01-16 10:00:00'),
+(2,1,4,'Redux와 Context API 모두 장단점이 있습니다. 작은 프로젝트에서는 Context API로 충분할 수 있지만, 상태 관리가 복잡해질 경우 Redux를 사용하는 것이 더 효율적입니다.',NULL,'2024-01-16 11:15:00'),
+(3,1,1,'상태 관리 라이브러리를 선택할 때는 팀의 경험과 프로젝트의 요구사항을 고려하는 것이 중요합니다. Redux는 커뮤니티 지원이 강력하고 미들웨어를 통해 다양한 기능을 확장할 수 있습니다.',NULL,'2024-01-16 12:30:00'),
+(4,1,5,'Context API는 간단한 상태 관리를 빠르게 구현할 수 있지만, Redux는 예측 가능한 상태 관리와 더 나은 디버깅 도구를 제공합니다.',NULL,'2024-01-16 13:45:00'),
+(5,1,3,'프로젝트의 복잡도와 확장성을 고려하여 상태 관리 도구를 선택하세요. Redux는 복잡한 상태를 관리하기에 적합하며, Context API는 간단한 상태 공유에 유리합니다.',NULL,'2024-01-16 15:00:00'),
+(6,2,1,'CSS Grid는 2차원 레이아웃에 강력하며, Flexbox는 1차원 레이아웃에 적합합니다. 두 가지를 조합하여 사용하면 더욱 유연한 레이아웃을 구현할 수 있습니다.',NULL,'2024-02-21 10:30:00'),
+(7,2,3,'Flexbox는 아이템의 정렬과 공간 분배에 유용하고, Grid는 복잡한 레이아웃을 쉽게 구성할 수 있습니다. 상황에 맞게 선택해서 사용하세요.',NULL,'2024-02-21 11:45:00'),
+(8,2,2,'반응형 레이아웃을 위해서는 미디어 쿼리와 함께 Flexbox와 Grid를 적절히 활용하는 것이 중요합니다.',NULL,'2024-02-21 13:00:00'),
+(9,2,5,'CSS Grid는 전체 레이아웃 구조를 잡기에 좋고, Flexbox는 내부 요소의 정렬에 유용하게 사용하세요.',NULL,'2024-02-21 14:15:00'),
+(10,2,4,'두 레이아웃 시스템을 혼합하여 사용하면 다양한 화면 크기에 대응하는 유연한 디자인을 구현할 수 있습니다.',NULL,'2024-02-21 15:30:00'),
+(11,3,1,'Node.js에서 비동기 처리를 최적화하려면 Promise와 async/await를 사용하는 것이 가독성과 유지보수 측면에서 유리합니다. 또한, 적절한 에러 핸들링과 비동기 흐름 제어가 중요합니다.',NULL,'2024-03-11 12:00:00'),
+(12,3,2,'비동기 처리를 최적화하기 위해서는 이벤트 루프의 작동 방식을 이해하고, 불필요한 비동기 호출을 줄이는 것이 좋습니다.',NULL,'2024-03-11 13:15:00'),
+(13,3,4,'비동기 작업의 병렬 처리를 통해 성능을 향상시킬 수 있습니다. 예를 들어, `Promise.all`을 사용하여 여러 비동기 작업을 동시에 처리하세요.',NULL,'2024-03-11 14:30:00'),
+(14,3,5,'콜백 지옥을 피하기 위해서는 async/await 패턴을 사용하는 것이 좋습니다. 이는 코드의 가독성을 높이고 유지보수를 용이하게 합니다.',NULL,'2024-03-11 15:45:00'),
+(15,3,3,'비동기 처리를 최적화하려면 적절한 캐싱 전략을 도입하여 반복적인 요청을 줄이는 것도 좋은 방법입니다.',NULL,'2024-03-11 17:00:00'),
+(16,4,2,'Vue.js에서 컴포넌트의 재사용성을 높이기 위해서는 믹스인이나 커스텀 디렉티브를 활용할 수 있습니다. 또한, 슬롯을 사용하여 유연한 컴포넌트를 설계하세요.',NULL,'2024-04-06 09:30:00'),
+(17,4,1,'컴포넌트의 재사용성을 높이기 위해서는 단일 책임 원칙을 준수하고, 공통된 기능은 별도의 컴포넌트나 서비스로 분리하는 것이 좋습니다.',NULL,'2024-04-06 10:45:00'),
+(18,4,3,'재사용 가능한 컴포넌트를 설계할 때는 Props와 Events를 적절히 활용하여 유연성을 유지하세요.',NULL,'2024-04-06 12:00:00'),
+(19,4,5,'Vue.js의 컴포넌트 라이프사이클 훅을 활용하여 초기화 작업을 효율적으로 처리할 수 있습니다.',NULL,'2024-04-06 13:15:00'),
+(20,4,4,'재사용성을 높이기 위해서는 컴포넌트를 작고 독립적으로 설계하고, 필요에 따라 믹스인이나 컴포지션 API를 활용하세요.',NULL,'2024-04-06 14:30:00'),
+(21,5,1,'Express.js에서 에러 핸들링을 효율적으로 하기 위해서는 중앙 집중식 에러 핸들러를 설정하고, 각 미들웨어에서 에러를 `next`로 전달하는 패턴을 사용하는 것이 좋습니다.',NULL,'2024-05-19 09:00:00'),
+(22,5,2,'에러 핸들링 미들웨어를 최상단에 배치하여 모든 에러를 한곳에서 처리할 수 있도록 설정하세요.',NULL,'2024-05-19 10:15:00'),
+(23,5,3,'에러 핸들링 시 클라이언트에 민감한 정보가 노출되지 않도록 주의하고, 로깅을 통해 에러를 추적하세요.',NULL,'2024-05-19 11:30:00'),
+(24,5,4,'인증 미들웨어에서 발생하는 에러는 별도로 처리하여 보안성을 강화할 수 있습니다.',NULL,'2024-05-19 12:45:00'),
+(25,5,5,'에러 메시지를 일관되게 관리하고, 사용자 친화적인 에러 메시지를 제공하는 것이 중요합니다.',NULL,'2024-05-19 14:00:00'),
+(26,6,3,'Angular에서 RxJS를 효과적으로 활용하려면 Observable 패턴을 이해하고, 다양한 연산자를 사용하여 데이터 스트림을 관리하세요.',NULL,'2024-06-23 14:00:00'),
+(27,6,1,'RxJS의 Subject와 BehaviorSubject를 활용하여 컴포넌트 간의 데이터 공유를 효율적으로 처리할 수 있습니다.',NULL,'2024-06-23 15:15:00'),
+(28,6,2,'비동기 데이터 처리를 위해 RxJS의 `switchMap`, `mergeMap` 등의 연산자를 적절히 사용하세요.',NULL,'2024-06-23 16:30:00'),
+(29,6,4,'에러 핸들링을 위해 RxJS의 `catchError` 연산자를 활용하여 안정적인 데이터 흐름을 유지하세요.',NULL,'2024-06-23 17:45:00'),
+(30,6,5,'RxJS의 파이프라인을 구성할 때는 가독성을 높이기 위해 연산자를 체계적으로 배열하는 것이 좋습니다.',NULL,'2024-06-23 19:00:00'),
+(31,7,2,'Django REST Framework를 설정할 때는 `serializers`와 `viewsets`를 활용하여 API의 구조를 체계적으로 관리하세요.',NULL,'2024-07-31 11:00:00'),
+(32,7,3,'CORS 설정을 통해 프론트엔드와 백엔드 간의 통신을 원활하게 할 수 있습니다. `django-cors-headers` 패키지를 사용하는 것을 추천합니다.',NULL,'2024-07-31 12:15:00'),
+(33,7,1,'Django와 React를 통합할 때는 JWT 인증을 사용하여 보안을 강화하는 것이 좋습니다.',NULL,'2024-07-31 13:30:00'),
+(34,7,4,'API 문서를 자동으로 생성하기 위해 Swagger나 ReDoc을 활용하세요. 이는 개발 및 유지보수에 큰 도움이 됩니다.',NULL,'2024-07-31 14:45:00'),
+(35,7,5,'Django REST Framework의 `routers`를 사용하여 URL 관리를 효율적으로 할 수 있습니다.',NULL,'2024-07-31 16:00:00'),
+(36,8,1,'RESTful API의 보안을 강화하려면 인증과 권한 부여를 철저히 해야 합니다. JWT나 OAuth2 같은 표준을 사용하는 것이 좋습니다.',NULL,'2024-08-13 10:00:00'),
+(37,8,2,'API 요청 시 HTTPS를 사용하여 데이터 전송의 보안을 강화하세요.',NULL,'2024-08-13 11:15:00'),
+(38,8,3,'Rate Limiting을 적용하여 DDoS 공격을 방어하고, API의 안정성을 유지하세요.',NULL,'2024-08-13 12:30:00'),
+(39,8,4,'CORS 설정을 통해 신뢰할 수 있는 도메인만 API에 접근할 수 있도록 제한하세요.',NULL,'2024-08-13 13:45:00'),
+(40,8,5,'데이터 유효성 검사를 철저히 하여 SQL 인젝션 같은 공격을 방지하세요.',NULL,'2024-08-13 15:00:00'),
+(41,9,4,'SASS의 믹스인과 함수는 반복되는 스타일을 줄이고, 코드의 재사용성을 높이는 데 유용합니다.',NULL,'2024-09-09 10:30:00'),
+(42,9,2,'변수를 사용하여 색상, 폰트 크기 등을 관리하면 일관된 스타일을 유지할 수 있습니다.',NULL,'2024-09-09 11:45:00'),
+(43,9,1,'네스팅을 과도하게 사용하지 않도록 주의하고, 가독성을 위해 적절히 사용하세요.',NULL,'2024-09-09 13:00:00'),
+(44,9,5,'파셜 파일을 활용하여 스타일을 모듈화하고, 유지보수를 쉽게 할 수 있습니다.',NULL,'2024-09-09 14:15:00'),
+(45,9,3,'SASS의 확장 기능인 `@extend`를 사용하여 중복된 스타일을 줄일 수 있습니다.',NULL,'2024-09-09 15:30:00'),
+(46,10,4,'MySQL 쿼리 최적화를 위해 인덱스를 적절히 사용하고, 불필요한 쿼리를 줄이는 것이 중요합니다.',NULL,'2024-10-26 10:00:00'),
+(47,10,2,'복합 인덱스를 사용할 때는 WHERE 절과 ORDER BY 절에서 자주 사용되는 컬럼을 기준으로 설정하세요.',NULL,'2024-10-26 11:15:00'),
+(48,10,5,'쿼리 실행 계획을 분석하여 병목 지점을 찾아 최적화할 수 있습니다. `EXPLAIN` 명령어를 활용하세요.',NULL,'2024-10-26 12:30:00'),
+(49,10,1,'인덱스의 선택도를 고려하여 자주 조회되는 컬럼에 인덱스를 설정하세요.',NULL,'2024-10-26 13:45:00'),
+(50,10,3,'데이터베이스 정규화를 통해 중복을 줄이고, 인덱스를 효과적으로 사용할 수 있습니다.',NULL,'2024-10-26 15:00:00');
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +120,7 @@ CREATE TABLE `cash_to_dotori` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `cash_to_dotori_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,6 +129,8 @@ CREATE TABLE `cash_to_dotori` (
 
 LOCK TABLES `cash_to_dotori` WRITE;
 /*!40000 ALTER TABLE `cash_to_dotori` DISABLE KEYS */;
+INSERT INTO `cash_to_dotori` VALUES
+(24,12,'2024-11-26',100,'484f-3bfb-4de7-abd9-915507','도토리(point)','DONE','토스페이',8000,0,'tviva20241127054740uyAM6');
 /*!40000 ALTER TABLE `cash_to_dotori` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +152,7 @@ CREATE TABLE `comment` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `post` (`id`),
   CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,6 +161,8 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES
+(1,19,12,'탑이 이쁘게 생겼어요!','2024-11-27 06:00:43');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1065,7 +1117,7 @@ CREATE TABLE `post` (
   KEY `trip_id` (`trip_id`),
   CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `post_ibfk_2` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1075,16 +1127,33 @@ CREATE TABLE `post` (
 LOCK TABLES `post` WRITE;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` VALUES
-(1,'Exploring the mountains','2024-11-24 22:59:19',1,1,'image1.jpg'),
-(2,'Night in the city','2024-11-24 22:59:19',2,2,'image2.jpg'),
-(3,'Relaxing by the sea','2024-11-24 22:59:19',3,3,'image3.jpg'),
-(4,'Found a hidden waterfall','2024-11-24 22:59:19',4,4,'image4.jpg'),
-(5,'Journey through the dunes','2024-11-24 22:59:19',5,5,'image5.jpg'),
-(6,'Snowy landscapes and hot cocoa','2024-11-24 22:59:19',3,1,'image6.jpg'),
-(7,'Camping in the woods','2024-11-24 22:59:19',5,2,'image7.jpg'),
-(8,'Exploring tropical islands','2024-11-24 22:59:19',4,3,'image8.jpg'),
-(9,'Visited historical landmarks','2024-11-24 22:59:19',3,4,'image9.jpg'),
-(10,'Driving across the country','2024-11-24 22:59:19',1,5,'image10.jpg');
+(1,'아름다운 바다를 배경으로 추억을 쌓고 일상으로 돌아왔어요 😊','2024-11-24 22:59:19',1,511,'17.jpeg'),
+(2,'산 정상에서의 멋진 일출을 보며 여행을 마무리했어요 🌄','2024-11-24 22:59:19',1,500,'18.jpeg'),
+(3,'시원한 계곡 물소리를 들으며 힐링한 시간이었어요 💧','2024-11-24 22:59:19',1,232,'19.jpeg'),
+(4,'활기찬 축제 속에서 즐거운 추억을 만들었어요 🎉','2024-11-24 22:59:19',1,400,'20.jpeg'),
+(5,'바다 산책하며 여유로운 시간을 보냈어요 🌊🏞️','2024-11-24 22:59:19',1,22,'21.jpeg'),
+(6,'산과 계곡이 어우러진 풍경이 인상적이었어요 🏔️💦','2024-11-24 22:59:19',2,1,'22.jpeg'),
+(7,'해변에서의 일몰이 아직도 눈에 선해요 🌅','2024-11-24 22:59:19',2,88,'23.jpeg'),
+(8,'산 속에서의 고요한 아침을 만끽했어요 🌲','2024-11-24 22:59:19',2,302,'24.jpeg'),
+(9,'계곡에서의 시원한 물놀이가 최고였어요 🏞️','2024-11-24 22:59:19',2,303,'25.jpeg'),
+(10,'축제에서 만난 사람들과의 즐거운 시간 ❤️','2024-11-24 22:59:19',2,5,'26.jpeg'),
+(11,'바다와 산이 어우러진 환상적인 풍경 속으로 🌊🏔️','2024-11-26 13:28:28',3,29,'1.jpg'),
+(12,'계곡을 따라 걸으며 자연의 소리를 들었어요 💧🌿','2024-11-26 14:59:13',3,77,'2.jpg'),
+(13,'축제의 불꽃놀이가 정말 아름다웠어요 🎆','2024-11-26 15:54:57',3,636,'3.jpg'),
+(14,'산 정상에서 본 파노라마 뷰가 잊지 못할 추억이에요 🏞️','2024-11-26 15:59:02',3,3,'4.jpg'),
+(15,'바다에서의 수영과 산책, 완벽한 하루였어요 🏖️🚶‍♀️','2024-11-26 15:59:03',3,343,'5.jpg'),
+(16,'계곡을 따라 걸으며 자연의 소리를 들었어요 💧🌿','2024-11-26 15:59:44',4,143,'6.jpg'),
+(17,'축제에서의 다양한 음식과 공연이 인상 깊었어요 🍢🎤','2024-11-26 16:04:30',4,139,'7.jpg'),
+(18,'산책로를 따라 산과 바다를 동시에 즐겼어요 🌲🌊','2024-11-26 16:05:37',4,247,'8.jpg'),
+(19,'계곡 물소리를 들으며 편안한 시간을 보냈어요 💧😊','2024-11-26 16:29:34',4,81,'9.jpg'),
+(20,'축제의 생동감 넘치는 분위기가 마음에 들어요 🎉✨','2024-11-26 17:40:18',4,143,'10.jpg'),
+(21,'바다에서의 일출을 보며 새로운 하루를 시작했어요 🌅','2024-11-26 17:40:49',5,5,'11.jpg'),
+(22,'산에서의 트레킹이 건강에도 좋고 즐거웠어요 🥾🏔️','2024-11-26 17:42:41',5,242,'12.jpg'),
+(23,'계곡에서의 캠핑이 정말 힐링 되었어요 🏕️💦','2024-11-26 17:43:20',5,7,'13.jpg'),
+(24,'축제에서 친구들과 함께 신나게 놀았어요 👫🎊','2024-11-26 17:44:23',5,332,'14.jpeg'),
+(25,'바다와 산이 함께하는 여행, 완벽했어요 🌊🏞️','2024-11-26 17:47:10',5,232,'15.jpeg'),
+(26,'계곡을 따라 흐르는 물소리가 아직도 귀에 맴돌아요 💧🌿','2024-11-26 19:39:20',5,114,'16.jpeg'),
+(27,'지원이와 함께 맨즈토크를...그날을 기억해','2024-11-27 05:54:29',12,16,'24a91ae0-6ed4-4286-be1f-eba2a783cd8d');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1143,6 +1212,11 @@ CREATE TABLE `post_like` (
 
 LOCK TABLES `post_like` WRITE;
 /*!40000 ALTER TABLE `post_like` DISABLE KEYS */;
+INSERT INTO `post_like` VALUES
+(1,1),
+(1,10),
+(1,11),
+(1,16);
 /*!40000 ALTER TABLE `post_like` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1170,6 +1244,25 @@ CREATE TABLE `post_view` (
 
 LOCK TABLES `post_view` WRITE;
 /*!40000 ALTER TABLE `post_view` DISABLE KEYS */;
+INSERT INTO `post_view` VALUES
+(1,1,242424),
+(1,7,22321),
+(1,8,231313),
+(1,9,323232),
+(1,10,112121),
+(1,11,32323),
+(1,12,300),
+(1,13,244),
+(1,16,103022),
+(1,17,23218),
+(1,18,392032),
+(1,19,12313189),
+(1,20,90335),
+(1,24,322),
+(1,26,600),
+(12,16,1),
+(12,19,2),
+(12,20,1);
 /*!40000 ALTER TABLE `post_view` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1191,7 +1284,7 @@ CREATE TABLE `purchase` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `purchase_ibfk_1` FOREIGN KEY (`traveldiary_id`) REFERENCES `travel_diary` (`id`),
   CONSTRAINT `purchase_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,6 +1293,9 @@ CREATE TABLE `purchase` (
 
 LOCK TABLES `purchase` WRITE;
 /*!40000 ALTER TABLE `purchase` DISABLE KEYS */;
+INSERT INTO `purchase` VALUES
+(1,4,1,'2024-11-27',30),
+(2,4,12,'2024-11-27',30);
 /*!40000 ALTER TABLE `purchase` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1221,7 +1317,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1231,8 +1327,16 @@ CREATE TABLE `questions` (
 LOCK TABLES `questions` WRITE;
 /*!40000 ALTER TABLE `questions` DISABLE KEYS */;
 INSERT INTO `questions` VALUES
-(1,1,'Vue.js 질문','Frontend','Vue.js 관련 질문',NULL,'2024-11-23 21:13:08'),
-(2,2,'Node.js 이슈','Backend','오류 해결 방법',NULL,'2024-11-23 21:13:08');
+(1,3,'React 상태 관리 라이브러리 선택 기준','Frontend','React 애플리케이션에서 상태 관리를 위해 Redux와 MobX 중 어떤 것을 선택해야 할지 기준을 알고 싶습니다.','45.jpeg','2024-01-15 09:30:00'),
+(2,1,'CSS Grid와 Flexbox의 차이점','Frontend','CSS Grid와 Flexbox의 주요 차이점과 각각의 사용 사례에 대해 설명해 주세요.','46.jpeg','2024-02-20 14:45:00'),
+(3,5,'Node.js에서 비동기 처리 최적화','Backend','Node.js에서 비동기 처리를 최적화하기 위한 베스트 프랙티스는 무엇인가요?','47.jpeg','2024-03-10 11:20:00'),
+(4,2,'Vue.js 컴포넌트 재사용성 높이기','Frontend','Vue.js에서 컴포넌트의 재사용성을 높이기 위한 방법들에 대해 알고 싶습니다.','48.jpeg','2024-04-05 16:00:00'),
+(5,4,'Express.js에서 에러 핸들링','Backend','Express.js 애플리케이션에서 효율적으로 에러를 핸들링하는 방법에 대해 설명해 주세요.','49.jpeg','2024-05-18 08:15:00'),
+(6,2,'Angular와 RxJS 활용하기','Frontend','Angular 애플리케이션에서 RxJS를 효과적으로 활용하는 방법과 실용적인 예제를 알고 싶습니다.','50.jpeg','2024-06-22 13:50:00'),
+(7,1,'Django REST Framework 설정 가이드','Backend','Django REST Framework를 설정하고 기본적인 API를 구축하는 방법에 대해 단계별로 설명해 주세요.','51.jpeg','2024-07-30 10:05:00'),
+(8,5,'RESTful API 보안 강화 방법','Backend','RESTful API의 보안을 강화하기 위한 주요 방법들과 구현 방법에 대해 알고 싶습니다.','52.jpeg','2024-08-12 17:25:00'),
+(9,3,'SASS로 효율적인 스타일링 관리','Frontend','SASS를 사용하여 CSS 스타일을 효율적으로 관리하는 방법과 유용한 기능들에 대해 설명해 주세요.','53.jpeg','2024-09-08 12:40:00'),
+(10,4,'MySQL 쿼리 최적화 전략','Backend','MySQL 데이터베이스에서 쿼리 성능을 최적화하기 위한 다양한 전략과 실제 적용 사례에 대해 알고 싶습니다.','54.jpeg','2024-10-25 15:55:00');
 /*!40000 ALTER TABLE `questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1252,7 +1356,7 @@ CREATE TABLE `refresh_token` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `refresh_token_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1275,7 +1379,7 @@ CREATE TABLE `reset_token` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `token` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1297,6 +1401,7 @@ DROP TABLE IF EXISTS `travel_diary`;
 CREATE TABLE `travel_diary` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `field` varchar(255) DEFAULT NULL,
+  `location_id` bigint(20) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
   `description` text DEFAULT NULL,
   `created_at` date DEFAULT NULL,
@@ -1304,10 +1409,13 @@ CREATE TABLE `travel_diary` (
   `user_id` bigint(20) NOT NULL,
   `for_sale` enum('sale','notsale') NOT NULL,
   `dotori_price` bigint(20) DEFAULT NULL,
+  `image_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `travel_diary_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `travel_diary_ibfk_2` (`location_id`),
+  CONSTRAINT `travel_diary_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `travel_diary_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1317,12 +1425,62 @@ CREATE TABLE `travel_diary` (
 LOCK TABLES `travel_diary` WRITE;
 /*!40000 ALTER TABLE `travel_diary` DISABLE KEYS */;
 INSERT INTO `travel_diary` VALUES
-(1,'Nature','Exploring the Alps','A detailed account of my hiking trip in the Alps.','2024-11-01','2024-11-01',1,'sale',500),
-(2,'City','Tokyo Adventures','A guide to the best ramen shops and hidden gems in Tokyo.','2024-10-25','2024-11-10',2,'notsale',NULL),
-(3,'Beach','Maldives Paradise','My relaxing vacation in the Maldives with tips for travelers.','2024-09-15','2024-09-18',3,'sale',1000),
-(4,'Culture','Experiencing Bali','A dive into Bali\'s culture, including temples and traditions.','2024-08-05','2024-08-07',4,'sale',750),
-(5,'Adventure','Amazon Rainforest Expedition','A thrilling adventure through the Amazon rainforest.','2024-07-20','2024-07-22',5,'notsale',NULL);
+(1,'Nature',17,'제주 바다에서의 여유로운 하루\n','제주도의 에메랄드빛 바다를 보며 여유로운 시간을 보냈어요. 하얀 모래사장에서 일광욕도 하고, 파도 소리를 들으며 산책하는 시간이 정말 힐링되었답니다. 해산물도 맛있게 먹고, 친구들과 잊지 못할 추억을 만들었어요 🌊🏖️','2024-11-01','2024-11-01',1,'sale',100,'28.jpeg'),
+(2,'City',3,'설악산 일출, 아침의 감동','새벽에 설악산에 올라 일출을 보았어요. 어둠 속에서 천천히 떠오르는 태양이 눈앞에 펼쳐지니 감동 그 자체였어요. 차가운 공기와 함께 맞이한 첫 햇살이 마음을 따뜻하게 만들어주었답니다 🏔️🌅','2024-10-25','2024-11-10',2,'notsale',100,'29.jpeg'),
+(3,'Beach',3,'속초 청초호 계곡에서의 힐링','속초 청초호 계곡을 찾아 시원한 물소리를 들으며 산책했어요. 맑은 물과 푸른 자연이 어우러져 스트레스가 싹 사라지는 기분이었어요. 친구들과 피크닉도 즐기며 정말 즐거운 시간을 보냈답니다 💧🌿','2024-09-15','2024-09-18',3,'sale',50,'30.jpeg'),
+(4,'Culture',1,'서울 불꽃 축제의 환상적인 밤','서울에서 열린 불꽃 축제를 다녀왔어요. 밤하늘을 수놓는 화려한 불꽃놀이가 정말 아름다웠고, 친구들과 함께 즐긴 축제 분위기가 너무 좋았어요. 다양한 공연과 먹거리도 함께 즐기며 신나는 하루를 보냈답니다 🎆🎉\n','2024-08-05','2024-08-07',4,'sale',30,'31.jpg'),
+(5,'Adventure',8,'동해안 드라이브, 바다와 산의 조화','동해안을 따라 드라이브하며 바다와 산의 아름다운 풍경을 감상했어요. 중간중간 들른 카페에서 커피도 마시고, 멋진 사진도 많이 찍었어요. 자연 속에서 느낀 여유로움이 정말 좋았어요 🚗🌊🏞️','2024-07-20','2024-07-22',5,'notsale',40,'32.jpg'),
+(6,NULL,2,'전주 한옥마을에서의 전통 탐방','전주 한옥마을을 걸으며 전통 한옥의 아름다움을 만끽했어요. 고즈넉한 골목길을 따라 다양한 전통 음식도 맛보고, 한옥의 정취를 느낄 수 있어서 정말 좋았답니다. 문화와 역사를 가까이서 경험할 수 있었어요 🏡🍲\n','2024-11-26','2024-11-26',2,'sale',100,'33.jpg'),
+(7,NULL,2,'강원도 설악산 트레킹의 즐거움','설악산에서 친구들과 함께 트레킹을 했어요. 울긋불긋 단풍이 물든 산길을 걸으며 자연의 아름다움을 만끽했고, 정상에서의 전망은 정말 환상적이었어요. 건강도 챙기고 즐거운 추억도 쌓을 수 있었어요 🥾🍁\n','2024-11-26','2024-11-26',2,'sale',50,'34.jpg'),
+(8,NULL,2,'부산 해운대에서의 여름 바캉스','부산 해운대 해수욕장에서 시원한 바다를 즐기며 여름을 만끽했어요. 해변을 따라 산책도 하고, 맛있는 해산물도 먹으며 친구들과 즐거운 시간을 보냈어요. 해운대의 밤 풍경도 너무 아름다웠답니다 🏖️🌃','2024-11-26','2024-11-26',1,'sale',60,'35.jpg'),
+(9,NULL,2,'경주 역사 탐방, 과거로의 여행','경주의 고대 유적지를 탐방하며 신라의 역사를 직접 느껴보았어요. 불국사와 석굴암을 방문하고, 경주국립박물관에서 다양한 유물을 보며 역사에 대한 흥미가 더욱 커졌어요. 시간 여행을 온 듯한 기분이었답니다 🏯📜','2024-11-26','2024-11-26',1,'sale',40,'36.jpg'),
+(10,NULL,6,'제주 올레길 걷기의 여유','제주의 올레길을 따라 걸으며 푸른 바다와 산의 조화를 느꼈어요. 다양한 카페에서 잠시 쉬며 여유로운 시간을 보냈고, 자연 속에서 마음의 평화를 찾을 수 있었어요. 혼자만의 시간을 가지기에 딱 좋은 여행이었어요 🚶‍♀️🌲🌊\n','2024-11-26','2024-11-26',1,'sale',90,'37.jpg'),
+(11,NULL,1,'서울 남산타워에서 바라본 화려한 야경','남산타워에 올라 서울의 화려한 야경을 감상했어요. 반짝이는 도심의 불빛과 함께 로맨틱한 분위기를 즐기며 소중한 사람들과 특별한 시간을 보냈어요. 야경을 보며 많은 이야기를 나누는 시간이 정말 좋았어요 🗼✨','2024-11-26','2024-11-26',1,'sale',100,'38.jpg'),
+(13,NULL,5,'서울에서 신사가 왔어요','나는 김성준이다.','2024-11-26','2024-11-26',12,'sale',20,'3e7d8a87-9829-4388-9c7d-5b8026306ed8');
 /*!40000 ALTER TABLE `travel_diary` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `travel_diary_graph`
+--
+
+DROP TABLE IF EXISTS `travel_diary_graph`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `travel_diary_graph` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `travel_diary_id` bigint(20) NOT NULL,
+  `sea` bigint(20) NOT NULL,
+  `mountain` bigint(20) NOT NULL,
+  `valley` bigint(20) NOT NULL,
+  `city` bigint(20) NOT NULL,
+  `festival` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `travel_diary_id` (`travel_diary_id`),
+  CONSTRAINT `travel_diary_graph_ibfk_1` FOREIGN KEY (`travel_diary_id`) REFERENCES `travel_diary` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `travel_diary_graph`
+--
+
+LOCK TABLES `travel_diary_graph` WRITE;
+/*!40000 ALTER TABLE `travel_diary_graph` DISABLE KEYS */;
+INSERT INTO `travel_diary_graph` VALUES
+(1,1,55,3,61,16,37),
+(2,2,65,6,43,57,17),
+(3,3,51,65,30,27,42),
+(4,4,59,29,39,37,66),
+(5,5,8,52,24,36,39),
+(6,6,13,19,55,10,22),
+(7,7,12,61,61,52,7),
+(8,8,15,56,24,22,37),
+(9,9,47,55,63,11,3),
+(10,10,51,38,35,61,60),
+(11,11,48,59,8,4,65),
+(12,13,0,0,0,3,7);
+/*!40000 ALTER TABLE `travel_diary_graph` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1348,6 +1506,25 @@ CREATE TABLE `travel_diary_post` (
 
 LOCK TABLES `travel_diary_post` WRITE;
 /*!40000 ALTER TABLE `travel_diary_post` DISABLE KEYS */;
+INSERT INTO `travel_diary_post` VALUES
+(8,1),
+(10,1),
+(11,1),
+(19,1),
+(6,2),
+(7,2),
+(8,10),
+(10,10),
+(11,10),
+(19,10),
+(9,11),
+(10,11),
+(4,16),
+(4,17),
+(4,18),
+(4,19),
+(4,20),
+(13,27);
 /*!40000 ALTER TABLE `travel_diary_post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1369,7 +1546,7 @@ CREATE TABLE `travel_graph` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `travel_graph_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1385,7 +1562,9 @@ INSERT INTO `travel_graph` VALUES
 (4,4,1,1,1,32,60),
 (5,5,53,90,40,10,80),
 (6,6,0,0,0,0,0),
-(7,7,0,0,0,0,0);
+(7,7,0,0,0,0,0),
+(8,8,0,0,0,0,0),
+(9,12,0,0,0,2,8);
 /*!40000 ALTER TABLE `travel_graph` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1423,41 +1602,28 @@ INSERT INTO `trip` VALUES
 (2,9,2,'아트빌리지(한옥마을)','김포시 운양동 모담산 자락에 안겨 있는 김포아트빌리지는 모담산이 주는 소담한 자연의 아름다움이 느껴지는 자연친화적 문화 · 예술 공간으로서, 다양한 문화예술을 창작하고 체험할 수 있는 예술 공방, 전통한옥숙박체험관이 있고 지역문화예술 단체의 창작 활동 공간인 아트센터에는, 다목적홀, 전시관이 있으며 또한 천여 명의 관객을 수용할 수 있는 자연과 어우러지는 야외공연장으로 구성되어 있습니다.','031-996-6836','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210714_273%2F1626247683764ADYMO_JPEG%2Fl43vuzbsua8DpX4KbaaSC7OB.jpg'),
 (3,15,3,'예천포리관광지','내성천 지류가 자연석과 어울려 경관이 수려하며, 충효테마공원에서 충효 체험이 가능함.','054-650-6394','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMDFfMjMx%2FMDAxNjY3MjUyMDAwMjE5.tfSnkjm1ZG1u7ej_Zm58rhQH1S3dWnfHYPfycLf4dTcg.wNpVKy7fouo-yIcd12VGesKUWEJ1QWYQV97GMj3U1Ukg.JPEG.zeropop0%2FIMG_2290.JPG'),
 (4,15,4,'예천삼강','자연과 문호, 사람과 역사가 함께 공존하는 예천의 신개념 문화체험공간','054-650-6802','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200715_97%2F1594819694142haRrX_JPEG%2FCZG7GFZPI6Q0xbLyuXIalCYr.JPG.jpg'),
-(5,1,5,'서울 원효로 예수성심당','1902년에 세워졌으며, 프랑스인 코스트 신부가 설계, 감독 했다. 19세기 말의 성당 건축을 상징적으로 보여준다.','02-701-5501','https://example.com/default_image.jpg'),
 (6,1,6,'구 용산 수위관측소','한강변에서는 최초로, 전국에서는 아홉번째로 건립된 자기 관측소로서 조위와 홍수위를 관측할 목적으로 건립되었다.','02-2199-7240','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA1MTNfMjMg%2FMDAxNjgzOTY1NzM3Nzc2.qxJw5IKn-Eftd86GN0V_LPw0eOzX2pnWab4GRF_Bss8g.9FW2TsevsCgkDAD4jo4i7iYiXcPMFcsnnsDLC4z1WFYg.JPEG.k1mchangs1k68%2FIMG_3022.jpg'),
-(7,1,7,'심원정 왜명강화지처비','임진왜란 당시 명나라 장군 심유경과 왜군의 장수 고니시 유키나가 만나 강화회담을 벌였던 장소로 전해진다.','02-2199-7240','https://example.com/default_image.jpg'),
-(8,1,8,'청암동 부군당','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 청암동에는 12신 무신도를 모신 부군당과 이성계를 모시던 영당이 인접하여 존재했었다.','02-2199-7240','https://example.com/default_image.jpg'),
-(9,1,9,'산천동 부군당','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 산천동 부군당 제사는 봄, 가을에 지내왔으나 요즘은 가을에만 한 차례 지내고 있다.','02-2199-7240','https://example.com/default_image.jpg'),
-(10,1,10,'3.1운동 용산인쇄소 노동자 만세시위지','1919년 3.1운동 당시 용산에서 만세시위가 일어난 곳으로, 용산인쇄소가 있던 자리이다.','02-2199-7240','https://example.com/default_image.jpg'),
-(11,1,11,'이봉창 의사 집터','1932년 1월 8일 일왕 히로히토를 처단하려했던 이봉창 의사가 11살 때인 1917년부터 25살이 되던 1925년까지 살던 곳이다.','02-2199-7240','https://example.com/default_image.jpg'),
 (12,1,12,'백범김구기념관','백범김구기념관은 김구 선생의 삶과 사상을 널리 알리고 계승 발전시키기 위한 취지에서 2002년 10월 22일 개관하였다.','02-799-3400','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220126_203%2F1643158639604bdQFP_JPEG%2F1.jpg'),
 (13,1,13,'이봉창 의사 역사울림관','용산구를 대표하는 독립투사인 이봉창의사를 추모하고 그의 삶과 독립정신을 기리기 위해 세워진 기념관이다.','02-2199-7240','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210525_18%2F1621914870591nJO66_JPEG%2FikL3QJQ8CaMCINIHXWy0pTGW.JPG.jpg'),
 (14,5,14,'소촌아트팩토리','광주 최초의 산업단지 문화재생시설인 소촌아트팩토리는 낡고 오래된 민방위비상대피시설(방공호)과 아시아문화중심도시 홍보관(아시아문화마루)으로 사용되었던 폐컨테이너를 조합해 리뉴얼한 복합문화공간이다.2015년 개관하였으며 ‘큐브미술관’, ‘아르코공연연습센터’, ‘유노윤호 작은도서관 HUG’ 및 부대시설 등을 갖추고 있다. 오랫동안 쓸모없이 방치되었던 유휴공간이 문화예술 콘텐츠 융합을 통해 시민들의 일상을 풍요롭게 하는 혁신공간으로 재탄생한 것이다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200804_187%2F1596527830504qVPWt_JPEG%2Fcw9FlV8EaO00lDLOk5KfFCEK.jpg'),
 (15,5,15,'별밤미술관 in 첨단','코로나19 팬데믹으로 위축된 예술인들의 활동을 장려하고 대중 속에서 꽃피는 전시문화를 위해, 주민들이 즐겨 찾는 거점공간에 비대면 간이 미술관 5개소를 조성 및 운영하고있습니다.  별밤미술관은 탁 트인 야외 공원에 위치하고 있고 저녁 시간에 운영하기 때문에 직장에 다니거나 일을 하느라 바쁜 일상에서 일부러 시간을 낼 필요도 없습니다. 퇴근 후 동네 공원에서 산책하시거나 운동하시면서 좋은 작품을 여유롭게 즐기시기만 하면 됩니다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220728_266%2F1658969478676wwxiy_JPEG%2F%25C3%25B7%25B4%25DC_%25BA%25B0%25B9%25E3_%25BC%25F6%25C1%25A4.jpg'),
 (16,5,16,'별밤미술관 in 수완','코로나19 팬데믹으로 위축된 예술인들의 활동을 장려하고 대중 속에서 꽃피는 전시문화를 위해, 주민들이 즐겨 찾는 거점공간에 비대면 간이 미술관 5개소를 조성 및 운영하고있습니다.  별밤미술관은 탁 트인 야외 공원에 위치하고 있고 저녁 시간에 운영하기 때문에 직장에 다니거나 일을 하느라 바쁜 일상에서 일부러 시간을 낼 필요도 없습니다. 퇴근 후 동네 공원에서 산책하시거나 운동하시면서 좋은 작품을 여유롭게 즐기시기만 하면 됩니다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210301_262%2F1614609131998mQjBt_JPEG%2FqPIlBxge_p3mGySRhxyiOWEY.jpg'),
 (17,5,17,'별밤미술관 in 운남','코로나19 팬데믹으로 위축된 예술인들의 활동을 장려하고 대중 속에서 꽃피는 전시문화를 위해, 주민들이 즐겨 찾는 거점공간에 비대면 간이 미술관 5개소를 조성 및 운영하고있습니다.  별밤미술관은 탁 트인 야외 공원에 위치하고 있고 저녁 시간에 운영하기 때문에 직장에 다니거나 일을 하느라 바쁜 일상에서 일부러 시간을 낼 필요도 없습니다. 퇴근 후 동네 공원에서 산책하시거나 운동하시면서 좋은 작품을 여유롭게 즐기시기만 하면 됩니다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210325_193%2F1616671532066TyG5H_JPEG%2FRP2LP0RmpdTF2M8yyL0eX0TK.jpg'),
-(18,6,18,'으능정이문화의거리','Y','042-252-7100','https://example.com/default_image.jpg'),
 (19,6,19,'유성온천','Y','042-611-2114','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzExMjBfODMg%2FMDAxNzAwNDYyNzQyMzc4.3jQkxKYJcHwkf6iVDWU10ThZDfxOnDFYsuvmriRRxHwg.fJnvCQZLbUbinrOUvFmCTrumueLCTC4srXB0F2cF7E8g.JPEG%2F1700358360883.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (20,17,20,'협재관광지','에메랄드 빛 바다색과 비양도 절경을 품고 있는 제주시 서부 대표 휴양지','064-728-2762','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241114_101%2F1731572372979h9vBF_JPEG%2FKakaoTalk_20240813_173749771.jpg'),
 (21,17,21,'곽지관광지','접근성이 좋고 바닷물과 노천탕을 동시에 즐길 수 있는 제주시 서부 대표 휴양지','064-728-2762','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMjJfMTAg%2FMDAxNjY2NDA2NTk0MzI4.MiXGn7rWbwTHk8YiHy3ymyyYmciEroqYOtpJqSeNyygg.1G-yy_n3deYl5qL6vkl5JaYS97m_87PPt48RXSG6Jy4g.JPEG%2F20221022_105547.jpg%3Ftype%3Dw1500_60_sharpen'),
 (22,17,22,'김녕관광지','해양레져스포츠, 캠핑 등 즐길거리가 가득한 제주시 동부 대표 휴양지','064-728-2762','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20230802_201%2F16909573752107Jkcf_JPEG%2F%25B1%25E8%25B3%25E7%25B9%25CC%25B7%25CE%25B0%25F8%25BF%25F8.jpg'),
 (23,2,23,'40계단테마거리','40계단을 중심으로 조성된 테마거리로 뻥튀기 아저씨,  물동이 진 아이 등의 조형물이 꾸며져있다.','051-600-4046','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDVfNzIg%2FMDAxNzI4MTA5Mjk0MzM1.7ByMwpsbTvlGp02ZUgCOknLJ4YIGz_NbKQ7Cj9ZDkegg.mLNWbZqnFbl3I4Kx-VbXFlid5xEomIcvhRGg_7Q7fCIg.JPEG%2F1000084244.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (24,2,24,'BIFF광장','세계적 영화제로 발돋움한 부산국제영화제의 태동지','051-600-4084','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190501_14%2F155672081736364Gat_JPEG%2FtOu4WwVOFb5C6gfqYP09DVnx.JPG.jpg'),
-(25,2,25,'영도대교','영도대교는 일제 강점기 시절 영도와 부산항 사이의 원활한 왕래를 위해 1934년 11월에 준공된 동양최조의 교량이자 국내 유일의 연륙교로써의 역사적인 의미를 지니고 있으며, 한국 전쟁 당시 헤어진 가족들의 기약 없는 이별의 종착지이자 이산가족들에겐 삶의 애환이 서려있는 장소이다.','051-780-0062','https://example.com/default_image.jpg'),
 (26,2,26,'보수동책방골목','보수동 책방골목은 국제시장 입구 대청로 사거리 건너 보수동쪽으로 난 사선 방향의 좁은 골목길에 집결된 책방을 말한다. 8.15광복 직후 오늘날의 국제시장이 태평양전쟁으로 주택가가 철거되어 빈터로 놓여 있을 때 일본인이 남기고 간 책을 난전을 벌여 팔았는데, 그 장소가 개인소유가 되자, 보수동 앞길로 책장사들이 한 두 사람 자리를 옮겨 앉게 되면서부터 오늘의 골목이 형성되는 바탕이 되었다.','051-743-7650','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_100%2F1441029309203sUP0t_JPEG%2F116351518644201_0.jpg'),
-(27,2,27,'용두산공원','부산의 역사가 살아 숨쉬고 있는 대표적 관광명소로서 부산의 상진인 120m 높이의 부산타워, 부산 시민의 종, 충무공 이순신 동상, 미술전시관 등이 조화롭게 조성되어 있다.','051-860-7820','https://example.com/default_image.jpg'),
 (28,2,28,'광복로','패션·쇼핑거리로 중앙에는 21세기 도약의 이미지를 상징하는 `비상 2000` 조형물이 설치되어 있다. 매년 광복로 문화축제를 개최하는 볼거리, 즐길거리가 풍성한 문화예술의 거리이다.','051-600-4084','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190828_93%2F1566953601239OT9MQ_PNG%2FxX7Wv642gXMoTI0DAv0hRymS.png'),
 (29,2,29,'부산영화체험박물관','부산영화체험박물관은 대한민국을 대표하는 영화체험 복합문화공간입니다. 전국 최초의 영화관련 전문전시체험시설로 지상지상 4층, 지하 3층으로 구성된 본 체험박물관은 영화의 원리를 이해하고 제작의 즐거움을 체험할 수 있는 다양한 전시시설 및 영화의 과거와 미래를 연결하는 하이테크 시네마를 갖추고 있습니다.','051-715-4200','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20231120_215%2F1700461754293RYMgs_JPEG%2F1.jpg'),
 (30,7,30,'작괘천','수백평이나 되는 바위가 오랜 세월의 물살에 깎여 움푹움푹 파인 형상이 마치 술잔을 걸어둔것과 같다고 해서 작괘천이라 하며, 사시사철 맑은 물이 흐른다','052-204-2346','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241017_9%2F1729170947492IDsjq_JPEG%2FIMG_3658.JPG'),
-(31,7,31,'대운산 내원암 계곡','깊고 청량한 계곡속의 수려한 연못과 폭포, 한번 누워보고 싶은 반석들을 품고 있는 비경이 있음','052-204-2345','https://example.com/default_image.jpg'),
 (32,7,32,'간절곶 공원','한반도에서 가장 해가 먼저 뜨는 대표적 해맞이 장소','052-204-1754','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMzBfMjQx%2FMDAxNzAxMzAzODg2NDA2.2ZhMluD4-s2bCimL66uNkFadBqLivHICETjWTOGaj1kg.FCkCuqM12UYhrI__-cVcbzAJyOhJeuATALVllWLgvg0g.JPEG.cwa1825%2FKakaoTalk_20231117_102318659_05.jpg'),
 (33,10,33,'어답산관광지','왕의 발길만을 허락한 오지의 선경으로 임금이 친히 밟아본 산이라는 뜻의 어답산(御踏山)은 신라 박혁거세가 태기산의 태기왕을 뒤쫓다가 이 산에 들렀다 해서 붙여진 이름. 때묻지 않은 오지의 절경 속에 자연의 옛 모습 그대로를 고스란히 담아내는 어답산은 갑천면 삼거리저수지 동북쪽으로 병풍을 두른 듯 솟아 있다.','033-340-5985','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MjVfMTMx%2FMDAxNzI0NTY3MjQ4MDE1.jyk3qO4gqebcuImcHkJp1kPMK9PDs0bT34EFlLf6QoQg.l66hDez9f6zjXlivSLAUD_RU3Bg64RHAn_v6gdUca6wg.JPEG%2Fnaver_map_4.jpg'),
 (34,10,34,'유현문화관광지','풍수원성당은 한국인 신부가 지은 최초의 성당이자 한국에서 네 번째로 지어진 유서깊은 성당으로서 1982년 지방문화재 제69호로 지정됐다. 횡성의 유명한 관광지 중 하나로 풍수원 성당과 연계해 관광지를 개발하여 방문하는 이들에게 많은 볼거리(유물전시관+산책로+성체현양대회 등)를 제공하고 있다','033-340-5987','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDExMTVfMTE0%2FMDAxNzMxNjY3MTcxNDQy.QwNhISeyVFZb5GuXZjAkkT3venY6KwmwPKVltrk6rssg.ILeHmddP2exhElL-cVunh8KeTUk9YytwNUc5lruxb40g.JPEG%2F2ACE18B8-51E4-4ADF-BCF5-8DC9F476E272.jpeg%3Ftype%3Dw1500_60_sharpen'),
-(35,10,35,'웰리힐리파크 관광단지','강원특별자치도 횡성 무공해 청정 지대인 술이봉 일대 486만㎡부지에 조성된 웰리힐리파크는 사계절 각각의 특색있는 아름다움과 수려한 자연 속에서 차원 높은 휴식의 안함을 즐길 수 있는 도시 근교형 사계절 종합 휴양지이다','1544-8833','https://example.com/default_image.jpg'),
-(36,16,36,'임경대','통일신라시대 학자 최치원이 머무르며 시를 읊었던 곳으로 오봉산 기슭에 위치하여 하늘을 품고 드넓게 펼쳐진 낙동강의 풍경이 특징이다.','055-392-3562','https://example.com/default_image.jpg'),
 (37,16,37,'통도사','세계문화유산으로 등재된 우리나라 3대 사찰중 하나로 부처님의 진신사리와 가사를 봉안한 불보사찰이다.','055-382-7182','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160104_222%2F1451872482626b84QL_JPEG%2F176054508461501_0.jpeg'),
 (38,16,38,'통도환타지아','영축산 아래 위치한 테마공원으로 다양한 행사와 놀거리, 볼거리 등을 제공하고 있다.','055-379-7000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180716_125%2F1531725967417gy2Io_JPEG%2F__1242.jpg'),
-(39,16,39,'홍룡폭포(홍룡사)','원효산 골짜기에 위치한 폭포로 떨어지는 모습이 꼭 용이 무지개를 타고 승천하는 것과 같다는 의미로 이름붙였고 상중하 세단계에 걸쳐 떨어지는 독특한 형태가 특징이다.','055-375-4177','https://example.com/default_image.jpg'),
 (40,16,40,'황산공원','낙동강을 따라 조성된 양산의 대표 도심 속 자연친화적인 수변공원으로 체육시설, 캠핑장, 자전거길, 산책로 등 다양한 공간이 있어 시민들의 휴식처가 되고 있다.','055-392-2823','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA5MjZfMTAg%2FMDAxNzI3MzQzNTIwNzQy.5E-G12ikNcJ1GeDo3q7Jc2w3e4h80LjPW0EDPxYSAa4g.3brXUZrIGeTMaBR17PQepJUvuqQUxCN5x7ImGoz6_D8g.JPEG%2F1000210764.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (41,2,41,'롯데월드 부산','부산광역시 기장군 기장읍 시랑리 산46에 위치한 테마파크. 줄여서 부롯이라 부른다. 오시리아관광단지 테마파크존 내에 조성된 핵심시설로, 서울에 있는 롯데월드 어드벤처와 부산 롯데월드 스카이프라자, 롯데월드 언더씨킹덤에 이은 롯데월드의 4번째 테마파크이다.','1661-2000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241118_246%2F1731894683863Syg1E_JPEG%2F241101_%25B0%25DC%25BF%25EF%25BD%25C3%25C1%25F0_main_PC.jpg'),
 (42,14,42,'순천만국가정원','대한민국 생태도시 순천은 세계 5대 연안습지인 순천만습지의항구적인 보전을 위해 정원을 조성하고 2013순천만국제정원박람회를 개최하였다. 그 이후 제1호 국가정원으로 지정됨으로써 순천만국가정원은 대한민국 정원문화산업의 메카로 자리매김하게 되었다.','061-749-2749','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240702_248%2F1719893756688GODX3_JPEG%2F2024_%25BF%25A9%25B8%25A7_%25C6%25F7%25BD%25BA%25C5%25CD.jpeg'),
@@ -1472,25 +1638,11 @@ INSERT INTO `trip` VALUES
 (51,12,51,'결성동헌','결성동헌 : 조선시대 관아 1989년 4월 20일 충남문화재 지정','041-634-8712','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjdfNjAg%2FMDAxNzI5OTg5Njc2MTM2.eHA84Kt9vESIBlsbNcBdelwKJisqchU7sNs51HqL5Uwg.Ae0Q5QBYK_SDuV7RdFlhX_LdmL2fEs9kT5JfrouTR88g.JPEG%2FIMG_20241020_113246.jpg'),
 (52,2,52,'죽성드림세트장','죽성리 바닷가에 세워진 드라마 세트장이다. 드림세트장은 유럽의 건축물을 옮겨놓은 듯한 이국적 분위기로 많은 여행객이 찾는다 세트장 근처에 고산윤선도 선생이 귀양살이를 하면서 가끔 찾아 시를 읊펴다는 황학대가 있으며 300년 이상된 죽성리 해송이 있다 죽성 드림세트장 에오면 죽성리 바다를 한눈에 조망할수있다','051-709-4081','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180508_209%2F1525788743276UtAN7_JPEG%2Fn2_ZSjOJu_dl7fp9V5DZSpH6.jpg'),
 (53,2,53,'박태준기념관','대한민국 근현대사에 큰 족적을 남긴 청암 박태준의 업적을 기리고 그의 철학과 사상을 엿볼수있다 2021년 대한민국 공간문화대상을 수상하며 지역의 아름다운 공간으로 인정받았으며 수준높은 문화 콘텐츠를 제공하는 문화예술의 장으로도 사랑받고 있다','051-709-3975','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230208_182%2F1675820635971KvOaH_JPEG%2F%25C0%25FC%25B0%25E6.jpg'),
-(54,2,54,'달음산자연휴양림','달음산 서쪽 자락에 위치하고 있으며, 부산시 최초의 국립 자연휴양림으로 산과 바다를 모두 즐길 수 있는 최적의 휴양림이다. 휴양림에서는 숙박은 물론, 숲 해설 프로그램과 목공예 체험 활동이 가능하다','051-722-3023','https://example.com/default_image.jpg'),
 (55,14,55,'섬진강 망덕포구','550리 섬진강과 남해바다가 만나는곳, 윤동주시인 유고보존 정병욱 가옥','061-772-4066','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210820_76%2F162946883024057tPP_JPEG%2FRXouMw3sfEv3BOB-ji3_BBZy.jpeg.jpg'),
-(56,14,56,'윤동주 유고 보존 정병욱 가옥','국가등록문화재 제341호','061-797-2418','https://example.com/default_image.jpg'),
-(57,14,57,'광양매화문화관','매화꽃, 매실가공식품, 홍쌍리 명인','061-797-3363','https://example.com/default_image.jpg'),
 (58,2,58,'구덕운동장','1920년 9월 조그만 동물원을 곁에 둔 넓은 빈터로 마을 체육대회 장소로 사용하다가 1928년 9월에 부산공설운동장으로 건립되었다가 1982년 사직운동장이 건립되어 그해 6월에 구덕운동장으로 개칭되었다.','051-602-2211','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221216_34%2F16711931314204trNl_JPEG%2F20221216_211341.jpg'),
-(59,2,59,'임시수도기념관','6.25 당시 임시수도로서 국난극복의 역사적 현장을 길이 보전하여,후세에 물려줌으로서 민족사의 암울한 시기를 깨닫게 하고 조국통일과 번영의 산교육장으로 활용하고 있다.','051-244-6345','https://example.com/default_image.jpg'),
 (60,2,60,'송도오션파크','「송도지구 복합해양휴양지 조성사업」일환으로 2017년에 완공된 「송도오션파크」는 관광객 및 주민들의 열린 공간인 축제의 광장과 힐링의 광장, 운동시설이 설치되어 있는 젊음의 광장이 조성되어 있다.','051-240-4081','https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2024_05_09_1049%2FAnsvnE1VOo_01.jpg'),
-(61,2,61,'송도용궁구름다리','송도해수욕장의 동쪽 송림공원에서 거북섬을 연결했던 추억의 명물 송도구름다리가 2002년 태풍 셀마 때 파손돼 철거된 지 18년 만에 ‘송도용궁구름다리’로 재탄생하였습니다. 암남공원에서 바다건너 작은 무인도인 동섬 상부를 연결하는 길이 127m, 폭 2m의 송도용궁구름다리는 바다 위를 걷는 짜릿함과 시원스럽게 펼쳐지는 바다 풍광, 기암절벽이 빚어내는 천혜의 경관을 감상할 수 있으며, 야간경관조명이 설치돼 밤에는 바다에 떠있는 신기루와 같은 환상적인 분위기를 연출해 관광도시 부산 서구의 새로운 랜드마크로 자리매김 하고 있습니다.','051-240-4084','https://example.com/default_image.jpg'),
-(62,1,62,'남이장군 사당','구전에 의하면 이시애의 난을 토벌할 때 군병을 훈련시킨 곳이 둔지미(현 삼각지 부근)이고 한강변 새남터에서 처형되었기 때문에 용산에서 장군을 추모하는 사당을 세우고, 그의 원혼을 달래고자 공동제와 제의굿을 300년 동안 지내왔다고 한다.','02-2199-7240','https://example.com/default_image.jpg'),
-(63,1,63,'연복사탑중창비','조선을 건국한 태조 이성계의 공덕으로 재건된 연복사 오층불탑의 건립내력을 담은 비석이다.','02-2199-7240','https://example.com/default_image.jpg'),
-(64,1,64,'서울 구 용산철도병원 본관(현 용산역사박물관)','1907년 통감부의 철도국 서울진료소로 개원되어 운영되다 1913년 용산철도병원이라 불리던 본관 건물로 1928년에 철근콘크리트조 벽돌마감의 지하1층, 지상2층 규모로 신축되었다.','02-2199-4620','https://example.com/default_image.jpg'),
-(65,1,65,'왜고개 순교성지','왜고개는 조선시대 와서에서 비롯된 이름이다. 왜고개는 조선 말엽 네 번에 걸친 천주교 박해(신유박해, 기해박해, 병오박해, 병인박해) 때 처형당한 천주교 성직자와 신자들이 묻히게 되면서 천주교 순교성지로 알려지게 된다.','02-798-2457','https://example.com/default_image.jpg'),
-(66,1,66,'옛 간조 경성지점 사옥','간조는 일제강점기 대표적인 건설토목회사로 1903년 경부철도 공사를 위해 한반도로 진출하여 도로와 철도, 군사시설 등 일제의 한국 식민지배를 뒷받침하기 위한 각종 인프라를 구축했다. 현재는 식품소재회사 사무실로 사용중이다.','02-2199-7240','https://example.com/default_image.jpg'),
-(67,1,67,'새남터','한강이 범람하여 만들어진 넓은 모래사장으로 군인들의 훈련터로 사용되는 곳이자, 중죄인들을 처형하는 장소이기도 하였다.','070-8672-0327','https://example.com/default_image.jpg'),
-(68,1,68,'천주교 순교성지 새남터 성당','1950년 한국 천주교구는 지금의 장소를 순교성지로 지정하였다. 1981년에는 천주교 새남터 교회가 창설되고, 1987년에는 새남터 성당 건물과 기념관이 완공되어 대표적 천주교 순교지로 매김하였다.','070-8672-0327','https://example.com/default_image.jpg'),
 (69,1,69,'이태원 부군당','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 당내 정면 중앙에는 부군할아버지와 부군할머니를, 좌우로 12점의 신상을 마을 수호신으로 모시고 매년 음력 4월 1일에 제례와 굿을 올리고, 음력 10월 1일은 제관만이 모여 제사를 지내며 마을의 액을 몰아내고 복을 불러들여 동네와 주민의 평안을 지켜주시기를 기원하고 있다.','02-2199-7240','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMTJfMTEx%2FMDAxNzI4NzQ0NTgxNzE3.-H3iMHPsRKvlT1bgVlHbmyhzoNBlBl4Urxcjx7_1_Yog.-CT5TOp_9EjwitGF_oapg6Myy3qGsr9ygfP9GxcnTj4g.JPEG%2FA86FB127-F7D0-489B-A1ED-13FBA783A18D.jpeg%3Ftype%3Dw1500_60_sharpen'),
-(70,1,70,'유관순 열사 추모비','유관순 열사는 1920년 9월 28일 서대문형무소에서 모진 고문 끝에 순국한 후 현 용산구 이태원과 보광동 일대에 있던 이태원 공동묘지에 묻혔다. 이러한 역사적 사실을 근거로 열사의 숭고한 넋을 기리고자 이태원 부군당 옆에 유관순 열사 추모비를 세우고 이 일대를 이태원 부군당 역사공원으로 조성하였다.','02-2199-7240','https://example.com/default_image.jpg'),
 (71,14,71,'중흥골드스파&리조트','유원지','061-339-5000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171120_36%2F1511138881058J4Oig_JPEG%2F18buWITpKV6o0FkFAlkVS7uG.jpg'),
-(72,14,72,'나주영상테마파크','테마공원','061-335-7008','https://example.com/default_image.jpg'),
 (73,14,73,'남파고택','중요민속자료','061-332-6100','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200720_52%2F15952273577688119e_JPEG%2FnlInCj08jnk2yixs90egnwDX.JPG.jpg'),
 (74,14,74,'배알도수변공원','가족단위 야영·캠핑장, 해변 데크산책로','061-797-3363','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240827_124%2F17247477069026Bi5s_JPEG%2F1000016917.jpg'),
 (75,14,75,'광양 김 시식지','도지정기념물 제113호','061-797-2418','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MDlfMTIw%2FMDAxNzIzMTkxMTU3NjA1.aWlXXET-_eeXQCO-2CF3RvVWJUO9wceKl0QlH_6di6og.D9qsaBsljw0-9Ht-cRacygssIhE8TW7eic5WCN0PWyIg.JPEG%2F%25C0%25CF%25B0%25FD%25C6%25ED%25C1%25FD8.jpg'),
@@ -1500,14 +1652,8 @@ INSERT INTO `trip` VALUES
 (79,2,79,'부산공동어시장','부산 공동어시장은 5개의 수산업협동조합이 공동으로 운영하고 있다. 1일 최대 3200톤(16만 상자) 규모의 우리나라 제일의 산지 어시장으로 새벽부터 경매사와 수산물 중도매인들의 열기가 뜨거운 곳이다.','051-254-8961','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_118%2F1441046402870GsQXl_PNG%2F11819432_0.png'),
 (80,2,80,'천마산조각공원','남항에서 서쪽으로 바라보이는 해발 324m의 아담한 산에 조성된 1만 6천㎡에 이르는 공원이다. 하늘에서 말이 내려왔다는 전설의 천마 바위와 44점의 아름다운 조각 예술 작품이 운해의 바다 속에서 그 평화로움을 선보인다. 공원 주변에는체육시설과 산책로, 쉼터 등이 조성되어 문화공간으로 각광받고 있다.','051-240-3521','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMDJfNjkg%2FMDAxNzA5MzU5MTc3NzM1.GIniCIVRov4GHOuRNa6VN0IxHeVMBlCGxrO-W4z3tyYg.vkthstqxrexM1H-AmoclDHW3yXhEv1vbX85b7Vl7mEUg.JPEG%2F20240302_142329576.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (81,1,81,'한강 나루터','한강나루의 도승과 한강진의 별장은 한강단과 국가 정자인 제천정을 관리하는 한편, 제천정 아래 한강변에 설치한 수표석을 관찰하는 일까지 담당하였다.','02-2199-7240','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240425_24%2F17140529075904ry77_JPEG%2FP1122399.jpg'),
-(82,1,82,'큰한강 부군당(한남제1부군당)','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 큰한강 부군당은 조선 후기에 건립된 것으로 추정된다. 부군신 내외, 삼장군, 삼장군부인, 삼불제석, 산신, 백마장군의 무신도가 모셔져 있고, 용궁당에는 용궁할아버지, 용궁할머니, 용궁애기씨의 무신도가 모셔져 있다.','02-2199-7240','https://example.com/default_image.jpg'),
-(83,1,83,'작은한강 부군당(한남제2부군당)','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 작은한강 부군당은 태조 이성계를 주신으로 모시고 있으며 당안에는 이성계와 그 부인의 신상 2점이 있고 좌우벽면에 용장군, 산신할아버지, 울당 할머니 신상이 모셔져 있다.','02-2199-7240','https://example.com/default_image.jpg'),
-(84,1,84,'이슬람 중앙성원','이슬람교 한국 선교의 총본산으로 1976년 5월 21일에 설립된 국내 최초이자 최대의 이슬람사원(모스크)이다.','02-793-6908','https://example.com/default_image.jpg'),
-(85,10,85,'이효석문화예술촌','이효석문화예술촌은 가산 이효석의 생애와 문학세계를 볼 수 있는 곳으로 특히 이효석문학관에는 이효석 문학전시실과 다양한 문학체험을 할 수 있는 문학교실+학예연구실 등으로 이루어져 있다. 문학전시실은 그의 생애와 문학세계를 시간의 흐름에 따라 볼 수 있도록 구성하였으며+재현한 창작실+옛 봉평 장터 모형+문학과 생애를 다룬 영상물+어린이용 영상물 등을 통해 다양한 체험이 가능하도록 준비하였다. 또 문학교실에서는 다양한 영상물을 시청할 수 있고 문예행사도 볼 수 있으며+학예연구실에는 이효석과 관련된 다양한 자료를 준비하여 그의 문학세계를 깊이 연구하는 공간으로 자리잡고 있으며+문학정원에서는 자연의 아름다움과 문학의 소중함을 느낄 수 있다.또한 이효석문화예술촌에는 이효석문학관 뿐만 아니라+사계절의 자연을 느낄 수 있는 꿈꾸는 정원과 야외광장인 나귀광장과 달빛광장이 있으며 효석달빛언덕을 한눈에 내려다 볼 수 있는 달빛나귀 전망대+이효석의 기억과 추억을 들여다 볼 수 있는 작은 도서관+카페+기념품샵이 있다.','033-330-2742','https://example.com/default_image.jpg'),
 (86,10,86,'평창돌문화체험관','장암산을 마주보는 평창강변에 위치하며 체험실+수석테마카페+전시장 등의 공간이 전국 각지의 수석 애호가들이 기증한 양질의 수석들로 채워져 있다. 바깥에는 커다란 수석들을 보며 산책을 즐길 수 있는 공원길도 갖추어져 있다.','033-330-2742','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzA4MjlfMjc3%2FMDAxNjkzMjg5MDcwMDQ5.TQHcOAHZaAFnHHEaUbi2zEDuakafKS63iYXjSzGo2v0g.5ljY4QUOWtEi1uSOBx7a8HmVFrOSO7kv7qgCcAE65r0g.JPEG%2F20230825_160605.jpg%3Ftype%3Dw1500_60_sharpen'),
-(87,4,87,'장도포대지','인천광역시 문화재자료 제19호로 조선시대인 1877년 일본이 서해안 개항지를 물색하자 고종이 어영대장 신정희로 하여금 설치하였음','032-453-2140','https://example.com/default_image.jpg'),
 (88,4,88,'소래역사관','소래의 역사와 문화 그리고 아름다운 옛모습을 보존하고자 2012년 6월에 개관한 남동구 최초의 공립박물관','032-453-2140','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDlfMjA5%2FMDAxNzI4NDU1NTI4NTgz.HZwchYnsM9i2fYzgW19gHWc0zj3SUhOCYtu9-TSVfP8g.TkTWKcfADLjGF_qF4q3MlTDD4wZ_pwAuWP-dFPx_jtYg.JPEG%2F1000050162.heic.jpg%3Ftype%3Dw1500_60_sharpen'),
-(89,4,89,'인천도호부청사','조선시대 행정기관의 하나로 상급기관인 목(牧)과 하급기관인 군(郡) · 현(縣) 사이에서 행정을 담당했던 관청','032-422-3492','https://example.com/default_image.jpg'),
 (90,9,90,'신륵사관광지','시원한 남한강을 따라 자전거도로, 각종 체육시설과 여주박물관, 도자세상, 농특산물 판매장이 있으며, 매년 여주도자기축제와 오곡나루축제가 이곳에서 개최되고 있다. 특히 남한강을 가르는 황포돛배(Yellow Sail boat)와 수상레저를 즐길 수 있는 가족 연인들의 나들이 공간이다','031-887-2070','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150514_71%2Ffimm58_1431560666289LXy2B_JPEG%2FDSC_0095.JPG%23756x519'),
 (91,2,91,'송도해상케이블카','부산 송도해수욕장 동쪽 송림공원에서 서쪽 암남공원까지 1.62㎞ 구간을 바닥이 투명한 크리스탈 캐빈을 포함한 8인승 캐빈 39기가 운행합니다. 특히 최대 86m 높이에서 바다 위를 가로질러 운행함으로서 탑승객들은 바다 한가운데에서 짜릿함을 느끼는 것은 물론 암남공원, 남항, 영도에 이르기까지 사방으로 펼쳐진 빼어난 풍광을 즐길 수 있습니다.','051-240-4701','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220801_106%2F1659333137309JPSiA_JPEG%2F%25BC%25DB%25B5%25B5_%25BD%25E6%25B3%25D7%25C0%25CF_%25C5%25B8%25C0%25CC%25C6%25B2X.jpg'),
 (92,2,92,'송도해수욕장','우리나라 제1호 해수욕장. 동양의 나폴리로 불리며 60,80년대 송도의 추억으로 잘 알려진 송도해수욕장이 아름다운 해안선을 자랑하며 사계절 즐길 수 있는 해변공원으로 새롭게 태어났다.','051-240-4127','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230707_124%2F1688739041922JcFBB_JPEG%2F20211219_114939.jpg'),
@@ -1516,27 +1662,20 @@ INSERT INTO `trip` VALUES
 (95,1,95,'용산공예관','용산공예관은 전통공예품 전시와 판매, 연계 분야 일자리 창출, 공예가 활동 지원과 교육 프로그램 운영 등 다채로운 활동을 이어가며 한국 전통공예의 우수성과 아름다움을 널리 알리고 있다.','02-2199-6180','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211118_238%2F1637209814077ctNy0_JPEG%2F%25B4%25EB%25C7%25A5%25BB%25E7%25C1%25F81.jpg'),
 (96,1,96,'서빙고동 부군당','부군당은 마을의 안녕과 복을 지켜주는 부군신을 모신 곳으로 서울의 대표적인 마을신앙이다. 부군당의 정면에는 당의 주신인 조선 태조 이성계와 그 부인의 화분이 나란히 모셔져 있고, 그 왼쪽 벽면에는 삼불재석이 모셔져 있다.','02-2199-7240','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200623_242%2F1592908163078oH5zT_JPEG%2FY57mhE0a-opWQQGq4q967s1q.jpg'),
 (97,1,97,'동빙고 부군당','동빙고 부군당은 수백년 전부터 단군 할아버지와 할머니를 비롯해 여러 신을 함께 모시고 주민의 안전과 국태민안을 기원했던 곳이다.','02-2199-7240','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MjdfMjkz%2FMDAxNzE2Nzk3MDI5ODAx.nT8TyS8MyF-R3RE2eYXLJP_OXKPAr4XK1wSd1afjqlkg.gKK8pasZPlkqjfCp7leTPOoemvVvDN_xUKZIIc8nW3sg.JPEG%2F20240527_125015.jpg'),
-(98,1,98,'용산기지 옛 미군장교숙소(현 용산공원)','주한미군 장교들의 숙소가 있었던 곳이다. 정부는 용산기지의 본격적인 반환 이전 국민들이 용산공원 조성을 체감하고 용산공원의 과거와 현재 그리고 미래를 함께 논의하는 소통의 장으로 활용하고자 지난 2020년 7월 21일 옛 미군장교숙소를 국민들에게 개방됐다.','070-4224-1708','https://example.com/default_image.jpg'),
 (99,1,99,'김유신 장군 사당','본래 관아에서 신령을 모시는 집인 부군당으로서 김유신 장군을 주신으로 모셨으며 이름을 명화전이라 부른다.','02-2199-7240','https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2024_03_25_2458%2F5c53e759-ea36-11ee-b663-48df37e3062e_01.jpg'),
-(100,1,100,'보광동 무후묘','서울 마을신앙인 부군당으로 제갈공명, 제갈공명부인, 산신, 청장군, 홍장군 무신도가 봉안되어있다.','02-2199-7240','https://example.com/default_image.jpg'),
 (101,15,101,'탑산약수온천','몸에 기를 넣어 건강을 증진시키는 유기 게르마늄 성분이 들어있는 세계 최고 게르마늄 함유 온천','054-833-5001','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190927_147%2F1569561017299B4eaa_JPEG%2F3pkRjOWZvQCPblxEkHC3JXB9.jpg'),
 (102,10,102,'구곡폭포','봉화산 근처 아홉구비를 돌아 떨어지는 구곡폭포와 탄성을 자아내는 하늘벽 바위 등 자연경관이 출중한 곳이며, 깔닥재를 넘으면 자연부락인 문배마을까지 볼 수 있다.','033-250-3668','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_196%2F14409922880160wiId_JPEG%2F11491586_0.jpg'),
 (103,10,103,'춘천호반','춘천댐은 신북면 용산리와 서면 오월리 사이의 북한강 본류에 건설된 수력 발전소로 높이는 무려 40m에 이르고 담수 면적은 총면적 17㎢인 거대한 댐이다. 화천으로부터 내려오는 물길을 막아 설립된 춘천호 주변은 맑은 물과 푸른 자연환경을 지니고 있어 아름다움을 자랑한다. 또한, 춘천댐의 위 물길과 아래 물길 일대에는 유원지가 만들어져서 식당, 방갈로, 원두막, 야영캠프장, 낚시터 등 편의시설이 되어 있어 관광객들이 애용하고 있다. 유원지 숲 곳곳에 가족소풍을 즐길 만한 공간도 있어 가족끼리의 여행 장소로 제격이다.','033-245-2211','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221102_176%2F16673546462236M5TB_PNG%2F%25C8%25A3%25B9%25DD%25C3%25BC%25C0%25B0%25B0%25FC.PNG'),
 (104,10,104,'청평사(춘천)','청평사 관광지는 시내에서 19km 지점에 있으며 소양호 선착장에서 선박을 이용하여 10분 정도 가면 청평사 관광지에 이른다. 계곡이 수려하여 등산객들이 즐겨 찾는 곳으로 계곡을 따라 오르다 보면 7m 높이의 아홉 가지 소리를 낸다는 구성폭포가 있다. 그밖에 청평사 고려 정원 영지, 청평사 회전문, 3층 석탑 등이 있다. 이곳을 계속 오르면 오봉산 등산로와 연결된다. 청평사 관광지의 초입에는 다양한 먹거리가 있어 춘천의 토속음식들을 만나볼 수 있다.','033-244-1095','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_185%2F1441024015807YX0xc_JPEG%2F116277595473110_0.jpg'),
-(105,10,105,'신영','일상의 스트레스를 벗고, 위대한 자연 속에서 휴식의 옷으로 갈아입는 곳','033-269-8888','https://example.com/default_image.jpg'),
 (106,10,106,'라비에벨','자연 원형의 생태가 그대로 살아 숨쉬고 최고의 코스와 함께 도전과 변화, 평온과 휴식을 동시에 만끽하실 수 있습니다','033-245-7000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230515_299%2F1684128424291mIHWB_JPEG%2F1660711906293.jpg'),
 (107,9,107,'누리천문대','천체관측실, 천문우주체험관. 4D입체상영관, 플라네타리움 등 유익하고 알찬 시설을 갖춘 천문과학문화 공간, 군포시 대야도서관 4층, 5층에 있다.','031-501-7100','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180201_157%2F15174797733963tMME_JPEG%2F-xYXfWODBkiUgUCIinYk9L1y.JPG.jpg'),
 (108,16,108,'내원사계곡(내원사)','내원사 아래 울창한 숲 사이로 흐르는 이 계곡은 예로부터 소금강 또는 제2의 금강산으로 불릴만큼 자연경관이 빼어난 곳으로 계곡 곳곳에 독특한 바위가 특징이다.','055-374-6466','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_297%2F1441045630013l63pR_JPEG%2F13491464_0.jpg'),
 (109,16,109,'대운산자연휴양림','대운산 서북쪽 자락에 위치하여 깊고 웅장하면서도 물이 맑아 고요한 숲의 분위기를 느끼며 자연에서의 특별한 하루를 보낼 수 있는 휴양처다.','055-379-8670','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191030_126%2F1572399723676CBzfv_PNG%2Fcx0HgPiKquOVU0Cl6R5KuRNw.PNG.png'),
-(110,16,110,'법기수원지','부산 금정구 일원의 식수원 역할을 하는 상수원으로 가장 오래된 파란 취수탑이 있으며 청정한 자연과 수려한 풍광을 자랑한다.','055-392-5379','https://example.com/default_image.jpg'),
-(111,16,111,'양산시립박물관','양산의 역사와 문화를 담고 있으며 역사실, 고분실 등 주제에 맞는 공간들과 함께 다양한 전시를 볼 수 있는 문화 예술 행사와 교육의 장이다.','055-392-3314','https://example.com/default_image.jpg'),
 (112,16,112,'양산타워','자원 회수 시설의 굴뚝을 전망타워화하여 양산 전체를 조망할 수 있고 홍보관에서는 양산의 역사를 한눈에 볼 수 있다.','055-367-9026','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDExMDVfMTAx%2FMDAxNzMwNzg4NzUwMjQ4.gTHf6GJ0YtSOq5T9a4mwgJNVVEuH_jmxBedAu5w2Sykg.GAgeP3MVHaST--nYcvNmDB0iGIzAmdYF95MBBI6TmJ4g.JPEG%2F1000015616.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (113,16,113,'에덴밸리','국내 최남단 스키장이 있는 곳으로 리조트로 스키, 루지 등 다양한 레저를 즐길 수 있는 관광지이다.','055-379-8000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191112_178%2F157352459542969q0U_JPEG%2FFABEkWO1BzvPdUpPQduennnK.JPG.jpg'),
 (114,12,114,'백야 김좌진 장군 생가','백야 김좌진 장군 생가 : 일제강점기 독립운동가 김좌진 의 생가터. 충청남도 기념물 제76호','041-634-6952','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjZfNTQg%2FMDAxNzI5OTQxNTA4NjUy.0pYnXdv-3DzOY-8bTdwGWPgK5pm4Kv9MM4hXfzFxEy0g.Mx6msPw-vnHJN30rYhQQl4Ey1hUVn20VdQy7CuzL-Log.JPEG%2FIMG_20241020_082824.jpg'),
 (115,12,115,'한용운선생생가지','한용운선생생가지 : 1989년 12월 29일 충청남도 기념물 제75호 지정','041-642-6716','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDdfMjU4%2FMDAxNzI4MzAxNjgwMjEy.HXGkHn8spBiL4ouDywHEpYCAFJBgRUGMerm_4eWg-Sgg.J7WLtbzdjqMvQWlsfoiDj72j4I9iN2BFGQih6j4t_S4g.JPEG%2F1000050167.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (116,12,116,'성삼문 선생 유허지','성삼문 선생 유허지) : 국가유산','041-630-1221','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjJfMjIg%2FMDAxNzI5NTk2ODc0MjIw.VT9voR5hqzoPe-R1hZWc5D9nx8spfL9_P9B-I0w4XQog.9yT00TuhVnhrEpMGB81LYf7hKkkDwjB8gWkdWrlXO24g.JPEG%2FIMG_20241019_141913.jpg'),
-(117,12,117,'홍주성 역사관','홍주성 역사관 : 홍성 역사 연구, 발굴, 조사, 전시, 교육 기관','041-630-9240','https://example.com/default_image.jpg'),
-(118,12,118,'충남보훈관','충남보훈관 : 호국보훈을 기리는 전시장','041-635-1090','https://example.com/default_image.jpg'),
 (119,14,119,'기독교선교100주년기념관','기독교역사관, 유품전시관','061-772-7441','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEyMThfMjgx%2FMDAxNjM5NzYxNTc3NjQz.8EafPKUnvTe5AIm8uIkVlDUgRk2SbXbSOiYUDutz0GEg.V29_gl6p29Egg32Ewe6H62iU7E38VxKNXBVXfwCPjEkg.JPEG.gwangyangsi%2F17.jpg'),
 (120,12,120,'대천해수욕장','대천해수욕장은 젊음과 낭만+안락함과 자연미가 함께 어우러져 있는 곳이다. 젊은 연인들에게는 추억 만들기의 장소로서 또 가족 단위의 휴식처로서 해양스포츠의 메카로서 제반 요건을 충분히 갖추고 있다.','041-930-6810','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_295%2F1441038781982I4SWV_JPEG%2F157155537053107_0.jpg'),
 (121,12,121,'무창포해수욕장','1928년 서해안에서 최초로 개장된 해수욕장으로 백사장 길이 1.5km 수심 1 ~ 2m+백사장 50m+수온 섭씨 22도+경사도 4도의 해수욕장으로 주변에는 송림이 울창하여 해수욕과 산림욕을 함께 즐길 수가 있다.','041-930-6802','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_95%2F14410462444145ORCs_JPEG%2F11818809_0.jpg'),
@@ -1554,11 +1693,8 @@ INSERT INTO `trip` VALUES
 (133,12,133,'남당','대하 우럭 새조개 꽃게 등 사시사철 싱싱한 수산물을 맛볼수 있으며 잔잔한 은빛 수면으로 석양이 아름다움을 느낄 수 있음(2023.07.27.기준 미운영중)','041-630-1300','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200320_91%2F1584636541853Pnxah_JPEG%2FdbTtpKH-pnFbpg8qOqMMeHoq.jpg'),
 (134,2,134,'장림포구','배가 드나드는 강의 어귀로 조선시대 군사요충지였으며, 부네치아라 불림','051-220-4502','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200315_61%2F1584231309077Cu6ch_JPEG%2FwzdATqGwhOMsFluhC5MWsl91.jpeg.jpg'),
 (135,9,135,'소요산관광지','가을 단풍이 아름다워 예부터 경기의 소금강이라 일컬어졌으며 자재암 원효폭포 등의 관광명소가 소재하고 있다','031-860-2065','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240608_74%2F1717806648300V16YP_PNG%2F9.png'),
-(136,1,136,'헌인릉','사적 제 194호인 이곳은 동쪽의 헌릉과 서쪽의 인릉으로 구성되어 있다. 헌릉은 조선 제3대 태종과 원경왕후 민씨의 쌍봉릉이며, 인릉은 조선 제23대 순조와 순원왕후 김씨의 동원합동 형태이다.','02-440-0347','https://example.com/default_image.jpg'),
 (137,1,137,'매헌 윤봉길의사 기념관','윤봉길의사의 업적과 살신성인 정신의 높은 뜻을 선양하고 계승 발전시키키 위하여 1988년 준공되었다. 기념관 1층에는 유품과 생애사진이 전시되어 있으며, 2층에는 사무처, 매헌연구원, 세미나실, 윤봉길 도서관 등을 갖추고 있다.','02-577-9932','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_294%2F1441023271692F4pDj_JPEG%2F13338929_0.jpg'),
 (138,1,138,'고투몰','고속터미널 지하상가를 일컫는 고투몰은 카페, 음식점, 꽃시장 등 다양한 먹거리와 볼거리를 선사하는 곳이다. 의류, 신발, 각종 액세서리 등을 싸게 구입할 수 있으며, 계절에 맞는 만개한 꽃들을 구경할 수 있다.','02-535-8182','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA5MDFfNjIg%2FMDAxNzI1MTc3NTU3Njcw.Yhb3c_zxX6Ol0CAU7wb7o2Z1OE7DexUimYcgjRB3Fkgg.Nv_Z-Iis6kkrUqlb473KjGlpDF7rMnv_OnDVumcJuBIg.JPEG%2F1000052121.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(139,1,139,'세빛섬· 반포대교 달빛무지개분수','세빛섬은 세 개의 빛나는 섬이라는 의미로, 세계 최초로 물 위에 떠 있는 부체 위에 건물을 짓는 플로팅 형태의 건축물이다. 가빛섬, 채빛섬, 솔빛섬 등 3개의 섬이 다리로 연결되어 있고 미디어아트갤러리 예빛섬이 함께 조화를 이루고 있으며 컨벤션홀, 공연, 전시, 레스토랑 시설 등을 갖춘 복합문화공간이다.','1566-3433','https://example.com/default_image.jpg'),
-(140,10,140,'고씨굴 관광지','천연기념물 제219호로 지정된 석회동굴 관광지','033-375-6556','https://example.com/default_image.jpg'),
 (141,15,141,'성류굴 관광지','성류굴 주변 관광지','054-789-5402','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211103_21%2F1635907503127D6fvi_JPEG%2Fbanner_x.jpg'),
 (142,15,142,'백암온천 관광지','백암산 온천수를 이용한 온천관광지','054-789-5480','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_300%2F1441045549749bXxgs_JPEG%2F13490959_0.jpg'),
 (143,1,143,'용마폭포공원','동양 최대의 인공폭포가 있는 명소','02-2094-2965','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAyMDlfMTUx%2FMDAxNzA3NDYzMzU0OTc5.4DTyoO9SGTxWbiAbWlAr_O81fLcKUyiWEKraUaEN4X8g.kjE0WWlrnQy5oVLDw5-jmuTGyXfIGXsAZJWrOvKdSzcg.JPEG%2FIMG_20230419_002948_975.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
@@ -1570,13 +1706,7 @@ INSERT INTO `trip` VALUES
 (149,16,149,'오도산 자연휴양림','웰니스 관광지로 선정된 대표 힐링 관광지','055-930-3733','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAxMjlfMTM1%2FMDAxNzA2NTA0NTg0ODM2.rG_mUfTDqbEZ0xRqYPWCps2qHxMp_9I8pbn82UOKsNMg.2E4w9hzNME2UGqNjX63CGSXlte_h85BRsWLUKza-aT8g.JPEG%2F5170D032-D25D-403B-9831-E8F397C804DD.jpeg%3Ftype%3Dw1500_60_sharpen'),
 (150,16,150,'합천박물관','합천의 살아숨쉬는 역사와 문화가 담긴 관광지','055-930-4883','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MDJfNzMg%2FMDAxNzE3MjkwNDQ4NDMw.5CzsC9ydGnEsMhnrYq29a5J1_u-6Sr0B_l-rSE1P6KYg.vXM1KZmzGHX1f7L3f4js2hHYaLDbno7LhNO86rzdlJQg.JPEG%2FMTXX_MH20240602_095128360.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (151,16,151,'황매산군립공원','사계절 색이 바뀌는 도화지로 풍경이 일품인 대표관광지','055-930-4754','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_185%2F1441045641001nlvXr_JPEG%2F13491543_0.jpg'),
-(152,16,152,'영상테마파크&청와대세트장','국내 최대 영화, 드라마세트장으로 많은 프로그램이 촬영된 장소','055-930-8623','https://example.com/default_image.jpg'),
-(153,16,153,'황계폭포','떨어지는 폭포소리와 그 풍경이 예술인 자연의 신비','055-930-4663','https://example.com/default_image.jpg'),
-(154,14,154,'느랭이골자연리조트','편백숲 삼림욕장, 글램핑장, 별빛축제','1588-2704','https://example.com/default_image.jpg'),
-(155,14,155,'구봉산전망대','해발 473m 구봉산, 9.4m 봉수대, 광양만야경','061-797-2296','https://example.com/default_image.jpg'),
 (156,14,156,'광양항해양공원','공연장, 포토존, 산책로','061-797-3363','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMThfMzAw%2FMDAxNzI5MTg1MzA3NDcw.L0fFZhKO18k6GbcW9LXFHQBwgblShcsvPnKGMUYQ5I4g.XNc4y-Oz7m9SWoJ-23d1fynDYRWWisn58wrxJ1Y6V6Ig.JPEG%2F20241013_154602.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(157,14,157,'무지개다리','해상보도교량(L=300m, B=4m)','061-797-3363','https://example.com/default_image.jpg'),
-(158,14,158,'해오름육교','중마동과 금호동을 연결하는 이순신 해변관광 테마거리 랜드마크 육교 (L=155.2m)','061-797-3363','https://example.com/default_image.jpg'),
 (159,17,159,'용머리해안','마치 바다속으로 들어가는 용의 머리를 닮았다 해서 용머리해안으로 불림. 수천만년 동안 층층이 쌓인 사암층 암벽이 파도에 깎여 기묘한 절벽을 이루고 있음. (천연기념물 제526호. 제주도지질공원)','064-760-6300','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_66%2F14410456277055t8yW_JPEG%2F13491455_0.jpg'),
 (160,17,160,'감귤박물관','제주감귤의 역사와 문화. 산업현장을 의미있는 관점에서 전시한 박물관으로. 감귤 관련 전시물과 다양한 감귤 품종 및 이국의 식물을 관람할 수 있음. 또한 감귤과 관련한 다양한 체험 프로그램도 준비되어 있으며. 최근 개장한 감귤카페 꿈나다에서 주변 경치를 구경하며 맛있는 감귤 음료. 디저트를 저렴한 가격에 즐길 수 있음.','064-760-6400','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171215_281%2F1513304176404ulDBG_JPEG%2FEL3A0630.jpg'),
 (161,16,161,'벽계관광지','주변경관이 수려하며 물놀이장, 공연장, 캠프파이어장을 갖추고 있음','055-570-2512','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAzMTdfMTYw%2FMDAxNzEwNjg3MTUxNjc3.k1CYxrn-MvTi76DjWnARvc4P8INS-8yjdekiB1GsGjMg.Nz5zr9YT5dpaTpQvncNSeZ2X5IIS4i-Hg2UqyJOeXWcg.JPEG%2F20240317_121958.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
@@ -1587,28 +1717,20 @@ INSERT INTO `trip` VALUES
 (166,14,166,'홍길동테마파크','홍길동의 역사적 문화적 가치를 보존하고 있는 테마파크','061-390-7567','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMjNfMjI1%2FMDAxNjk4MDQxNzExMTUy.HKrBRrE0kU7A1P5GcBCtoGkdALyq74obE4kIOzKdPKEg.Y20cXw-Rew_glXPwHGzqUNZif4wg-U8_H9VdCxtTXm4g.JPEG.as130482%2FIMG_7200.JPG'),
 (167,4,167,'소래포구','실제 어선이 드나드는 수도권 유일의 재래포구','032-453-2140','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_259%2F1441040506475Cmmr3_JPEG%2F12935923_0.jpg'),
 (168,4,168,'소래습지생태공원','갯벌과 옛 염전지역을 다양한 생물군락지와 철새도래지로 복원시킨 생태공원','032-453-2140','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MDRfNzkg%2FMDAxNzI1NDUxOTA2NTI1.axSqWOSwF6EK0_7-2KrpuvO6BzBxBpgL7fKZZkMfghcg.hOZwyepvZLZ50f8r4SxarOClrRlCuXM7CyPXytdsxG8g.JPEG%2F20240817_155601.jpg'),
-(169,4,169,'소래철교','수인선 협궤열차가 다니던 철로교량으로 길이 126미터의 소래철교는 1994년 열차운행이 중단된 후 통행로로 이용','032-453-2140','https://example.com/default_image.jpg'),
-(170,1,170,'새남터 순교성지','조선 말엽 네 번에 걸쳐 일어난 천주교 박해 때 천주교 신자들이 처형당하면서 천주교 순교성지로 알려지게 되었다.','070-8672-0327','https://example.com/default_image.jpg'),
 (171,1,171,'남산&N서울타워','남산서울타워는 효율적인 방송전파 송수신과 한국의 전통미를 살린 관광 전망시설의 기능을 겸비한 국내 최초의 종합전파 탑으로 방송문화와 관광산업의 미래를 위해 건립되었습니다. 세계 유명한 종합 탑들이 그 나라 또는 그 도시의 상징적인 존재가 된 것처럼 남산서울타워 역시 지난 40여 년간 대한민국의 대표적인 관광지이자 서울의 상징물 역할을 해왔습니다.','02-2199-7240','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20230802_190%2F1690936349577rSMiF_JPEG%2FKakaoTalk_20230711_091030997.jpg'),
 (172,14,172,'나주시천연염색박물관','박물관','061-335-0091','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220208_271%2F1644297487236dpuhs_JPEG%2F%25C0%25FC%25B3%25B2%25B0%25F8%25BF%25B9%25C3%25A2%25C0%25DB%25C1%25F6%25BF%25F8%25BC%25BE%25C5%25CD_%25BB%25E7%25C1%25F8.jpg'),
 (173,14,173,'나주목문화관','박물관','061-332-5432','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200104_199%2F1578143899202TTvgT_JPEG%2FG1MStOi1HnywGDZDS9WmpHh_.jpeg.jpg'),
 (174,5,174,'별밤미술관 in 신창','코로나19 팬데믹으로 위축된 예술인들의 활동을 장려하고 대중 속에서 꽃피는 전시문화를 위해, 주민들이 즐겨 찾는 거점공간에 비대면 간이 미술관 5개소를 조성 및 운영하고있습니다.  별밤미술관은 탁 트인 야외 공원에 위치하고 있고 저녁 시간에 운영하기 때문에 직장에 다니거나 일을 하느라 바쁜 일상에서 일부러 시간을 낼 필요도 없습니다. 퇴근 후 동네 공원에서 산책하시거나 운동하시면서 좋은 작품을 여유롭게 즐기시기만 하면 됩니다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220728_264%2F1658969551939mlCMG_JPEG%2F%25BD%25C5%25C3%25A2_%25BA%25B0%25B9%25E3_%25BC%25F6%25C1%25A4.jpg'),
 (175,5,175,'별밤미술관 in 선운','코로나19 팬데믹으로 위축된 예술인들의 활동을 장려하고 대중 속에서 꽃피는 전시문화를 위해, 주민들이 즐겨 찾는 거점공간에 비대면 간이 미술관 5개소를 조성 및 운영하고있습니다.  별밤미술관은 탁 트인 야외 공원에 위치하고 있고 저녁 시간에 운영하기 때문에 직장에 다니거나 일을 하느라 바쁜 일상에서 일부러 시간을 낼 필요도 없습니다. 퇴근 후 동네 공원에서 산책하시거나 운동하시면서 좋은 작품을 여유롭게 즐기시기만 하면 됩니다.','062-960-3688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220728_134%2F1658969606774ohGqg_JPEG%2F%25BC%25B1%25BF%25EE_%25BA%25B0%25B9%25E3_%25BC%25F6%25C1%25A4.jpg'),
-(176,14,176,'한국대나무박물관','1981년에 죽물박물관이 개관된 후 전국 유일의 죽제품 주산지로서 보존, 전시, 시연, 판매 등 종합기능을 수행할 공간을 갖추어 대나무공예문화 전통 계승과 대나무공예 진흥의 계기를 마련하고자 1998년에 현재의 위치에 확장 이전하여 2003년에 한국대나무박물관으로 명칭을 변경하여 운영','061-380-2902','https://example.com/default_image.jpg'),
 (177,14,177,'한국가사문학관','가사문학 관련 문화유산의 전승, 보전과 현대적 계승, 발전을 위하여 2000년 10월 완공. 1만 6,556㎡의 부지에 2,022㎡ 규모의 한옥형 본관과 기획전시실(갤러리), 자미정, 세심정, 토산품전시장, 전통찻집 등의 부대시설을 갖추고 있음','061-380-2702','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_217%2F14410395692369VbSi_GIF%2F11796299_0.gif'),
-(178,14,178,'슬로시티삼지내마을','담양은 예로부터의 고택이 많이 남아 있으며 아직도 인근에 문화재가 많이 있다. 도심 인근의 농촌인데도 전통문화가 많이 남아 있어 현대와 전통이 조화를 이루고 있는 대표적 마을이기도 하다. 특히 삼지천 마을의 고택, 한옥마을에 펼쳐진 돌담길에서의 여유로운 산책은 방문객들의 슬로라이프 체험의 장이기도 하다.','061-380-3159','https://example.com/default_image.jpg'),
-(179,10,179,'후곡약수터','두개의 샘이 나란히 있으며 철분성분으로 바닥이 붉게 물들어있다. 위장에 좋은 탄산이온, 규산이온, 불소성분이 많이 함우된 양질의 광천수로 주변의 수려한 경관과 함께 관광 휴양지로 주목 받고 있다.','033-480-7204','https://example.com/default_image.jpg'),
 (180,14,180,'불회사','사찰','061-337-3440','https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2023_03_31_136%2F4d9ab078-cfca-11ed-bb22-a0369ffabc5c_01.jpg'),
 (181,14,181,'금성관','시도유형문화재','061-339-8615','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_235%2F14410164165871EPFj_JPEG%2F126273543533032_0.jpg'),
-(182,14,182,'도래마을(홍기옥 가옥)','중요민속문화재','061-336-3675','https://example.com/default_image.jpg'),
 (183,14,183,'정수루','전라남도문화재자료','061-330-8114','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_32%2F1441034403752Gdb3s_JPEG%2F20111804_0.jpg'),
 (184,14,184,'나주향교','시도유형문화재','061-334-2369','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_39%2F1441049804000uWrW2_JPEG%2F116879593826922_0.jpg'),
 (185,14,185,'완사천','시도기념물','061-339-8615','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MjRfMjYg%2FMDAxNzIxODEyMDAzMjA5.nK_LPDRjOnqtTy6MPZ8N3m-V8VEIysnvA-duLYonCCIg.BFGmSEcM2DvnOERivqEVdTUdG5JO_Um1bnOCczmpji8g.JPEG%2F%25B4%25EB%25C1%25F6_1_%25BB%25E7%25BA%25BB_2750.jpg'),
 (186,14,186,'목사내아','전라남도문화재자료','061-332-6565','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_209%2F1441019402955QnFc8_JPEG%2F19856714_0.jpg'),
 (187,14,187,'영모정','시도기념물','061-339-8615','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAzMDdfMTc5%2FMDAxNjc4MTUyODM3ODQ1.hbYEG9TNBpfGIL6KB1czEvAskzGhzo1b9oEqBvqGjZUg.-6fehiSh4iu2aBMlHEFCTncDQL4HX9sAGoJiwGvIv2cg.JPEG.huhasim%2F035A0802.JPG'),
 (188,14,188,'남고문','사적','061-330-7823','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMThfMjUz%2FMDAxNzI5MjYxNzk0NzY1.cfc1WD7U391h1q7coicJRqZZTTTX8CAa9X-36JkQYIkg.2Pygups0dEdrF8AoM_CSJ-6-iLU0sWBSdsiui4gGWS4g.JPEG%2FE7DD5619-579B-45D2-BEE2-3BCF7129CE8A.jpeg%3Ftype%3Dw1500_60_sharpen'),
-(189,14,189,'구)나주역','전라남도기념물','061-330-7823','https://example.com/default_image.jpg'),
-(190,14,190,'노안천주교회','등록문화재','061-336-8900','https://example.com/default_image.jpg'),
 (191,15,191,'문경짚라인','불정 자연휴양림 내에 위치한 짚라인, 난이도 및 코스길이가 다른 9개의 코스로 운영','054-553-1788','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230703_137%2F1688345292555TIG8A_PNG%2F%25BF%25A1%25C4%25DA%25C5%25D7%25C0%25CE%25B8%25D5%25C6%25AE%25C4%25DA%25B8%25AE%25BE%25C6.png'),
 (192,15,192,'문경 종합온천','중탄산 온천수 및 알칼리성 온천수 등 신진대사를 촉진하는 2가지 온천수가 있음','054-571-2002','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180127_38%2F1517019766816VL0y6_JPEG%2FplPG9mlUZwYPH4RoghNWUFAN.JPG.jpg'),
 (193,15,193,'문경 활공랜드','문경읍(문경온천)에서 동쪽방향으로 4km쯤 떨어진 고요리 단산에 위치하며 이륙장 2개소와 착륙장 3개소를 갖추고 있음','054-571-4675','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230426_24%2F1682485751714prIlF_JPEG%2FKakaoTalk_20230426_103158552.jpg'),
@@ -1616,11 +1738,9 @@ INSERT INTO `trip` VALUES
 (195,14,195,'국사봉랜드','숙박, 물놀이장, 야외공연장','061-794-8724','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170601_162%2F1496293801188Qck7v_JPEG%2F186480508773949_0.jpeg'),
 (196,1,196,'노들섬','서울특별시 한강위에 있는 섬. 동작구와 용산구 사이에 있으며 섬 사이로 한강대교가 지나간다. 행정구역상으로는 용산구 이촌동에 속해 있다. 원래 이름은 중지도(中之島)였으나 1995년 역사바로세우기가 시행되면서 일본식 지명 개선사업이 이루어졌는데 이 때 노들섬으로 개명되었다.','02-749-4500','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201026_202%2F1603703640038bk7Nl_JPEG%2FcaD2qhZpl6nFXhusvsMGJ02n.jpg'),
 (197,12,197,'예당관광지','예당호를 배경으로 예당호 출렁다리, 예당호 조각공원, 느린호수길, 캠핑장, 야영장이 조성되어 있어 가족단위 휴양객이 즐길수 있는 관광지','041-339-8282','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_108%2F1441010645588TeJCo_JPEG%2F126172585655192_0.jpg'),
-(198,12,198,'덕산온천관광단지','1917년 처음으로 탕을 이용한 온천으로 개장됐으며, 49도씨 이상의 천연중탄산나트륨 온천수로 전국 최고의 온천수로 인정받고 있다.','041-339-7303','https://example.com/default_image.jpg'),
 (199,15,199,'한국코미디타운','한국코미디역사를 재조명하고 관련 자료를 체계적으로 보존하고 있다. 주말이면 코미디 공연 등이 열려 사람들에게 웃음을 선사한다.','054-372-8700','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240907_87%2F1725679632374Uo3mO_PNG%2F%25B4%25EB%25C7%25A5%25BB%25E7%25C1%25F8.PNG'),
 (200,15,200,'청도소싸움미디어체험관','소싸움의 유래부터 오늘날의 소싸움까지 알수 있다. 체험장, 4D영화관, 유아놀이관 등 편의시설을 갖추고 있다.','054-373-2076','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220117_77%2F1642409266134e3Au3_JPEG%2F20220111_%25C0%25FC%25B0%25E6.jpg'),
 (201,15,201,'청도레일바이크','청도천변 주변으로 폐선된 옛 철길을 테마로 왕복 5km의 레일바이크를 체험할 수 있다. 자동화시스템을 이용해 오르막도 편하게 오를 수 있다.','054-373-2426','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240401_272%2F17119553971389qsfK_JPEG%2F%25C3%25BB%25B5%25B5%25B7%25B9%25C0%25CF%25B9%25D9%25C0%25CC%25C5%25A9_%252883%2529.jpg'),
-(202,16,202,'표충사','표충사는 유생들을 교육하고 성현들이 제사하는 표충서원이 사찰영역안에있어 불교와유교가 한자리에 공존하는 특색있는 사찰','055-359-5639','https://example.com/default_image.jpg'),
 (203,15,203,'부석사관광지','소백산 자연환경을 배경으로 한 천년고찰 부석사를 직접 참여하고 머무르는 다양한 체험 및 관광활동 제공','054-639-6617','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_210%2F1441013642733wJsDq_JPEG%2F106977536648820_0.jpg'),
 (204,17,204,'절물자연휴양림','제주시에서 20분거리에 위치해 있으며, 50여년생 삼나무조림지와 자연림이 조화를 이루는 독특한 경관으로 전국 국립자연휴양림 중 매년 최다 방문객을 바랑하고 있다. 또한 유아숲체험원. 숲해설. 목공예 등 산림체험프로그램을 운영하고 있다','064-728-1510','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_257%2F1441001040998abUva_JPEG%2F13165795_0.jpg'),
 (205,17,205,'노루생태관찰원','100여 마리의 노루를 관찰할 수 있고, 자연학습과 생태체험, 오름산행을 즐길 수 있는 열린 시민의 공간입니다','064-728-3611','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDExMDlfMTU4%2FMDAxNzMxMTU2MzA5NjQ4.rbcR01FFJy9GTsE1FS9EPKfy_v02kup4uCYDEphyPlEg.1tGCU5MfnBFWodbK6qm9Qx8Osa4cNIB6_ZsE_gBr_osg.JPEG%2FBE2C5AB3-143D-49EB-AC46-6705D436C27F.jpeg%3Ftype%3Dw1500_60_sharpen'),
@@ -1631,18 +1751,14 @@ INSERT INTO `trip` VALUES
 (210,14,210,'성기동','성기동은 왕인박사의 탄생지로 추정되는 곳으로 왕인박사유적지와 함께 탄생지, 문산재, 양사재, 상대포, 회사정 등 왕인박사 관련 관광자원이 분포되어 있다. 매년 4월이면 왕인문화축제가 열리고 있어 다양한 체험 및 관람을 즐길 수 있다','061-470-6653','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_192%2F1441013238278L3TOg_JPEG%2F126258568535587_0.jpg'),
 (211,14,211,'마한문화','영산강 유역에 분포되어 있는 고대 옹관 고분을 이해함으로써 영산강 유역의 독자성이 가득한 고대사를 조명하기 위해 조성','061-470-6672','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_167%2F1441018448143SVUiq_JPEG%2F96069565432904_0.jpg'),
 (212,14,212,'영산호관광지','1981년 영산강 하굿둑이 준공되면서 만들어진 인공호수인 영산호를 중심으로 조성된 휴양지이다.','061-462-2798','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzExMDZfMjg1%2FMDAxNjk5MjYwNDcwMTY3.14q0jhvoL7KwASYAwLHw8fIIZWRt0OFnlsnA4BrmNqwg.xiCDvA_VI0DhbM2Xbu0YojBhjgDT0KAXqm5jcv_uJIwg.JPEG%2F20231104_175740.jpg%3Ftype%3Dw1500_60_sharpen'),
-(213,2,213,'요트올림픽동산지구','360여척의 요트를 계류할  수 있는 요트경기장이 있는 곳으로 요트와 보트 등이 파란 바다와 마린시티의 마천루를 배경으로 어우러져 이국적인 풍경을 자아내는 곳이다. 각종 국제대회는 물론 해양스포츠와 국제영화제를 비롯한 다양한 문화행사가 개최된다','051-749-4081','https://example.com/default_image.jpg'),
 (214,2,214,'동백섬','해운대해수욕장 남쪽 끝에 위치한 동백섬은 율지와 연계된 육계도로 동백섬의 자연 그대롱를 공원으로 조성한 곳으로 2005년 APEC 정상회의 장소인 누리마루 APEC하우스가 자리해 있다.','051-749-4081','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220804_113%2F1659588284449PGvc5_JPEG%2FUntitled-8.jpg'),
 (215,2,215,'해운대해수욕장','6월부터 9월까지 해수욕장을 개장하여 해수욕을 즐길 수 있다. 수심이 얕고 조수의 변화가 심하지 않아 해마다 천만 명이 넘는 피서색이 찾는다. 또한 매년 해수욕장 개장에 맞춰 다양한 행사와 축제가 개최된다','051-749-4081','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_219%2F1440992305953sjrCF_JPEG%2F157155537056075_0.jpg'),
 (216,2,216,'달맞이동산지구','벚나무와 송림이 울창하게 들어찬 오솔길로 드라이브 코스로 유명하다. 달맞이 고개 일대에서는 다양한 예술작품을 만날 수 있고, 특히 보름날 달빛에 어우러진 바다 정취는 데이트 코스로 유명하다.','051-749-4081','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160202_115%2F1454385189529mckw4_JPEG%2F176077617170449_0.jpeg'),
-(217,16,217,'맹종죽테마공원','맹종죽을 이용한 창조적 활용과 보존을 통하여 죽림욕을 이용한 치유，바다경관과 환경예술을 접목한 경관치유，맹족죽을 이용한 체험놀이치유가 가능한 죽림테라피 공간입니다.','055-637-0067','https://example.com/default_image.jpg'),
 (218,16,218,'거제박물관','거제의 역사와 자료를 수집，정리，연구전시하고 있는 비영리 법인인 거제 문화재단의 사업기관','055-687-6790','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_75%2F144103255284017LgF_JPEG%2F116070517863541_0.jpg'),
 (219,16,219,'거제시농업개발원','지역실정에 맞는 농업기술과 지역소득작물을 연구개발 보급하여 농업인의 소득을 높이고，도시민에게는 농업 현장체험과 사계절 꽃 및 난지식물을 만날 수 있는 농업테마공원','055-639-6421','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241007_1%2F1728290357096IOSBq_JPEG%2F2024_18th%25B0%25C5%25C1%25A6%25BC%25B6%25B2%25C9%25C3%25E0%25C1%25A6_%25C6%25F7%25BD%25BA%25C5%25CD%2528%25B0%25A1%25B7%25CE%2529_0827_out_%25281%2529_1.jpg'),
-(220,16,220,'거제요트학교','요트 산업의 활성화와 해양레저 스포츠 인구의 저변 확대는 물론 요트，윈드서핑을 비롯한 해양레저 스포츠의 철저한 교육 등 요트인구 저변 확대','055-682-1100','https://example.com/default_image.jpg'),
 (221,16,221,'씨라인','덕포해수욕장의 맑고 푸른 바다 위를 ’한마리 새처럼 자유롭고 짜릿하게 활강하면서 즐기는 체험시설’을 의미한다.','055-688-2351','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_112%2F14410681873506uh7I_JPEG%2F166255514032506_0.jpeg'),
 (222,14,222,'진남관','국보 제 304호 국내 최대 단층목조건물로 조선시대 400여 년간 조선수군의 본거지로 이용되었던 역사의 현장이다. 2020년 12월까지 보수공사중이다.','061-659-5710','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_104%2F1441013559439Y4DAP_JPEG%2F107157505123988_0.jpg'),
 (223,14,223,'향일암','우리나라 4대 관음기도도량 중 하나로 전국 최고의 일출명소이다. 644년 원효대사에 의해 창건되었다고 전해진다.','061-644-0309','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220326_181%2F1648261690350VKE9j_JPEG%2F2%25BF%25F9.jpg'),
-(224,13,224,'진안고원치유의숲','전국 최초로 설립된 환경성질환 예방교육시설이다. 생활치료 공간으로 교육관과 생활관, 체험관, 유기농식당을 갖추고 있다. 방학과 주말은 물론 평일에도 아토피로 고통받는 어린이와 가족들이 함께행활하면저 치유할수 있다','063-433-1666','https://example.com/default_image.jpg'),
 (225,13,225,'가위박물관','세계유일의 가위박물관, 진안가위박물관, 마이산북부에 위치하고 세계 희귀 가위 1500여점을 소장','063-430-8745','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240807_28%2F1722992151182Ax0oS_JPEG%2F20240807_095247.jpg'),
 (226,2,226,'영도관광안내센터','부산의 새로운 관광명소로 각광받고있는 영도대교의 도개모습을 감상하고 영도관광에 필요한 종합서비스를 제공받을 수 있다.','051-419-4048','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210205_128%2F16125039031580mHTw_JPEG%2FjlLP1R34nMasDlKLfHDiFi3C.jpg'),
 (227,13,227,'오수의견관광지','재정비 공사중(24.12월까지)','063-640-4671','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA0MTdfMjU5%2FMDAxNjgxNjk0ODQ3OTE5.EWijn9Ibo0ImMfMJm4C_IHrZ580LM6lR8w8J8mJiEBMg.r5QzB4U8FEmR5HwCjNwwIMRf1JIG5W_dnt7wfIxL7Twg.PNG.nanum_in%2F05.png'),
@@ -1653,102 +1769,48 @@ INSERT INTO `trip` VALUES
 (232,16,232,'씨월드','대한민국 최대의 돌고래 체험시설로 돌고래 만지기，악수하기，돌고래에게 먹이주기 등 다양한 체험 및 교육프로그래을 즐길 수 있다.','055-682-0330','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160525_64%2F1464102754377mIS3a_JPEG%2F176475404253064_0.jpeg'),
 (233,16,233,'알로에테마파크','알로에를 화분에 심어가져가거나 족욕을 즐기는 등 다양한 체험을 할 수 있는 테마파크','055-632-9907','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDAxMDdfMTkw%2FMDAxNzA0NjAxNTY3Nzg1.LE6hE1F7c6tkm3CaGdq659hZTXizSH7YxiynRSM9aCQg.NwjZZWJ3POsPoE9EW4mndeNXso5NDdv90eJijrldOVkg.JPEG%2F1703839273300.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (234,16,234,'노을이물드는언덕','푸른 빛 바다와 붉은 노을이 어우러져 아름다운 풍경을 자아내는 곳','055-639-4183','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MDNfMTc0%2FMDAxNzE3Mzg3MDY5MDE2.g3i6Zi0lY5oC4KE6LjTgrZImvu6RmthHpTFgcgwRDRgg.YFOTeWQWbcF5Qp79U5cOyqoQdyCA96I_Mm4qLF04xXQg.JPEG%2F20240601_163553.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(235,16,235,'가조수협효시공원','우리나라 수산업협동조합의 처음 시작된 역사적 의미 기념하여 조성함.','055-639-8341','https://example.com/default_image.jpg'),
 (236,15,236,'하회관광지','하회마을등 주변의전통문화자원과 연계된 관광여가단지','054-840-3797','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210513_222%2F16208680644751e7vd_JPEG%2Fbanner_x.jpg'),
 (237,15,237,'안동문화관광지','운동+숙박+휴양시설을 갖춘 체류형복합문화단지','054-840-5817','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211103_240%2F1635907268399WNDqt_JPEG%2Fbanner_x.jpg'),
 (238,14,238,'화순온천','온천휴양지','061-379-3532','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20220926_125%2F1664179059564C4kII_JPEG%2F%25B8%25DE%25C0%25CE_1242x1242_1.jpg'),
 (239,14,239,'도곡온천','온천휴양지','061-379-3532','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191112_141%2F1573548039482A9url_JPEG%2F7_PJqdIWHLYhpuKDxYt6JsDC.jpeg.jpg'),
-(240,14,240,'운주사','군립운주사문화관, 운주사 사찰','061-379-3532','https://example.com/default_image.jpg'),
-(241,10,241,'삼척해수욕장','길이 1㎞+폭 85m의 넓은 백사장+ 맑고 깨끗한 동해해수욕장+ 푸른 송림+소규모의 항포구+ 해안의 기암괴석과 모래+ 산이 분포되어 있으며+ 남쪽으로 해안선을 끼고 해안도로가 4.2KM 개설되어 관광객들로부터 많은 호응을 얻고 있음','033-570-3547','https://example.com/default_image.jpg'),
-(242,10,242,'맹방관광지','해수욕장을 중심으로 한 해변관광지로 동해의 맑은 물과 명사십리라 일컬어진 긴 백사장과 인접 농경지 사이에 평행하게 형성된 곰솔 등의 자연적 환경 요소를 갖춤','033-570-3547','https://example.com/default_image.jpg'),
-(243,10,243,'장호관광지','운동오락시설+오토캠핑장+카라반+야영시설 등 관광객 편의시설이 조성되어 운영되고 있으며+해상로프웨이 및 조경휴게지 등의 자연경관 감상을 위한 시설이 조성되어 운영되어 해마다 많은 관광객들이 방문','033-570-3547','https://example.com/default_image.jpg'),
-(244,10,244,'초당관광지','자연환경과 더불어 수려한 자연 지형을 그대로 살린 친환경 골프장은 기후 영향을 비교적 덜 받아 사계절 체류형 관광지의 면모를 지니고 있음','033-570-3547','https://example.com/default_image.jpg'),
-(245,15,245,'보문관광단지','사계절 관광객이 이용할 수 있는 온천형 관광지, 우아하고 정취있는 전통적 이미지가 창출될 수 있는 내륙형 관광 휴양지','054-779-6082','https://example.com/default_image.jpg'),
-(246,15,246,'선바위관광지','절벽과 강을 사이에 두고 바위를 깎아 세운 듯한 선바위를 볼 수 있음','054-680-5363','https://example.com/default_image.jpg'),
-(247,1,247,'예술의전당','수준높은 문화예술 콘텐츠와 편리한 시설, 감동적인 서비스가 조화를 이루는 우리나라 대표 복합문화공간이다. 예술가들의 열정이 고객 감동으로 이어지는 예술의 전당은 연간 300만명의 관람객이 찾는 문화놀이터이자 도심 속 문화 휴식공간이다.','02-580-1300','https://example.com/default_image.jpg'),
-(248,1,248,'국립국악원','전통음악 및 무용의 계승과 발전을 위해 설립된 국립 음악기관으로 각종 국악 공연 및 연구, 진흥사업 등 다양한 활동을 펼치고 있다. 산하에 정악단, 무용단, 민속악단, 창작악단 등 네개의 전속 예술단과 예악당, 우면당, 풍류사랑방, 연희마당 등의 공연장, 국악박물관, 국악연수관 등의 시설을 갖추고 있다.','02-580-3300','https://example.com/default_image.jpg'),
 (249,1,249,'서울 해병대사령부 초대교회','1951년 해병대 초대교회로 시작되었으며, 우리나라 군(軍)에 남아있는 교회 중에서 가장 오래된 교회이다.','1577-9090','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181217_232%2F1545016466494sXXrp_JPEG%2F9FNgV4ARnhSp1e3HSlQLoICb.jpg'),
-(250,2,250,'오륜대한국순교자박물관','한국 가톨릭 순교자들의 신념을 기억하기 위해 건립된 오륜대한국순교자박물관에는 한국 순교자들의 유물뿐만 아니라 역사적 의미가 있는 자료들도 함께 전시·보존하여 더욱 의미가 있다.','051-519-4081','https://example.com/default_image.jpg'),
 (251,2,251,'부산대젊음의거리','청춘들의 꿈, 열정, 자유가 넘치는 부산대 젊음의 거리는 색다른 문화공연과 프리마켓 등 다양한 행사가 날마다 이어진다. 골목골목 위치한 상점에서 청춘의 열기를 느낄 수 있다.','051-519-4081','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA3MjJfMTMw%2FMDAxNzIxNjQxNTAwMjI1.CqAhV2tjpxPfI-tTiExzXq7tdj2ErJNgWmX9mHYCa-Mg.Amd01itxIxsG63jcs985mLt5oGdRjiiZR6Nue2vVzzcg.JPEG%2F20240722%25A3%25DF111652.jpg'),
-(252,2,252,'금정산성마을','금정산성마을은 금정산 해발 400m의 분지에 아담히 자리잡은 산성마을로 금정산 능선이 병풍처럼 둘러싸고 있는 아름다운 자연환경을 갖추고 있어 휴일이면 이곳을 찾는 등산객들의 발길이 끊이지 않는다.','051-519-4081','https://example.com/default_image.jpg'),
-(253,16,253,'산청전통한방휴양관광지','엑스포주제관, 한의학박물관, 동의전 등 머무를 수 있는 체류형 관광지','055-970-6633','https://example.com/default_image.jpg'),
-(254,16,254,'산청중산관광지','수려한 자연경관과 지리산 천왕봉을 조망할 수 있는 산악형 관광지','055-970-7222','https://example.com/default_image.jpg'),
-(255,16,255,'산청금서관광지','수려한 자연경관을 조망할 수 있는 가족단위 형태의 관광지','055-970-7222','https://example.com/default_image.jpg'),
-(256,1,256,'미당서정주의 집','시인 미당 서정주가 1970년부터 2000년까지 실재 거주하던 곳으로 생활 흔적이 그대로 남아있음','02-879-5625','https://example.com/default_image.jpg'),
 (257,1,257,'강감찬전시관','강감찬장군과 귀주대첩 관련 자료를 전시하는 전시관','02-879-5625','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDExMThfMTk3%2FMDAxNzMxODkwMDkzMDc1._44oGto5as_dXghDMcptd1eOMGYO5U4UpfoCJNVCqAog.qALufJXkbQRSI0wmwWOS_KMtkHpSV8uOMlExcRypQ0Qg.JPEG%2F900%25A3%25DF20241117%25A3%25DF180602.jpg'),
-(258,15,258,'주왕산 관광지','체험+체류형 종합휴양관광지','054-870-6239','https://example.com/default_image.jpg'),
-(259,14,259,'우수영관광지','이순신장군의 명량대첩의 감동이 살아있는 관광지','061-530-5541','https://example.com/default_image.jpg'),
-(260,14,260,'땅끝관광지','한반도의 최남단이자 삼천리 금수강산의 시작점으로 희망을 상징하는 관광지','061-530-5544','https://example.com/default_image.jpg'),
-(261,2,261,'박차정의사생가','박차정의사 생가 복원사업은 항일독립운동가이자 한국여성해방운동의 선구자인 박차정의사의 남편 김원봉(임시정부국무위원, 북한노동상, 국가검열상)의 사회주의적 성향으로 군사정부시절 대우를 받지 못하다가 1995년 광복 40주년에 문민정부로부터 “대한민국 건국훈장 독립장”을 추서받은 지 10년만인 2005년 7월 8일 완공하였다.','051-860-7880','https://example.com/default_image.jpg'),
-(262,2,262,'금강공원','울창한 숲과 기암절벽, 골짜기 마다 흐르는 맑은 시냇물 등이 신선경에 들어선 느낌을 주며, 봄철부터 겨울철에 이르기까지 인적이 끊이지 않는 근린공원으로서 남녀노소 누구나가 즐길 수 있는 휴식처로 사랑을 받고 있다','051-860-7880','https://example.com/default_image.jpg'),
-(263,2,263,'허심청','허심청은 종래의 위락 시설과는 달리 편안하고 즐거운 온천욕과 휴식 및 체력단련을 통한 건강증진을 추구하는 새로운 유형의 도시형 온천건강랜드이다','051-550-2200','https://example.com/default_image.jpg'),
-(264,2,264,'복천박물관','삼한시대부터 삼국시대까지 부산의 역사를 보여주는 고고전문박물관으로서, 현재 7차에 걸친 발굴조사로 밝혀진 169기의 유구와 각종 토기 및 철기류 등의 유물을 종합 전시하고있다','051-550-0311','https://example.com/default_image.jpg'),
-(265,2,265,'충렬사','충렬사는 임진왜란 때 순절한 동래부사 송상현 공을 모시기 위해 1605년(선조 38년) 당시의 동래부사 윤훤(尹暄)이 동래읍성 남문 근처의 농주산에 송공의 위패를 모신 송공사(宋公祠)를 지어 매년 제사를 지낸 것이 그 시초이다. 그 후 1624년(인조 2년) 선위사(宣慰使) 이민구의 청으로 충렬사라는 사액(賜額)이 내려짐에 따라 송공사는 충렬사로 이름이 바뀌었다.','051-523-4223','https://example.com/default_image.jpg'),
-(266,2,266,'해양자연사박물관','1994년 6월 10일 동래구 온천동 금강공원 내에 개관한 부산해양자연사박물관은 전국 최초, 최대규모의 해양자연사분야의 전문박물관으로','051-593-4944','https://example.com/default_image.jpg'),
-(267,9,267,'반월호수','순환산책로가 조성되어 있고 아름다운 풍경으로 유명한 장소이다.','031-392-3000','https://example.com/default_image.jpg'),
-(268,9,268,'초막골 생태공원','수리산이 가진 자연적 환경과 조선시대 역사유적 등의 문화유산을 겸비한 생태문화공간이다.','031-392-3000','https://example.com/default_image.jpg'),
-(269,9,269,'철쭉동산','빈틈없이 심긴 철쭉꽃이 만개한 모습은 많은 사람들에게 사랑을 받으며 군포의 대표축제로 자리매김하였다.','031-392-3000','https://example.com/default_image.jpg'),
-(270,9,270,'수리사','진흥왕 때 세워진 수리사는 6.25전쟁을 거치며 모든 건물들이 소실되었다가 꾸준히 복원되어 오늘에 이르고 있다.','031-438-1823','https://example.com/default_image.jpg'),
 (271,9,271,'물누리체험관','물과 관련된 다양한 체험프로그램이 있는 물누리체험관','031-390-8688','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240206_144%2F1707190200243JNLEY_JPEG%2F%25B9%25B0%25B4%25A9%25B8%25AE%25C3%25BC%25C7%25E8%25B0%25FC.jpg'),
-(272,2,272,'좌천동굴','일제강점기때 방공호이자 한국전쟁때 피난처였던 역사를 가진 좌천동의 동굴','051-440-4711','https://example.com/default_image.jpg'),
-(273,2,273,'만화카페','동구 전역의 산복도로, 북항을 열기구 형태의 VR로 체험할 수 있고, 웹툰 도서 읽을 수 있다.','051-440-4711','https://example.com/default_image.jpg'),
 (274,2,274,'명란브랜드연구소','명란을 토대로 한 지역특화 미식관광 브랜딩 추진의 일환으로 지어진 공간이다.','051-440-4714','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240702_68%2F1719908795951oRHfd_JPEG%2F%25B8%25ED%25B6%25F5%25BA%25EA%25B7%25A3%25B5%25E5_%25BF%25AC%25B1%25B8%25BC%25D2.jpg'),
-(275,10,275,'속초해수욕장','해안선 길이 약2km, 백사장 길이 약 500m이며 수심이 얕아 가족단위 관광객이 선호하는 속초시 대표 관광지이다.','033-639-2544','https://example.com/default_image.jpg'),
-(276,10,276,'척산온천','1971년 설립된 온천장으로 지하 4,000km 심도에서 발생한 온천수를 이용하며 설악산과 근접한 위치에 자리잡고 있다.','033-639-2544','https://example.com/default_image.jpg'),
-(277,12,277,'태고사','대둔산 최고봉 마천대 다음 제2봉우리 낙조대 아래 동북쪽에 자리 잡고 있는 금산의 고찰이다.','041-750-2273','https://example.com/default_image.jpg'),
-(278,12,278,'개삼터','신비의 영약 인삼의 시배지','041-750-2257','https://example.com/default_image.jpg'),
 (279,14,279,'대광해수욕장','넓은 백사장과 주변 섬들의 경관 등 천혜의 자연환경을 지님','061-240-4049','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_245%2F14411099676291zjBN_JPEG%2F166670538659681_0.jpeg'),
 (280,16,280,'실안관광지','전통 물고기 잡이 죽방렴과 전국에서 빼어난 노을을 관망할 수 있음.','055-831-2731','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210817_41%2F1629160791820clYb2_JPEG%2FFnUsf7_OjOYJmKH5tBpr60YZ.JPG.jpg'),
-(281,13,281,'변산해수욕장','국립공원 변산반도에 위치한 노을이 아름다운 해수욕장','063-580-4739','https://example.com/default_image.jpg'),
 (282,13,282,'위도해수욕장','산들이 감싸고 있는 아담한 모래사장과 맑은 물이 아름다운 위도의 해수욕장','063-583-3804','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA2MDNfMjUy%2FMDAxNTkxMTc3NjIxNzU3.kgIpf1oB2XN32StWY3PMJX3p8s6jgLWtmhvqRJtbBeAg.zgKlmgbEIAufY6dACDbvqsPaf2bxSr2EXDNJq32nXw4g.JPEG.flour429%2FIMG_0470.jpg'),
 (283,13,283,'모항해수욕장','아담한 백사장과 소나무 밭이 조화를 이루는 해수욕장','063-580-4738','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_250%2F1441038754767wGIhJ_JPEG%2F157155523134304_0.jpg'),
 (284,9,284,'광명동굴','1912년 일제가 자원수탈을 목적으로 개발을 시작한 광명동굴(구.시흥광산)은 일제강점기 징용과 수탈의 현장이자 해방 후 근대화ㆍ산업화의 흔적을 고스란히 간직한 산업유산이다. 1972년 폐광된 후 40여 년간 새우젓 창고로 쓰이며 잠들어 있던 광명동굴을 2011년 광명시가 매입하여 역사ㆍ문화 관광명소로 탈바꿈시켰다. 광명동굴은 산업유산으로서의 가치와 문화적 가치가 결합된 대한민국 최고의 동굴테마파크라는 평가를 받고 있으며 연간 100만 명 이상의 관광객이 찾는 세계가 놀란 폐광의 기적을 이루었다.','070-4277-8902','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200729_59%2F1595990067365fXGAP_JPEG%2F%25B7%25D1%25B8%25B55.jpg'),
-(285,2,285,'이바구공작소','산복도로 사람들의 삶과 지역문화를 전시하는 아카이브센터이다','051-440-4711','https://example.com/default_image.jpg'),
 (286,2,286,'장기려더나눔센터','장기려박사의 뜻을 기리는 기념관이다','051-440-4711','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA5MjJfNzQg%2FMDAxNjk1MzU0NjI3NjI2.PnsbVwmPX5hlu927AW2Lm6wVgTsHx516E0FKRrsZljEg.sJwm9fw2qQXJKMbN5FKud7KvtzlDJLmF6VXUsPhPMfEg.JPEG.bsdonggublog%2F%25B4%25F5_%25B3%25AA%25B4%25AE_%25C0%25E5%25B1%25E2%25B7%25C1_%25B1%25E2%25B3%25E4%25B0%25FC_%252877%2529.jpg'),
-(287,2,287,'이바구충전소','운영준비중','051-440-4712','https://example.com/default_image.jpg'),
-(288,2,288,'168계단 부대시설','운영준비중','051-440-4712','https://example.com/default_image.jpg'),
 (289,2,289,'김민부전망대','부산 동구출신의 김민부 시인을 기리기위해 만들어진 전망대이다. 운영준비중','051-440-4712','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MzBfMTMy%2FMDAxNzE5NzQwMTE3MDYw.gTkOoAh1ifbfmJnSK2rKU-ULr383EH5TMjXDT3RbFNEg.t6L1Psgg1BdMNwvfGsN0FuN-lKu7lYdmwq398OR5uxQg.JPEG%2F20240630_170452.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(290,2,290,'유치환의 우체통','청마유치환선생을 기리기 위해 지어진곳 3층에 그리움이있는 느린우체통이 명소이다','051-440-4714','https://example.com/default_image.jpg'),
-(291,2,291,'소흥관(한중우호센터)','소흥시와 동구의 우호계약을 맺은 기념으로 만들어진곳으로 한복과 치파오체험을 할수있다','051-440-4711','https://example.com/default_image.jpg'),
-(292,2,292,'만화체험관','관광객의 볼거리와 재래시장 활성화를 위해 조성된 웹툰거리 내에 위치한 체험관','051-440-4711','https://example.com/default_image.jpg'),
-(293,2,293,'안용복기념 부산포개항문화관','부산포개항의 역사를 기억하고 독도를 수호한 안용복장군의 정신을 기리기위해 만들어진 문화관이다','051-440-4711','https://example.com/default_image.jpg'),
-(294,14,294,'가정역(섬진강출렁다리)','가정역은 기차마을을 떠나 13km를 달려온 증기기관차와 침곡 약을 출발하여 5.2km를 굴러온 레일바이크의 종착역이다.원래 전라선 철로에는 없었던 역인데 증기기관차 운행과 함께 순수한 관광 목적으로 지어졌다. 통나무집을 연상케 하는 가정역의 외관은 마치 알프스 산악 기차역 같은 모습을 하고 있어 관광객들의 눈길을 끈다.섬진강 출렁다리는 국내 보도 현수교 중 가장 긴, 길이 200m, 폭 3m의 규모라 한다. 주 케이블에 보조 케이블을 매달아 보도 강판을 지탱하는 보강 거더(girder)에 연결했다. 따라서 바람에 흔들리거나 많은 사람들이 건너게 되면 출렁거리도록 제작되었다.증기기관차로 가정역에 도착하면 출발시간까지 30 남짓 여유시간이 주어진다. 이곳에 머무는 이들을 ’추억과 향수’에 젖어들게 하기엔 충분한 시간이다.가정역이 ’아름다운 역’으로 기억될 수 있는 것은 지척에 우리나라 사람들에게 고향의 강으로 여겨지는 섬진강이 흐르고 있어서다. 가정역에 내린 승객들은 강을 가로지르는 출렁다리를 건너가서 자연스럽게 섬진강을 만난다.그리고 강변을 산책하면서 더 가까이서 섬진강 풍경을 감상하게 된다. 따라서 이곳을 처음 찾는 이들에게 가정역은 섬진강과 동의어로 여겨진다. 강을 건너올 때는 사람만 다닐 수 있는 출렁다리를 이용하지만, 다시 가정역으로 건너갈 때는 대개, 아래쪽에 설치된, 사람과 차량이 함께 통행할 수 있는 두계 세월교를 이용한다. 이 다리는 강물이 불으면 물속에 잠기게 되는 잠수교다. 가정역에서 기다리고 있는 증기기관차가 긴 기적소리를 울리면 출발시간이 임박했음을 알리는 신호다.','061-363-6174','https://example.com/default_image.jpg'),
-(295,14,295,'도림사오토갬핑리조트','도림사관광단지 내에 위치하고 있는 캠핑장으로 가족단위의 새로운 개념의 숙박시설로캐러밴 4인 4대 / 캐러밴 6인 21대 / 편백하우스 14동 / 캠핑장 40면과 취사장, 샤워장, 화장실 등캠핑에 필요한 시설이 마련되어 있다.','061-363-6224','https://example.com/default_image.jpg'),
 (296,14,296,'청계동솔바람야영장','청계동 솔바람 야영장 일원은 섬진강과 인접해 있어 경치가 아름답고 계곡의 물과 주변에 울창한 숲이 우거져 계곡 피서지로는 절정의 인기를 누리는 곳이다.계곡 곳곳에는 자연속의 풀장, 어린이 놀이터, 잔디광장, 의병 체험장, 산책로 등이 조성되어어린이를 동반한 가족 단위 피서객들의 편안한 휴식처이다.','061-884-7000','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDZfMjMy%2FMDAxNzI4MTY2OTM0Mzk1._VEeXVnbcaLqjDCsmFrnOte1t6g3Xkcp0QbIDi1MkpIg.-iPZLXf2KsjYxWIIcx3pATTAkAUU-G_OBT7d_wYR0vog.JPEG%2Fre_edited.jpg%3Ftype%3Dw1500_60_sharpen'),
 (297,12,297,'마곡사관광지','천년고찰 마곡사 관광지','1899-0088','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_17%2F14410149174184njna_JPEG%2F116268555246269_0.jpg'),
 (298,12,298,'공주문화관광지','백제역사 유적관광지','1899-0088','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_172%2F1441004870629aFi92_JPEG%2F106868555858166_0.jpg'),
 (299,12,299,'삽교호관광지','서해대교를 비롯, 호수와 바다가 한눈에 들어오는 곳','041-350-3601','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191209_32%2F1575856445904ug5Pw_JPEG%2F_Sh3a5VQix0LwdC1wh9kYBis.jpg'),
 (300,12,300,'왜목마을관광지','서해 최고의 일출, 일몰 감상지','041-350-3601','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEwMDhfMjk4%2FMDAxNjk2NzU0MjkxNDY1.bXxGbc4YKS2XlQU05fFICNAjWe0p_ReufKpWQAn-3Qgg.2L19qHtxMs5076VxPJznlxNyEWkWFwHrU9W4dFXM-9Ag.JPEG%2F16967542809748569396803217346307.jpg%3Ftype%3Dw1500_60_sharpen'),
 (301,12,301,'난지섬관광지','바다가 맑고 한적한 섬 해수욕장','041-350-3601','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzAzMjJfMjgw%2FMDAxNDkwMTkzMTY3Mjgw.V1KPm0PNPWf7Et7wXDsKLaHUcCRRFpLg5j4KgbkBv7Mg.0P5ahmNVhBnnG9Hb2b7cCNEiWZDokgj5Ma6MEoGocH4g.JPEG.seabiscuit_1%2FIMG_20170322_215615_913.jpg'),
-(302,10,302,'마하생태관광지','마하리 본동 지구 및 마하리 문희마을 지구로 이루어져 있으며 백룡동굴의 생태관광 체험을 할 수 있다. 또한 주차장+관리사무소 등 공공편익시설과 휴게음식점+매점 등 숙박+상가시설 및 자연학습장+명상의 정원 등 휴양 문화시설이 함께 조성되어있다.','033-330-2742','https://example.com/default_image.jpg'),
-(303,10,303,'용평관광단지','버치힐GC+워터파크+그린피아콘도+드래곤밸리호텔 등 숙박시설 및 유원시설+골프시설이 갖춰져 있으며+사계절 휴양 가능한 복합 리조트이다.','033-330-2742','https://example.com/default_image.jpg'),
-(304,10,304,'알펜시아관광단지','사계절 복합 리조트 시설을 갖추고 있음. 골프지구+리조트빌리지지구+스키지구+동계올림픽지구로 구성되어 있으며 스키전망대 등 스키시설과 유원시설+골프시설 등이 조성되어있다.','033-330-2742','https://example.com/default_image.jpg'),
-(305,10,305,'휘닉스파크관광단지','스키+스노우빌리지+워터파크 등 다양한 레저시설을 갖추고 있으며 사계절 이용 가능한 복합레져휴양리조트이다. 골프장+스키장+유원시설 및 관광숙박시설 등 이용가능하다.','033-330-2742','https://example.com/default_image.jpg'),
 (306,10,306,'망상','눈앞에 바로 펼쳐지는 깨끗한 백사장과 맑고 푸른 바다, 상쾌한 바닷바람과 해가 뜨는 드넓은 수평선을 느낄 수 있는 해수욕장과 오토캠핑리조트등이 있다','033-530-2234','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221107_113%2F1667811494495qVYxO_JPEG%2F%25BF%25DC%25B0%25FC%25BB%25E7%25C1%25F8_%25281%2529.jpg'),
-(307,10,307,'추암','애국가 첫 소절의 배경화면으로 유명한 각종 기암괴석이 조화를 이루는 촛대바위, 이 바위에 걸리는 아침 해돋이가 가히 장관이라 할 수 있어 관광객들이 가장 선호하는 해돋이 명소이다.','033-530-2234','https://example.com/default_image.jpg'),
 (308,16,308,'농월정','안의 삼동 중에서 화려한 자연의 미를 간직한 곳이 화림동이다. 화림동은 안의에서 전북 장수군으로 통하는 국도 26호선을 따라 약 4km를 가면 굽이치는 물가에 아담한 마을하나를 발견할 수 있는데, 이 곳이 화림동의 정수 농월정이 있는 곳이다. 화림동은 남덕유산에서 발원하는 금천이 굽이치며 흘러 팔담팔정을 이루었다. 그래서, 옛부터 화림동을 정자문화의 보고라 한다. 지금도 농월정을 비롯한 4개의 고풍스런 정자가 남아 있다. 특히 농월정은 달을 희롱하며 논다는 옛날 우리 선조들의 풍류사상이 깃든 곳, 함양을 찾은 많은 시인과 묵객들이 필히 거쳐간 곳이다. 이 곳 녹수를 사이에 둔 양쪽 산기슭의 송림은 거문고 현을 퉁기는 듯하며, 길게 늘어선 수양버들은 천줄기의 실로 낚시질을 하는 듯 보인다. 맑은 물이 급한 굴곡을 이루는 곳에 커다란 반석이 펼쳐져 있다. 반석위를 흐르는 물이 달빛을 받아 금물결을 이루는 이 곳에 세워진 고색창연한 농월정은 이름 그대로 달을 희롱하고 있는 듯하다. 크기를 짐작할 수 없을 정도로 거대한 월연암이라 이름 붙은 너럭바위 위로 미끄럼타듯 물살이 세차게 흐르고, 물길따라 골이 깊게 패였다. 월연의 맑은 물에서 물장구치며 노는 개구쟁이들의 모습과 아름다운 풍경은 한 폭의 동양화가 되어 지나는 행인의 발걸음을 멈추게 한다.','055-960-4520','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_148%2F1441039611395cox5H_JPEG%2F126655588723214_0.jpg'),
 (309,2,309,'황령산관광지','부산광역시 금련산청소년수련원 일대이며, 부산 도심 속 천혜의 황령산 자락에 위치하고 있어 부산의 랜드마크인 광안리 해수욕장, 광안대교, 해운대를 한눈에 바라볼 수 있음.','051-610-3211','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_32%2F1441045600817gdFT5_JPEG%2F13491303_0.jpg'),
 (310,2,310,'우장춘기념관','씨 없는 수박으로 우리 모두에게 잘 알려진 세계적 육종학자인 故우장춘박사의 탄생 1백주년을 맞아 그의 생전 연구 활동 유적지','051-550-6602','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191030_145%2F1572399460071BsaBm_JPEG%2F1XovfXK9797WQeakskPhH3jF.JPG.jpg'),
 (311,2,311,'장영실과학동산','동래출신 조선시대 세종당시 최고의 과학자인 장영실이 만든 세계최고의 옛 천문의기 18종 19점을 동래읍성북문광장 1,177㎡에 시비 5억을 투입하여 2009. 6. 16.부터 2009.10.15.까지 4개월에 걸쳐 사업을 완료하였다.','051-550-6604','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzA3MDJfNDcg%2FMDAxNjg4MzA0MTIyMjc1.y-8uZBbQtYOA_W6pOoOz1lU5vvXbJfvt9L8LU2tmcNcg.bURKDd05k5BCEq9RWzv7z_OI6M9UB180Oe3SuFBzF9Ug.JPEG%2F20230702_222025.jpg%3Ftype%3Dw1500_60_sharpen'),
 (312,15,312,'칠곡양떼목장','양떼를 체험해볼수 있는 어린이를 위한 체험장','054-972-8833','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171201_2%2F1512076777763y2GYb_JPEG%2F2_%25281%2529.jpg'),
-(313,14,313,'영산포 역사갤러리','박물관','061-331-1755','https://example.com/default_image.jpg'),
 (314,14,314,'나주복암리고분전시관','박물관','061-337-0090','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230221_270%2F1676968970058z9xiM_JPEG%2F%25B3%25AA%25C1%25D6%25BA%25B9%25BE%25CF%25B8%25AE%25B0%25ED%25BA%25D0%25C0%25FC%25BD%25C3%25B0%25FC_%25BB%25E7%25C1%25F8_%25281%2529.jpg'),
 (315,14,315,'일본인근대가옥','근대가옥','061-334-7726','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MjRfMjY0%2FMDAxNjkyODI3Njc3NjQ5.21KJ0L3h9HAb6UDw3Fic-9SORZhIMJO3ZB2rgwW44iEg.b3LxYjUGkgLK5VzVi30AaNryNQsGpGEj2Wv4Ee0WLMMg.JPEG.csm2061%2F1692827676460.jpg'),
-(316,14,316,'빛가람호수공원전망대','공원','061-333-1501','https://example.com/default_image.jpg'),
 (317,9,317,'에버랜드','경기도 용인시 처인구 포곡읍 에버랜드로 199에 위치한 테마파크. 현재까지 대한민국 최대 규모의 놀이공원 및 동물원이 있다.','031-324-2117','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210528_267%2F1622190959279gq1r1_JPEG%2F%25B8%25DE%25B0%25A1%25BD%25BA%25C5%25E8_01.JPG'),
 (318,9,318,'한국민속촌','한국의 전통문화와 민속적인 삶을 재현하고 있는 곳으로 이를 통해 조상들의 지혜와 생활 모습을 느낄 수 있는 곳이다.','031-324-2117','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200525_211%2F1590394420331nezSy_JPEG%2FDJ4sgdir2DbwozRpq3pqrbp7.jpg'),
 (319,9,319,'장흥관광지','계명산과 송추계곡 등의 우수한 자연경관과 양주시립장욱진미술관, 가나아트파크, 송암스페이스센터 등 풍부한 문화예술체험을 동시에 즐길 수 있음','031-8082-5664','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_111%2F1441045680345wr2B9_JPEG%2F13491775_0.jpg'),
 (320,14,320,'불갑사관광지','유서깊은 불교문화의 역사와 수려한 자연경관를 간직한 불갑사 지구의 관광명소이며 관광수요에 능동적으로 대처할 수 있는 휴식공간 제공','061-350-5758','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA1MDRfMTA0%2FMDAxNTg4NTc4NTYxMzI0.B--bKPomJwndIOYAoshu-dO1noRjhTG1683T7t7n8J8g.ywfQeuWHw5w9aQbDTkXI0vGDv01gKLXY77kYQjgTeBAg.JPEG.lsb6307%2F1588578561117.jpg'),
 (321,14,321,'곡성 섬진강 기차마을','증기소리가 둔탁하지만 촌스럽지 않고, 많은 사람들의 관심을 받지만 혼자만의 공간이 있는곳.증기기관차와 레일바이크체험, 음악분수, 엔터테인먼트 놀이공간까지 옛 추억과 테마가 있는 새로움과 익숙함이 공존하는 새로운 개념의 테마파크이다.인기 관광지로 각광을 받고 있는 기차마을의 첫 관문은 옛 곡성역 건물을 그대로 기차마을 정문으로 사용하고 있다. 그래서 그곳을 통과하면 아련한 추억이 기다리고 있을 것 같다.1960년대를 고스란히 옮겨 놓은 것 같은 플랫폼으로 기차가 들어오자 내리는 승객들과 그것을 배경으로 사진을 찍어 추억을 남기고 , 플랫폼에는 수형이 아름다운 두 그루의 소나무가 있는데 소나무를 배경으로 나란히 서서 단체사진을 찍어도 멋지다.관람은 반 시계 방향으로 돌면서 관람시설과 놀이시설을 하나씩 섭렵해가는 것이 가장 효과적인데 기차 체험 공간 치치뿌뿌 놀이터, 오감으로 느끼는 4D 영상관, 커다란 도깨비가 방망이를 치켜들고 서 있는 재미있는 요술 랜드를 차례로 돌아보는 동안 우리는 어느덧 동심의 세계에 흠뻑 빠져들수 있다. 전통체험관에서 칼에 글귀를 새기는 무형문화재 낙죽장도 전시관도 볼 수 있다.기차마을 최고의 포토존으로 알려진 장미공원은 기차마을 안에 있으면서도 별도의 공원이나 다름없는 매우 특별한 공간이다. 장미공원은 무려 3만 7천여주, 1004종의 장미와 세계 몇 안 되는 희귀종도 수십종을 보유중이다.그리고 그 명성을 유지하기 위해 숙련된 원예 전문가들이 일년 내내 정성을 다하여 관리하고 있는데 5월 장미 축제때는 이곳의 장미들이 일제히 개화를 하면서 대단한 장관이 펼쳐진다.이때 우리나라 최고로 꼽히는 장미의 향연을 즐기기 위해서 전국에서엄청난 관광객들이 몰려드는데 곡성 장미공원의 5월 장미는 꼭 봐야할 명소이다.','061-362-7461','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_264%2F1441015461631gJLuB_JPEG%2F11671289_0.jpg'),
 (322,14,322,'기차마을 장미공원','섬진강기차마을 단지 내에 위치한 장미공원은 대한민국 최고의 장미공원을 목표로 사랑의 상징 ‘천사’와 음이 같은 1,004 품종을 수집하여 40,000㎡의 부지에 독일, 프랑스, 영국 등 유럽의 우수한 장미품종들을 수집, 전국에서 가장 많은 1,004종의 장미를 식재하여 조성되었다. 장미와 다양한 수목, 연못 등이 아름다운 경관을 이루고 있으며, 그 밖에 분수, 미로원, 야외공연장, 파고라 등 다양한 시설을 갖추고 있다. 독특하고 다양한 장미품종들을 정성스럽게 관리하여 5~11월 계속해서 장미꽃을 감상할 수 있고, 매년 5월에서 6월 사이 세계장미축제를 개최하여 많은 관광객들을 맞이하고 있다.','061-360-8443','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_264%2F1441015461631gJLuB_JPEG%2F11671289_0.jpg'),
-(323,15,323,'가산산성','임진왜란과 병자호란을 겪은후 잇따른 외침에 대비하기 위해 세원진 산성','054-880-8334','https://example.com/default_image.jpg'),
 (324,15,324,'가산산성야영장','자연의 정취와 팔공산 사계를 만끽할 수 있는 야영공간','054-880-8300','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjZfNDAg%2FMDAxNzI5OTIyNTA4ODg0.n33XUlvmE-ZjUehmV0hY7sRmTdl-UeajB-5Vtspqby8g.KGMywq_92ozxqWhTJozo3sz9KZ5us6vSCVP28UXVWVog.JPEG%2F20241026%25A3%25DF123206.jpg'),
 (325,15,325,'구상문학관','프랑스 문인협회 선정 세계 200대 문인중인 구상 시인의 문학관을 느낄 수 있는 곳','054-973-0039','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220717_164%2F1658060312248AH4pA_JPEG%2F20220717_134545.jpg'),
 (326,15,326,'다부동전적기념관','구국의 정신과 평화의 소중함을 전하는 역사가 흐르는 기념관','054-973-6313','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220106_155%2F164143016178560GMg_JPEG%2Fda_%25281%2529.jpg'),
 (327,15,327,'송정자연휴양림','자연과 사람이 숨 쉬는 곳 도심에서 가까운 휴양림','054-979-6000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230623_99%2F1687505484615wlskc_PNG%2F%25BD%25BA%25C5%25A9%25B8%25B0%25BC%25A6_2023-06-23_%25BF%25C0%25C8%25C4_4.31.02.png'),
 (328,15,328,'칠곡보오토캠핑장','산과 강이 어우러진 오토캠핑장','054-974-7997','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160728_281%2F1469709154421eerDe_JPEG%2Fchilgok_1448499233453.jpg'),
 (329,15,329,'칠곡호국평화기념관','낙동강 55일간의 전투를 재조명하고 다채로운 체험 통해 호국체험공간','054-979-5502','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MTJfMTgw%2FMDAxNzIzNDI0NjYzMjY1.iZvtzcRMO25IOyhAtKahjhbWRIzyg8fA9zGxeBBRJuIg.aQnn0mlEBJoZBhopwfGsbQnchoF4_NUkGMkVWb12-6Eg.JPEG%2F1000027394.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(330,14,330,'국립나주박물관','박물관','061-330-7885','https://example.com/default_image.jpg'),
 (331,14,331,'해달별천문대','낮-태양, 밤-해·달 관찰, 천체사진 촬영','061-762-5393','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA1MTlfMTE3%2FMDAxNjUyOTU1MTQ5NjQ3.gtorsSAi2tt2w49_97AYBklf4xNG97BA3r_bfkg05WEg.VD4TV4OngOlqL0un4ue9dIHBMaWv9o3gTlU_RJG_Uj4g.JPEG.travis9030%2FIMG_7572.JPG'),
 (332,14,332,'백운산자연휴양림','교육장, 야영장, 수영장, 산책로','061-797-4705','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211104_2%2F1636013519015FXsTE_JPEG%2FNAP9cER3zMFjtysLx7dxADtB.jpg'),
 (333,14,333,'광양 옥룡사지','국가지정문화재 사적 제207호','061-797-2418','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA0MTlfMTQg%2FMDAxNzEzNTMxNjEyNjIy.Mge0V2i4w1fbnj0tN4g4ETHVHZwbJ0_iOrDP3Pb82Wwg.lou9fiuByR5-ZcgT0csIUJ5E2edwEDqmrNYGXn1bRREg.JPEG%2F20240407_153027.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
@@ -1759,7 +1821,6 @@ INSERT INTO `trip` VALUES
 (338,15,338,'와인터널','대한제국 말기 완공되어 용도없이 방치되어온 터널을 정비하여 감와인 숙성저장고로 활용하고 있다. 터널 내부 온도는 섭씨 13~15도를 유지하고 있어 여름에는 피서용, 겨울에는 피한용으로 제격이다.','054-371-1904','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190726_170%2F1564100429116QVojU_JPEG%2F%25BF%25CD%25C0%25CE%25C5%25CD%25B3%25CE_banner_02.jpg'),
 (339,15,339,'프로방스 포토랜드','프랑스의 정감 있는 프로방스마을을 그래도 재현했다. 밤이되면 1000만여개의 화려한 조명과 자신만의 감각을 살려 사진을 찍을 수 있는 셀프스튜디오가 있다.','054-372-5050','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241105_272%2F17307684899736Cf5E_PNG%2F%25C3%25BB%25B5%25B5%25C7%25C1%25B7%25CE%25B9%25E6%25BD%25BA_01.png'),
 (340,15,340,'경천대관광지','낙동강 1300여 리 물길 중 강의 이름이 되었을 정도로 태고의 신비를 간직한 경천대는 깎아지른 절벽과 노송으로 이루어진 절경이 빼어난 곳으로 하늘이 스스로 내렸다고 해 자천대라고도 함','054-537-7128','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA1MjdfMjEg%2FMDAxNzE2NzcyNjEzNTAy.6RMExrNAS93yPrtfeWTUUfgLfeBa6oPs4WX_JX5qczQg.RaiNr3MhxoljRm7R7bl5iAqq8EvWtz8JZ3e8uHh4jK4g.JPEG%2F20240518_155502.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(341,15,341,'회상나루관광지','낙동강 회상나루의 새로운 해석과 재현을 통해 주막 · 역원 등을 소재로 전통한옥으로 지은 주막촌, 객주촌, 낙동강 문학관 등이 조성되어 관광객들에게 편의를 제공함','054-537-7125','https://example.com/default_image.jpg'),
 (342,9,342,'쉬자파크','쉼을 주는 공원으로 맑은공기+ 숙박+ 치유+ 체험과 교육이 함께하는 전국 최초 산림문화 휴양단지','031-770-2417','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190402_36%2F15541677773851MeTj_JPEG%2Fg_28HfdWnjIZdEKeyM3tXyRA.jpg'),
 (343,10,343,'주문진해변관광지','주문진해변관광지는 주문진읍 향호리에 위치하고 넓은 백사장과 수심이 얕고 바닷물이 맑아 가족 단위 피서지에 적합한 곳임.','033-640-5685','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_199%2F1441045555933yuLkU_JPEG%2F13491005_0.jpg'),
 (344,10,344,'연곡해변관광지','길이 700m, 56000㎡의 넓은 백사장을 간직하고 있다.','033-640-5685','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210925_148%2F16325373488876CM9q_JPEG%2Fvcy2i6akeEuP3akBI71mvAsv.jpg'),
@@ -1767,7 +1828,6 @@ INSERT INTO `trip` VALUES
 (346,10,346,'대관령어흘리관광지','2014년 163천㎡를 관광지로 지정받아, 도로, 주차장, 안내소, 화장실 등의 공공편익시설, 트리하우스, 게스트하우스 등 숙박·휴양문화시설이 조성','033-640-5685','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_143%2F1440992203322oXeMQ_JPEG%2F11491009_0.jpg'),
 (347,11,347,'무극전적국민관광지','6·25전쟁 당시 격전지였던 곳으로써 남한이 최초로 승전하여 국군의 사기를 드높였음','043-871-5930','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDExMDVfMTg1%2FMDAxNzMwNzg0NDcwOTY5.S2gk8AZEqiG3QNKRyAKe7aoHYa_dFH9ioEA0dGZNlzYg.EEAZMK6PIQChXc3D2vjwZJejBrJIB1zPU5V6LBsn58kg.JPEG%2F20241030_134448.jpg'),
 (348,10,348,'통일전망대','우리나라에서 가장 북쪽에 위차한 전망대로, 천혜의 절경이라 할 금강산과 동해바다의 비경을 감상할수 있으며, 통일관, 통일전망타워 등 기타 시설을 관람할 수 있는 곳','033-682-0088','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240815_151%2F1723690088836UPIiA_JPEG%2FKakaoTalk_20240316_091454408_01.jpg'),
-(349,10,349,'화진포역사안보전시관','화진포의 성, 이승만대통령 화진포 기념관, 이기붕부통령별장으로 이루어진 곳','033-682-0500','https://example.com/default_image.jpg'),
 (350,9,350,'유니온파크','기존의 노후화 된 소각장, 재활용선별장, 음식물처리장, 중계펌프장 등의 시설 개선과 미사지구와 같은 택지개발사업 등으로 환경기초시설 확충이 요구됨에 따라 국내최초로 지하에 폐기물처리시설과 하수처리시설을 함께 설치한 신개념 환경기초시설이다. 지하에는 소각처리시설, 재활용선별시설, 음식물자원화시설, 하수처리시설 등이 설치되어 있고, 지상에는 잔디광장, 어린이물놀이시설, 다목적체육관, 야외체육시설 등 다양한 주민친화시설이 있는 하남유니온파크와 한강·검단산 등 하남의 아름다운 경관을 한눈에 조망할 수 있는 하남유니온타워(105m)가 설치되어있다.','031-790-6255','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzEwMDRfMTUz%2FMDAxNjk2Mzg4OTk4MzEz.Wni8Q9xMsvHoqTHVOuzAjwUVn6NrShECAvc3b07oQ28g.TRoNsfL9vFDj9Q6jFDxha2U0derJtqsWngFVKJ0qbcAg.JPEG.94715lee%2FKakaoTalk_20231003_212233089_13.jpg'),
 (351,9,351,'광주향교','고려, 조선시대의 교육기관으로 유학을 가르치고 인재를 양성하던 곳','031-790-5971','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20240605_39%2F1717570797022Gd6LO_JPEG%2F%25C7%25E2%25B1%25B388.jpg'),
 (352,9,352,'이성산성','6세기 중반경에 신라가 쌓은 것으로 추정되는 신라시대 산성','031-790-5971','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA1MDdfMTEw%2FMDAxNzE1MDA5ODgzMTQ0.qMJmfh_tb9d0dkEimJOu9SRoIoKGxmII2H6wzEAsnnQg.VyORxsaKlK381WVshW86Ocmw8QEd-gBkYeY5WKqa0bMg.JPEG%2FDDBC78C4-F9CB-4998-A47C-011D9271A0FB.jpeg%3Ftype%3Dw1500_60_sharpen'),
@@ -1777,17 +1837,13 @@ INSERT INTO `trip` VALUES
 (356,14,356,'한국압화박물관','대한민국 압화대전의 대통령상 수상작 등 국내외 작가들의 작품 600여 점이 전시 되어 있다.','061-780-2082','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240902_71%2F1725251562134IIhnr_JPEG%2FIMG_4105.jpeg'),
 (357,14,357,'지리산역사문화관','지리산권의 다양한 역사, 문화자원이 전시된 곳으로,강따라(기획전시), 산따라(상설전시), 길따라(체험전시) 등 총 3개관으로 구성되어 있다.','061-780-8040','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190428_56%2F1556415525163SiQCR_JPEG%2FpXit0kZ9FBfIiDA1-Pd_GEjf.JPG.jpg'),
 (358,14,358,'섬진강어류생태관','섬진강 민물고기 자원에 대한 체계적인 보전과 생태전시를 위한 전시관이다.강따라(기획전시), 산따라(상설전시), 길따라(체험전시) 등 총 3개관으로 구성되어 있다.','0507-1330-366','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220809_254%2F16600260451109AsBf_JPEG%2F%25C1%25B6%25B0%25A8%25B5%25B5-%25BD%25C7%25BD%25C3-%25C3%25D6%25C1%25BE.jpg'),
-(359,15,359,'청도박물관','폐교를 새단장하여 만든 청도 최초의 종합박물관으로 고대부터 근현대까지 청도의 다양한 역사 문화자료를 수집 전시하고 있다.','054-370-2282','https://example.com/default_image.jpg'),
 (360,15,360,'가산수피아','2019년 4월에 개장한 국내최대 민간정원','054-971-9861','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200618_100%2F1592442284674WIgdV_JPEG%2Fbanner_x.jpg'),
 (361,15,361,'국립칠곡숲체원','청소년 및 가족 단체를 위한 숲체험 산림교육프로그램과 산림치유프로그램 운영','054-977-8773','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220425_118%2F16508782655434NshD_JPEG%2F1._%25C0%25FC%25B0%25E6_%25B4%25EB%25C7%25A5%25BB%25E7%25C1%25F8.JPG'),
-(362,10,362,'옥계해변관광지','옥계해변관광지는 깨끗하고 넓은 백사장과 오래된 송림지역을 갖추어 바라보는 경치가 매우 아름다운 곳임.','033-640-5685','https://example.com/default_image.jpg'),
 (363,4,363,'마니산 국민관광지','백두산과 한라산의 중간지점에 위치하여 우리나라에서 기가 가장 센 곳이며 정상에 있는 참성단에서 매해 제례를 올리고 칠선녀가 전국 체육대회의 성화를 채화함','032-930-7068','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA2MDlfMTgy%2FMDAxNzE3OTI4NDUxOTYz.Wn791R6DFgkAwjGXoOOk_HZd7zNsJqgYaIm7UK4LQ-Ug.XZ8I-m9C_Cb9DU7m4YZV2d62kgzo4ESIwA8ZfCjXQoAg.JPEG%2FIMG_6872-1.JPG'),
 (364,15,364,'경산상대온천','상대온천관광호텔은 경산 시내에서 자동차로 30분가량 걸리는 산속 마을에자리잡고 있어 처음 찾기는 어려우나, 수질이 좋아 한번 찾아온 사람은 반드시다시 찾아온다고 한다. 신라 시대부터 더운 바위샘온암정(溫巖井), 대추골 더운샘,온수골이라 불렸으며, 한겨울에도 물이 얼지 않아 빨래터로 이용했다. 수량이풍부한 데다 한국에서는 보기 드물게 알칼리성이 강한 황산천이다. 맑고 깨끗한온천수에 황산이온, 염소, 과망간산칼륨 등 2,500여 종의 각종 미네랄이 함유돼 있다.피부병·신경통·위장병·비뇨기질환·동맥경화증에 효과가 좋다고 알려져 있다. 특히위장병에 좋다고 해서 온천수를 그대로 마시는 사람들도 있다.객실은 양실과 한실로 구성돼 있으며, 연회장, 가족탕, 온천사우나, 토산품점, 예식홀,커피숍, 숲속 카페, 교육문화회관 등 부대시설을 갖추고 있다. 053)815-8001','053-810-5363','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211220_216%2F1639974046243EPU6D_JPEG%2F%25C8%25A3%25C5%25DA_%25BF%25DC%25B0%25FC.jpg'),
 (365,15,365,'동의한방촌','자연치유및 한방치유 명품 한방문화체험관','053-852-8866','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230309_254%2F1678349346932U6yot_JPEG%2F%25C7%25D1%25B9%25E6%25C3%25CC_%25B7%25CE%25B0%25ED%2528%25C6%25C4%25B6%25FB%2529.jpg'),
 (366,15,366,'삼성현역사문화공원','일연원효설총 세 성현분들의 역사를 기록한 박물관 및 체험시설','053-804-7329','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2F20150804_13%2Fdhkchs123_1438691321764XYkW5_JPEG%2FKakaoTalk_20150804_211908523.jpg'),
-(367,15,367,'자인계정숲','한장군놀이 전수회관 등 있으며 구릉지에 남아있는 천연숲','053-856-5765','https://example.com/default_image.jpg'),
 (368,10,368,'화암관광지','천혜의 경관과 자연적 역사문화적 특성을 관광자원화하였음','033-560-2053','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210330_286%2F1617096263582thgH0_JPEG%2F%25C1%25A6%25B8%25F1_%25BE%25F8%25C0%25BD-1.jpg'),
-(369,10,369,'아우라지 관광지','천혜의 경관과 자연적 역사문화적 특성을 관광자원화하였음','033-560-2053','https://example.com/default_image.jpg'),
 (370,14,370,'성륜사','곡성군 옥과면 옥과리에 위치한 대한불교조계종 성륜사(聖輪寺)는 옥과의 진산인 설산(雪山)의 남쪽 설령골에 위치하였으며, 1988년 6월4일부터 중창불사 하여 현재에 이르렀다. 주변으로 괘일산과 갈산 등이 자리를 잡고, 설산에서 발원한 작은 계곡들이 흘러 안으로 굽은 산세가 성륜사를 외호(外護)하고 있다. 성륜사는 고려시대 사찰이었던‘나암사(羅巖寺)’의 맥을 잇는 터에 자리를 잡았다. 나암사는『신증동국여지승람(新增東國輿地勝覽)』,『동국여지지(東國輿地誌)』에 기록되어 있으며,『동여비고(東輿備考)』옥과현 지도에 나타난 나암사의 위치를 보면 지리적으로 현재 성륜사가 위치한 자리였음을 알 수 있다. 조선 중기 편찬된 『여지도서(輿地圖書)』부터는 사찰이 폐했다는 기록이 전해지나, 마을 주민들의 증언으로 현재 성륜사의 자리가 ‘절골’로 불렸다는 점, 성륜사에서 고려시대 기와와 조선시대 기와가 수집되었다는 점에서 현 성륜사 터에서 법등이 계속 이어져 왔음을 알 수 있다. 성륜사는 1986년 청화 대종사(淸華 大宗師)와 아산 조방원(雅山 趙邦元) 거사와의 인연으로, 10만평의 땅을 시주 받으면서 중창불사가 시작되었다. 현재 전해지고 있는 당우로 대웅전, 지장전, 조선당, 육화당, 안심당, 법성당, 설령각, 정운당, 범종각, 적멸보궁 등이 있다. 중창불사 당시 구례군에서 이축했던‘안심당’과 ‘육화당’은 1920년대 전라남도 건축 양식을 잘 유지하고 있으며 난간의 장식, 다락 구조 등의 건축학적 특징으로 현재 근대문화재로 평가받고 있다. 또한‘조선당’은 청화 대종사가 주석하시던 곳으로, 열반하신 후에는 스님을 기리는 공간으로 남아있다. 조선당 옆으로 청화 대종사의 부도와 비석, 청화 대종사의 은사 스님인‘금타 대화상’의 부도가 자리 잡고 있다. 그 밑으로는 부처님의 진신사리를 모신 ‘적멸보궁’이 자리 잡고 있다. 곡성 성륜사는 나암사의 전통과 청화 대종사가 중창불사한 실상염불선 수행의 맥을 있는 전통사찰이다.','061-363-7001','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MjhfMTkg%2FMDAxNzI0NzcyOTcwODcx.LLwsGmG_pUHVlvLuda3bVhsUaW_AcvVWIRYhq9La06Qg.rIrjsgpY1aDBS9eYa0IY7WotvcjqG0q-Q4PEP-1-BF4g.JPEG%2F189A3249.JPG'),
 (371,14,371,'관음사','전라남도 성덕산에 있는 관음사는 백제 분서왕 3년(300) 성덕보살이 세운 절이다. 절 이름은 성덕보살이 낙안포에서 금동관세음보살상을 모셔와 절을 짓고 이름을 ‘관음사’라 부른데서 비롯되었다고 한다.고려 공민왕 23년(1374) 5번째로 넓혀 지었고, 조선시대에는 임진왜란으로 피해를 입어 선조 37년(1604) 5년 동안 모든 건물을 복원하였다.근세에 와서는 1912년 영담화상이 전가람을 고쳐 세웠으나 한국전쟁으로 모두 불타버렸다. 이 때 국보로 지정되어 있던 원통전과 금동관음보살이 소실되었다.지금 있는 건물들은 최근에 새로 지은 것들로 금랑각을 지나면 가운데에 법당인 원통전이 있고 그 왼편과 오른편에 벽안당과 요사채 등이 있다.','061-362-4433','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_53%2F1441022939076MqsVQ_PNG%2F116575547638864_0.png'),
 (372,14,372,'천태암','천태암은 곡성군 목사동면에 있는 아미산 정상 부근에 자리 잡고 있는 사찰로, 대한불교조계종 제19교구 화엄사의 말사이다. 천태암은 665년 혜암율사가 창건하여 주석하였던 고찰로서 고려 명종 25년(1195)에 보조국사 지눌 스님이 자연석굴에 16나한을 모시고 법당과 요사를 중창하여 후학들을 제접하였다고 한다. 국사는 이곳 산세가 중국의 불교성지인 아미산과 닮았다하여 아미산 천태암이라 이름하고 산신각 위 벼랑에 형성된 대에 앉아 선정을 닦았으니 이곳을 보조국사 좌선대라 전해진다.하루는 좌선대에서 나무새를 만들어 날려 보내니 조계산에 날아 앉는지라 지금의 송광사로 자리를 옮기고 직접 다리를 만들어 천태암과 송광사를 오고 갔다고 한다. 다리의 이름은 ‘토성칠교’로 오늘날에도 ‘토성칠교를 건너면 무병장수하고 극락왕생 한다’는 이야기가 전해지고 있다. 동사열전에 따르면 석곡 출신 용운처익 스님이 경신년(1806)과 신유년(1861)간에 곡성 천태암을 중수했다는 기록이 있고, 또한 근대에 동명선지 스님이 쓴 천태암중수화문에도 천태암 중수에 인연을 지을 것을 권하고 있어 천태암은 면면히 그 위상을 유지하고 있었음을 알 수 있다. 천태암은 정유년(1957) 화재 때 전각 일부가 피해를 입었음에도 불구하고 그 명맥을 이어오던 중 호연스님의 원력과 신도님들의 불심과 사회 각계 뜻 있는 분들의 동참으로 갑신년(2004)에 다시 중창되었으며, 경자년(2020)에 전통사찰 제 97호로 지정받았다.','061-363-2011','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180724_15%2F1532428469997J5rix_JPEG%2Fj1XW2ePdJkqjjvHiV1lacwmX.jpg'),
@@ -1795,11 +1851,8 @@ INSERT INTO `trip` VALUES
 (374,1,374,'은평역사한옥박물관','은평구의 문화유산과 한옥의 전통을 소개하는 박물관','02-351-8525','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171024_291%2F1508818937326nLKAc_JPEG%2FJvTwmKKQO5s_AhkkS-ZjL47L.JPG.jpg'),
 (375,1,375,'금성당','세종대왕 6째 아들 금성대군을 모신 당','02-388-6522','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190130_289%2F1548780653430JuynH_JPEG%2F2JamEVrj8kO47Tg6CxiYArZV.jpg'),
 (376,2,376,'다대포해수욕장','백사장 길이 900m, 폭 100m의 얕은 수심으로 가족단위 피서지로 유명','051-220-4161','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_186%2F1441045691672l7Oqd_JPEG%2F13491855_0.jpg'),
-(377,2,377,'낙동강하구아미산전망대','모래섬, 철새, 낙조 등 천혜의 전경을 조망할 수 있는 전망대','051-265-6863','https://example.com/default_image.jpg'),
 (378,2,378,'을숙도 생태공원','을숙도 상단부로 수생식물이 서식하는 생태의 보고','051-209-2000','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDExMjJfMjA5%2FMDAxNzMyMjAyMDUxODAy.7ydldhtiNBOocsuWuUmCSDoZ2uQIP9aanRL649vLzuMg.emUxyfmdP-wAKMss_3LjV8Rf7O03uP8Go3hDILQH9Mgg.JPEG%2FIMG_8972.jpg'),
-(379,2,379,'을숙도 철새공원','철새를 보호하는 한편 습지를 비롯한 생태보존 공원','051-209-2000','https://example.com/default_image.jpg'),
 (380,2,380,'감천문화마을','한국전쟁 당시 피난민들이 모여산 계단식 마을로 다양한 예술작품 감상 가능','051-220-5922','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_296%2F1441106775581HW1Yv_JPEG%2F137160528543605_0.jpeg'),
-(381,10,381,'철암탄광역사촌','1960년대의 한국을 보여줌으로써, 아련한 향수를 불러일으키는 곳. 바로 철암 탄광역사 촌이다. 현재의 문명은 전혀 느낄 길이 없이, 오롯이 60년대의 정서를 그대로 살린 역사 마을이라 할 수 있으며, 기념비에서도 옛사람들의 정신을 살펴볼 수 있다. 내용인즉슨, 「남겨야 하나, 부수어야 하나 논쟁하는 사이 한국 근현대사의 유구들이 무수히 사라져갔다.「인데, 이미 많이 사라져버린 것들에 대하여 다시금 생각할 수 있도록 하곤 한다. 탄광 지역 생활사의 흔적을 고스란히 느낄 수 있는 곳으로 체험여행으로 좋다.','033-582-8070','https://example.com/default_image.jpg'),
 (382,10,382,'석탄박물관','석탄은 우리나라의 유일한 부존 에너지 자원으로서 생활연료 공급과 기간산업의 중추적인 역할로 국가 경제발전에 크게 기여해 왔으나 물질문명의 발달과 청정에너지 사용 증대로 그 수요가 급격히 줄어들고 있어 그간의 석탄산업 변천사와 석탄의 역사적 사실들을 한곳에 모아 귀중한 사료가 되도록 하고,후세들에게 열악한 작업환경 속에서도 산업역군으로서 석탄생산에 종사한 광산근로자들의 업적을 알리고 석탄산업 전반에 대하여 직접 체험할 수 있는 학습장으로 활용하여 석탄에 대한 기억을 되새기고자 함.','033-552-7720','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230115_162%2F1673749383890jFd7N_JPEG%2F%25BF%25A1%25C4%25DA%25BC%25AD%25C5%25AC02.jpg'),
 (383,10,383,'태백고생대자연사박물관','고생대 자연환경과 그 곳에 살았던 생물역사를 추적할 수 있는 다양한 화석 및 퇴적구조를 구문소지역 일대에서 체험학습을 겸한 교육효과 향상과 학자들의 자연사 연구에 기여하고자 고생대자연사박물관을 건립하게 되었다.','033-581-8181','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_242%2F1441050253760uP8qy_JPEG%2F116954578327985_0.jpg'),
 (384,10,384,'무릉계곡','신선이 노닐었다는 무릉계곡명승지 일명 무릉도원이라 불리는 무릉계곡 명승지는 두타산과 청옥산을 배경으로 이루어진 계곡으로 수많은 기암괴석과 절경들이 장관을 이루고 있어 마치 현존하는 선경에 와있는 듯한 느낌을 준다.','033-530-2234','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_231%2F14409922366002we3J_JPEG%2F11491159_0.jpg'),
@@ -1808,10 +1861,7 @@ INSERT INTO `trip` VALUES
 (387,6,387,'오-월드','주랜드 + 플라워랜드 + 조이랜드”를 복합적으로 구성하여 온가족이 함께 즐길 수 있는 테마공원 *수용인원:제한없음','042-580-4820','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210409_76%2F16179314665893qqgY_JPEG%2F%25BD%25C3%25BC%25B3%25B9%25B0%25C0%25CC%25B9%25CC%25C1%25F64.jpg'),
 (388,6,388,'뿌리공원','전국유일의 효 테마공원으로서 자신의 뿌리를 되찾을 수 있는 성씨별 조형물과 수변무대, 전망대, 산림욕장 등 다양한 시설이 갖추어진 체험학습의 산 교육장  *수용인원:제한없음','042-288-8301','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_173%2F1441020418048Aiy1L_JPEG%2F116361613874945_0.jpg'),
 (389,6,389,'아쿠아리움','전쟁에 대비해 지하방공호로 활용하던 대전 도심의 천연동굴을 변화시킨 수족관으로 국내최초이자 최대인 담수어 아쿠아리움  *수용인원:제한없음','042-226-2100','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20211202_124%2F1638425158345uSVNe_JPEG%2Fthm_aq_lotte_1000_x.jpg'),
-(390,13,390,'춘향테마파크','남원시 양림길 남원관광지내에 소재한 곳(3만 5천평 규모)으로 임권택 감독의 영화 [춘향뎐]의 촬영 장소를 포함하여 사랑의 테마가 있는 관광지로 조성한 곳이다. [춘향뎐]의 지고지순한 사랑을 오늘을 살아가는 이들의 마음속에 담아내 과거의 사랑과 이제 사랑을 시작하는 이들이 사랑의 추억을 만들 수 있도록 조성돼 있고 만남의 장, 맹약의 장, 춘향뎐 영화세트장, 축제의 장 등 사랑의 5개 마당으로 춘향테마의 일대기를 재현하고 있다. 또한 철저한 고증을 거쳐 완성된 동헌, 관아, 내아, 월매집, 부용당, 옥사정을 비롯해 조선 중기 서민들의 삶이 깃든 고건물들이 들어서 있어 조선 중기 서민문화와 춘향의 삶을 제대로 이해할 수 있도록 조성되어 있다.','063-620-5797','https://example.com/default_image.jpg'),
 (391,13,391,'남원항공우주천문대','남원항공우주천문대는 2009년 10월 9일에 개관하여 서남권 관광문화의 중심 도시인 남원 및 인근지역 어린이, 청소년에게 천문우주 및 첨단 항공과학 체험 기회를 제공하고 또한 가족 단위와 단체가 함께 즐길 수 있는 가족 체험시설로 관광수요 창출 및 지역경제 활성화에 기여하고 있습니다.','063-620-8988','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241110_260%2F1731216771991MMaDt_PNG%2F%25BD%25BA%25C5%25A9%25B8%25B0%25BC%25A6_2024-11-10_%25BF%25C0%25C8%25C4_2.02.23.png'),
-(392,13,392,'남원시립김병종미술관','전북특별자치도 남원시 춘향테마파크 내에 위치한 남원시립김병종미술관은 2018년 3월 2일에 개관하였습니다. 남원시에서 직접 운영하는 공립미술관으로서 시민들의 문화예술 향유를 통한 삶의 질 향상과 지역 출신 작가들의 전시 공간 마련을 통해 지역 미술의 특성을 알리는데 설립 목적이 있습니다. 특히 남원 출신의 김병종(b.1953) 작가가 본인의 대표작을 남원시에 대량 기증하면서 콜렉션의 기반을 갖추었습니다. 숲으로 둘러싸인 남원시립김병종미술관은 전원형(田園形) 미술관으로서 바쁜 일상에 지친 현대인들이 찾아와 미술작품 뿐 아니라 자연을 감상하고, 마음을 치유하는 복합 문화시설입니다. 또한 문학인으로 유명한 김병종 작가가 기증한 각종 문학 관련 자료들을 선보여, 미술과 문학이 공존하는 공간이기도 합니다. 약 2,000권의 미술·문학·인문학 관련 도서가 비치된 북카페도 이 같은 미술관의 독특한 역할에 일조하고 있습니다','063-620-5660','https://example.com/default_image.jpg'),
-(393,13,393,'혼불문학관','현대 문학의 백미라고 할 수 있는 소설 “혼불”과 작가 최명희 선생의 문학정신을 널리 선양하고 전승, 보존하기 위하여 2004년 10월에 국고와 지방비 포함 49억을 들여서 이곳 노봉마을에 혼불문학관을 개관하게 되었습니다.','063-620-5744','https://example.com/default_image.jpg'),
 (394,13,394,'국악의 성지','민족의 영산 지리산 자락 운봉에 위치하고 있는 국악의 성지는 우리 민족의 전통과 혼이 담긴 국악의 본 고장이요, 성지임을 널리 알리기 위해 국악을 사랑하는 모든 분들의 염원을 모아 조성하였다.','063-620-6905','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_121%2F1440988086570jKLtD_JPEG%2F106472497542081_0.jpg'),
 (395,13,395,'지리산허브밸리','국내 최대의 철쭉 군락지를 보듬고 있는 지리산 바래봉해발 600m 지역인 남원시 운봉읍 용산리 일대에 자리하고 있으며,2005년 정부로부터 지리산 웰빙 허브산업특구로 지정받은 지역입니다.지리산의 자연 속에서 허브의 모든 것을 즐길 수 있는 지리산허브밸리는대한민국 허브산업의 중심지입니다.','063-620-6254','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjEwMTJfNzEg%2FMDAxNjY1NTc4MjE2NTkw.X5hlt4PYvBasroNnO2ORrYUJoEBMPuTilN66uY-PyGIg.bTvAhyYywrV-HMqeGXKSBWJwbJZOjE58PKj5VIHG9E8g.JPEG%2F20221008_143110.jpg%3Ftype%3Dw1500_60_sharpen'),
 (396,13,396,'남원백두대간생태교육장전시관','지리산의 상징성과 백두대간의 역사·생태·보존의 최적지인 남원에 백두대간 생태교육장 전시관이 조성되었습니다. 전시관은 한반도 지도 형상을 본 따 만든 곡선의 전시관 지붕외관에서부터 우리나라의 중심축인 백두대간의 모든 것을 알고 보고 체험 할 수 있는 갖가지 내용물 등이 전시되어 있습니다. 전시관 주요시설로는 상설전시실, 기획전시실, 호남 최초로 시도하는 5D서클영상관, 카페테리아 등이 있으며 부대시설로는 야외공연장, 곤충온실, 체육시설 등이 있습니다','063-620-5752','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181227_51%2F1545883007761eUGlw_JPEG%2F4ltw1w92nu0Y-cHhISXVeMeX.jpg'),
@@ -1822,26 +1872,16 @@ INSERT INTO `trip` VALUES
 (401,9,401,'두물머리','물안개와 일출+ 황포돛배 그리고 400년이 넘은 느티나무가 어우러진 한국관광 100선에 선정된 곳','031-770-2568','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_119%2F1441045595325QjsPf_JPEG%2F13491272_0.jpg'),
 (402,9,402,'세미원','경기도 제1호 지방정원','031-770-2568','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220830_49%2F1661822677885AenKg_JPEG%2F%25BC%25F6%25B7%25C3.JPG'),
 (403,14,403,'오동도','동백을 비롯하여 194종의 울창한 의귀수목과 기암절벽이 자연스럽게 조화를 이룬 섬으로 한려해상국립공원에 속해있다. 동백꽃으로 유명한 여수의 대표 관광지이다.','061-659-1819','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_50%2F1440992320385fXnT5_JPEG%2F157155537249732_0.jpg'),
-(404,14,404,'상한 농촌체험 휴양마을','하늘처럼 깨끗한 산골마을인 하늘나리마을은 천혜자원인 해발 753고지 봉두산 아래에 위치하여 작은 골짜기를 사이로 맑은 물이 흐르고 골짜기를 따라 등산로가 있습니다.깊은 산속에는 고로쇠나무가 자생하여 이른 봄이면 고로쇠 수액을 채취하고 또한 집집마다 시골민박을 운영하고 있는 정겨운 산골마을입니다.마을에서 채취한 갖가지 산나물과 버섯을 활용한 시골밥상은 정겨운 시골의 옛맛을 그대로 느낄수 있으며, 마을주민 전체가 공동체를 이뤄 체험마을 활동에 참여하고 있습니다.','061-363-8546','https://example.com/default_image.jpg'),
-(405,14,405,'무창 농촌체험 휴양마을','무창마을은 전남 곡성군의 북서쪽에 위치한 전형적인 시골마을입니다.200여 농가가 모여있는 마을로 호남고속도로가 지나고 옥과 IC과 있어 광주와 인접해 교통이 편리한 농촌마을입니다.섬진강의 맑은 물과 깨끗한 공기와 더불어 점토질 량이 높아 기름지고 넓은 황등들을 중심으로 황등쌀과 사과.포도.송화버섯 수확체험이 가능한 체험마을입니다.','061-363-2011','https://example.com/default_image.jpg'),
-(406,14,406,'안개 농촌체험 휴양마을','‘곡성안개마을’은 곡성군 고달면 목동리 연꽃방죽 옆에 위치하고 있으며 국가보호습지로 지정된 섬진강 ‘침실습지’를 바라보는 장소에 위치한 체험휴양마을입니다.아침이면 강변 습지에 물안개가 피어오르고 강변을 따라 이어지는 섬진강 자전거길의 풍경은 오염되지 않은 청정자연 그대로의 강의 모습을 고스란히 간직하고 있으며 강 건너 기차마을의 증기기관차의 기적소리가 향수를 불러일으키는 곳입니다.','061-363-3231','https://example.com/default_image.jpg'),
 (407,14,407,'가정 농촌체험 휴양마을','곡성 가정마을은 녹색농촌체험마을이다. 청소년 야영장과 인접해 있고, 섬진강과 시골의 향취를 마음껏 느낄 수 있다. 가정마을에서 체험할수 있는 프로그램들도 다양한데 그 중에서 먹거리체험으로는 인절미 떡메치기와 전통 손두부,콩비지도넛 만들기 체험이다. 계절에 따라 고사리꺾기,매실따기,복숭아따기,자두,살구,감,배등 각종 수확체험이 단연 인기체험이다','061-363-1637','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171130_178%2F1512051359739R33ue_JPEG%2Fimage.JPEG'),
-(408,14,408,'죽산 농촌체험 휴양마을','곡성 죽산사과마을은 농촌체험휴양마을이다. 목화공원과 인접한 곳으로 시골의 향취를 마음껏 느낄 수 있다.죽산사과마을에서 체험할수 있는 프로그램들도 다양한데 그 중에서 먹거리체험으로는 인절미 떡메치기 체험있고. 계절에 따라 사과따기 감따기등 각종 수확체험이 있다.','061-363-2011','https://example.com/default_image.jpg'),
-(409,14,409,'용암 농촌체험 휴양마을','곡성 용암마을은 목사동면에 위치한 농촌체험휴양마을입니다.계절별 팜놀이를 통해서 아이와 어른이 함께 즐길수 있는데 특히 여름에는 은어잡기체험을 진행하고 있습니다.','061-362-0990','https://example.com/default_image.jpg'),
-(410,14,410,'칠봉 농촌체험 휴양마을','곡성 겸면 칠봉마을은 옛 전통이 그대로 살아 있은 농촌 체험마을입니다.마을 뒤로는 일곱 봉우리기 평풍처럼 둘러 쌓여 있고 앞으로는 동계동천을 이루어 신선이 사는 곳으로써 마을 한복판에 체험마을이 자리 잡고 있습니다.철 따라 감자캐기,땅콩캐기.고구마캐기등 농사체험이 있고 감잎차,뽕잎차.연잎차 만들기 체험이 있으며 칠봉산 등산체험은 어린이,장년,노인들 모두 즐길수 있는 인기 체험이며 목화공원의 목화체험(목화따기,목화 꽃다발 만들기,무명실 뽑기등) 이 다른 고장과 차별화 되는 체험꺼리가 있습니다.또한 미풍양속을 지키는 마을로써 구정에 합동세배,삼월삼일 칠봉 큰샘제,추석절 윳놀이행사등 민속놀이 행사를 꾸준히 하고있는 마을 입니다.','061-362-1049','https://example.com/default_image.jpg'),
 (411,14,411,'봉정 농촌체험 휴양마을','‘봉정마을’은 날던 봉황이 보금자리에 들어 알을 품은 모습같아하여 봉정(鳳停)이라고 불렸습니다.쌀엿의 향기가 가득한 마을 안쪽으로는 두 팔을 벌려도 안을 수 없는 느티나무와 선인들의 배움에 대한 열정이 남아 있는 영류재가 있고, 뒤쪽에는 넓은 논밭과 저수지 위로 이어진 아름다운 편백나무 산책로가 있습니다.다양한 체험과 함께하는 최고의 힐링 깨끗한 자연 환경 속의 농산물을 만날 수 있는 봉정농촌체험휴양마을로 오세요','061-363-2011','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20161004_191%2F1475549455230VyfHv_JPEG%2Fimage.JPEG'),
 (412,14,412,'성옥기념관','조선내화(주)창업자인 성옥 이훈동 선생의 미수를 기리기 위해 자녀들이 건립한 문화공간으로 선생이 수집한 근 · 현대 작품, 다양한 고미술작품과 도자기 등을 감상 할 수 있다.','061-244-2527','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA5MTRfMjAg%2FMDAxNzI2MzI0OTE5Mzc3.zmH_S07RFF_L8e76q_za8uK26BOKU9dAkaTnRlqciz0g.nidJUbL3IH5jpOzI1YyFxZTd4ecZsMiE1veiZf6MMJgg.JPEG%2F20240913%25A3%25DF144409.jpg'),
-(413,14,413,'구 동본원사 목포별원','동본원사는 목포에 들어선 일본 첫 불교사원으로 정식명칭은 ‘진종 대곡파 동본원사’이다. 동본원사 목포별원은 1898년 4월에 세워졌으며 목포심상고등학교 설립 인가를 받아 목포 내에서 일본인 소학교로 최초·정식 운영되기도 했다. 해방 이후 정광사의 관리를 받다가 1957년부터 목포중앙교회로 사용하게 되어 사찰이 교회가 되는 이색적인 약력을 가지게 되었다. 현재는 각종 문화행사 및 전시회 공간으로 활용되고 있다.','061-245-8832','https://example.com/default_image.jpg'),
 (414,14,414,'유달산','노령산맥의 맨 마지막 봉우리이자 다도해로 이어지는서남단의 땅 끝인 산 해발 228미터 기암괴석으로 이루어진 유달산은 노령산맥의 맨 마지막 봉우리이다. 정상에 올라 서면 목포 시내가 한눈에 내려다보이며 푸른 다도해의 경관이 시원스레 펼쳐져 있고 그 사이를 오고가는 크고 작은 선박들의 모습이 한폭의 동양화를 연상시킨다.','061-270-8359','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_67%2F14409922757334biyc_JPEG%2F11491499_0.jpg'),
 (415,14,415,'서산동 시화골목','지역의 시인과 화가 그리고 주민들이 참여하여 생활적인 시와 벽화를 구성해 놓은 곳이다.개발되지 않은 1970 ~ 80 년대 해안가 마을의 골목길을 보존해 당시의 생활적 정서를 엿볼 수 있는 대표적인 레트로 공간이다. 초입에 1987의 촬영지 연희네 슈퍼가 있어 조화를 이루고 있다','061-270-8598','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA0MjlfMTcx%2FMDAxNzE0MzY3MDQ1NTY0.VxC07w-3Z1kYi0LsvihGUo8vLHpVGTFSFbwzTfTcHl4g.LR27hTG35SEGbpLpL4qsorgI-KstBJYgmvdCSZJgD-Eg.JPEG%2F20240428_151843.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (416,10,416,'용연동굴','「용연동굴」이란 이름은 용의 연못 속에 있던 용이 계곡을 따라 하늘로 승천했다는 뜻을 담고 있다. 용연동굴은 백두대간의 중추인 금대봉 하부능선 해발 920m에 위치하고, 약 1억5천~3억만 년 전에 생선된 것으로 알려져 있다. 동굴의 길이는 약 843m, 구조는 4개의 광장과 순환형 수평굴로 이루어져 있다.','033-553-8584','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20230525_98%2F1684973580700oGarN_JPEG%2F4CD20438-6EF7-4E4F-B024-7A632ABF4B1F.jpeg'),
 (417,14,417,'섬진강 침실습지','제22호 국가기정습지로서 천혜의 자연환경이 잘 보전되어 있다. 수달, 흰꼬리수리, 삵 등 멸종위기 동물의 서식지이다. 이른 아침 물안개와 일출, 그리고 일몰풍경 등 시시각각 변하는 풍경이 한 폭의 동양화를 연상시킨다.침실 습지는 섬진강 유역인 곡성군 고달면 고달교에서 오곡면 오지1교까지 서울 여의도 면적과 비슷한 규모의 광활한 강 습지로서 물버들 군락이 이룬 가운데, 강변에는 울창한 갈대숲이 형성되어 있다.수달, 고라니, 오소리를 비롯한 포유류와 다양한 조류들이 서식 하는 생태계의 보고로 2016.11.7 국가습지보호구역으로 지정되었다.침실 습지는 언제 어느 때 찾아도 섬진강이 자아내는 아름다움의 진수를 만날 수 있지만 특히 이른 아침 무렵에 찾아가면 겨울에는 상고대, 이른 봄과 가을에는 물안개가 그려내는 비경을 만날 수 있다.버드나무와 갈대숲 그리고 크고 작은 섬들이 어우러져 아름다운 경관을 자랑한다.빼어난 풍경과 생물 다양성을 인정받아 2016년 11월에 강 중류 하도습지로는 유일하게 환경부로부터 22번째 국가습지로 지정되었다. 특히 일교차가 심한 새벽이면 물안개가 피어오르면서 환상적인 장면을 연출한다.','061-360-8512','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MTNfNTQg%2FMDAxNzIzNTA3MTk4NDY0.t6G4K393-z5bzuBQmlgpPgoWnobLurO5tBIAWO8BfaYg.1_WF4XWyAXKd_J3UzcM020Vdhj6VkUeSZ-BIB3vGUCYg.JPEG%2F4.jpg'),
-(418,14,418,'곡성아트빌리지','곡성아트빌리지는 섬진강 증기기관차가 운행하는 가정역에 위치해 있으며 아트갤러리, 유리공예 체험장, 야외공연장, 캡슐호텔과 목조펜션, 카페굴리엘모 등으로 이루어져 있어 가정역에서 머무르며 향기 가득한 차 한잔과 함께 낭만 가득한 섬진강을 느껴볼 수 있다.','061-362-5559','https://example.com/default_image.jpg'),
 (419,14,419,'곡성섬진강천문대','2007년 9월 19일 개관한 곡성섬진강천문대는 아름답고 깨끗한 섬진강이 흐르는 강변에 위치하고 있으며, 한국천문연구원에서 우리나라 순수 과학기술로 제작한 600mm 천체망원을 설치한 주관측실을 비롯하여 정밀도를 자랑하는 다양한 망원경들이 설치되어 있는 보조관측실, 8m 원형돔 스크린을 갖춘 천체투영실, 그리고 각종 천문자료 등을 전시해 놓은 학습공간으로 구성되어 있어, 별에 대한 옛 추억을 되새기고 미래 우주시대 주인공이 되기 위한 꿈과 미래를 찾아 떠나는 우주여행의 길잡이 역할을 충실히 할 것이다.','061-363-8528','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_15%2F1441015166841WTWwf_JPEG%2F106379505726982_0.jpg'),
 (420,14,420,'섬진강도깨비마을','곡성에도 여느 고장처럼 무수한 도깨비 이야기가 전해져 내려오고 있지만, 그중 태종임금, 이방원의 심복이었던 마천목 장군과 도깨비살 전설이 가장 유명하여 애니메이션으로 제작되어 기차마을 요술랜드에서도 상영하고 있다. 돌로 바다나 강물을 막고 그곳에 나뭇가지를 촘촘히 박아서 고기가 빠져나가지 못하게 한 다음, 물고기를 잡는 전통 어로방식을 어살이라고 한다. 그런데 물살이 드센 강을 커다란 돌로 막는다는 것이 보통 어려운 일은 아니다.[효성이 지극한 마천목 장군이 어머니에게 고기를 잡아드리기 위해서 강가에 나갔다가, 푸른빛이 도는 돌을 주워온다. 그 돌이 도깨비 두목이었던 것이다. 도깨비들이 집으로 찾아와 두목을 돌려주면 무슨 소원이든 들어주겠다고 하자, 마천목장군은 어살을 막아달라고 했다. 그래서 도깨비들이 하룻밤사이에 어살을 막아주었는데, 섬진강에는 아직도 그 자취가 남아있다.]도깨비와 관련된 각종 자료와 전시품들이 박물관 수준 이상으로 일목요연하게 전시되어 있어 우리가 몰랐던 도깨비에 대한 상식들을 많이 알수 있다.','061-362-2954','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230121_4%2F1674284113961gLmYk_JPEG%2F20150519_122741.jpg'),
-(421,14,421,'압록상상스쿨','압록상상스쿨은 (구)압록초등학교에 위치하고 있으며, 1층(798.83㎡)은 홍보 및 전시공간, 2층(806.33㎡)은 어린이 실내놀이터와 다목적 놀이 공간, 3층(308.69㎡)은 카페테리아, 소공연장, 전망대, 테라스 등으로 구성되어 섬진강 기차마을과 함께 새로운 놀이 문화공간으로 부상하고 있다.','061-362-2225','https://example.com/default_image.jpg'),
 (422,14,422,'압록유원지','강을 통한 운송이 수송의 중요한 역할을 담당했던 시절, 두 강이 만나는 합수지점은 물산과 사람이 모이는 교통의 요지 구실을 했다. 섬진강과 대황강(보성강)이 합쳐지는 곡성 압록포구도 그런 곳이었다. 옛 사람들이 일컬은 곡성팔경중 압록의 귀범(歸帆)이라는 표현만 보더라도 그것을 알 수 있다.섬진강과 보성강이 합류한 기점인 이 곳은 3만여평의 드넓은 백사장이 펼쳐있는 한여름 피서지로 널리 알려진 자연유원지다. 여름에는 모기가 없어 가족단위 캠핑장소로 각광을 받고 있으며, 반월교와 철교가 나란히 강을 가로질러 놓여있어 운치가 뛰어나다. 특히, 보성강 하류의 유명 낚시터가 산재해 있어 강태공들에게는 인기가 높다. 강변에는 압록의 별미인 참게탕, 은어회, 매운탕을 맛볼 수 있는 향토음식점이 즐비해 있어 또다른 즐거움을 준다.또한 이곳 압록유원지에는 「모기전설」 이 전해 내려오고 있는데 「강감찬 장군이 어머니를 모시고 여행을 하다 이 곳 압록유원지에서 노숙을 하였는데 극성스런 모기 때문에 어머님이 잠을 청하지 못하자, 강감찬장군이 고함을 질러 모기의 입을 봉하였다.」고 한다. 그런 연유에서인지 아니면 섬진강의 시원한 강줄기 때문인지 다른 지역에 비해 여름에 모기가 별로 없다고 한다.','061-360-8431','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_286%2F1441012373924kVRNS_JPEG%2F126254518577297_0.jpg'),
-(423,14,423,'곡성기차당 뚝방마켓','곡성역 그리고 러브트레인이 설치된 곡성 기차마을 후문과 곡성읍 사이에는 곡성천으로 연결되어 있다. 깔끔하게 정비된 곡성천 제방위로 예쁜 길이 나있다.이길은 뚝방길이라 불리우며 곡성사람들의 산책로로 이용되고 있다.이 길을 알려 곡성섬진강기차마을과 곡성읍을 연결하자는 의미로 이곳에 플리마켓 즉 누구나 판매자가 되고 소비자가 될 수 있는 벼룩시장을 연 것이다. 2016년 5월에 곡성에서 열리는 세계 장미축제의 개최와 함께 최초로 문을 연 뚝방마켓회를 거듭할수록 곡성 주민 뿐만 아니라, 인근 지역에서 일부러 뚝방마켓을 구경하러 찾아올 정도로 인기를 끌고 있다. 그리고 뚝방길을 알리는 효과를 넘어서 이제는 곡성을 대표하는 문화 현상으로 자리 잡았다.','061-362-2753','https://example.com/default_image.jpg'),
 (424,12,424,'용현자연휴양림','용현계곡 한가운데 자리해 심산유곡의 경치를 자랑하는 산림휴양의 적지','041-664-1971','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_200%2F1441039793003PMwDa_JPEG%2F11797712_0.jpg'),
 (425,12,425,'해미읍성','500년 옛모습을 잘 간직한 조선시대 석축 읍성','041-660-3069','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200328_260%2F1585363037243vyXEJ_JPEG%2FA0hA6IUYfzB4L5syDrpccFYL.jpg'),
 (426,14,426,'반남고분군','사적','061-336-1151','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMzFfMjU5%2FMDAxNzMwMzg2NTIxNTQ0.OW1OcTFSCEN1YqXJStKJnaHSJSMm2VM_wCUFRCcG_P4g.Ng6X3SPHgJ285FbfkSN4fCx1JsiPXdT-EK74p5h32L0g.JPEG%2F20241027_151926.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
@@ -1854,24 +1894,17 @@ INSERT INTO `trip` VALUES
 (433,10,433,'광덕계곡관광지','광덕계곡은 백운산과 광덕산 사이에 위치하며 자연경관이 수려하고 오염되지 않은 작은폭포, 작은소 등 개끗한 물이 일품이다. 숙박시설이 마련되어 있어 여름 피서지로서 안성맞춤이다.','033-440-2562','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_293%2F1441029585736rw9gy_JPEG%2F126470576060685_0.jpg'),
 (434,13,434,'은파관광지','봄철이 되면 화사한 벚꽃길로 유명하여 시민들의 사랑을 받고 있다.','063-454-3362','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA0MjVfNzgg%2FMDAxNzE0MDUwMjU5MDky.Ar1JVpe5qdYazcBC_dUXOrzrBCA3BLrMmgnsddFrriEg.ApVrjEJSw0W7pCrm1ACWe83RzD9iHbFYJgtFdjmmV0Ig.JPEG%2F20240422_204244.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (435,13,435,'금강호관광지','국내 최대 철새도래지로서 자연과 문화가 어우러지는 사계절 관광지로 거듭나고 있음','063-454-3344','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjExMTRfMjY5%2FMDAxNjY4NDA1NjQwNjc5.cgttqgEiI1Pt68nrxtahXXykj-RMJL_S69ZUIP5gOxYg.3HzvaOboXnAdUvISvRR7IsZpSGxZulKeEWTyEZQLh7wg.JPEG.kimmj0129%2FIMG_4491.jpg'),
-(436,14,436,'섬진강변 철쭉길','섬진강변따라 만개하는 불타는듯 화려한 철쭉의 향연을 차, 자전거, 도보 그리고 섬진강레일바이크로 즐길 수 있다.봄이 무르익는 4월에서 5월 무렵이 환상의 드라이브 코스인 섬진강 17번 국도가 가장 아름다운 시기다. 그 무렵 이 길을 벚꽃과 철쭉으로 그리고 연두색 신록으로 화려하게 치장한다.섬진강변 예전 철길을 따라 빼곡하게 늘어선 철쭉이 병풍처럼 늘어서 있어서 드라이브하기에 안성맞춤이다.벚꽃이 지면 철쭉의 계절이 된다 . 연두색 신록이 새얼굴로 치장한듯 모든게 새로운 계절에 짙은 빨란물감이라도 뿌려놓은듯한 강력한 철쭉이 섬진강변을 따라 모두를 반겨주듯 꽉찬 배열로 연호하고 있다.','061-360-8792','https://example.com/default_image.jpg'),
-(437,14,437,'섬진강변 자전거하이킹','천혜의 자연경관을 가진 섬진강과 보성강변의 아름다운 도로와 경치좋은 산길(임도)를 따라 달려볼 수 있는 코스입니다.에코레일(Eco-Rail)자전거 열차를 통해 전국의 동호인들이 찾고 있습니다.','061-360-8419','https://example.com/default_image.jpg'),
-(438,14,438,'두계 농촌체험 휴양마을','곡성 두계외갓집체험마을은 천마산에서 섬진강으로 8km에 이어지는 계곡이 있고, 외갓집 같은 포근함과 옛 정취가 물씬 풍기는 자연경관이 가득한 조용한 시골 마을입니다.곡성관광을 마치고 조용히 휴식과 휴양을 할 수 있는 한옥팬션이 준비되어 있으며 다양한 체험프로그램들이 있지만 연중 가능한 인절미 떡메치기와 시골두부만들기 체험이 있고 봄철에 식용 야생꽃을 이용하여 추억을 한 가득 담아갈 수 있는 토란화전만들기 체험이 있습니다. 그 밖에 단감따기, 고추따기 등 다양한 농사체험이 있습니다.','061-363-2011','https://example.com/default_image.jpg'),
-(439,14,439,'봉조 농촌체험 휴양마을','즐겁고 보람있는 체험 활동이 가득한 봉조농촌체험학교섬진강의 맑은 기운과 지리산 따뜻한 숨결을 품은 산골 마을 봉조리 입구에는 오랜 시간동안 마을과 함께 한 작은 시골 초등학교가 있습니다.도시로 아이들이 떠나면서 비록 그 초등학교는 폐교가 되었지만, 이제 그 시골 학교는 봉조 마을 어르신들이 농촌 선생님이 되어 우리 아이들에게 시골의 넉넉함과 농촌의 풋풋한 생기를 함께 나누는 <봉조농촌체험학교>로 다시 태어났습니다.마을 주민들이 정성을 다해 관리하고 있는 아름다운 ‘봉조농촌체험학교’를 중심으로, 봉조리의 논과 밭에서 다양한 농촌 체험 활동을 비롯한 창의 체험 활동들을 초, 중, 고 학생과 함께 하고 있습니다.마음이 따뜻한 사람들의 마을 ‘봉조리’가 여러분을 두 팔 벌려 환영합니다','061-362-5268','https://example.com/default_image.jpg'),
 (440,16,440,'김해가야테마파크','가야의 역사를 놀이, 체험, 전시를 통해 보고 듣고 느낄 수 있는 오감 체험형 테마파크','055-330-3241','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241118_213%2F1731894206312CrI6R_JPEG%2F2000-760.jpg'),
 (441,10,441,'화진포해양박물관','세계적으로 희귀한 각종 조개류, 갑각류, 박제 등 1,500여 종 40,000여 점을 전시한 패류박물관과 수중생물 125종 3,000여 마리를 보여주는 어류전시관으로 구성','033-680-3361','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_13%2F144103249972497nSb_JPEG%2F157155536823088_0.jpg'),
-(442,10,442,'화진포 생태박물관','지상 3층 규모로 층별 3개 전시관에서 화진포호와 관련한 생태계를 관찰, 학습할 수 있는 곳','033-680-3361','https://example.com/default_image.jpg'),
 (443,10,443,'송지호 관망타워','5층 규모의 독특한 관망타워 형태로 송지호에 떼지어 이리저리 날아드는 철새들의 군무가 한눈에 내려다보이는 곳','033-680-3361','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_270%2F14410283094642oHDA_JPEG%2F20027267_0.jpg'),
 (444,7,444,'진하해수욕장','수심이 얕고,파도가 잔잔하여 가족단위 해수욕에 알맞은 울산의 대표적 해수욕장','052-204-0352','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_118%2F1440992301050tFfGR_JPEG%2F157155537056918_0.jpg'),
 (445,7,445,'영남알프스 복합웰컴센터','울주 서쪽에 자리하고 있는 1,000m높이의 산들이 유럽 알프스와 견주어도 손색이 없어 많은 등산객들이 방문하고 있음','052-204-2931','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180602_95%2F1527900659295KgAX4_JPEG%2FnleAeC0s0-wahYOgsav9w6cL.jpg'),
 (446,7,446,'외고산옹기마을','전국 최대 규모의 옹기 집성촌으로 옹기를 만드는 공방과 전통 옹기 가마를 볼 수 있다.','052-204-0334','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_211%2F1441016314202fz2LN_JPEG%2F126273503962838_0.jpg'),
 (447,14,447,'곡성청소년야영장','증기기관차 종착역인 가정역에 도착하면, 승객들은 으레 섬진강을 가로지르는 출렁다리를 건너가는데 그곳 섬진강변에 청소년 야영장이 자리 잡고 있다.청소년 야영장 설립 목적은 청소년들이 몸과 마음을 단련하고 호연지기를 기를 수 있도록 하는 종합 수련장 역할을 하는 것으로 수익성 보다는 공익을 우선으로 하는 리조트 시설이다.따라서 숙소와 식당, 강당 그리고 각종 체험 시설을 갖추고, 1박 2일 또는 2박 3일의 청소년 수련 프로그램 위주로 운영 된다. 그러나 가족을 비롯한 일반인에게도 야영장 시설을 제공한다. 우선 텐트 50동을 설치할 수 있는 야영장을 비롯하여 별도의 글램핑장이 마련되어 있고, 신청을 하면 가족단위 숙소도 이용할 수 있다. 뿐만 아니라 섬진강 레프팅, 섬진강 자전거 하이킹등 다양한 레져 활동도 지원한다. 참고로 청소년 야영장 옆에는 주야간에 천체를 관측할 수 있는 섬진강천문대를 운영하고 있다.','061-362-4186','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240719_92%2F17213472181679hvQp_JPEG%2F%25BD%25BA%25C5%25D7%25C0%25CC1.jpeg'),
 (448,14,448,'곡성기차마을전통시장','곡성기차마을전통시장은 곡성의 대표적인 전통시장으로 2009년 현재의 자리로 옮긴 곡성장이 곡성기차마을전통시장으로 거듭나면서 곡성사람들은 물론 곡성 기차마을을 찾는 관광객들이 들려가는 필수 코스로 자리 잡고 있다. 애초에는 3일에 끝나는 날짜에 여는 10일 장이었다가, 19세기 중반부터 지금까지 매3일과 8일에 장이 서는 오일장으로 바뀌었다고 한다.고려말 이곳에 곡성읍이 들어설때부터 곡성장이 열렸을 것으로 추정하는데 지금까지 무려 600년을 이어온 대단한 전통을 가진 장인 셈이다. 600년 전통으로 이어 내려온 곡성장의 정취와 인심은 곡성기차마을전통시장에 고스란히 남아 있다. 지금도 곡성장에 가면 깊은 산중에서 나는 능이버섯, 송이버섯, 귀한 산나물과 약초를 쉽게 발견할 수 있다. 곡성의 특산물인 멜론, 토란같은 품질 좋은 농산물을 저렴한 가격으로 구입할 수 있다.','061-363-9002','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190124_149%2F1548330544911JgEDn_JPEG%2FMt1GCgUFEweimeaIRcyPw0YB.jpeg.jpg'),
-(449,14,449,'곡성기차마을 패러글라이딩체험','섬진강 기찻길따라 떠나는 하늘여행 내안의 버킷리스트를 오늘 완성하세요세계대회를 개최할 수 있는 규모의 전국 최대의 패러글라이딩 체험장입니다.남녀노소 누구나 스릴 넘치는 긴장과 재미로 평생 이야기 할 수 있는 재미만 가져가세요~고객님께서 원하시는 체험을 선택 하시기만 하면 아주 멋지고 스릴넘치는 내안의 버킷리스트와 함께 소중한 추억을 담아 드리겠습니다.','061-363-6696','https://example.com/default_image.jpg'),
 (450,14,450,'섬진강 레일바이크','아름다운 섬진강을 품고 내려가는 색다른 경험을 온 가족이 함께 즐길수 있는 섬진강레일바이크는 구 전라선 철도를 이용하여 섬진강변을 따라 운행하고 있다. 2인승과 4인승이 있으며 섬진강과 국도 17호선을 따라 운행하며 아름다운 청정자연을 만끽할 수 있다.','061-362-7717','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_264%2F1441015461631gJLuB_JPEG%2F11671289_0.jpg'),
 (451,14,451,'곡성집라인','공중 비행의 스릴감과 천혜의 자연 경관으로 유명한 섬진강변의 수려한 경치가 주는 경이로움을 모두 느낄 수 있는 곡성 집라인입니다.','061-362-0494','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190405_286%2F1554441194599nshWe_JPEG%2FIMG_8265.JPG'),
 (452,14,452,'대황강 출렁다리','대황강출렁다리는 대황강을 가로질러 죽곡면 태평리와 목사동면 구룡리를 연결하는 185m 길이의 인도교로 국내하천에 설치된 최장거리 다리이다.그동안 접근이 불편했던 강건너편 7km가량의 트레킹 코스가 출렁다리와 연결되면서 대황강의 빼어난 경관을 한 눈에 감상할 수 있고, 안전하면서도 사람이 지나가면 위아래로 30cm 가량 출렁이기 때문에 출렁다리를 건너는 스릴이 있어 이곳을 찾는 이들에게 즐거움을 안겨준다. 트레킹코스는 소나무숲길, 대나무 숲길, 삼나무숲길로 구성되어 있다.','061-360-8431','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MDNfMTY0%2FMDAxNzIyNjgwNDM0Nzgx.MtPTetUOctEbJ1XogAyY6kYYARCnPB4krYVzwHgb7z4g.Dw9JIZ4MoIy9S7jnMdSFM4kpFxApBIvwi9aXkLu0N9Yg.JPEG%2F20240803_151238.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(453,14,453,'반구정습지','대황강을 굽어보는 언덕 위에 서있는 ‘반구정’ 이라는 정자이름을 따서 대황강 만곡부에 형성된 습원을 반구정 습지로 부른다.김감선생은 문무를 두루 겸비한 조선 인조 때의 명신이었다. 병자호란이 일어나 인조임금이 남한산성으로 피신하자 선생은 두 아들과 함께 의병을 조직하여, 임금을 구출하고 오랑케를 물리치기 위해서 그곳으로 진격하지만, 인조임금의 항복소식을 접하고 비탄에 젖어 고향 석곡으로 내려와 은거한다. 선생은 강 언덕에 올라, 이곳의 빼어난 경치를 감상하는 것을 즐겼다.시를 짓고 노래하며 세상에 초연한 삶을 추구하였다. 그리고 그곳에 작고 소담한 정자 반구정을 앉혔다고 전한다. 애초에 김감선생이 지은 반구정은 주춧만 남아있을 뿐이라서, 지금 정자는 최근에 지어진 것이다.이곳에 제방이 들어서고, 주암댐으로 물길이 막히면서 반구정 습지의 많은 부분이 농경지로 개간되었고, 김감 선생의 시심을 불러일으키던 아름다운 옛 모습은 많이 훼손되었지만 반구정 습지는 아직도 온갖 종류의 조류들이 날아들고 무수한 동식물이 서식하는 생태계의 보고다. 반구정 습지는 산책 데크가 잘 갖추어져 있어, 도보 혹은 자전거를 타고 둘러볼 수 있다.','061-360-7410','https://example.com/default_image.jpg'),
 (454,14,454,'대황강자연휴식공원','석곡의 순 우리말 이름은 ’돌실’이다. 석곡주변 대황강에 멋진 바위들이 많아 유래된 이름이다. 석곡 소재지 인근 대황강 주변에 넓게 조성된 공원이 석곡 대황강 휴식공원 또는 돌실 대황강 휴식공원이다.특히 이곳에는 코스모스로 가득 채워져 있어 꽃이 피는 매년 9월말이면 코스모스 축제가 열리고, 광주, 순천 등 인근 도시에서 수많은 관광객들이 몰려와 공원과 강변을 가득채운 코스모스의 향연을 즐긴다.석곡의 돼지 숯불구이가 점점 유명해지면서, 이곳을 찾아오는 관광객들의 발걸음이 꾸준히 이어지고, 카누를 비롯한 수상 레포츠를 즐길 수 있는 시설도 잘 갖추어져 있다.대황강 휴식공원 산책로에서는 봄에는 벚꽃이 피고, 여름에는 백일홍이, 가을에는 코스모스가 핀다.','061-360-7420','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMjhfMTEy%2FMDAxNzMwMDQyOTgwNTE0.vkzmRkFvUDDDSaYdpllXJVFcL9Vy5czIQxQoUq0-TUIg.rKnRhpMro7wdVQxbN3SLj3LpPItaU0YjPcqi548TUZAg.JPEG%2F20240929EFBCBF152513.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (455,2,455,'서동미로시장','서동미로시장은 아름다운 길(美路)이라는 의미이자 골목마다 형성된 상권이 미로같다 하여 이름 붙은 문화관광형 시장이다.','051-519-4081','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_261%2F1441049723717PSDp9_JPEG%2F36208847_0.jpeg'),
 (456,2,456,'스포원파크','스포원파크는 기존의 경기장과는 달리 ‘공원’과 ‘개방’의 개념을 도입한 ‘공원형 경기장’으로서 쾌적한 환경여건을 가지고 있어 건강과 휴식을 위한 명소로 사랑받고 있다.','051-519-4081','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA1MTlfMzUg%2FMDAxNzE2MTExNzA1OTU2.WtchXSlOF9Rvsi8n4_FnSNewybDZcJjhUEz2KKao1kIg.P-t0a6RaexjHEdqnAkf0DHsW5i-3KKXaJviPbxfFhGEg.JPEG%2FKakaoTalk_20240519_182242401_07.jpg'),
@@ -1881,23 +1914,17 @@ INSERT INTO `trip` VALUES
 (460,9,460,'천진암','천학 강학회를 통해 신앙의 차원인 천주교로 발전시킨 성지','031-764-5953','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170209_70%2F1486616120158nXKUl_JPEG%2F186159538539442_0.jpeg'),
 (461,9,461,'경기도자박물관','우리의 전통 도자문화와 역사를 느낄 수 있는 곳','031-799-1500','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230421_144%2F1682051503418w2kFm_JPEG%2F%25BA%25D0%25BC%25F6%25B1%25A4%25C0%25E5_1.jpg'),
 (462,9,462,'경안천습지생태공원','다양한 수생식물 등 조류관찰과 자연학습의 장','031-760-3763','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_88%2F1441042409735iCjTU_JPEG%2F116678517125545_0.jpg'),
-(463,9,463,'팔당물안개공원','시민의 숲, 희망의 숲, 코스모스길, 자전거길이 잘 조성된 공원','031-760-4483','https://example.com/default_image.jpg'),
 (464,9,464,'중대물빛공원','장미터널, 연꽃로드, 아치목교 등이 있는 수변공원','031-760-3763','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240714_145%2F1720940241629WKvPy_PNG%2FKakaoTalk_20240415_115130342_04.png'),
 (465,14,465,'조태일시문학기념관','조태일 시인(1941~1999년)은 곡성 태안사에서 대처승의 아들로 태어났으며, 1964년 경향신문 신춘문예에 ‘아침선박’의 당선으로 문단에 등단하였다.이후 1969년 시전문지 ‘시인’을 창간하였고, ‘식칼론’을 비롯하여 여덟권의 시집을 간행하였다.시문학기념관과 시집전시관은 문단에 길이 남을 민족시인 조태일의 문학세계를 기리고, 예비 문학도들의 창작 공간 마련을 위하여 2003년도에 건립 되었으며, 태안사를 찾는 관광객은 물론 전국의 많은 문학인들이 이곳을 찾고 있다.「조태일 시문학 기념관」은 조태일 시인의 유품과 작품, 시인을 기리는 문학 작품 등 2,000여점이 전시되어 있으며, 「시집전시관」은 우리나라 최초의 근대시집인 최남선의 ‘백팔번뇌’, 최초의 번역시집 ‘오뇌의 무도’ 등 희귀본에서 최근 작품까지 3,000여점의 시집이 전시되어 있다.소박미가 넘치는 시문학관 건물은 시인 이윤하(건축사사무소 노둣돌 대표)의 설계로 지어져, 제1회 대한민국 목조건축 대전에서 본상을 수상했다.어쩌면, 조태일 시문학관 그 자체가 조태일을 표현하는 한편의 시다.','061-362-5868','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MDVfMjc3%2FMDAxNzIyODYzMDA5NzMw.rS23V_kzoyRHmt4rQQenrVFFQcnoFZF0ydAK9pkrlAQg.uQjs6aQylTgm9j3ucd5MaYJREEeMRT8lqoRSUcg8H3gg.JPEG%2F%25C1%25A6%25B8%25F1%25C0%25BB-%25C0%25D4%25B7%25C2%25C7%25D8%25C1%25D6%25BC%25BC%25BF%25E4_-022_%25281%2529.jpg'),
-(466,14,466,'섬진강문화학교 독도사진전시관','이 전시관은 우리나라의 중견사진 작가이자 한국비경 촬영단장인 김종권작가가 평생동안 촬영한 우리나라의 산과 들 바다, 홀로 섬 독도 등 수많은 사진들이 전시되어 있으며 특히 이곳을 방문 시 사진에 대한 배경과 촬영 기법 등 작가의 해설이 더하여 우리가 직접 가 보지 못한 곳에 대한 간접적인 체험과 문화적인 공감대를 느낄 수 있는 좋은 문화공간으로 활용되고 있다.김종권 작가는 사진가들이 도저히 접근하기 힘든 독도와 백두산을 비롯한, 우리나라 금수강산 이곳저곳에 감춰져 있는 아름다움의 진수를 찾아내어, 세상에 알려온비경 사진작가로 유명하다.잠시 곡성에 내려와 작품 활동을 하다가, 곡성의 인심과 고향의 이미지를 간직한 풍광에 이끌려 아예 눌러앉게 되면서 태안사 가는 길목 폐교에 캠핑을 비롯한 각종 체험활동을 할 수 있는 섬진강문화학교와 사진박물관을 개설하였다.섬진강문화학교에서는 캠핑장을 제공하고, 각종 어린이체험교실을 진행한다. 교실을 개조한 각각의 전시공간에는, 곡성의 아름다움을 담은 풍경사진, 남도의 각종풍경과 생태사진, 희귀한 독도사진, 백두산 사진, 우리나라의 숨은 비경을 담은 사진 등 천여 점의 사진이 전시되어 있다. 이곳을 둘러보는 것으로 곡성으로부터 시작하여 독도와 백두산 그리고 설악산을 비롯한 우리나라 곳곳의 비경들을 한군데서 만나볼 수 있다.2km 거리에 태안사와 봉두산, 삼산, 섬진강, 보성강이 있어 산책 및 등산 코스로 최적이며 특히, 사진에 관심있는 분들에게 촬영기법 소개 및 사진 여행코스 안내를 받을 수 있다.','061-362-0313','https://example.com/default_image.jpg'),
 (467,14,467,'시사교육박물관 김갑진 갤러리','옛 기룡초등학교의 폐교를 활용하여 박물관으로 재탄생 시킨 공간으로 현대사의 기록물과 시사정보 관련 상품 및 캐릭터 등 수많은 자료가 소장되어 있다.','061-362-9004','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191002_105%2F1570004462225nuhyz_JPEG%2Fsi9DJLFP_J0A56Isgx1A2xG2.jpg'),
-(468,15,468,'문경 철로자전거(구랑리역)','진남역을 출발해 야생화를 감상하며 달리다 어두운 터널을 통과하는 독특한 체험을 할 수 있는 구랑리역 코스','054-553-8300','https://example.com/default_image.jpg'),
 (469,15,469,'문경 철로자전거(가은역)','석탄박물관에서 가까운 가은역에서 출발해 구랑리역까지 갔다가 돌아오는 코스','054-553-8300','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210302_40%2F1614654507683WhJ5q_JPEG%2FjSLN3ws4auDOgLSAF3QPv3aB.jpg'),
 (470,15,470,'문경 오미자테마터널','경북 8경 중 제1경으로 꼽히는 진남교반 고모산성 아래에 있는 오미자테마터널, 과거에 석탄을 실어나르던 문경선 내 석현터널을 개발함','054-554-5212','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170710_131%2F1499667394755J523L_PNG%2F186660554653_0.png'),
-(471,15,471,'고모산성, 토끼비리','삼국시대의 성곽. 문경시 마성면 신현리 고모산(姑母山)에 있는 포곡식 산성','054-550-6408','https://example.com/default_image.jpg'),
-(472,14,472,'심청효문화센터','곡성에서는 심청의 본고장이라는 자부심으로 만행의 근본이라 일컬어지는 효(孝) 정신을 널리 전파하기 위해서 매년 심청축제를 여는 등 다양한 노력을 기울이고 있다. ’효’는 이제 곡성을 상징하는 대표 키워드나 다름없다.따라서, 곡성에는 심청이 들어가는 명칭이 많은데, 그중 하나가 심청효문화센터다. 심청효문화센터는 곡성스러운 청정하고 조용한 분위기가 물씬 풍기는 시골마을 한켠에 자리 잡고 있다. 곡성 심청의 근원지인 관음사와 연계하여 심청의 효문화를 새롭게 조명하고 현대적인 효의 위상과 의미를 재정립하여 그 중요성을 인식하게 할 수 있는 교육의 장으로 활용하고자 체험공간과 숙소동을 갖추고 운영하고 있다. 한꺼번에 100여명을 수용할 수 있는 숙박시설과, 세미나실과 잔디 운동장, 야외취사장, 음향설비 등을 갖추고 있어 학생들의 현장학습, 기업연수, 대학생 M/T장소로 활용되고 있다. 아울러 심청의 효 문화를 알리기 위한 전시실과 더불어 ’효’ 체험 프로그램을 운영하고 있어, 가족단위의 발걸음도 꾸준히 이어진다.또한 인근에 조성된 심청공원도 꼭 들러볼 만한 곳이다. 이곳엔 심청전의 배역 인물을 묘사하는 장승 23기가 세워져 있다.','061-363-4041','https://example.com/default_image.jpg'),
 (473,14,473,'심청골짝나라학교','전라남도교육청 대안학교 위탁교육기관인 심청골짝나라학교는 학교 부적응 학생이나 폭력 등의 문제를 일으킨 아이들에게 퇴학이나 전학 조치가 취해지던 예전과는 달리 아이들은 위탁 교육기관에서 일정 기간의 교육을 받은 후 원적학교로 복귀하게 됩니다.  심청골짝나라학교는 이러한 아이들을 무료 대안교육 하는 기관입니다. 비영리단체로 운영되며 학교 운영에 필요한 비용은 체험학습이나 수련활동, 수익사업,  교직원 연수 등 프로그램을 제공한 수익금으로 충당합니다.  이곳의 교사들 역시 변화하는 아이들을 지켜보는 기쁨만으로 7년째 봉사하고 있습니다. 진정한 ’대안교육’을 꿈꾸는 사람들이 모인 학교입니다. 현재 다양한 교육프로그램을 제공하고 있습니다.','061-363-4224','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190213_15%2F1550017005024amqSl_JPEG%2FRKLm9bHCL0NwBkzSLMItt1r6.JPG.jpg'),
 (474,14,474,'심청한옥마을','곡성군은 심청전의 원류 관음사연기설화가 있는 심청의 고장이다.KBS 역사스페셜 [역사추적 심청의 바닷길] 을 통해서 소개된 바와 같이 관음사 연기설화는 1700년전 장님 아버지를 둔 곡성의 효녀가 중국으로 건너가 진나라 황제의 황후가 되었는데, 아버지를 그리워하며 관음상을 만들어 고국으로 보내고, 아버지는 딸과 헤어지는 것이 슬퍼 흘린 눈물때문에 눈이 밝아졌다고 하는 내용이다.추론하여, 서기 300년 곡성땅은 철의 주산지였으며, 고대국가 형성의 중요한 자원이였던 철을 확보하기 위해 섬진강을 따라 중국 상인과 무역선이 드나드는 과정에서 곡성의 효녀가 중국 양자강 어귀의 보타섬으로 건너가 귀인이 되었다는 내용이다. 이에 따라 곡성군이 심청의 고장으로 떠오르면서 곡성군은 심청이 실천했던 아름다운 우리의 전통문화 효 사상을 계승 발전시키고자 전통한옥으로 된 심청이야기 마을을 조성하게 되었다.즉 효녀 심청의 이야기가 있는 마을을 만든 것이다. 심청이야기마을은 기와집과 초가집이 들어서 있는 전통 마을이다. 그래서 이곳에는 실제로 심청이살고 있을 것 같은 느낌을 준다. 마을의 이름을 ‘심청이야기마을’이라 정한 이유도 그것이다. 심청이야기마을은 섬진강을 끼고 달리는 17번 국도에서 들어간다. 돌로만들어진 이정표를 보고 증기기관차가 다니는 철길을 건너 산으로 향하는 길을 쭉 따라가면, 심청전을 상징하는 조형물들과 더불어 심청이야기마을이 모습을 드러낸다. 심청이야기마을은 억지로 산을 깍아서 조성한 것이 아니라, 원래 있었던 송정마을의 집터와 가옥의 원형을 최대한 살렸기 때문에, 전혀 이질감이 느껴지지 않는다. 이곳을 다녀간 사람들은 이구동성으로 곤방산 자락 울창한 숲속으로 연결되는 산책로를 최고로 친다. 그 길을 따라가면 곤방산 정상까지도 1시간 이내면 올라갈 수 있고, 여름밤엔 청정지역에서만 서식하는 반디불이도 어렵지 않게 만날 수 있다. 굳이 숙박을 하지않더라도 누구든지 부담없이 찾아와 마을을 둘러보며 초가집 돌담길을 배경으로 멋진 인증샷을 찍거나 곤방산 숲길을 산책할 수 ','061-363-9910','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMDA0MDZfMjY2%2FMDAxNTg2MTQ5ODY1MzY5._NRzEt8pwwXdkgEIlM2AVD5rbJn96oJ6JicNpy7LrEUg.vGMc2AeKUGUGWlmXlZl-LaVTlvi19KlUWOCZlJxE0nkg.JPEG.hcho67%2FKakaoTalk_20190513_092522515.jpg'),
 (475,16,475,'오션어드벤처','소노캄 거제 내에 위치한 종합 유원시설로 여름철 물놀이를 즐길 수 있다.','1588-4888','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220614_164%2F1655201205008glta6_JPEG%2F%25C3%25B5%25BE%25C8.jpg'),
 (476,16,476,'옥포대첩기념공원','임진왜란 발발 이후 충무공 이순신장군이 첫 승전한 옥포해전을 기념하고 충무공정신을 후세에 길이 계승하기 위하여 조성한 기념공원이다','055-639-8129','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_226%2F1441007202798kxPiU_JPEG%2F116364497038543_0.jpg'),
 (477,16,477,'조선해양문화관','어촌에 전해 내려오는 전통문화 및 어업변천사 등 보전 전시하여 청소년 교육의 장과 도시민의 휴식공간으로 활용','055-639-8270','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMjBfMjQ5%2FMDAxNzI5NDI1NDcwMjMx.r7eW7FYYfxB4V-zrUCCRs11TU3cLoJlcG2WgH_Zt4kUg.A4abuQUlvKng7n1jZlE9VdX4nKKcIdmLZ4kHIg6J64og.JPEG%2F1E707515-E50E-40C7-9FF1-A8F641EFA43F.jpeg%3Ftype%3Dw1500_60_sharpen'),
 (478,16,478,'지심도','지심도 섬 전체가 거의 동백나무로 뒤덮여 있는 섬으로 장승포항에서 5km 쯤 떨어져 있다. 지심도 일주도로인 오솔길을 따라 걸으면 2~3시간이면 전부 감상 할 수 있다.','055-639-4193','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MjZfODUg%2FMDAxNzI0NjA0NzQ1NDg2.WpAT3QIf8LJhFq0s3RbCrjJ4mFwmzEKuOVF0e_3SRygg.62L1Alg4GR4XgwBM_8eDfIPL-VJr2WPQff783eI1-6Ig.JPEG%2F1000138188.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(479,16,479,'칠천량해전공원','임진왜란 당시 조선 수군의 최대 패전으로 기록된 칠천량 해전의 의미를 되새기는 기념공원이다','055-639-8250','https://example.com/default_image.jpg'),
 (480,16,480,'한산도 제승당','선조26년(1593년) 이순신장군이 삼도수군통제사를 제수받고 이 곳에 진영을 설치했고, 1976년 지금의 제승당과 충무사, 한산정, 수루 등을 새로 짓고 경내를 정화하여 오늘에 이름.','055-254-4483','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180524_28%2F1527156498356j76xe_JPEG%2FMZkIn-pEY8wc1RXpuVSnwRUj.jpg'),
 (481,16,481,'통영루지','스카이라인 루지는 탑승자들이 1.5km의 트랙 위를 자유롭게 조정하며 내려올 수 있도록 특별제작된 카트로 연령에 관계없이 누구나 쉽게 배우고 즐길 수 있는 아웃도어 기구.','055-650-0621','https://search.pstatic.net/common/?src=https%3A%2F%2Fnaverbooking-phinf.pstatic.net%2F20230920_207%2F1695171964450aownh_JPEG%2Fbanner6.jpg'),
 (482,16,482,'박경리기념관','통영이 낳은 대 소설가 박경리 선생님의 문학적 업적을 기리고 독창적이고 차별화된 문화콘텐츠를 육성하기 위해 기념관 건립함.','055-650-2541','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_46%2F1441031629383eMXmj_JPEG%2F116456578220749_0.jpg'),
@@ -1905,26 +1932,20 @@ INSERT INTO `trip` VALUES
 (484,16,484,'장사도해상공원','바다위의 공원으로 배를 타고 입장.','055-650-0514','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190328_119%2F1553744099317HbWTH_JPEG%2FFXC1CXuqbgmA3pPlamWf4lJt.jpg'),
 (485,16,485,'통영시립박물관','통영시립박물관은 통여의 소중한 문화자산을 잘 보존, 전시하여 후대에까지 전하려고 합니다.','055-650-4515','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMjJfMTM0%2FMDAxNzI5NTI4MjM2OTgx.59nQCBJyX4DTcxWtJNV-PL4_zTFIQknOBvQSKdjqVOgg.7umD9DY8uEnudaA2ZCrkk-G72-uAjmAp6pJ5wOzkhWMg.JPEG%2F91BCC475-C169-4BDC-98C2-3BFA1D2D1F17.jpeg%3Ftype%3Dw1500_60_sharpen'),
 (486,16,486,'삼도수군통제영','이충무공의 숨결이 살아있는 통제영은 삼도수군통제영의 약칭으로 삼도수군통제사가 경상,전라,충청 3도의 수군을 지휘하던 본영을 말한다. 최초의 통제영은 임진왜란 당시 초대 통제사로 제수된 이순신장군의 한산 진영이였다.','055-645-3805','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220903_182%2F1662171647967PzeAs_JPEG%2F1662168293139-14.jpg'),
-(487,9,487,'평택호관광단지','문화와 예술이 살아숨쉬는 친환경 문화관광단지','031-8024-8687','https://example.com/default_image.jpg'),
 (488,9,488,'남한산성','역사와 문화, 4계절의 아름다움을 감상할 수 있는 곳','031-8008-5155','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_201%2F1441045551842peB20_JPEG%2F13490975_0.jpg'),
 (489,14,489,'서천무지개분수대','음악분수 퍼포먼스 공연','061-797-4979','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_128%2F1441039840396fRrej_JPEG%2F126654513769216_0.jpg'),
 (490,14,490,'장도전수관','장도 선비·부녀자 사용, 중요무형문화재 60호 장도장','061-763-0510','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_141%2F1441031439418PR04d_JPEG%2F11730714_0.jpg'),
 (491,14,491,'도립미술관','2017년 말 착공 예정','061-797-2227','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201109_271%2F1604898400647cGSpS_JPEG%2FtoxNYiwRMmBPucj-AdvR7UfM.jpg'),
 (492,14,492,'광양와인동굴','바닥 트릭아트, 세계 와인 전시, 와인 카페테리아, 오브젝트 맴핑, VR체험관 등','061-794-7788','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180126_118%2F1516948923145CTO6C_JPEG%2F600x394-1.jpg'),
-(493,14,493,'광양역사문화관','광양의 역사, 문화, 인물 자료 전시·설명','061-797-1985','https://example.com/default_image.jpg'),
 (494,14,494,'사라실 라벤더 단지','라벤더마을, 라벤더 체험장','061-762-0723','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20180614_300%2F1528943536038Bs8uN_JPEG%2FjUkcWkZUhPkguXjsgcwggDfg.jpg'),
 (495,14,495,'사라실 예술촌','광양 사라실 예술촌','061-797-2734','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190102_23%2F1546411229545PqILF_JPEG%2FhVyNS6qKlp_mEs1iptZd-uvW.jpg'),
 (496,14,496,'광양 마로산성','국가지정문화재 사적 제492호','061-797-2418','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA2MTdfMjkz%2FMDAxNzE4NTg1MTUxODE4.eygXHQpm98U0D0bJVfsZ3gZuNDqJzpg2dZA0v9nT1jwg.GCis4kdzT3CUDrzQgPwV00aWpQcmw1k__IFUek-yMxcg.JPEG%2F20240617_091658.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (497,14,497,'광양 궁시장','도지정무형문화재 제12호','061-763-1154','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221018_9%2F1666080841018M4PmW_JPEG%2F20220916_102014.jpg'),
-(498,14,498,'매천황현생가','조선의 마지막 선비 우국지사 매천 황현선생 생가','061-797-2418','https://example.com/default_image.jpg'),
 (499,2,499,'몰운대','태종대, 해운대와 함께 부산의 3臺 중 하나','051-220-4082','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_57%2F14410173349174Nas4_JPEG%2F126657638722391_0..jpeg'),
 (500,2,500,'다대포 꿈의 낙조분수','세계 최대이자 최고의 바닥 음악분수','051-220-5891','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220624_238%2F1656035450982qIAuW_JPEG%2F6.jpg'),
-(501,2,501,'용호 Sea-Side 관광지','천혜의 자연경관을 가지고 있고, 인근 오륙도 스카이워그 등 기존의 관광 인프라가 구축','051-607-4045','https://example.com/default_image.jpg'),
 (502,15,502,'팔공산 하늘정원','오도암, 비로봉, 동봉, 서봉 등 팔공산의 봉우리들을 자유롭게 다닐 수 있는 오름길','054-380-7943','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200525_229%2F1590375267319xMX88_JPEG%2Frzi6gfbk9WonuHasBGiUvK70.jpg'),
-(503,15,503,'김수환 추기경 사랑과 나눔 공원','김수환 추기경의 사랑과 나눔 정신의 계승,확산을 위한 정신문화 공간','054-380-6064','https://example.com/default_image.jpg'),
 (504,15,504,'사라온 이야기 마을','선조들이 살아온 역사와 문화를 적라촌, 적라청, 적라골 3가지 테마로 나누어 재현','054-380-7216','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_64%2F144111111166791q0I_JPEG%2F166673605238796_0.jpeg'),
 (505,14,505,'다산초당','다산초당은 조선 후기 실학 사상을집대성한 다산 정약용 선생이 18년간의 유배기간 중 10여년간 생활하며후학을 양성하고 ’’’’목민심서’’’’를 비롯하여 500여권의 책을 저술했던 조선실학의 산실이다.','061-430-3911','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_282%2F14410145243307xFk9_JPEG%2F107165547739126_0.jpg'),
-(506,14,506,'고려청자박물관','고려청자의 체계적인 관리와 연구를 위해1997년 고려청자박물관을 개관,운영하여청자의 연구는 물론 누구나 쉽게 청자를접하고 이해할 수 있도록 하고 있다.','061-430-3755','https://example.com/default_image.jpg'),
 (507,14,507,'백련사','신라말에 창건되어 1211년 원묘국사요세에 의해 중창된 백련사는 1236년백련결사문을 발표하고 백련결사운동을주창하였으며 고려 8국사와 조선 8대사를배출하여 명찰로 알려지게 되었다','061-432-0837','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240726_6%2F1721954445852UOM66_JPEG%2F%25C5%25A9%25B1%25E2%25BA%25AF%25C8%25AFKakaoTalk_20231124_085548220_04.jpg'),
 (508,16,508,'한려수도조망케이블카','통영 미륵산에 설치된 한려수도 조망 케이블카는 한국에서 유일한 2선(bi-cable) 자동순환식 곤돌라 방식으로 스위스의 최신기술에 의해 설치되었으며, 그 길이도 1975m로 국내 일반관광객용 케이블카 중에서는 가장 길다. 특히, 그렇게 긴 길이에도 불구하고 친환경적인 설계에 의해 중간지주는 1개만 설치하여, 환경보호는 물론 탑승객에게 아주 편안한 승차감을 제공한다. 또한, 8인승 곤돌라 48대가 연속적으로 탑승객을 운송함으로써 지체 없이 탑승이 가능하며, 가까운 사람끼리 오붓하게 아름다운 한려수도의 경치를 감상할 수 있다.','055-649-3804','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220425_3%2F16508736569492FwK2_JPEG%2F%25BD%25E6%25B3%25D7%25C0%25CF%2528%25C1%25A4%25BB%25E8%25B0%25A2%25C7%25FC%2529.jpg'),
 (509,12,509,'간월도관광지','개발진행중','041-660-2373','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_219%2F14410333380074P4m9_JPEG%2F107168508970070_0.jpg'),
@@ -1935,61 +1956,17 @@ INSERT INTO `trip` VALUES
 (514,15,514,'장사해수욕장관광지','해수욕장의 청정 자연자원과 장사상륙작전이라는 역사적 사건을 보존한 관광지','054-730-6513','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_123%2F1441045578229Lh7L8_JPEG%2F157155537061695_0.jpg'),
 (515,10,515,'오색관광지','설악산과 오색령에 아름다운 자연경관을 볼수 있음','033-670-2724','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA0MDFfMjIg%2FMDAxNzExOTc2NDMwMzIx.teOA-639_9KtqFMQElCOqvQ8JC8nl0Mo-7pRwW_MQfYg.ICD6wEpydXSfj5olEHhVEBSS9WkYh4aaiJ2LcZVr9qAg.JPEG%2F20240330_144759.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (516,10,516,'지경관광지','동해안 해안절경 감상','033-670-2724','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_23%2F1441045596412BlKeV_JPEG%2F13491277_0.jpg'),
-(517,10,517,'설해원(양양국제공항)','장기체류형 종합 스포츠레저단지','033-670-2724','https://example.com/default_image.jpg'),
-(518,16,518,'표충비','표충비는 국가의 중대사가 있을때를 전후하여 비면에 자연적으러 땀방울이 맺혀서 마치 구슬처럼 흐르는데 이것을 두고 사람들은 나라와 겨례를 염려하는 사명대사의 영험이라고 신성시 하고 있음','055-359-5639','https://example.com/default_image.jpg'),
 (519,16,519,'작원관지','김해와 낙동강 유역에 창궐하던 왜적들의 침공을 방비하던 요새지','055-359-5639','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEyMThfMjgz%2FMDAxNzAyODk1OTc5MDA4.zwE9WD1SRYyPGZyx7Fgrkw68HxoeK0BTRFScLGI0ZhIg.p0VYdekd0jYNcan6oCyH2b9nghA7uharaK5xdRWNoDYg.JPEG%2F20231217_103611.heic.jpg%3Ftype%3Dw1500_60_sharpen'),
 (520,16,520,'예림서원','예림서원은 영남유림의 종장인 점필재 김종직을 사숙하던 후학들의 교육기관','055-359-5639','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_266%2F1441097574657WnQct_JPEG%2F34542267_0.jpeg'),
 (521,16,521,'밀양향교','밀양향교는 고려시대(1100년경)때 창립되어 임진왜란때 불타 버린것을 1602년 부사 최기가 중건하여 지금까지 현존하고 있는 건물임','055-359-5639','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_32%2F1441024023762b2pYH_JPEG%2F116278616726832_0.jpg'),
 (522,16,522,'밀양관아','조선시대 밀양부 관아의 창건연대는 정확히 알 수 없으며, 1612년에 원유남 부사가 부임하면서 원래 자리에 관아를 복원 하였음','055-359-5639','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200730_189%2F1596107127599mEPKV_JPEG%2FoJRIaBzf9hL_jXhGTHXi1gDN.jpeg.jpg'),
-(523,16,523,'밀양영남루','우리나라 3대 누각중에 하나이며 보물제147호임','055-359-5639','https://example.com/default_image.jpg'),
-(524,16,524,'만어사','해발674m의 만어산 8부 능선에 위치하고 있는 만어사는 가라국 수로왕이 창건한 유서 깊은 사찰','055-359-5639','https://example.com/default_image.jpg'),
-(525,14,525,'유당공원','1528년 광양현감 박세후 조성','061-797-4979','https://example.com/default_image.jpg'),
-(526,11,526,'장계관광지','아름다운 대청호반이 한눈에 내려다보이며, 향토자료 및 시문학 작품을 감상할 수 있음','043-730-3721','https://example.com/default_image.jpg'),
-(527,11,527,'온달관광지','온달관광지','043-423-8820','https://example.com/default_image.jpg'),
-(528,11,528,'천동관광지','천동관광지','043-423-3589','https://example.com/default_image.jpg'),
-(529,11,529,'다리안관광지','다리안관광지','043-423-1243','https://example.com/default_image.jpg'),
-(530,14,530,'목포근대역사관 1관 (구, 일본영사관)','목포 최초의 서구적 근대 건축물로 건립당시의 내·외관을 거의 그대로 유지하고 있으며 목포 개항 이후 1900년 12월 일본영사관으로 지어져 광복 이후 목포시청, 시립도서관, 문화원으로 사용하다가 현재는 목포 근대역사관 1관으로 운영중에 있다','061-242-0340','https://example.com/default_image.jpg'),
-(531,14,531,'목포근대역사관 2관 (구,동양척식주식회사)','구 동양척식주식회사 목포지점이었던 근대역사관2관은 1920년 6월에 건립된 일제시대 건축물로 1999년 11월 20일 전라남도 기념물 제174호로 지정.동양척식주식회사 건물 복원기념으로 사진이 전시되고 있다 2층건물에는 주요 근대역사자료와 관련한 상설전시중이다.','061-270-8728','https://example.com/default_image.jpg'),
-(532,16,532,'정양레포츠공원','남녀노소 즐길거리가 다양한 여름 대표 휴가지','055-930-4663','https://example.com/default_image.jpg'),
-(533,16,533,'정양늪생태공원','자연을 직접 느끼고 경험할 수 있는 생태관광지','055-930-3343','https://example.com/default_image.jpg'),
-(534,16,534,'해인사 소리길','트래킹코스로 사랑받고, 다양한 꽃길을 보유한 소리길','055-930-8000','https://example.com/default_image.jpg'),
-(535,16,535,'신소양체육공원','핑크뮬리, 유채, 황화고스모스 등 계절별 초화류 및 은행나무 군락지','055-930-3544','https://example.com/default_image.jpg'),
-(536,16,536,'합천호회양관광단지','자연 경관이 뛰어난 호반 유원지','055-930-3753','https://example.com/default_image.jpg'),
-(537,1,537,'심우장','만해 한용운의 일제강점기 머물던 집','02-741-4693','https://example.com/default_image.jpg'),
-(538,1,538,'길상사','최고급 요정에서 도심속 도량으로 환골탈퇴','02-3672-5945','https://example.com/default_image.jpg'),
-(539,1,539,'한국가구박물관','한국의 전통가구를 한눈에 볼수있는 곳','02-745-0181','https://example.com/default_image.jpg'),
-(540,15,540,'호미곶관광단지','호미곶의전경을 확인','054-270-2244','https://example.com/default_image.jpg'),
-(541,1,541,'일제 경성호국신사 계단(108계단)','일제강점기 경성호국신사에 참배하기 위해 오르던 진입로로, 완공까지 한국인들의 재산과 노동력이 동원되었다. 일제 말기 식민지 한국이 처했던 비극의 역사를 선명하게 보여주는 장소이다.','02-2199-7240','https://example.com/default_image.jpg'),
-(542,1,542,'찬바람재','예전부터 겨울철 찬바람이 매섭게 몰아친다 하여 찬바람재 또는 한풍재라고도 불리던 곳이다. 현재는 이 일대를 푸른 풀이 무성한 들판이라는 뜻의 녹사평이라고 부르고 있다.','02-2199-7240','https://example.com/default_image.jpg'),
-(543,1,543,'옛 남영동 대공분실(현 민주화운동기념관)','1970~80년대 민주주의를 억압하며 악명을 떨쳤던 남영동 대공분실은 1976년 지상5층 규모로 신축되어 치안본부 대공과 대공분실로 사용되었다. 2023년경 민주주의와 인권의 가치를 수호하는 민주인권기념관으로 정식 개관할 예정이다.','031-361-9576','https://example.com/default_image.jpg'),
-(544,1,544,'옛 용산공설시장(현 남영아케이드)','1922년 일제가 설치한 시장으로 지금은 남영아케이드로 불리고 있다.','02-2199-7240','https://example.com/default_image.jpg'),
-(545,1,545,'전쟁기념관','1994년 용산에 건립된 전쟁기념관은 외침을 극복하고 국민의 생명과 재산을 지켜온 대외항쟁사와 민족의 자주독립을 지켜온 국난극복사 등 전쟁에 관한 자료를 수집,보존하고, 전쟁의 교훈을 통해 전쟁을 예방하여 조국의 평화적 통일을 이룩하는데 이바지하기 위해 세워졌다.','02-709-3114','https://example.com/default_image.jpg'),
-(546,15,546,'문경새재 도립공원','문경새재는 새도 날아서 넘기 힘든 고개라는 뜻으로, 조령(鳥嶺)이라고도 한다. 풀이 우거진 고개[草岾] 또는 하늘재와 이우리재[伊火峴] 사이에 있는 고개라는 뜻에서 새재로 했다는 설과 새로[新] 생긴 고개라는 뜻에서 새재로 지었다는 설도 전해진다.1966년 문경관문이 사적 147호로 지정된 뒤, 1974년에는 주흘산(1,106m)과 조령관문 일원이 경상북도지방기념물 18호로 지정되었다. 1979년 경상북도 제1호 국민관광지, 1982년 문화재보호구역으로 각각 지정되었다. 1997년 문경새재박물관을 개관한 데 이어, 2000년과 2002년에 각각 KBS 촬영장과 문경새재 야외공연장을 개장하였다.','054-550-8351','https://example.com/default_image.jpg'),
-(547,15,547,'문경 에코랄라(석탄박물관 포함)','백두대간 생태자원이라는 핵심 콘텐츠와 친환경 녹색문화의 중심 문경에서 영상문화 콘텐츠를 결합한 생태 녹색 에너지환경 테마의 휴양문화공간으로 조성되어 모든 연령층이 함께 즐길 수 있는 문화 콘텐츠 테마파크','054-550-6398','https://example.com/default_image.jpg'),
-(548,15,548,'문경 철로자전거(진남역)','전국 최초의 철로자전거, 영화의 촬영지로 쓰여도 좋을 만큼 예쁜 진남역을 출발해 진남교반의 절경을 감상하며 불정역까지 갔다가 돌아오는 코스','054-553-8300','https://example.com/default_image.jpg'),
 (549,11,549,'레인보우힐링관광지','영동의 아름다움을 볼 수 있는 7가지 테마가 있는 관광지','043-740-3634','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMTVfMTcw%2FMDAxNzI4OTUyNTcyNDA2.f2wceyMsXtnhN9PIyyfqyapMDxaKRn2oVkgw4PHZuaMg.be1PV4mQVV7F_RN-4FYcdH761mfIhv7gqftRgj9sjPwg.JPEG%2FKakaoTalk_20241015_000253874_01.jpg'),
-(550,11,550,'송호관광지','아름다운 금강변 옆 1400여 그루의 송림에서 캠핑을 즐기며+ 신선놀음을 하기 제격인 곳','043-740-3632','https://example.com/default_image.jpg'),
-(551,14,551,'가우도','곰솔나무 등 태고적 숨결이 가득한 함께해길그리고 바다를 걷는 출렁다리삶의 여유가 묻어나는 섬 가우도에서는 건강함도 함께한다','061-430-3344','https://example.com/default_image.jpg'),
-(552,14,552,'영랑생가','구수한 남도 사투리로 현대 서정시의 새로운 지평을 열었던 영랑 김윤식 선생의 생가를 원형 그대로 보존한 곳으로 영랑의 시혼과 그 발자취를 엿볼 수 있다.','061-430-3185','https://example.com/default_image.jpg'),
-(553,14,553,'아산조방원미술관','아산 조방원 화백(雅山 趙邦元 畵伯, 1922년 전남 무안출생)이 자신의 노후 작품 활동을 정리하고 제자들을 육성할 수 있는 공간을 마련키 위해 평생 모아온 미술품 6천 7백여점과 부지 4천 2백여평을 전라남도에 기증함으로써 지난 88년부터 공사가 시작되어 96년 완공된 전라남도 옥과 미술관은 옥과면 옥과리에 소재하여 4천 2백여평의 부지에 2층으로 3백여평 규모의 전시관을 구비한 현대식 미술관이다. 아산 조방원 미술관을 가족과 함께 찾아 가려면 옥과면 소재지에서 죽림천을 따라 포장도로 10여분 차를 타고 가다 보면 지동마을이 나오고 다시 왼편으로 조금 더 가다 보면 검정 기와 지붕에 빨간 벽돌로 지어진 옥과미술관과 숲속에 은근히 성륜사가 나타난다. 아산 조방원 미술관 1층 전시실에는 남도 중진 및 중견작가 작품 등, 동·서양화 40여점이 전시되어 있으며 2층에는 아산 조방원 선생이 기증한 소치 허련 선생의 사군자, 모란, 추사 김정희 선생의 서간문, 퇴계 이황 선생의 詩 그리고 아산 조방원 선생의 작품 歸路 , 田家 등이 전시되어 가족 방문객과 미술 관람객들의 발길이 계속되고 있으며 전남 미술의 진수를 한눈에 느낄 수 있고 전남 예술인들의 창작 의욕을 불러 일으키는 전당이 되고 있다.','061-363-7278','https://example.com/default_image.jpg'),
 (554,14,554,'곡성생태체험관','맑고 푸른 섬진강변의 수려한 자연경관을 배경으로 한 현장 체험 위주의 전인 교육장으로 환경과 자연생태의 중요성을 직접 체험하게 하여 그 소중함을 일깨우고 나아가 자연 환경보존을 실천하도록 하는데 목적이 있다.오랜 동안의 연구와 경험을 바탕으로 한 프로그램 운영으로 우리의 소중한 아이들이 즐겁게 뛰놀며 체험할 수 있고, 어른들의 지난 시절을 아름답게 추억할 수 있는 공간이다. 또한 초가집에서 잠을 자고 뛰어 놀 수 있는 놀이 마당과 창포머리감기, 고구마 구워먹기, 캠프파이어 등 방학기간 중 운영되는 환경캠프에도 많은 체험자가 참여하는 등 인기가 대단하다. 수려한 풍광을 자랑하는 곡성 옥과 설산자락, 폐교된 옛 옥수초등학교 부지에 자리 잡은 곡성생태체험관은 징검다리, 야생화 화단이 갖춰져 있어 청정 그대로의 자연과 접할 수 있다. 그리고 맘껏 뛰어놀 수 있는 널찍한 잔디 운동장과 야외무대도 마음을 사로잡는다.아련한 추억을 떠올리게 하는 옛날 초등학교 교실들은 각각 그릇을 직접 구어서 빚어볼 수 있는 도예체험관, 야생초나 야생화를 이용하여 옷감에 물을 들이는 천연염색체험관, 볏짚으로 각종 공예품을 만들어보는 짚풀 공예관 등으로 구성되어 있다. 그래서 어린이뿐만 아니라 어른들에게도 타임머신을 타고 동심의 세계로 돌아가게 해주는 곳이 곡성생태체험관이다. 가족단위 프로그램 참가신청도 가능하다.특히 방학기간에는 환경캠프를 운영 하는데, 생태체험관 기본 프로그램외에도 창포머리감기나, 고구마 구워먹기, 캠프파이어 등을 즐기며 자연과 보다 진한 교감을 맛보고 귀중한 추억도 만들 수 있다. 아울러, 함께 있는 합강투어텔에서는 숙박과 식사를 동시에 해결할 수 있어 매우 편리하다.','061-363-2999','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200724_214%2F15955553083859hQLk_JPEG%2F7O6VE5gbbvoqtabeJJY8_8vc.JPG.jpg'),
-(555,16,555,'김해낙동강레일파크','밀양시 삼랑진역과 광주시 광주송정역을 잇는 경전선으로 레일바이크, 와인동굴, 열차카페, 철교 전망대를 조성','055-330-3241','https://example.com/default_image.jpg'),
-(556,6,556,'오월드','Y','042-580-4820','https://example.com/default_image.jpg'),
-(557,6,557,'뿌리공원','Y','042-228-8310','https://example.com/default_image.jpg'),
-(558,6,558,'엑스포과학공원','Y','042-250-1111','https://example.com/default_image.jpg'),
-(559,6,559,'한밭수목원','Y','042-270-8464','https://example.com/default_image.jpg'),
-(560,6,560,'계족산황톳길','Y','042-623-9909','https://example.com/default_image.jpg'),
-(561,6,561,'대청호반','Y','042-930-7240','https://example.com/default_image.jpg'),
-(562,6,562,'장태산휴양림','Y','042-270-7883','https://example.com/default_image.jpg'),
-(563,6,563,'대전둘레산길','Y','042-270-5583','https://example.com/default_image.jpg'),
 (564,6,564,'동춘당','Y','042-607-6575','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220811_251%2F1660211928096mt4PG_JPEG%2FKakaoTalk_20200406_231243187.jpg'),
-(565,6,565,'대전문화예술단지','Y','042-270-8333','https://example.com/default_image.jpg'),
 (566,16,566,'진주성','8년 연속 한국관광100선에 선정된 진주의 대표적인 관광지이자 사적지이다. 진주목사 김시민 장군이 임진왜란 때 3,800여명의 적은 군사로 2만여 명의 왜군을 물리친 임진왜란 3대첩지의 하나로 다양한 유물과 유적이 성내에 있다.','055-749-5171','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_46%2F1441045609932yFY6U_JPEG%2F13491349_0.jpg'),
 (567,16,567,'진양호','지리산을 바라볼 수 있는 아름다운 자연 경관과 어우러진 진양호는 시원하게 탁 트인 전망 속 호반의 물안개와 황홀한 저녁노을로 많은 사랑을 받고 있다.  진양호공원, 휴게전망대, 소원계단, 동물원, 진주전통소싸움경기장, 남강댐물문화관, 어린이 교통공원, 진양호 일주도로 등의 다양한 볼거리가 있다.','055-749-5933','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_174%2F1441045610321stiqH_JPEG%2F13491353_0.jpg'),
 (568,16,568,'경상남도 수목원','경상남도 수목원은 산림과 동식물에 대한 자연생태 종합학습교육장이다. 3,340여 종의 식물을 보유하고 있으며 테마별로 전시관과 식물원이 조성되어 있어 나들이장소와 데이트 코스로 사랑받고 있다.','055-254-3811','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_17%2F1441025916424crQdU_JPEG%2F13349901_0.jpg'),
-(569,13,569,'용담호및주변시설','댐으로 만들어진 인공호수로써 높이 70m, 길이 498m, 저수량이 8억1,500톤에 이르고 댐주위로 난 이설도로를 따라 여러가지 볼거리가 구비되어 있다.','063-430-4263','https://example.com/default_image.jpg'),
 (570,13,570,'운장산자연휴양림','약7㎞에 달하는 운장산 계곡은 원시림과 옥류수가 연중 흐르고 순환임도와 연접하고 여러가지 기암바위들이 자연수목과 조화를 이룬다','063-432-1193','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_158%2F14409922209010QkDM_JPEG%2F11491047_0.jpg'),
-(571,13,571,'데미샘자연휴양림','데미샘은 3개도 10개 시군에 걸쳐 218.6㎞를 흐르는 우리나라에서 4번째로 긴강인 섬진강의 발원지이다','063-290-6991','https://example.com/default_image.jpg'),
 (572,14,572,'대황강자연휴식체혐장야영장','저희 대황강 자연휴식체험캠핑장은 여가 및 레저수요에 대응한 수변관광시설을 조성하고 기존 자원과의 연계를 통한 치유의 자연휴식 체험장 조성으로 관광객 증대 및 지역 활성화 도모하고 있습니다. 석곡면은 곡성군의 서남쪽에 위치하며, 동쪽으로는 죽곡면과 목사동면, 서쪽으로는 화순군 북면, 남쪽으로는 순천시 주암면, 북쪽으로는 삼기면과 경계를 이루고 있으며 통명산, 국사봉, 한동산 등이 사방에서 솟아 있으며, 대황강(보성강)이 지역의 남쪽에서 북쪽으로 흐르고 있어서 온수천이 남류하는 유역과 연반천과 당월천이 합류하여 남쪽으로 흐르는 석곡천 유역에 소평야가 조성되어 있어 토질이 비옥하고 수리가 안전합니다.또한 호남고속도로 (석곡 나들목)와 국도 27호선이 서로 연결되어 있어 교통이 편리하며 대황강을 중심으로 목사동면과 경계를 이루고 있어서 대황강 자연휴식체험캠핑장 접근이 용이합니다. 대황강 곳곳에는 자연속의 물놀이장, 어린이 놀이터, 잔디광장, 체험장, 산책로 등이 조성되어 어린이를 동반한 가족 단위 피서객들의 편안한 휴식처가 될 것입니다.가족 및 친구, 연인들과 행복한 추억을 만들 수 있는 이곳 대황강 자연휴식체험캠핑장이 여러분을 기다립니다.','061-362-3300','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzA4MDdfMjIz%2FMDAxNjkxMzgwNzQ3MTQ4.jABnVKbybEL_8NG-1qFVBxovoH5BGnheMHI6bweZs4gg.MQpFMuzQL4wMhW26cyWPl9AoKegp8DsuEHQRGVJrC3Mg.JPEG%2F20230802_120043.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (573,14,573,'청계동계곡','곡성읍과 입면 사이로 동악산이 큰 용처럼 달려오다 강줄기를 만나 멈춘 곳이다. 또한 기암괴석으로 이루어진 남원시의 한봉과 순자강을 사이에 두고 서로 손으로 모으고 만나는 듯한 도계(道界)지역으로써 예부터 주변 경관이 빼어나 마치 삼청의 진경을 옮겨 놓은 듯 하다는 명승지이다.여름에는 맑은 물이 계곡 사이로 흐르고, 울창한 소나무 숲이 우거져 시원한 그늘이 많다. 계곡바닥에 깔려있는 바위와 돌들은 매끄럽고 부드러워 앉아서 놀기가 매우 좋다. 4km쯤 되는 긴 계곡으로 주변에 크고 작은 산 골짜기가 수없이 많고 골짜기를 따라 군데군데 작은 폭포들이 있는 아담한 곳이다. 계곡을 오르는 산책길의 경사도는 평지와 같이 완만하여 여름철이면 피서지로 최상의 휴식지이다.청계동 계곡은 도로와 접해 있어 접근이 쉽고, 수량이 풍부하여 물놀이하기에 최고의 조건을 갖추고 있어 여름이면 계곡 피서지로서 절정의 인기를 누린다. 섬진강과 연결되는 계곡 하류 쪽에 넓은 자연풀장이 형성되어 있어 어린이를 동반한 가족피서지로도 각광을 받고 있다. 청계동 입구에서부터 소나무사이로 난오솔길을 따라가다 보면, 무수한 계곡 쉼터를 발견할 수 있고 약 2km 거리에 청계폭포가 있다.이 곳은 임진왜란시 금산전투에 참가하여 장렬하게 전사한 최초의 의병장 청계 양대박 장군이, 왜군에게 동래성이 함락 당했다는 비보를 접하고, 즉시 낙향하여 의병을 모아 이 계곡에 진을 치고 군사를 조련했다고 하여 그의 호를 따서 청계동이라 부르게 되었다고 한다. 그래서인지 청계동 계곡에서 만나는 풍경마다엔 양대박 장군의 호연지기가 서려있는 듯하다.','061-360-8511','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181217_267%2F1545013266123wj9HO_JPEG%2F0oXrV4a0QhY4PsRN5juUhTCy.jpg'),
 (574,12,574,'금강하구둑관광지','금강을 경계로 군산과 인접하고 있으며, 철새도래지로 유려한 철새군무를 볼수 있고 먹거리가 풍부함','041-950-4018','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MzBfMjU3%2FMDAxNzI0OTU3ODM2NjIw.RErC8Dcude9whxRPXP_fSYDZKF0YtEV2DZJqTxFqisEg.5Unm6WbxZGTop5ec3GZaTD-_Y9ExvmI6vZA3t1fu1Nog.JPEG%2F1EE0227D-544E-4998-8ED5-5AF3FFAECFAA.jpeg%3Ftype%3Dw1500_60_sharpen'),
@@ -1999,166 +1976,31 @@ INSERT INTO `trip` VALUES
 (578,1,578,'허준근린공원','공원주위에는 서울 기념물 제11호인 허가바위가 있고 공원내에는 전설이 깃든 광주바위와 허준 선생이 앉아서 병자를 진료하는 인자한 모습의 동상 그리고 호수 정자 어린이 놀이 시설이 있으며 인근 주민들의 휴식공간으로 이용되고 있다.','02-2600-4185','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_150%2F1441007208581T7iEh_JPEG%2F116363528576977_0.jpg'),
 (579,1,579,'양천향교','조선 태종 11년(1411년)에 만들어졌으며 현재 서울에 남아있는 유일한 향교이다. 이름 때문에 양천구에 위치한 것으로 오해할 수 있으나 실제로는 강서구 가양동에 위치하고 있다. 인근에 위치한 서울 지하철 9호선 양천향교역 역시 이 곳의 이름을 따서 제정되었다.','02-2659-0076','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241024_59%2F17297594723974wPML_JPEG%2FDSC04250-1.jpg'),
 (580,1,580,'약사사','서울 강서구 관내 전통사찰 중 제1의 위상을 지닌 대한불교조계종 직할교구 사찰','02-2664-2550','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_193%2F1440991796276hu3c3_JPEG%2F11877964_0.jpg'),
-(581,1,581,'양천고성지','양천고성지는 양천향교의 뒷산인 궁산에 있는 옛 성터. 백제 22대 문주왕이 웅진으로 천도(475년)하기 전 강 건너 고구려 침입에 대비하기 위해 쌓은 성으로 조선 성종(1470년)까지 요새가 있었던 것으로 짐작된다.','02-2600-6456','https://example.com/default_image.jpg'),
 (582,1,582,'궁산땅굴역사전시관','궁산 땅굴은 태평양전쟁 말기 일제 강점기에 굴착된 곳으로, 무기나 탄약 등, 군수물 자를 저장하거나 김포 비행장을 감시하고, 공습 때에는 부대 본부로 사용하기 위한 곳이었다고 전해진다.','02-2600-6081','https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2024_10_22_2620%2FY7xfdqfDPs_08.jpg'),
 (583,1,583,'허가바위','옛날 석기 시대의 사람들이 이곳에서 살았으리라 짐작되는 혈거동굴로서 연구 가치가 매우 높다. 허준은 허가바위에서 『동의보감』을 완성했다고 한다.','02-2600-6456','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190826_166%2F1566800522169m1HE7_JPEG%2FVFqDPezuBBPaWuhGIcCOFZjp.jpg'),
-(584,13,584,'마이산도립공원 일원','마이산은 암마이봉(686m)과 수마이봉(680m)으로 진안읍 단양리와 마령면 동촌리 경계면에 걸쳐있다. 신라시대 서다산(西多山), 고려시대 용출산(聳出山), 조선 초 속금산(束金山)에서 현재는 말의 귀를 닮았다는 의미의 마이산(馬耳山)으로 불리고 있다. 1979년 전라북도 도립공원으로 지정되었고 2003년 10월 31일에는 마이산 권역 160여 ㎢가 명승 제12호 국가지정문화재로 승격되어 진안군수가 위탁 관리한다.','063-430-8752','https://example.com/default_image.jpg'),
-(585,14,585,'담양호국민관광지','담양호 국민관광지는 영산강 시원지인 가마골생태공원(용소)과 청정하고 맑은 담양호, 산세가 좋은 추월산, 역사의 흔적이 깊이 남아있는 금성산성에 이르기까지 힐링과 역사의 숨결이 살아있는 천혜의 관광지임','061-380-2793','https://example.com/default_image.jpg'),
-(586,14,586,'죽녹원','2003년 5월에 조성하여 약 31만㎡의 울창한 대나무숲이 펼쳐져 있음. 죽림욕을 즐길수 있는 2.4km의 산책로가 있으며, 가사문학의 산실 담양의 정자문화를 대표하는 6정자를 재현하하고, 밤에는 별을 보며 한옥을 체험할 수 있는 공간이 조성되어있음','061-380-2782','https://example.com/default_image.jpg'),
-(587,14,587,'메타세쿼이아랜드','아름다운 숲 전국대회 부문 대상등 3회 수상에 빛나는 메타세쿼이아 길은 현재 메타세쿼이아 랜드로 조례개정하여 메타세쿼이아 길 외 어린이프로방스, 호남기후변화체험관, 개구리생태공원, 에코허브센터, 곤충박물관, 카페테리아 등 유원시설을 운영 및 공사 중이다. 메타세쿼이아 길을 사색하며 걷는것 외에도 체험 및 어린이를 위한 시설확충으로 담양을 대표하는 유원지 중 하나임','061-380-3161','https://example.com/default_image.jpg'),
-(588,14,588,'소쇄원','1983년 7월 20일 사적 제304호로 지정되었다가 2008년 5월 2일 명승 제40호로 변경되었다. 전체 면적은 4,060㎡(지정구역), 118,866㎡(보호구역)이다. 이곳은 물이 흘러내리는 계곡을 사이에 두고 각 건물을 지어 자연과 인공이 조화를 이루는 대표적 정원이다.','061-380-2819','https://example.com/default_image.jpg'),
-(589,17,589,'천제연폭포','한라산에서 시작된 중문천이 바다로 흐르면서 형성된 폭포. 3개의 폭포로 나뉘어 지는데 주상절리 절벽에서 천제연(못)으로 떨어지는 1폭포. 천제연 물이 더 아래로 흐르면서 형성된 2. 3폭포가 있음. 옥황상제를 모시는 칠선녀가 목욕을 하다 간다는 전설이 있을만큼 빼어난 경관을 자랑함(천연기념물 제378호 천제연 난대림)','064-760-6300','https://example.com/default_image.jpg'),
-(590,17,590,'산방산','높이 395m의 거대한 종 모양의 화산체로서 설문대할망이 한라산 꼭대기를 뽑아 던져 놓았다는 전설이 있음. 해발고도 200m에 산방굴이라는 해식동굴이 있음. (명승 제77호. 천연기념물 제376호. 제주도지질공원)','064-760-6300','https://example.com/default_image.jpg'),
-(591,14,591,'여수해상케이블카','여수 돌산과 자산공원을 잇는 1.5km구간의 국내 첫 해상케이블카로 바닥이 투명한 크리스탈 캐빈 15대(5인승)와 일반 캐빈 35대(8인승), 총 50대가 운행되고 있다. 아찔한 스릴감과 함께 맛보는 다도해의 전망과 여수밤바다 풍경이 한눈에 들어온다.','061-664-7301','https://example.com/default_image.jpg'),
-(592,14,592,'여수세계박람회장','2012년 여수세계박람회를 성공적으로 개최한 장소로 단순 공원이 아닌 관광부터 비즈니스까지 원스톱으로 즐길 수 있는 전천후 복합문화체험공단.','1577-2012','https://example.com/default_image.jpg'),
-(593,14,593,'여수해양공원','해안선을 따라 조성된 1.5km 구간 시민공원으로 아름다운 여수 밤바다를 만끽 할 수 있는 최고의 휴식공간이다. 하멜등대, 해양케이블카, 돌산대교, 거북선대교, 장군도 등이 한눈에 보여 밤바다를 거닐 수 있는 필수 데이트 코스이며, 또한 각종 공연 및 행사가 다채롭게 열려 볼거리가 많다.','061-659-3962','https://example.com/default_image.jpg'),
-(594,4,594,'인천도시역사관','고대 및 근대 전시관, 인천 모형관, IFEZ모형관','032-850-6000','https://example.com/default_image.jpg'),
-(595,4,595,'가천박물관','인천지역 유일한 국보를 포함한 총소장품 18,382점','032-833-4747','https://example.com/default_image.jpg'),
-(596,12,596,'백제문화관광단지','고유의 교육적 가치 제고 및 관광, 지역경제 활성화를 위한 슈요자 중심의 체류형 종합 관광단지','041-830-2222','https://example.com/default_image.jpg'),
-(597,16,597,'최참판댁','소설 토지의 최참판댁을 복원하여 전통 건축물 등을 관람 할 수 있음','055-880-2821','https://example.com/default_image.jpg'),
-(598,16,598,'화개장터','영호남 교통의 길목이며 물류이동의 중심지로서 화개장터가 조성됨','055-880-2821','https://example.com/default_image.jpg'),
-(599,16,599,'삼성궁','환인, 환웅, 단군을 모신 궁이며 돌탑 등을 관람 할 수 있음','055-884-1279','https://example.com/default_image.jpg'),
-(600,16,600,'이병주문학관','문학인 이병주선생의 작품 및 작품활동을 엿볼수 있음','055-880-2821','https://example.com/default_image.jpg'),
-(601,16,601,'하동레일파크','1968년 2월 7일 보통역으로 영업을 개시, 2017년 현재는 하동레일파크가 오픈하고 레일바이크 매표소로 이용되고 있다. 주변 행사로는 5월에는 북천 꽃 양귀비 축제가 열리며, 가을이면 역 주변에 코스모스와 메밀꽃이 만발해 7월 부터 코스모스 메밀꽃 축제를 개최한다.','055-880-2821','https://example.com/default_image.jpg'),
-(602,16,602,'지리산역사관','지리산을 안고 살아온 우리조상들의 생활상 이해공간 제공','055-880-2821','https://example.com/default_image.jpg'),
 (603,16,603,'하동코리아짚와이어','금오산 정상 해발 849m에서 경사도 27, 최대 시속 120km/h로, 마치 하늘에서 떨어져 내리는 듯한 짜릿함과 금오산, 다도해의 아름다운 정경을 함께 만끽하는 아시아 최장 3.42km의 활강체험 레포츠이다','055-880-2821','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190826_128%2F1566827122010cakcq_JPEG%2Fum3c_z_W4T67EA8J-AKm7nxW.jpeg.jpg'),
 (604,16,604,'하동 플라이웨이 케이블카','총연장 2,556m의 선로와 40대의 캐빈으로 해발 849m 금오산 정상까지 운행하는 하동 플라이웨이 케이블카는 하루 최대 9,800명이 탑승할 수 있으며, 한려해상국립공원의 다도해와 금오산 절경을 동시에 조망할 수 있다.','055-883-2000','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230106_137%2F1672965008722zbrMm_JPEG%2F%25C7%25CF%25B5%25BF_86.jpg'),
-(605,14,605,'녹진관광지','명량해전의 울둘목 해역이 한눈에 보이는 역사가 숨쉬는 관광지','061-540-3442','https://example.com/default_image.jpg'),
-(606,14,606,'회동관광지','신비의바닷길이 열리는 축제명소','061-540-3442','https://example.com/default_image.jpg'),
-(607,14,607,'아리랑마을관광지','예술인의 멋과 정취를 느낄수 있는 아리랑마을','061-540-3442','https://example.com/default_image.jpg'),
-(608,12,608,'신정호국민관광지','신정호는 담수면적이 92ha이며 농업용수 공급을 목적으로 1926년에 만들어진 인공호수이다.','041-540-8725','https://example.com/default_image.jpg'),
-(609,12,609,'아산온천관광지','1987년에 발견되어, 1991년에 관광지로 지정된 아산온천은 2001년 테마 온천 시설인 아산스파비스가 개장된 이후로 인기가 높다. 약알칼리성 온천으로 20여종의 인체에 유익한 성분이 다량 함유되어 있다.','041-540-2822','https://example.com/default_image.jpg'),
-(610,14,610,'노고단','천왕봉, 반야봉과 함께 지리산 3대 주봉으로 꼽힌다.','061-780-7700','https://example.com/default_image.jpg'),
-(611,14,611,'지리산정원','사계절 다양한 식생을 관찰할 수 있는 야생화테마랜드와 자생식물원,생태숲, 자연휴양림, 수목원이 있으며, 자연속 힐링공간인 숲속수목가옥은 인기가 높다.','061-780-8026','https://example.com/default_image.jpg'),
-(612,14,612,'섬진강대숲길','섬진강변 대숲길은 강 풍경과 어우러져 마음을 평온하게 한다.','061-780-2390','https://example.com/default_image.jpg'),
-(613,14,613,'화엄사','대한 불교조계종 제 19교구 본사인 화엄사는 사적 제 505호로 지정(2009년) 되어있다.','061-783-7600','https://example.com/default_image.jpg'),
-(614,14,614,'천은사','신라 흥덕왕 3년(828년)에 덕운선사가 창건하였다고 전해지며 경내에 이슬처럼 맑고 찬 샘이 있어 처음에는 절 이름을 감로사(甘露寺)라 하였다.','061-781-4800','https://example.com/default_image.jpg'),
-(615,14,615,'사성암','2014년 명승 제111호로 지정된 사성암은 해발 531m의 오산 정상에 위치해 있다.','061-781-4544','https://example.com/default_image.jpg'),
-(616,5,616,'월봉서원','조선 전기의 문신인 기대승(1527∼1572)선생의 위패를 모시고 있는 사당으로 그 시대에 조선의 명신들을 함께 배향하였던 ‘월봉서원’의 강당이다. 기대승 선생은 성리학의 대가로서 새 학설을 제시하여 학계에 주목을 받았으며 스승인 이황 선생과 사단칠정을 주제로 8년 간 서신왕래를 한 것으로도 유명하다.','062-960-8255','https://example.com/default_image.jpg'),
-(617,5,617,'무양서원','고려 인종 때 어의이면서 명신인 장경공 최사전을 중심으로 그의 후손 4명을 모시고 있는 서원으로 1927년에 전국 유림의 호응을 얻어서 세운 서원이다. 서원의 이름은 광주의 옛 지명에서 따 왔다.','062-960-8255','https://example.com/default_image.jpg'),
-(618,5,618,'용아생가','김영랑·정지용·정인보 등과 문학 동인으로 활동하였던, 한국 서정시 발전에 선구적 역할을 한 용아 박용철(1904∼1938) 선생의 생가이다.','062-960-3827','https://example.com/default_image.jpg'),
-(619,5,619,'호가정','조선시대 문신 설강 유사 선생이 지은 정자로 큰 소리로 노래 부른다라는 의미를 담고 있다고 하며 광산 8경 중 한 곳으로 선정될 만큼 풍광이 수려하고 유서깊은 곳이다.','062-960-3827','https://example.com/default_image.jpg'),
-(620,5,620,'신창동 유적체험학습관','초기 철기의 생활에 대한 동영상 시청 등을 포함한 그 시대 체험 박물관','062-960-3827','https://example.com/default_image.jpg'),
 (621,5,621,'쌍암공원','한가운데 위치하고 있는 호수, 호수주변을 따라 잘 조성된 철쭉꽃 숲들과 소나무숲이 운치를 더한다.','062-960-8704','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MDZfMjAy%2FMDAxNjkxMjk4MTEyNTE1.tsJosXHVKBOQNjzB9Q37N6Ero-fi953q55u-SIg7g0gg.YVc1uNejpQlEjmZPWfufc1gVD1wPynZxBuWCUTNL2f8g.JPEG.jokuna21%2F20230805_210528.jpg'),
 (622,5,622,'수완호수공원','밤낮으로 호수공원의 다른 정취를 느낄 수 있으며 롯데마트를 비롯한 대형마트와 상업시설이 있어 편하게 주차 및 쇼핑을 이용할 수 있다.','062-960-8702','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240219_10%2F1708301702019tn5np_JPEG%2FKakaoTalk_20240213_182950552_16.jpg'),
 (623,5,623,'송정작은미술관','광주송정역세권 도시재생사업으로 개관한 미술관으로써, 광산 송정역세권의 입지적 특성을 고려하여 송정역 이용객들이 1913시장, 골목상권으로 유입될 수 있도록 볼 거리 제공하고 지역의 인문 문화와 어우러지고 시민이 함께하는 열린 공간으로 운영','062-960-3687','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210618_241%2F1623990159249Odj8U_PNG%2FfHxLeJ3A9xYcmQolf0J7MGNI.png'),
 (624,10,624,'구문소 관광지','천연기념물인 구문소와 접목되어 자연환경적 특성을 부각하고 지질학습 및 화석 산출지의 탐방자원화, 체류형 관광시설 도입','033-550-1360','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200125_13%2F1579878467603yC5As_JPEG%2FJL74XR3APl1mvcIQ7eeenMRd.jpg'),
 (625,14,625,'회산백련지','동양 최대의 백련서식지, 수상유리온실, 수생식물생태관, 생태탐방로, 야외물놀이장, 오토캠핑장 등 다양한 시설을 갖추고 있어 체험과 관광을 동시에 즐길수 있음','061-450-5863','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_120%2F1441045690309uGttX_JPEG%2F13491845_0.jpg'),
-(626,4,626,'인천가스과학관','옥외조형물 5종, 실내전시물 23개코너, 크린타워','032-822-4492','https://example.com/default_image.jpg'),
-(627,4,627,'인천상륙작전기념관','전시관, 야외전시장, 야외공연장, 영상실, 휴게실, 전망대, 소공원 등','032-832-0915','https://example.com/default_image.jpg'),
-(628,13,628,'웅포관광지','웅포 곰개나루 및 캠핑장','063-859-5827','https://example.com/default_image.jpg'),
-(629,11,629,'보은 삼년산성','신라 삼국통일의 전초기지인 삼년산성은 축성연대는 물론 수축연대가 정확히 기록되어 있는 산성으로 중부권의 역사적 가치를 지닌 문화유산이다','043-540-3407','https://example.com/default_image.jpg'),
-(630,11,630,'보은 우당고택','고요함을 품은 보은 우당고택은 100년이 넘은 고택으로 전통적인 기법으로 지어 전통가옥을 체험할 수 있다','043-540-3392','https://example.com/default_image.jpg'),
-(631,11,631,'속리산 법주사','대한불교조계종 제5교구의 본사로 신라시대 의신 조사가 창건하였고 2018년 6월 유네스코세계문화유산에 등재 되어 세계문화를 인정 받았다','043-540-3392','https://example.com/default_image.jpg'),
-(632,11,632,'동학농민혁명기념공원','탐관오리에 대한 봉기와 외세에 대한 저항 의식을 일깨워 준 농민들의 자발적 혁명으로 3.1운동의 큰 밑거름이 되었다','043-540-3392','https://example.com/default_image.jpg'),
-(633,12,633,'구드래관광지','백마강과 함께 가족단위 공원 심터 및 생활체육을 즐길수 있는 웰빙관광지','041-830-2222','https://example.com/default_image.jpg'),
-(634,12,634,'서동요역사관광지','역사문화환경을 구축하여 부여 대표 관광명소','041-830-2222','https://example.com/default_image.jpg'),
-(635,14,635,'연희네슈퍼(영화 1987 촬영지)','영화 1987의 주인공 연희가 살던 곳이곳의 시간은 1987년이다. 개발되지 않은 배경에 1987년을 그대로 옮겨놓은 연희네 슈퍼는 단순한 영화세트장이 아니다. 각자의 1987년을 떠올릴 수 있는 공간이다. 문득 시간을 돌아보고 싶거든 연희네 슈퍼로 가자. 그곳에 나의 1987년이 있고 나의 연희가 있다.','061-270-8598','https://example.com/default_image.jpg'),
-(636,14,636,'춤추는 바다분수','목포춤추는바다분수는 매년 4월부터 11월까지 8개월간 목포 평화광장 앞바다에서 음악과 분수, 워터스크린, 레이저, 빔프로 젝트를 이용한 미디어 아트 작품을 선보이고 있다. 목포춤추는바다분수는 수반길이 150m, 높이 13.5m, 최대분사 높이 70m의 세계최초 초대형 부유식 바다음악분수이다.이에 더해 2021년 10월부터는 바다분수 앞에 설치한 해상무대에서 불꽃과 바다분수가 어우러진 환상적인 해상공연을 펼칠 예정이다.','061-270-8580','https://example.com/default_image.jpg'),
-(637,14,637,'목포해상케이블카','155m의 높이에서 스릴넘치는 아찔한 체험을...국내 최장구간 3.23km의 해상케이블카로 북항에서 고하도까지 이어진다.목포항과 삼학도를 비롯한 목포 원도심이 한눈에 펼쳐지고 보석처럼 빛나는 다도해와목포대교, 고하도 등을 조망할 수 있다.','061-244-2600','https://example.com/default_image.jpg'),
-(638,14,638,'삼학도크루즈','삼학도 계류장을 출발하여 해상케이블카타워, 인어동상, 목포대교로 간다.잔잔한 목포 앞바다를 배를 타고 노니는것은 또 다른 경험이다. 오른쪽으로 높이오른 유달산과 목포대교의 일몰, 끝없이펼쳐진 다도해 그리고 고하도의 해안을감상할 수 있다.','061-245-3222','https://example.com/default_image.jpg'),
-(639,14,639,'김대중노벨평화상기념관','김대중 前대통령의 업적 및 걸어온 길을 살펴볼 수 있는 곳이다. 평화의 메시지 보내기, 노르웨이 오슬로 시상식장 체험, 노벨평화상 단상 포토존 및 대통령 집무실을 그대로 옮겨놓은 집무실 체험공간에서 대통령이 되어보는 체험을 할 수 있다','061-245-5660','https://example.com/default_image.jpg'),
-(640,14,640,'목포자연사박물관','지구 46억년 자연사를 볼 수 있는 곳으로 다양한 생명체와 관람객이 공존하는 증강현실 사진관 체험,  박물관에 잠든 공룡알 화석을 부화시키는 게임형 AR 체험, 수생 생물이 살고 있는 연못 생태계 위를 거니는 콘텐츠등 다양한 VR, AR콘텐츠와 영상쇼를 제공한다','061-274-3655','https://example.com/default_image.jpg'),
-(641,14,641,'갓바위','갓바위는 두 사람이 나란히 삿갓을 쓰고 서 있는 모습의 바위로 관광객들이 즐겨찾는 명소이며, 예전에는 배를 타고 나가야만 볼 수 있었던 갓바위를 해상에서 직접 조망할 수 있는 보행교를 바다위에 설치하였다.','061-273-0536','https://example.com/default_image.jpg'),
-(642,14,642,'도림사계곡','해발 748.5m의 동악산 남쪽 골짜기를 흘러내리는 것으로 동악계곡, 성출계곡과 더불어 아홉구비마다 펼쳐진 반석 위로 맑은 물줄기가 마치 비단을 펼쳐 놓은 듯이 흐르고 수맥이 연중 그치치 않을 뿐만 아니라 노송, 계곡, 폭포들이 어우러져 절경을 이루고 있는 도림사 계곡은 지방 기념물 101호로 지정되어 있다.주변의 경치를 감상할 수 있는 반석들이 있어 예부터 풍류객들의 발길이 잦았으며 이곳 9개의 반석에는 선현들의 문구가 음각되어 있어 그들의 풍류를 엿볼 수 있고 한 아름 반석 위로 흐르는 계곡 물에 몸을 담그는 맛이 색다르다.선현들이 이곳에서 시를 짓고 노래를 불렀을 그 자취와 흔적들이 지금까지 도림사 계곡암반 위에 고스란히 남아있다. 무엇보다 선비들이 이곳을 즐겨 찾았던 또 다른 의미는 이 계곡에 성리학이 이상향으로 삼는 청류구곡의 형상이 구현되어 있다고 믿었기 때문이다. 그래서 계곡의 와폭(臥瀑)과 담(潭), 소(沼), 대(臺) 등의 암반을 아홉 구간 즉 구곡으로 구분하여 각각의 골짜기에 맞는 경구를 새겨놓고, 도림사 계곡에 머무는 그 자체를, 성리학적 이념을 되새기는 행위로 여겼다. 따라서 도림사 계곡은 성리학을 포함한 유불선의 정신이 살아있는 경전과 같은 역할을 하게 된다. 도림사 계곡이 갖는 이러한 의미는 한일합방 이후 독립운동가들에 의하여 항일운동의 이념적 거점으로 삼으려는 시도와도 연결된다.그리고 이 계곡 정상 부근에는 이곳에서 바라보는 전망이 좋아 신선이 쉬어 간다고 하는 높이 4m에 넓이 30평에 달하는 신선바위가 있으며 멀리 보이는 형제봉은 등산로 코스로 널리 알려져 있다.','061-362-2727','https://example.com/default_image.jpg'),
 (643,14,643,'태안사계곡','섬진강으로 흘러드는 보성강은 잔잔한 물줄기지만 다른 곳에 비해 덜 알려져 자연 그대로의 모습을 간직하고 있다. 보성강으로 흘러드는 태안사계곡은 이런 보성강의 아기자기한 특징을 잘 드러내주는 계곡이다.태안사 입구에서 절까지 걸어가는 2㎞쯤 되는 계곡길은 여느 계곡길보다 짧지만 이런 기대를 충족시켜주기에 충분한 자격을 갖고 있다. 고로쇠나무, 떡갈나무, 단풍나무, 소나무가 우거져 있고, 차가운 계곡에 발을 담그면 한여름의 무더위는 순식간에 사라진다.태안사의 현관 역할을 하는 능파각(凌波閣)의 운치있는 다리겸 누각도 계곡의 풍광을 즐기기 좋은 곳이다. 태안사계곡은 아주 빼어난 바위봉들은 없어도 아늑하고 편안한 분위기만으로 충분히 더위를 잊을 수 있는 곳이다.능파각(凌波閣)이라는 말은 아름다운 여인의 우아하고 가벼운 걸음걸이를 뜻한다고 한다. 능파각은 서기 850년 혜철선사가 태안사를 창건할때부터 지어졌던 목조 건물로서 몇 번의 복원과 보수끝에 지금의 모습을 유지하고 있는 것이다.능파각을 건너 숲으로 접어들면 이내 일주문이 나오면서 태안사의 정경이 한눈에 들어온다. 태안사는 지금은 규모가 그리 크지 않지만 구산선문의 유서 깊은 절로 한때 화엄사를 거느리기도 했었다. 경내에는 지름 40m쯤 되는 큰 연못 가운데 부처님 사리를 모셨다는 삼층석탑이 있어 색다른 느낌이 든다.','061-363-6669','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA4MDlfMjE2%2FMDAxNjkxNTY1NzQ2MjE3.t9DAHSbyBFcfSHHGRFJkZMH1ICqPXifpLbbtDRYQ0pAg.QjMz73T2Dmk51tAsvmAK3DuKngrlZDsYYGEyXb277lcg.JPEG.wella5442%2F20230805_104115.jpg'),
-(644,14,644,'태안사','태안사는 통일신라 경덕왕 원년(742)에 이름모를 스님 세 분이 세웠다고 전한다. 고려시대에는 광자대사가 크게 늘려 지었는데 이 때 절의 규모는 총 40여 동에 110칸이었고, 법당에는 높이 1.4m되는 약사여래철불좌상을 모셨던 듯하다. 고려 고종 10년(1223)에는 당시 집권자인 최우가 고쳐 지었으며, 조선시대에는 숙종 10년(1684)에 주지 각현이 창고를 새로 지었다는 기록이 보이고 있다. 특히 조선초에 태종의 둘째 아들 효령대군이 이곳에 머물렀던 인연이 있는 곳이다. 한국전쟁때 많은 피해를 입어서 지금 있는 건물은 대부분이 복원된 것이다.경내에는 혜철선사의 부도인 적인선사조륜청정탑(보물 제273호), 윤다의 부도인 광자대사탑(보물 제274호), 광자대사비(보물 제275호), 승무를 출 때 사용하던 태안사대바라(보물 제956호), 태안사동종(보물 1349호), 태안사일주문(전라남도 유형문화재 제83호), 태안사삼층석탑(문화재자료 제170호) 등이 있다. 은빛모래와 하늘이 비치는 맑은 물의 섬진강을 끼고 곡성읍에서 17호선의 국도를 따라 16km가다보면 섬진강과 보성강이 합류하는 압록유원지가 나온다. 이곳에서 보성강을 끼고 국도 18호선을 따라 6km정도 가다보면 태안사로 들어가는 태안교를 접하게 되고 다리를 건너 다시 6km정도 가다보면 죽곡면 원달리에 위치한 태안사에 다다를 수 있다.동리산 자락에 위치한 태안사는 신라 경덕왕 원년(742년)에 동리산파를 일으켜 세 선승에 의하여 창건한 것으로 알려져 있는데, 처음에는 대안사로 불리웠으며 이 나라 불교의 선문 아홉가지의 하나인 동리산파의 본산지로 선암사, 송광사, 화엄사, 쌍계사 등을 거느리고 꽤 오랫동안 영화로움을 누렸던 사찰로 혜철선사와 도선국사가 득도한 정량수도의 도량이다.고려시대에 들어와서 광자선사가 32칸으로 넓혀 지었으나 고려시대 중기에 송광사가 조계종의 본산지로 지위를 굳혀 따로 제금났고, 조선시대에는 불교를 억누르는 정책 바람을 탈 수 밖에 없었으나 효령대군이 머물며 왕가의 원당으로 삼기도','061-363-6669','https://example.com/default_image.jpg'),
-(645,14,645,'도림사','곡성읍에서 서남쪽으로 4km 떨어진 동악산 줄기인 형제봉(성출봉) 중턱에 자리잡은 도림사는 신라 무열왕 7년(660)에 원효대사가 화엄사로부터 이주하여 지었다고 전해지며 현재는 응진당, 지장전, 칠성각, 요사채 등이 있고 절 입구에는 허백련 화백이 쓴 「도림사」라는 현판이 걸려있다. 도선국사, 사명대사, 서산대사 등 도인이 숲같이 많이 모여들었다 하여 도림사라 하는데, 인근에는 도림사 계곡이 있다. 해발 748.5m의 동악산 남쪽 골짜기를 흘러내리는 것으로 동악계곡, 성출계곡과 더불어 아홉구비마다 펼쳐진 반석 위로 맑은 물줄기가 마치 비단을 펼쳐 놓은 듯이 흐르고 수맥이 연중 그치치 않을 뿐만 아니라 노송, 계곡, 폭포들이 어우러져 절경을 이루고 있는 도림사 계곡은 지방 기념물 101호로 지정되어 있다.주변의 경치를 감상할 수 있는 반석들이 있어 예부터 풍류객들의 발길이 잦았으며 이곳 9개의 반석에는 선현들의 문구가 음각되어 있어 그들의 풍류를 엿볼 수 있고 한 아름 반석 위로 흐르는 계곡 물에 몸을 담그는 맛이 색다르다. 그리고 이 계곡 정상 부근에는 이곳에서 바라보는 전망이 좋아 신선이 쉬어 간다고 하는 높이 4m에 넓이 30평에 달하는 신선바위가 있으며 멀리 보이는 형제봉은 등산로 코스로 널리 알려져 있다. 인근에 도림사를 찾는 많은 관광객에게 좋은 휴식처가 되고 있는 도림사는 1984년 지방문화재자료 22호로 지정되었고 사찰내에는 도유형문화재 119호 괘불(掛佛)이 소장되어 있다.','061-362-2727','https://example.com/default_image.jpg'),
-(646,11,646,'괴강','달천을 중심으로 괴강국민여가캥핑장 농업역사박물관, 각종 체육시설등이 조성된 관광지','043-830-3820','https://example.com/default_image.jpg'),
-(647,11,647,'수옥정','드라마 촬영등으로 유명한 수옥폭포와 수옥정, 한여름의 더위를 식혀주는 수옥정 물놀이장과 더불어 조령산, 깃대봉 등의 명산이 어우러져 자인이 만들어 낸 천혜의 관광지','043-830-2683','https://example.com/default_image.jpg'),
-(648,16,648,'창원단감테마공원','전국 최초로 단감을 소재로 조성한 테마공원으로 아이들이 뛰어놀 수 있는 드넓은 잔디광장에 대형 데크무대와 단감그네, 바람개비 조형물 등이 설치되어 있어 공원을 찾는 방문객들에게 다양한 즐길거리를 선사한다.','055-225-5611','https://example.com/default_image.jpg'),
-(649,16,649,'창원의집','순흥 안씨 안택영의 5대조인 퇴은 두철 선생이 거주하던 집으로 우리 고유의 한옥을 이해하고 조상들의 생활풍습과 지혜를 새롭게 조명할 수 있는 공간이다.','055-719-7800','https://example.com/default_image.jpg'),
-(650,16,650,'주남저수지','해마다 찾아오는 수만 마리의 철새들과 텃새들의 서식지로 다양한 수생식물, 수서곤충 등을 만나볼 수 있으며 철새들의 자유로운 곡예비행을 생생하게 관찰할 수 있는 곳이다. 천연기념물 16여종과 환경부 멸종위기 10여종 등 다양한 철새들을 직접 볼 수 있다.','055-225-2798','https://example.com/default_image.jpg'),
-(651,16,651,'마금산온천','마금산온천은 약알칼리성 수질로 평균 수온이 55℃ 이상을 유지하고 있으며, 나트륨, 철, 칼슘, 라듐 등 20여종의 광물질을 포함하고 있다. 운동욕장, 수영장, 노천탕 등 보양온천 시설을 갖추고 치료와 요양, 휴양이 가능하다.','055-225-3641','https://example.com/default_image.jpg'),
-(652,16,652,'창원과학체험관','미래 과학자의 소중한 꿈을 키워 나갈 수 있도록 자라나는 꿈나무들에게 과학을 쉽고 재미있게 즐기면서 배울 수 있는 과학체험관이다.','055-267-2676','https://example.com/default_image.jpg'),
-(653,16,653,'마산해양레포츠센터','배를 타고 들어와 해양체험을 즐길 수 있는 이색적인 해양레포츠센터이다. 요일별 체험 프로그램을 진행하고 있으며','055-712-0454','https://example.com/default_image.jpg'),
-(654,16,654,'웅천도요지전시관','웅천도요지 출토품을 비롯한 80여점의 유물이 전시되어 있는 전시실과 도자기를 직접 만들어 볼 수 있는 체험공방을 운영하고 있다.','055-225-6859','https://example.com/default_image.jpg'),
 (655,16,655,'진해해양레포츠센터','편리한 접근성과 저렴한 이용요금, 스쿨 전용 해상교육장 및 국가대표 출신 강사진 등 우수한 시설을 구비하고 있다. 쉽게 접하기 힘든 크루즈, 딩기요트, 윈드서핑, 카약, 래프팅보트, 바나나보트 등을 운영하고 있다.','055-712-0445','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_107%2F1440992422504nQ8fA_JPEG%2F106653517433745_0.jpg'),
-(656,12,656,'태조대왕태실','조선을 개국한 태조가 함경도 용연지역에 있는 자신의 태를 이 산에 옮겨와 태자의 태와 함께 안치하여 나라의 태평성대를 염원한데서 그 유래를 찾을 수 있다.','041-750-2273','https://example.com/default_image.jpg'),
-(657,12,657,'보석사','나무 천년, 절집 천년','041-750-2273','https://example.com/default_image.jpg'),
-(658,12,658,'보석사   은행나무','나무 천년, 절집 천년','041-750-2273','https://example.com/default_image.jpg'),
-(659,9,659,'안성남사당공연장','안성맞춤랜드 내 위치한 안성남사당 상설공연용 공연장','031-678-2512','https://example.com/default_image.jpg'),
-(660,9,660,'안성맞춤랜드','안성의 최대규모 시민공원','031-678-2486','https://example.com/default_image.jpg'),
-(661,9,661,'안성맞춤캠핑장','자연과 함께하는 캠핑장','031-678-2487','https://example.com/default_image.jpg'),
-(662,9,662,'사계절썰매장','사계절 운영하는 썰매장','031-678-2674','https://example.com/default_image.jpg'),
-(663,9,663,'천문과학관','안성 유일한 천문과학관','031-675-6978','https://example.com/default_image.jpg'),
-(664,9,664,'공예문화센터','공방체험 및 전시문화공간','031-678-2673','https://example.com/default_image.jpg'),
-(665,9,665,'안성맞춤박물관','안성맞춤박물관은 안성유기를 중심테마로2002년 8월 1일에 개관한 시립박물관이다.','031-678-2506','https://example.com/default_image.jpg'),
-(666,9,666,'안성3.1운동기념관','3.1운동의 전국 3대 실력 항쟁지 중 한 곳으로 가장 극렬하게 만세항쟁을 펼쳐 일제를 몰아내고 2일 간의해방을 이뤄냈던 4.1만세 항쟁의 집결지였던 만세고개 일원을성역화하여 선열들의 숭고한 자주독립 정신을 발전시키고 후세들에게 나라사랑의 산 교육장으로 활용하기 위해 건립하였다.','031-678-2476','https://example.com/default_image.jpg'),
-(667,9,667,'박두진문학관','안성출신 시인 박두진의 삶과 문학적 발자취를 소개하고 전시하는 곳이다.','031-678-2469','https://example.com/default_image.jpg'),
-(668,9,668,'고양관광정보센터','고양시 관광지 자료 배포 및 시티투어 안내','031-905-8396','https://example.com/default_image.jpg'),
-(669,9,669,'행주산성','행주산성 사적 제 56호(행주대첩비 + 충훈정+충장사+대첩기념관+대첩비각+충의정+덕양정+진강정)','031-8075-4642','https://example.com/default_image.jpg'),
-(670,9,670,'산정호수','백운산에서 흘러내린 맑은 물이 계곡을 이룬곳으로 경관이 수려함','031-538-3363','https://example.com/default_image.jpg'),
-(671,9,671,'백운계곡','명성산 밑에 위치한 호수로 경관이 둘레길이 잘 조성되어 있고, 가을 억새로 장관을 이룸','031-538-3363','https://example.com/default_image.jpg'),
-(672,16,672,'창녕 남지 개비리','창녕 남지 개비리는 낙동강을 따라 가파른 벼랑에 난 오솔길로 수만 그루의 대나무로 이루어진 죽림이 있으며 계절에 따라 피고 지는 야생화와 낙동강의 윤슬을 보며 걷기 좋은 도보여행의 명소이다.','055-530-1523','https://example.com/default_image.jpg'),
-(673,16,673,'산토끼노래동산','국민 동요 ‘산토끼’의 유래지역인 창녕군 이방면에 어른들에게는 어린 시절의 추억을 떠올리고, 어린이들에게는 생생한 체험학습의 장을 마련하고자 조성된 어린이 및 가족단위의 생태체험 여행관광지이다.','055-530-1534','https://example.com/default_image.jpg'),
-(674,16,674,'창녕 영산 만년교','창녕 영산 만년교는 정조 4년 축조되어 고종 29년에 중수한 무지개다리로 조선 후기 홍예교를 세운 방법을 알 수 있는중요한 자료이며, 봄이면 수양벚꽃과 개나리가 만개하여 한폭의 그림을 보는듯하다.','055-530-1471','https://example.com/default_image.jpg'),
-(675,1,675,'서울 한양도성(서울성곽)','조선왕조 도읍지인 한성부의 경계를 표시하고 그 권위를 드러내며, 외부의 침입을 막기 위해 축조된 성이다.','02-2133-2658','https://example.com/default_image.jpg'),
-(676,1,676,'후암동 조선은행 사택지','일제강점기인 1920년대 서울의 도시화와 함께 후암동 일대가 본격적으로 개발되는 가운데 생긴 대표적인 문화주택지였다.','02-759-4114','https://example.com/default_image.jpg'),
-(677,13,677,'오성한옥마을','종남산과 위봉산이 병품처럼 둘러쌓고 있는 천혜의 자연경관에 한옥고택 등 전통한옥이 자리잡고 있는 곳','063-243-1022','https://example.com/default_image.jpg'),
-(678,13,678,'무궁화오토캠핑장','문화체육관광부 국민여가캠핑장으로 조성된 공공야영장으로 52개 사이트와 캐러반 등 부대시설이 갖추어져 있는 곳','063-290-2762','https://example.com/default_image.jpg'),
-(679,13,679,'송광사&벚꽃길','송광사는 종남산 아래에 자리한 사찰로 신라시대에 도의선사가 창건한 것으로 전해진다','063-243-8091','https://example.com/default_image.jpg'),
-(680,13,680,'위봉사&위봉폭포&위봉산성','위봉사는 세마리 봉황이 날고 있는 자리에 절을 짓고 이름붙였다는 이야기가 전해져 오는 곳','063-243-7657','https://example.com/default_image.jpg'),
-(681,13,681,'화암사','세월의 흐름을 멋지게 담고있는 아름다운 사찰','063-261-7576','https://example.com/default_image.jpg'),
-(682,11,682,'능암온천','중원 유적과 충주호반 관광 등 주변 관광자원과 중부권 유일의 탄산온천 자원을 연계한 종합 온천휴양 관광지 조성','043-850-6732','https://example.com/default_image.jpg'),
-(683,11,683,'충온온천','중원 유적과 충주호반 관광 등 주변 관광자원과 중부권 유일의 탄산온천 자원을 연계한 종합 온천휴양 관광지 조성','043-850-6732','https://example.com/default_image.jpg'),
-(684,9,684,'수동관광지','몽골문화촌','031-559-8018','https://example.com/default_image.jpg'),
-(685,16,685,'부곡온천관광특구','국내 최고의 수온 78℃로 이름난 부곡온천관광특구 내에 위치한 부곡온천 르네상스관은 부곡온천수의 우수성을 널리 홍보하고 부곡온천의 역사를 알 수 있는곳으로 다양한 콘텐츠를 체험할 수 있다.','055-530-1591','https://example.com/default_image.jpg'),
-(686,16,686,'낙동강 유채단지','단일면적 전국 최대 규모(110만㎡)인 낙동강 유채단지는 유채꽃의 명소로 유채꽃이 만개하는 매년 4월 공연, 체험, 먹거리 등 풍성한 즐길 거리가 있는 창녕 낙동강 유채축제가 열린다.','055-530-1651','https://example.com/default_image.jpg'),
-(687,14,687,'함평자연생태공원','사계절 탐방학습과 생태체험','061-320-2851','https://example.com/default_image.jpg'),
-(688,14,688,'함평양서파충류생태공원','국내 최대 양서파충류 전문 전시관','061-320-2874','https://example.com/default_image.jpg'),
-(689,14,689,'함평엑스포공원','아시아생태문화관광지','061-320-2204','https://example.com/default_image.jpg'),
-(690,14,690,'일강김철선생기념관','독립운동가 김철선생의 애국정신을 재조명하는 교육의 장','061-320-1453','https://example.com/default_image.jpg'),
-(691,14,691,'꽃무릇공원','한국의 백경중 일경에 속하는 40여만평의 꽃무릇과 나비, 꽃무릇공원을 배경으로 매년 9월 꽃무릇큰잔치가 열리고 있습니다','061-320-2773','https://example.com/default_image.jpg'),
 (692,14,692,'함평자동차극장','최신 영화를 자동차에서 편하게 관람하실 수 있습니다','061-320-2228','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210305_4%2F16149253787793GYEW_JPEG%2FT1boZF3KBYxyTho5TpbOkAWo.jpg'),
 (693,13,693,'무주 덕유산 리조트','덕유산의 수려한 자연환경을 느낄 수 있으며, 오스트리아풍의 건물들로 이루어진 산악형 리조트','063-320-2547','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171201_192%2F1512081207354e65nj_JPEG%2F_1.jpg'),
 (694,13,694,'대둔산도립공원','사계절이 모두 아름다운 완주의 자랑이자 보물인 산','063-290-2742','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_169%2F14410072042933mSFl_JPEG%2F11622376_0.jpg'),
-(695,13,695,'모악산도립공원','금산사를 안고있는 특히 봄의 풍경이 아름답기로 유명한 산','063-290-2753','https://example.com/default_image.jpg'),
-(696,13,696,'고산자연휴양림','숲에서 산림욕을 즐길 수 있는 사계절 가족휴양지','063-290-2766','https://example.com/default_image.jpg'),
-(697,13,697,'상관 공기마을 편백숲','10만그루의 빽빽한 편백나무가 우거진 숲','063-290-2624','https://example.com/default_image.jpg'),
-(698,13,698,'대아수목원&대아호','대아저수지의 맑은 물과 수려한 자연경광 속에 자리하고 있는 곳','063-280-4590','https://example.com/default_image.jpg'),
-(699,13,699,'비비정','만경강의 아름다운 풍경을 한눈에 조망할 수 있는 곳','063-211-7788','https://example.com/default_image.jpg'),
 (700,13,700,'비비정예술열차','1량은 레스토랑, 1량과 2량 사이의 공간은 음악공연, 2량은 특산물 판매점, 3량에는 편의점과 갤러리, 4량은 카페로 구성되어 있다','063-211-7788','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170625_99%2F1498357605641d0N4d_PNG%2F186575515664848_0.png'),
-(701,13,701,'삼례문화예술촌','수탈의 상징인 양곡창고를 문화예술의 중심지로 탈바꿈시켜 역사적 의미와 문화가 공존하는 삼례만의 독특하고 절묘한 공간','063-290-2614','https://example.com/default_image.jpg'),
-(702,13,702,'삼례책마을','전시와 공연 토크콘서트 등 다양한 프로그램을 운영하고 있는 곳','063-290-2614','https://example.com/default_image.jpg'),
-(703,13,703,'그림책미술관','그림책을 보고, 듣고, 느낄 수 있는 공간','063-290-2614','https://example.com/default_image.jpg'),
-(704,13,704,'대한민국술테마박물관','5만여 점의 유물을 통해 태곳적부터 현대까지 우리 술에 담긴 다양한 이야기를 오롯이 담고 있는 테마박물관','063-290-3854','https://example.com/default_image.jpg'),
 (705,13,705,'완주전통문화체험장','고즈넉한 한옥의 숨결을 느끼며 뛰어난 자연경관 속에 아늑한 휴식을 즐기기에 안성맞춤인 공간','070-4100-1100','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230108_181%2F1673163781095yIKaS_JPEG%2FKakaoTalk_20230108_160527994_03.jpg'),
-(706,13,706,'청소년전통문화체험관','전통문화를 기반으로 한 청소년들의 문화공간, 체험공간, 지역 내 전해 내려오는 역사의 흔적과 문화를 소재로 한 교육체험 공간','070-4100-1100','https://example.com/default_image.jpg'),
-(707,13,707,'놀토피아','국내 최대규모(34종류)를 자랑하는 심신발달형 어린이 모험 놀이시설','070-4100-1100','https://example.com/default_image.jpg'),
 (708,11,708,'증평인삼문화센터','지역 농특산물인 인삼을 판매하는 대표 인삼판매장','043-835-3732','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20221201_257%2F1669869897814N30RG_JPEG%2F20221126_134752.jpg'),
-(709,11,709,'에듀팜특구관광단지(벨포레리조트)','충청북도 유일한 관광특구단지+중부권 최대관광단지로 다양한 액티비티 활동과 휴양시설을 갖춤','1566-0162','https://example.com/default_image.jpg'),
-(710,4,710,'부평아트센터','뮤지컬+음악회+전시회 등','032-500-2000','https://example.com/default_image.jpg'),
-(711,4,711,'기후변화체험관','생태교육프로그램 체험','032-509-3900','https://example.com/default_image.jpg'),
-(712,4,712,'부평역사박물관','부평 역사관련 전시물 관람','032-515-6471','https://example.com/default_image.jpg'),
-(713,4,713,'부평안전체험관','재난상황 시뮬레이션 체험','032-509-3940','https://example.com/default_image.jpg'),
-(714,4,714,'인천나비공원','살아있는 나비 등 관람','032-509-8824','https://example.com/default_image.jpg'),
-(715,12,715,'칠백의총','임진왜란(1592) 당시 1만 5천의 왜군과 싸우다가 수적 열세였지만 적에게 큰 타격을 입히고 장렬히 전사한 700 의승병들의 유해를 모신 호국영령의 성지이다','041-753-8701','https://example.com/default_image.jpg'),
-(716,16,716,'가야랜드','가야테마파크 건너편에 자리한 어드벤처 놀이동산','055-330-3241','https://example.com/default_image.jpg'),
-(717,16,717,'김해천문대','밀레니엄 기념사업의 일환으로 2002년 2월 1일 개관한 영남지역 유일의 시민 천문대','055-330-3241','https://example.com/default_image.jpg'),
-(718,16,718,'롯데워터파크','남태평양 폴리네시아를 콘셉트로 2만여 명을 동시에 수용할 수 있는 국내 최대 규모의 워터파크','055-330-3241','https://example.com/default_image.jpg'),
-(719,16,719,'클레이아크김해미술관','세계 최초의 건축도자 전문 미술관','055-330-3211','https://example.com/default_image.jpg'),
 (720,16,720,'김해한옥체험관','소박한 전통의 멋과 편리한 현대적인 편의시설을 두루 갖춘 한옥 체험관','055-330-3241','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20151222_183%2F14507685086709HtIs_JPEG%2F167172564526575_15.jpg'),
-(721,16,721,'노무현대통령생가','故 노무현 대통령이 1946년 9월 1일 태어나 8살까지 살았던 집, 전통적인 초가집 형태로 본채에 방 2칸과 부엌, 아래채에 헛간과 옛날식 화장실이 있다','055-330-3241','https://example.com/default_image.jpg'),
-(722,16,722,'김해수로왕릉','가락국의 시조인 김수로왕의 릉으로 김해의 상징적인 문화유적이다','055-330-0891','https://example.com/default_image.jpg'),
-(723,13,723,'석정온천관광지','게르마늄 온천을 이용한 온가족이 함께 즐길 수 있는 사계절 휴양 관광지','063-560-2954','https://example.com/default_image.jpg'),
-(724,9,724,'한탄강관광지','한탄강이 내려다보이는 천혜의 위치에 자리잡은 관광지','031-839-2148','https://example.com/default_image.jpg'),
-(725,9,725,'연천재인폭포','18.5m 높이의 폭포로 연천군 대표적인 명승지','031-839-2278','https://example.com/default_image.jpg'),
-(726,9,726,'연천호로고루','임진강이 지류와 만나 형성된 삼각형의 대지위에 조성된 독특한 고구려성','031-839-2144','https://example.com/default_image.jpg'),
 (727,9,727,'당포성','삼국시대 성곽 천연 절벽을 이용하여 축조한 평지성','031-839-2144','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200516_114%2F1589615029748rES4p_JPEG%2FTyvA79EimFfj9b8_jXCfw9Qh.jpg'),
-(728,9,728,'연천전곡리유적','한탄강변에 있는 구석기시대으로 1978년 아슐리안형 주먹도끼가 발견된 이래 전 세계적으로 주목을 받고 있는 유적으로 사적 제268호','031-839-2565','https://example.com/default_image.jpg'),
 (729,12,729,'만리포 관광지','만리포 해수욕장에 멋진 바다가 한눈에 보이고 항구가 많으니 놀거리 볼거리가 많아서 다양하게 관람할수 있음','041-670-2771','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190724_169%2F1563930344803oV8mR_JPEG%2FDSC_6395_02.jpg'),
-(730,11,730,'좌구산휴양랜드','증평의 명산 좌구산에 조성된 휴양랜드로서, 휴양림, 캠핑, 명상구름다리, 명상의 집, 줄타기체험, 사계절썰매장 등 다양한 체험시설과 아름다운 풍경을 한눈에 담을 수 있음','043-835-4551','https://example.com/default_image.jpg'),
 (731,11,731,'좌구산 천문대','356mm 굴절망원경을 갖추어 천체의 생생한 모습과 좌구산의 맑고 깨끗한 밤하늘을 관찰할 수 있음','043-835-4573','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201029_136%2F1603953798346XXFqC_JPEG%2FxFJucvuB7E5ESCWv48xMbpu2.jpg'),
-(732,11,732,'증평민속체험박물관','증평의 역사와 전통문화를 만날 수 있는 문화공간으로 증평의 문화재, 옛 사진, 출토유물, 고서, 민속품 등 다양한 문화유산을 관람할 수 있으며, 농경문화체험과 전시연계교육 등 종합적인 교육체험을 할 수 있음','043-835-4152','https://example.com/default_image.jpg'),
-(733,11,733,'보강천 미루나무숲','보강천 수변에 위치하고 형형색색 이국풍의 꽃과 풍차, 분수, 놀이터 등 다양한 휴식공간을 갖추며, 산책뿐만 아니라 사진을 찍으며 추억을 쌓기 좋은 곳, 증평인삼골 축제 개최','043-835-3482','https://example.com/default_image.jpg'),
 (734,14,734,'완도타워','완도타워는 첨탑까지 76m이며 지상2층과 전망층으로 구성되어 있다. 다도해의 아름다운 풍경을 조망할 수 잇으며 완도타워 외부에는 경관조명이 설치되어 있어 야간에는 환상적인 야경과 레이저쇼를 감상할 수 있다.','061-550-7642','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_74%2F1441053624903s6KXO_JPEG%2F106072548930555_0.jpg'),
-(735,14,735,'장도청해진유적지','해상왕 장보고 대사가 828년 청해진을 설치하고 중구과 신라, 일본을 잇는 삼각 무역을 펼쳤던 우리나라 최초의 무역전진기지이자 군사 요충지이다. 사적 제308호이다.','061-550-6945','https://example.com/default_image.jpg'),
-(736,14,736,'장보고기념관','장보고대사의 도전정신과 기상을 엿볼 수 있는 다양한 자료와 유물이 전시되어 있다. 특히 전시실은 보고 듣고 만지는 체험형 입체 관람 시스템을 갖추고 있어 흥미로운 관람이 가능하다.','061-550-6945','https://example.com/default_image.jpg'),
 (737,14,737,'해양생태전시관','기존 장보고기념관, 장도 등 청해진 유적지의 기존 문화·관광 시설과 연계하여 방문하는 관광객과 주민들에게 볼거리, 체험거리 제공 및 해양생태에 대한 교육의 장을 마련하고 해양치유 산업의 중요성을 제공하는데 그 의의가 있다. 1층과 2층으로 나뉘어 각 실마다 저마다의 주제를 가지고 완도의 역사, 생태계 현황, 다양한 해양 체험활동 등을 학습하고 경험할 수 있다.','061-550-6944','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA4MjZfMTk5%2FMDAxNzI0NjQ2MTYzMzE2.gKWmbN6Dm74S46UGhQpTTTDMlfg30ZrveZuiki7j8mAg.6-kR9ALNmUiUyCiUP6mUK5F1OnhFQ8K5Fkzqw6OtvEkg.PNG%2Fimage.png'),
 (738,14,738,'완도수목원','국내 유일의 난대수목원으로 3,801종의 수목유전자원을 보유하고 있다. 난대성 목,초본 등 희귀식물 770여종이 자생하고 있는데 아열대,온대 교차지의 다양한 식물이 분포하여 학술적 가치가 높은 수목원이다.','061-552-1544','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_152%2F1441007264936Sb8Cs_JPEG%2F11622637_0.jpg'),
 (739,14,739,'청해포구촬영장','장보고대사를 소재로 한 최인호의 역사소설 (해신)을 원작으로 한 KBS 특별 드라마 (해신)의 촬영부대이다.','061-555-4500','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20201220_101%2F1608446606556n3DJL_JPEG%2F%25BD%25E6%25B3%25D7%25C0%25CF%2528%25C1%25A4%25BB%25E8%25B0%25A2%25C7%25FC%2529.jpg'),
-(740,14,740,'어촌민속전시관','어촌의 생활사, 어획방법, 수산양식의 실태, 선박의 발달사 등 사진자료와 함께 전시하고있다.','061-550-6910','https://example.com/default_image.jpg'),
 (741,14,741,'슬로시티청산도','2007년 아시아 최초 슬로시티로 지정되었으며 영화 (서편제)와 드라마 (봄의왈츠)가 촬영된 곳으로 푸른바다, 푸른산, 구들장논, 돌담길 등 느림의 풍경이 가득한 곳이다.','061-550-6490','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMjA5MTlfMTQ5%2FMDAxNjYzNTc0OTQwNjkz.9GZjDUrl6BOIuAeUCWQVgncN78aA15hKJi5YXuGSGa8g.N1EvEpYfZmg3FhLlVgPbqW4DMcsKPgDOjBylW2754XIg.JPEG%2F2721DDA4-743E-4402-8D6F-EC8C4B27F0B4.jpeg%3Ftype%3Dw1500_60_sharpen'),
 (742,10,742,'용대관광지','설악산국립공원의 내설악지역에 위치하고 있으며 십이선녀탕, 만해마을, 백담사, 황태덕장, 하천 등이 관광지 주변이 있음','033-460-4312','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_223%2F14409922190656A8ol_JPEG%2F11491042_0.jpg'),
 (743,10,743,'방동관광지','기린면 방동지역에 위치하고 있음','033-460-4312','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_230%2F1441015579698A2YLX_JPEG%2F116278618644659_0.jpg'),
@@ -2180,7 +2022,6 @@ INSERT INTO `trip` VALUES
 (759,14,759,'그림책도서관','그림책원화전시 및 인형극등 체험','061-749-8892','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190930_78%2F1569845524319JuYfa_JPEG%2FQ8dHz2T2IQsXZpBvQpa0rD3-.jpg'),
 (760,14,760,'순천시청소년수련원','물과 숲 그리고 자연과 사람이 어우러지는 청소년 수련원','061-755-6296','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210305_74%2F1614920210359Q01Ec_JPEG%2FU6RM2jwKi43ThtMl_48IHJPF.JPG.jpg'),
 (761,14,761,'순천용오름마을','한봉채취, 천연 밀랍초 만들기, 한봉 분양받기, 꿀벌 관찰 등 다양하고 흥미로운 체험을 할 수 있는 농촌전통테마마을','061-754-2416','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230515_148%2F168414519964813PgT_JPEG%2FKakaoTalk_20230512_233201689_01.jpg'),
-(762,14,762,'순천향매실마을','50여년전 마을에 매화를 심은것을 시작으로 그 규모가 마을 단위로는 전국 최대 규모이며, 매년 4월이면 마을에는 매화꽃이 피기 시작하여 매화향기와 눈가루를 뿌려놓은듯한 풍경이 아름다운 마을입니다. 군장마을로 넘어가는 고개길에는 장군이 용마를 타고 하늘로 도약하면서 남겼다는 용발태족(용발자국)이 선명하게 남아있으며, 중촌마을에는 당산나무인 수령 500년생 느티나무 두 그루가 마을 입구에 서있어 마을의 오랜역사를 말해준다. 이문마을에는 이택종 선생이 일본에서 가져와 최초로 심은 매화나무로, 향매실마을에서 가장 오래된 매화나무가 자라고 있다.','061-754-2337','https://example.com/default_image.jpg'),
 (763,14,763,'순천생태마을','산간마을의 오염되지 않은 환경 속에 도심에서는 볼 수 없는 생명들이 함께하는 곳으로 계곡과 습지가 잘 보존되어 있어 생태교육장으로 안성맞춤','061-755-0141','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20171201_135%2F1512060074862vM5Vy_JPEG%2F%25A2%25AC_3.jpg'),
 (764,14,764,'거차뻘배체험마을','거차뻘배 체험장은 2헥타르(ha)의 넓은 공유수면에서 뻘배타기,  꼬막캐기, 칠게잡기, 짱뚱어잡기, 갯벌미끄럼틀타기 등 다양한 갯벌생태체험을 할 수 있는 곳이다.','061-742-8837','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230329_5%2F1680057883744W3BEd_JPEG%2FKakaoTalk_20210825_140208152.jpg'),
 (765,14,765,'낙안민속자연휴양림','낙안읍성과 주변 경관이 수려해 휴식 공간으로는 최적지일 뿐만 아니라 인근에 송광사, 선암사 같은 전통 고찰과 서산의 저녁 노을을 함께 즐길 수 있는 주암호, 상사호가 있으며, 순천만의 갈대와 해변, 순천만 국가정원, 드라마세트장, 고인돌 공원 그리고 낙안읍성 민속마을의 각종 문화 축제를 즐길 수 있는 관광 명소들이 많아 사계절 이용이 가능','061-754-4400','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20240921_160%2F1726919270889PwYUK_JPEG%2F%25BA%25ED%25B7%25E7%25B8%25AE%25BA%25BB.jpg'),
@@ -2189,13 +2030,10 @@ INSERT INTO `trip` VALUES
 (768,16,768,'외도','개인 소유 섬으로 거제의 대표적인 관광지이다.','055-681-4541','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_212%2F1441045618026hSHTt_JPEG%2F13491392_0.jpg'),
 (769,16,769,'공곶이','지형이 궁둥이처럼 튀어나왔다고 해서 공곶이라고 불리며，수선화와 동백나무 등 50여 종의 나무와 꽃이 심겨 있다','055-639-4183','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_176%2F14410512318262C64j_JPEG%2F166059507371401_0.jpeg'),
 (770,16,770,'김영삼전대통령생가기록전시관','거산 김영상대통령의 정치적 삶과 민주주의 사상을 널리 알리고 계승하기 위하여 개관','055-639-8290','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_55%2F1441031875036mWos0_JPEG%2F116877535725478_0.jpg'),
-(771,16,771,'문동휴양지','문동폭포와 함께 우그러진 숲，시원한 바람을 느낄 수 있는 도심 속 휴양지이다','055-639-4183','https://example.com/default_image.jpg'),
 (772,16,772,'바람의언덕','영화의 제목처럼 불리는 언덕으로 실제 많은 드라마 속 배경으로 유명해졌다. 마무 계단으로 연결된 산책로를 따라 언덕을 오르면 몸을 가누기 힘들 정도의 바람이 마치 힘겨루기 하듯 불어온다. 정상 부근 벤치에 앉으면 지중해의 경치가 부럽지 않은 우리 국토의 또 다른 아름다움이 눈앞으로 펼쳐진다.','055-639-4183','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20190731_261%2F1564566356569XmlhQ_JPEG%2FwlpMkd2Se8t3ajItsjx2UMYw.jpg'),
 (773,16,773,'우제봉전망대','한려해상국립공원을 한눈에 볼 수 있는 전망대로 해발 107m에 위치해 있다. 정면으로는 거제 해금강이 보여 멋진비경을 자랑한다','055-639-4793','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20170224_189%2F1487902209064dwsMY_JPEG%2F186174514028_0.jpg'),
-(774,13,774,'방화동가족휴가촌','전국 8대종산에 속하는 장안산 기슭을 따라 펼쳐지는 맑고 깨끗한 계곡을 끼고 조성된 국민 휴양지','063-350-2475','https://example.com/default_image.jpg'),
 (775,13,775,'운일암반일암','기암괴석과 크고 작은 폭포, 소가 어울려 빚어낸 절경','063-430-2554','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_82%2F1441045580950CbrmX_JPEG%2F13491176_0.jpg'),
 (776,10,776,'간현관광지','섬강과 삼산천 강물이 합수되는 지점에 위치하고 있어 빼어난 자연경관과 소금산 등반 등을 할 수 있음','033-737-4765','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230717_180%2F1689568727297Jl3vg_JPEG%2F%25BC%25D2%25B1%25DD%25BB%25EA_%25BB%25E7%25C1%25F8.jpeg'),
-(777,16,777,'명승 거창 수승대','거창군 위천면 황산리에 있는 영남 제일의 동천(洞天: 산천으로 둘러싸인 경치 좋은 곳)으로 알려진 ‘안의삼동(安義三洞)’ 중 하나로 원학동 계곡 한가운데 넓은 화강암 암반으로 이루어진 계곡이다. 이곳은 암반 위를 흐르는 계류와 숲이 어우러져 빼어난 자연경관을 이루고 있어 2008년에 명승 제53호로 지정[네이버 지식백과] 거창 수승대 [居昌搜勝臺] (한국민족문화대백과, 한국학중앙연구원)','055-940-8532','https://example.com/default_image.jpg'),
 (778,16,778,'가조온천','온천수  - 수질 : 26.5℃ / PH 9.7(국내 최고의 강 알칼리성 수질)      ▶ 류머티즘, 알레르기성 피부염 등에 탁월한 효과','055-940-3443','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDExMTdfMzUg%2FMDAxNzMxODA3NzU0NTcy.N_FdJ3000Mjl7IHNL7VqNd6JY7Xl9XkYKQNquY50ar8g.Wop8sqoGNB-RZkMETIKF1_qkfoiB-CeiU11gFIQZd8Ag.JPEG%2F1000015410.heic.jpg%3Ftype%3Dw1500_60_sharpen'),
 (779,9,779,'김포평화누리길 1코스','김포 평화누리길은 대명항에서 시작하여 문수산, 애기봉 입구를 지나 전류리포구까지 3코스(총39km)로 나뉘어 조성되어 있다.','031-980-5108','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA1MDZfMjAy%2FMDAxNzE0OTkzMTY5OTY5.3HQkPqknzmNdQ3AfpPvhkUh9QNb2vpKNJmFWxEi0idwg.00l-F2a3-2cf2GYgxoBIJcSQCkm8Zu10BiJaSZ6gjkIg.JPEG%2F20240506_111909.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (780,9,780,'김포평화누리길 2코스','김포 평화누리길은 대명항에서 시작하여 문수산, 애기봉 입구를 지나 전류리포구까지 3코스(총39km)로 나뉘어 조성되어 있다.','031-980-5108','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA1MTNfNjgg%2FMDAxNTI2MjE0MzYzMTE2.2n9SAqqMdqluQUwngNWXhw_9t_R_qff6o-1QPH3vMz8g.5Xx7xLpjLl_FtXMT_Mn5ZOE6OAZtkiDdNLVMnXJjH7Qg.JPEG.saying0910%2FDSC00121.JPG%23667x1000'),
@@ -2208,44 +2046,22 @@ INSERT INTO `trip` VALUES
 (787,9,787,'덕포진교육박물관','분류 : 사적 제292호소재지 : 김포시 대곶면 덕포진로103번길 224-4시대 : 조선강화만을 거쳐 서울로 진입하는 길목인 손돌목에 천혜의 지형을 이용해 설치한 조선시대의 군영 덕포진은 신미양요와 병인양요 때 서구 열강과 치열하게 싸웠던 격전지로 역사적 가치와 유물사적 의의를 가진 곳이다.1981년 전 문화원장 김기송씨가 사비를 들여 발굴작업이 시작되었다. 현재는 포대와 파수대가 복원되었고 2007년 새 단장한 덕포진 유물전시관에는 조선 후기 사용했던 포의 위치와 포의 유효거리 등을 쉽게 이해할 수 있다.','031-980-2483','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_164%2F1441021512776yawqR_JPEG%2F11693789_0.jpg'),
 (788,3,788,'꽃보라동산','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200416_91%2F1587026277148jtvov_JPEG%2FH_VKOiYfqu6XkqOgAQ7YvOtq.jpg'),
 (789,3,789,'운암지수변공원','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_268%2F1441009629640elynO_JPEG%2F126168505536732_0.jpg'),
-(790,3,790,'팔달대교 야경','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://example.com/default_image.jpg'),
 (791,3,791,'금호강하중도','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241112_88%2F1731370254637GWf03_JPEG%2FSNS%25B1%25E2%25C5%25B8_%25B3%25D7%25C0%25CC%25B9%25F6%25C3%25A4%25B3%25CE_24%25B9%25F0%25BC%25EE.jpg'),
-(792,3,792,'경북대학교 캠퍼스','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://example.com/default_image.jpg'),
 (793,3,793,'함지공원','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220720_210%2F1658288813231hfptj_JPEG%2FIMG_20220715_191629_737.jpg'),
 (794,3,794,'구암서원','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210616_250%2F1623831201110fLyJC_JPEG%2F9ecBtxel16F18yYWdHjwHt4r.jpg'),
-(795,3,795,'침산정','대구광역시 북구 8경사진찍기좋은명소','053-665-2344','https://example.com/default_image.jpg'),
 (796,11,796,'탄금공원','우륵이 가야금을 연주하던 장소인 탄금대 및 아름다운 남한강 변과 인접하여 충주의 관광거점 기능을 담당하는 관광지 조성','043-850-6751','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA1MThfMzAg%2FMDAxNzE2MDI1MTY2MTgw.VE1JETJpyvcD3MSVd9m0bxgPylHQecpZzsrnb5vqWo8g.R7tiHQ7wQEt0EudL_btCcyl_Dyivi2RAVrA0yeo44EEg.JPEG%2FVideoCapture_20240516-160008.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (797,11,797,'충주호체험','역사 문화와 수변공간이 어우러지는 체험관광지 조성 / 수변의 위락시설과 생태환경의 조화로 체험가능한 수변 휴식 학습공간 조성 /수상레저활성화를 위한 국제수변레포츠단지 조성','043-850-6751','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20241025_90%2F1729819555430V6h2m_PNG%2F%25C1%25A6%25B8%25F1%25C0%25BB-%25C0%25D4%25B7%25C2%25C7%25D8%25C1%25D6%25BC%25BC%25BF%25E4_-001_%252816%2529.png'),
 (798,16,798,'창녕 우포늪','천연보호구역인 창녕 우포늪은 국내 최대 규모(2,505천㎡)의 자연내륙습지로 다양한 동식물이 서식하고 있는 자연생태게의 보고로 람사르습지에 등록되어있으며, 우포늪생명길을 따라 걸으며 다양한 동식물들을 만날수있다.','055-530-2121','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_120%2F14410264191724jfIE_GIF%2F96358585668247_0.gif'),
 (799,16,799,'화왕산','봄에는 진달래, 여름에는 녹음과 계곡, 가을에는 은빛 억새 물결 그리고 겨울 설경이 아름다운 화왕산은 가파른 코스부터 완만한 코스까지 다양한 등산코스가 있어 남여노소 누구나 즐길 수 있는 창녕의 진산이다.','055-530-1661','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150901_80%2F1441045636009fEm88_JPEG%2F13491511_0.jpg'),
-(800,12,800,'사계고택','조선중기 유학의 대가 사계김장생 선생의고택','042-840-2412','https://example.com/default_image.jpg'),
 (801,12,801,'모원재','사계 김장생 선생의 5대 선친인 김국광의 재실','042-840-2412','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181222_184%2F1545462737481GXnWG_JPEG%2FDWBZYx5zVWD1YvHEGTLJ_SK6.jpg'),
 (802,12,802,'염선재','사계 김장생 선생의 계배 순천김씨의 재실','042-840-2412','https://search.pstatic.net/common/?src=http%3A%2F%2Fimage.nmv.naver.net%2Fblog_2024_11_18_18%2FtMBOWVgInK_01.jpg'),
-(803,12,803,'이심원충신정려현판','효령대군의 증손인 이심원선생의 충직함을 기리기 위한 현판','042-840-2412','https://example.com/default_image.jpg'),
 (804,12,804,'신원재','사계 김장생 선생의 9번째 아들인 김비 선생의 재실','042-840-2412','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjEyMDZfOTIg%2FMDAxNjcwMjkyNzcwMTgz.jn9BWaZwl7LhpJejofOf9XEUHDDqWHhrrCZWQ2xHqaYg.2IIpZBybu27uEoOVaKJyZgW1Zg9XEQlpVDvcgqD-esUg.JPEG.yeongcheonsi%2F%25BF%25B5%25C3%25B5_3_1.jpg'),
-(805,3,805,'달성토성마을','집안에 있는 화분을 골목으로 꺼내놓으며 시작된 골목정원','053-663-2181','https://example.com/default_image.jpg'),
 (806,9,806,'대성관광지','경춘가도의 대성리역을 중심으로 북한강변 8만여 평에 이루어져 있으며, 산책로, 피크닉장, 자전거도로가 조성되어 있으며, 여러 편의시설도 들어서 있다. 북한강은 수영이  금지되어 있으며, 보트 등 수상스포츠는 즐길 수 있다.','031-580-2518','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20160429_90%2F1461904715801aJjkj_JPEG%2F32.jpg'),
 (807,9,807,'산장관광지','1977년에 국민관광지로 지정, 자연경관을 최대한 살린 계곡형 관광지로 개발되었으며, 북한강 지류인 조종천의 맑은 물이 한데 어우러져 경치가 아름답다. 주요 시설로는 야영장과 다양한 숙박시설, 계곡자연풀장이 있다.','031-580-2518','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDEwMDlfMTY1%2FMDAxNzI4NDUyMzU5OTMz.12FujPPyH6zPfwrtdJXyZUUVZT0eGSQ4UjrWuh8AINAg.tavwovkO5BGawe7aLdtUShhF0lrF3Nye4pi13NOaQiQg.JPEG%2F1000016821.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(808,14,808,'동악산','삼남제일 암반계류 청류동 계곡 풍치 일품인 동악산 (위치 : 곡성읍~입면, 높이 : 736.8m)우선 動樂山을 동락산 이라 읽지 않고, 동악산 이라 읽는 까닭부터 밝혀야 이 산을 이해하는데 도움이 되겠다. 대개 樂 은 뒤에 딸려 나올 때 락으로 읽힌다. 도락산(道樂山)이니 진락산(眞樂山)이니 하는 것이 그런 경우인데, 이 경우는 즐거울 락의 경우다. 그러나 동악산의 경우에는 풍류 악으로 읽어야 한다. 천상의 노래, 즉 음악이 울린다(동한다)는 전설에서 비롯되기 때문이다. 유래는 이렇다. 이 산의 개산조인 원효대사가 성출봉(聖出峰 형제봉 동봉으로 동악산 최고봉) 아래에 길상암을 짓고 원효골(청류동 남쪽 골짜기)에서 도를 베풀고 있는데 하루는 꿈에 성출봉과 16아라한이 그를 굽어보는지라 깨어나 즉시 성출봉에 올라가 보았더니 1척 남짓한 아라한 석상들이 솟아났다는 것이다.원효가 열일곱 차례나 성출봉을 오르내리면서 아라한 석상들을 길상암에 모셔 놓으니 육시(六時) - 불교에서 하루를 여섯으로 나눈 염불독경의 시각으로 신조, 일중, 일몰, 초야, 중야, 후야- 만 되면 천상에서 음악이 들려 온 산에 퍼졌다 한다. 도림사 응진전에 봉안된 아라한상들이 당시의 것이라 전해지고 있으나 신빙성은 없다.마을 주민들은 곡성 마을에서 장원급제자가 탄생하게 되면 이 산에서 노래가 울려 펴졌다고도 한다. 남원 실상사 약사전의 약사여래상처럼 나라에 불길한 징후가 나타나면 땀을 흘리는 흉조를 나타내는 불상이 있는가 하면 동악산처럼 길조를 알리는 산도 있기 마련이다. 곡성의 진산인 동악산은 크게 두 산덩어리가 남북으로 놓여 있다. 각 산덩어리에는 비슷한 높이의 정상이 있는데 이 두 산덩어리를 가르는 것이 배넘이재이고, 남봉(형제봉·동봉과 서봉으로 형성돼 북봉에 동악산, 남봉에 형제봉 이라 표기해 놓고 있지만 최고봉은 형제봉이 된다. 산이름의 유래가 성출봉(형제봉 동봉)에서 유래됐다는 것과 주요 등산로가 형제봉을 중심으로 더 잘 나 있다는 점은 형제봉이 동악산의 주봉임을 뒷받침해 주고 있다.이','061-360-8772','https://example.com/default_image.jpg'),
 (809,14,809,'봉두산','천년사찰 구산선문 태안사 품은 명산.지형도에는 봉두산이라 표기돼 있지만, 이 산 안에 깃든 태안사 일주문 현액에는 桐裏山(동리산) 泰安寺(태안사) 라 되어 있다. 산이름이 언제 바뀌었는지는 몰라도 두 이름에 연관이 전혀 없는 것은 아니다. 봉황이 서식하는 나무가 오동나무이고 태안사가 자리잡은 곳을 둘러싼 주변 산세가 오동나무 줄기 속처럼 아늑해서 동리산이라 불렀으며 둘러싼 주변 산세의 최고점을 봉황의 머리 즉 봉두산이라 불렀을 가능성이 없지 않다. 봉두산 주변에는 곡성 특유의 내륙산지를 이루고 있어 정상에 올라서면 순천쪽 황학리의 작은 들판을 제외하고 주변 조망이 온통 산뿐이다. 남서쪽으로 삼산과 희야산 능선 넘어로 모후산이 오똑하고 북서쪽으로는 통명산 넘어 무등산까지 시야가 트인다. 동쪽으로는 둥주리봉과 자라봉, 그리고 지리산이 장막을 치고 있다. 이러한 내륙산지 조망이 산행의 맛으로는 제일이지만 봉두산은 태안사 여행에 초점을 맞추어도 좋을 산이다. 곡성~구례 간 17번 국도 상 압록(보성강이 섬진강에 합류하는 곳)에서 18번 국도쪽(서쪽)으로 방향을 틀면 마치 히말라야의 한 거대한 협곡에 들어선 듯한 기분이 들고 약 4km정도 강변 도로를 따라 산모퉁이를 돌아들면 태안사로 드는 다리가 나온다. 이 다리를 건너 약 5km 가면 태안사 입구에 닿는데, 강변을 따라 난 도로에 차량통행도 뜸해 드라이브코스로도 일품이다. 장승 한 쌍과 거대한 느티나무가 서 있는 입구서부터 다시 협곡을 비집고 낸 비포장길을 따라 들어서면 자유교 넘어 주차장이 마련돼 있다. 여기에 차를 놓고 정심교, 반야교, 해탈교를 건너 능파각에 이르는 길은 호젓하기 그지없고, 봄이면 벚꽃이 터널을 이룬다. 능파각은 계곡에 걸쳐 지은 고색창연한 다리겸 정자다. 경찰충혼탑이 나오면 태안사는 바로 그 위 넓은 터에 자리잡고 있다.','061-360-8780','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODA0MjdfMTM5%2FMDAxNTI0NzYxNjk2MDU5._WR6yXP_5pDdvKty5VMG7X3-BPQb58sVz9SxNLhZmK0g.Z1ft4KFI_VBJeckSzC7xmtPRCuHf44REGEXxUzX1Oqcg.JPEG.toyou10123%2F%25B5%25CE%25B9%25E6%25BB%25EA%252C%25BA%25F1%25C1%25B6%25BE%25CF%252C%25BA%25B4%25C7%25B3%25BB%25EA%252C%25B5%25CE%25B9%25E6%25BB%25EA%252C%25BA%25C0%25B5%25CE%25BB%25EA%252C%25C0%25E5%25B1%25BA%25BA%25C0.jpg'),
 (810,14,810,'설산','해발 522.6m의 설산은 산 정상의 햐얀 규암이 멀리서 바라보면 눈처럼 하얗게 보여 설산(雪山)이라 불리어 지고 괘일봉에 걸린 눈부신 황혼은 곡성 8경에 속한다. 설옥리 목동마을을 지나 임도를 따라 10여분 정도 올라가면 설산 수도암이 품안에 아담하게 들어 앉아 있다. 설산 수도암은 신라시대 설두화상이 수도한 곳으로 전해지며 그 당시 건물은 없었고 1928년 임공덕보살이 창건한 건물이 지금까지 전해오고 있는 작은 암자이다. 수도암 앞 마당에는 지방문화재 자료 제84호로 지정된 잣나무가 있는데 잣나무는 수령이 200년 정도 된다고 한다. 설산을 오르면 수도암 뒷편 산길을 따라 20분 오르다 보면 커다란 두개의 바위가 수문장처럼 좌우로 나란히 서 있고 그 사이를 약간 내려가면 헬기장과 야묏동이 나타난다. 등산코스로 잘 알려진 설산은 헬기장에서 조금 올라 설산 정상에 이르면 책을 층층히 쌓아 놓은 것 같은 맞은편의 괘일산 기암괴석이 웅장하게 한눈에 들어오고 옥과방면의 올망졸망한 산들이 마치 군대에서 일열로 도열해 있는 듯하며 담야쪽을 바라다보면 날씨가 좋을 때는 멀리 광주 무등산까지 보이며 전북 순창군 풍산면 전체가 내려다 보이는 설산은 사시사철 소풍객과 등산객의 발길이 끊이지 않고 있다.','061-360-8780','https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAyMjJfNTMg%2FMDAxNjc3MDM4MjM5Mzc4.HLamLae2x9etRbFvFCsDiuZh5BIZj2d4iud1ZzZD1f0g.H9dHdQg281YP0lnpxCUgohoeibXdij01s8auZKORxVsg.PNG.himnal2%2Fimage.png'),
-(811,14,811,'통명산','곡성 제1고봉···섬진강과 보성강 가르는 맹주 통명산. 지금은 곡성의 제1명산을 동악산으로 꼽는 데에 이견이 없지만 동악산은 곡성 제1고봉이 아니다. 곡성의 제1고봉은 통명산이다. 물론 높다고 명산이 되는 것은 아니다. 동악산은 곡성의 배후산이자 도림사계곡은 삼남 제일의 암반계류 라 일컬어질 정도로 유명하고 특히 이곳 봄 벚꽃은 상춘객들에게 큰 기쁨을 주고 있다. 통명산은 지리상으로도 중요한 위치를 점하고 있다. 통명산을 주산으로 하는 통명산~주부산~곤명산 산괴가 바로 섬진강과 보성강을 가르고 있기 때문이다. 통명산 정상에 서면 곡성의 산악이 크게 동악산 산괴, 통명산 산괴, 봉두산 산괴, 그리고 동쪽으로 섬진강 건너 지리산에서 뻗어내린 천마산 산줄기와 서쪽으로 화순군 경계에 모후산 북쪽 줄기인 차일봉~한동산 산줄기로 나뉘는 것을 가늠할 수 있다. 곡성의 지세를 보려면 당연히 통명산에 올라봐야 하는 것이다. 곡성이 배출한 명장 중 신숭겸(申崇兼)과 마천목(馬天牧)은 각각 고려 초와 조선 초에 주군이 나라의 기초를 다지는 데 크게 기여한 장군들로 모두 통명산자락에서 태어났다. 당연히 두 장군에 대한 전설적인 이야기들이 산자락에 널리 있기도 하다. 특히 신숭겸장군의 사당인 덕양서원(오곡면 덕산리)과 마천목 장군의 묘와 사당(석곡면)이 바로 통명산 자락에 있다. 마 장군은 조선 초 제2차 왕자의 난 때 방간이 박포와 같이 난을 일으키자 박포를 잡아베어 난을 평정했다. 위태로운 사직을 구한 공로로 그는 상장군이 되어 나주목사, 전라병사, 병조판서를 거쳐 판돈영부중추원사까지 지냈다.(신숭겸 장군 이야기는 봉두산과 참조). 통명산에는 명당이 많다는 소문이 자자하다. 또한 지명이 풍수적 해석으로 붙은 곳도 여럿 있다. 통명산 남쪽, 죽곡면 봉정리의 이름도 그런 예 중의 하나다. 주부산에서 성주봉을 거쳐 짧은 지능선이 장군봉과 천덕산 사이를 비집고 내려선 그 아래에 있는 이 마을은 포란비봉(抱卵飛峰) 형국으로 장자등을 봉황의 몸통으로, 천덕산과 통명산을 봉황의 날개로, 주부','061-360-8780','https://example.com/default_image.jpg'),
 (812,14,812,'함평해수찜','온천과 약찜의 효능을 한꺼번에 즐길수 있음','061-320-1784','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDExMDFfMTQw%2FMDAxNzMwNDE1NzI3NDc2.VJ6stuf8_swoyUjolomsSze5QGecZ2_TKOSL73qXi3Ag.-WcUC_yOZcfFIyteRXNNJuzvQ0kRw95HIEsEuFyMQLEg.JPEG%2F1000037362.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
-(813,11,813,'능강관광지','청풍호 경관자원과 연계 한국 최고의 스위스형 테마 및 산악 휴양형 핵심 체류 거점 리조트','043-641-6694','https://example.com/default_image.jpg'),
-(814,11,814,'금월봉관광지','청풍호의 수려한 자연경관과 기암괴석(금월봉)을 배경으로 유휴지를 최대한 활용한 체류형 관공시설(호텔, 콘도 등) 조성','043-641-6694','https://example.com/default_image.jpg'),
-(815,11,815,'계산관광지','수상레저 및 수상마리나 등 수상연계관광 인프라 조성 및 비봉산모노레일 등과 연계 관광 인프라조성 목적 관광지','043-641-6694','https://example.com/default_image.jpg'),
-(816,11,816,'만남의광장','청풍호반 주변 관광시설과 연계한 핵심 관광거점으로 각종 관광시설이 집중된 제천관광의 중심지','043-641-6694','https://example.com/default_image.jpg'),
-(817,11,817,'제천 성내관광지','청풍호반의 뛰어난 장소적 특성을 활용한 문화영상 테마지구로 한류와 연계 국내외 영상테마 관광지','043-641-6694','https://example.com/default_image.jpg'),
-(818,11,818,'제천온천관광지','청풍호반, 월악산등과 연계한 핵심 처류거점으로 한방도시 컨셉과 연계한 한방온천장으로 조성계획 관광지','043-641-6694','https://example.com/default_image.jpg'),
-(819,11,819,'교리관광지','청풍호반 주변 관광시설과 연계한 핵심 체류 거점으로 청풍권 최고의 리조트 관광지','043-641-6694','https://example.com/default_image.jpg'),
-(820,10,820,'팔봉산관광지','8개의 암봉과 홍천강이 어우러진 아름다운 명산','033-430-2471','https://example.com/default_image.jpg'),
-(821,10,821,'소노벨비발디파크','휴양과 레저, 골프 및 스키 등 국내 최대규모의 관광휴양단지','033-430-2471','https://example.com/default_image.jpg'),
-(822,15,822,'오전약수관광지','심산계곡에 자리잡은 약수탕은 선달산, 옥석산 아래 깊은 계곡에 위치하고 있고, 약수는 예부터 위장병과 피부병에 효험이 있다.','054-679-6353','https://example.com/default_image.jpg'),
-(823,15,823,'다덕약수관광지','옛날 스무나무 아래 약수가 있어 이를 마시고 위장병과 피부병에 효험이 있어 많은 사람이 이 약수를 마시고 덕을 보았다 하여 다덕약수라고 불리움','054-679-6353','https://example.com/default_image.jpg'),
-(824,9,824,'다도박물관','지상3층 규모로 다도전시장과 조각공원, 다도체험장, 연못, 정자, 투호장 등 부대시설과 잔디광장을 갖춘 복합예술 공간으로 자연을 벗삼아 다도 및 전통예절, 민속놀이 체험을 할 수있다.','031-998-1000','https://example.com/default_image.jpg'),
 (825,1,825,'당고개 순교성지','이 일대는 조선후기에 처형장으로도 이용되었는데, 1839년 기해박해 당시 천주교 신자 10여명이 순교한 곳이다. 지금은 기해박해 당시 천주교 순교자들을 기리기 위해 당고개 순교성지가 들어서 있다.','02-711-0933','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20150831_255%2F1441024937992koeFY_JPEG%2F127073557153874_0.jpg'),
-(826,1,826,'옛 풍국제과 공장(현 오리온)','풍국제과는 일제강점기 용산에 본사와 생산공장을 두었던 제과업체로 1934년 지금의 위치에 설립하였다. 해방 이후 풍국제과는 정부에 귀속되었다가 1956년 이양구가 인수해 동양제과공업 주식회사를 설립했다. 그 후 사업확장과 함께 2001년 제과업을 중심으로 하는 오리온 그룹이 동양그룹계열에서 분리되어 오늘날의 ㈜오리온이 되었다.','02-710-6000','https://example.com/default_image.jpg'),
-(827,1,827,'용산신학교','1892년에 세워졌으며, 프랑스인 코스트 신부가 설계, 감독 했다. 한국 최초의 신학교 건물이다.','02-701-5501','https://example.com/default_image.jpg'),
 (828,13,828,'금마관광지','익산 서동공원 일원','063-859-5827','https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20191127_160%2F15748233732274o0nx_JPEG%2FDy1rAUjTh-vNU3c5czg-QFYo.jpg'),
 (829,13,829,'미륵사지관광지','미륵사지 절터 및 전시실','063-859-5827','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyNDA4MTVfMjk4%2FMDAxNzIzNjg3OTk3MDE1.TMvw--w8Q1ti_RnqCH3DkIqT_BMVknyNRYmPtz5MaWwg.Rz6yQeh_MxPFfbji1kKFm3V_803rt0sQ4VqhZff6Zd0g.JPEG%2F1000005018.jpg.jpg%3Ftype%3Dw1500_60_sharpen'),
 (830,13,830,'왕궁보석테마 관광지','익산 보석박물관','063-859-5827','https://search.pstatic.net/common/?src=https%3A%2F%2Fpup-review-phinf.pstatic.net%2FMjAyMzEyMDlfMTk2%2FMDAxNzAyMTEzNTkzNDkw.VbkNXO_c8EkRXC-NI0TaE5bZv74NmZU5y-P18RV5k9wg.OiKXoAXMmhTj-sI_XVi9rebAgtTsR5X-HDi5OI8-fD8g.JPEG%2F20231209_132202.jpg.jpg%3Ftype%3Dw1500_60_sharpen');
@@ -2269,7 +2085,7 @@ CREATE TABLE `user` (
   `dotori` bigint(20) NOT NULL,
   `profile_img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2279,11 +2095,12 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` VALUES
-(1,'테스트유저1','ssafy1@naver.com','1234','user','2024-11-16',223,'940b20a5-1a47-4ac7-8cf4-3fc79b8abbd7'),
+(1,'테스트유저1','ssafy1@naver.com','1234','user','2024-11-16',193,'940b20a5-1a47-4ac7-8cf4-3fc79b8abbd7'),
 (2,'테스트유저2','ssafy2@naver.com','1234','user','2024-11-16',23,'ce110f80-5b63-4507-916f-f32d9ff816d3'),
 (3,'테스트유저3','ssafy3@naver.com','1234','user','2024-11-16',123,'8ff9bf5a-3531-4cfd-a7e4-934608ebe0c2'),
-(4,'테스트유저4','ssafy4@naver.com','1234','user','2024-11-16',23,NULL),
-(5,'테스트유저5','ssafy5@naver.com','1234','user','2024-11-16',23,NULL);
+(4,'테스트유저4','ssafy4@naver.com','1234','user','2024-11-16',83,NULL),
+(5,'테스트유저5','ssafy5@naver.com','1234','user','2024-11-16',23,NULL),
+(12,'이영석','vlfxhd69@naver.com','1111','user','2024-11-27',70,'ceae215b-3919-49fc-8a0d-183397cfd124');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2296,4 +2113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2024-11-26  3:05:15
+-- Dump completed on 2024-11-27  6:04:57
