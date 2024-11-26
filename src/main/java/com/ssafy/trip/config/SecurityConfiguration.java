@@ -37,6 +37,7 @@ public class SecurityConfiguration {
                         .requestMatchers("/api/user/login", "/api/user/join").permitAll()
                         .requestMatchers("/api/user/reset/password", "/api/user/reset/confirm-password").permitAll()
                         .requestMatchers("/api/analyze/post").permitAll()
+                        .requestMatchers("/api/travel-diary/list").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable) // 최신 방식으로 CSRF 비활성화

@@ -24,31 +24,29 @@ public interface TravelDiaryMapper {
     void regist(TravelDiaryRegisterRequest request);
 
     @Select("""
-                SELECT 
-                    td.id, 
-                    td.user_id AS userId, 
-                    u.name AS username, 
-                    td.title, 
-                    td.image_name AS imageName, 
-                    td.description, 
-                    td.created_at AS createdAt,
-                    (ug.sea * tg.sea +
-                     ug.mountain * tg.mountain +
-                     ug.valley * tg.valley +
-                     ug.city * tg.city +
-                     ug.festival * tg.festival) AS score
-                FROM 
-                    travel_diary td
-                JOIN 
-                    user u ON td.user_id = u.id
-                JOIN 
-                    travel_graph ug ON ug.user_id = u.id
-                JOIN 
-                    travel_diary_graph tg ON tg.diary_id = td.id
-                WHERE 
-                    u.id = #{userId} -- 특정 유저 ID로 필터링
-                ORDER BY 
-                    score DESC
+                SELECT
+                                       td.id,
+                                       td.user_id AS userId,
+                                       u.name AS username,
+                                       td.title,
+                                       td.image_name AS imageName,
+                                       td.description,
+                                       td.created_at AS createdAt,
+                                       (COALESCE(ug.sea, 0) * COALESCE(tg.sea, 0) +
+                                        COALESCE(ug.mountain, 0) * COALESCE(tg.mountain, 0) +
+                                        COALESCE(ug.valley, 0) * COALESCE(tg.valley, 0) +
+                                        COALESCE(ug.city, 0) * COALESCE(tg.city, 0) +
+                                        COALESCE(ug.festival, 0) * COALESCE(tg.festival, 0)) AS matchScore
+                                   FROM
+                                       travel_diary td
+                                   JOIN
+                                       user u ON td.user_id = u.id
+                                   JOIN
+                                       travel_diary_graph tg ON tg.travel_diary_id = td.id
+                                   JOIN
+                                       (SELECT * FROM travel_graph WHERE user_id = #{userId}) ug ON 1=1
+                                   ORDER BY
+                                       matchScore DESC;
             """)
     List<TravelDiaryListResponse> selectAll(Long userId);
 
@@ -86,7 +84,7 @@ public interface TravelDiaryMapper {
     String selectTravelDiaryPost(Long travelDiaryId);
 
     @Insert("insert into travel_diary_graph(travel_diary_id, sea, mountain, valley, city, festival)" +
-            "values (#{diaryId}, #{sea}, #{mountain},#{valley}, #{city}, #{festival}")
+            "values (#{diaryId}, #{sea}, #{mountain},#{valley}, #{city}, #{festival})")
     void saveDiaryGraph(Map<String, Long> map);
 
 }
