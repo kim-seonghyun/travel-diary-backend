@@ -12,9 +12,7 @@ import io.jsonwebtoken.Claims;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -126,7 +124,6 @@ public class PostController {
     @GetMapping("/{postId}/increment-likes")
     public ResponseEntity<Void> incrementLikes(@RequestHeader("Authorization") String accessToken,
                                                @PathVariable Long postId) {
-        System.out.println(postId);
         accessToken = accessToken.substring(7);
         Claims claims = jwtUtil.parseToken(accessToken);
         Long userId = claims.get("userId", Long.class);
