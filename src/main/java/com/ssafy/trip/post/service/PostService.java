@@ -1,15 +1,20 @@
 package com.ssafy.trip.post.service;
 
+import com.ssafy.trip.chatgpt.service.OpenAiService;
 import com.ssafy.trip.comment.dto.response.CommentListResponse;
 import com.ssafy.trip.comment.mapper.CommentMapper;
 import com.ssafy.trip.post.dto.entity.Post;
 import com.ssafy.trip.post.dto.request.PostRegistRequest;
 import com.ssafy.trip.post.dto.request.PostUpdateRequest;
+import com.ssafy.trip.post.dto.request.TagWeights;
+import com.ssafy.trip.post.dto.request.TravelDiaryGraphRequestDto;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
 import com.ssafy.trip.post.mapper.PostMapper;
+import com.ssafy.trip.post.mapper.TravelDiaryGraphMapper;
 import com.ssafy.trip.posthashtag.mapper.PostHashtagMapper;
+import com.ssafy.trip.travelgraph.mapper.TravelGraphMapper;
 import com.ssafy.trip.trip.mapper.TripMapper;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,13 +26,21 @@ public class PostService {
     private final PostHashtagMapper postHashtagMapper;
     private final CommentMapper commentMapper;
     private final TripMapper tripMapper;
+    private final OpenAiService openAiService;
+    private final TravelDiaryGraphMapper travelDiaryGraphMapper;
+    private final TravelGraphMapper travelGraphMapper;
 
     public PostService(PostMapper mapper, PostHashtagMapper postHashtagMapper, CommentMapper commentMapper,
-                       TripMapper tripMapper) {
+                       TripMapper tripMapper, OpenAiService openAiService,
+                       TravelDiaryGraphMapper travelDiaryGraphMapper,
+                       TravelGraphMapper travelGraphMapper) {
         this.mapper = mapper;
         this.postHashtagMapper = postHashtagMapper;
         this.commentMapper = commentMapper;
         this.tripMapper = tripMapper;
+        this.openAiService = openAiService;
+        this.travelDiaryGraphMapper = travelDiaryGraphMapper;
+        this.travelGraphMapper = travelGraphMapper;
     }
 
     public PostDetailResponse regist(PostRegistRequest request) {
@@ -37,6 +50,50 @@ public class PostService {
         post.setPostImage(request.getPostImage());
         post.setTripId(request.getTripId());
         mapper.regist(post);
+        try {
+            String result = openAiService.analyzeText(request.getContent());
+            TagWeights tagWeights = new TagWeights();
+            TravelDiaryGraphRequestDto travelDiaryGraphRequestDto = new TravelDiaryGraphRequestDto();
+            travelDiaryGraphRequestDto.setTravelDiaryId(post.getTripId());
+            tagWeights.setUserId(post.getUserId());
+
+            result = result.substring(1, result.length() - 1);
+
+            String[] pairs = result.split(",\\s*");
+
+            for (String pair : pairs) {
+                String[] keyValue = pair.split(":\\s*");
+                String key = keyValue[0];
+                int value = Integer.parseInt(keyValue[1]);
+
+                switch (key) {
+                    case "sea":
+                        tagWeights.setSea(value);
+                        travelDiaryGraphRequestDto.setSea(value);
+                        break;
+                    case "mountain":
+                        tagWeights.setMountain(value);
+                        travelDiaryGraphRequestDto.setMountain(value);
+                        break;
+                    case "valley":
+                        tagWeights.setValley(value);
+                        travelDiaryGraphRequestDto.setValley(value);
+                        break;
+                    case "city":
+                        tagWeights.setCity(value);
+                        travelDiaryGraphRequestDto.setCity(value);
+                        break;
+                    case "festival":
+                        tagWeights.setFestival(value);
+                        travelDiaryGraphRequestDto.setFestival(value);
+                        break;
+                }
+            }
+            travelGraphMapper.updateTravelGraph(tagWeights);
+            travelDiaryGraphMapper.updateTravelDiaryGraph(travelDiaryGraphRequestDto);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         PostDetailResponse response = new PostDetailResponse();
         response.setContent(post.getContent());
         response.setId(post.getTripId());

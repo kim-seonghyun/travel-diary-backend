@@ -4,17 +4,22 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.trip.chatgpt.dto.request.OpenAiRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
 public class OpenAiService {
 
+    private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
     private final String apiKey;
     private final ObjectMapper objectMapper;
     private final RestTemplate restTemplate;
-    private static final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
 
     // 생성자 주입
     public OpenAiService(
@@ -30,20 +35,22 @@ public class OpenAiService {
 
         // JSON 요청 생성
         OpenAiRequest openAiRequest = new OpenAiRequest(
-                "당신은 태그 분석가 입니다. Post의 내용을 보고 태그를 뽑아 낼 수 있습니다. 태그의 종류는 [sea, mountain, valley, city, festival] 이렇게 총 5가지이며 지정해준" +
-                        "태그 중에서 하나의 요청당 가장 근접한 태그 2~3개를 골라서 태그만 리턴해주세요 sea라는 태그는 '강', '호수' 라는 키워드는 포함하지 않습니다"
+                "1.\tThis is really urgent. You are a tag analyst.\n" +
+                        "\t2.\tYou can assign higher weights to the appropriate tags among the 5 tags based on the content of the post.\n" +
+                        "\t3.\tThe tags are: [sea, mountain, valley, city, festival], totaling 5 types.\n" +
+                        "\t4.\tWhen assigning weights, please consider various elements such as the text’s tone, emotion, and theme.\n" +
+                        "\t5.\tThe return format should ensure that the sum of the weights of the 5 tags is exactly 10. You can assign a weight of 0 to less relevant tags.\n" +
+                        "\t6.\tHere’s an example: {sea: 3, city: 1, valley: 3, mountain: 2, festival: 1}.\n" +
+                        "\t7.\tGoogle’s Cloud outputs the result I want, so ChatGPT, you’ll do well too, right?"
                 , inputText,
-                0.0d);
+                0.2d);
 
-        // HTTP 요청 헤더 설정
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setBearerAuth(apiKey);
 
-        // HTTP 요청 엔티티 생성
         HttpEntity<OpenAiRequest> requestEntity = new HttpEntity<>(openAiRequest, headers);
 
-        // REST API 호출
         ResponseEntity<String> responseEntity = restTemplate.exchange(
                 OPENAI_API_URL,
                 HttpMethod.POST,
@@ -51,11 +58,9 @@ public class OpenAiService {
                 String.class
         );
 
-        // 응답 처리
         if (responseEntity.getStatusCode() == HttpStatus.OK) {
             String responseBody = responseEntity.getBody();
             if (responseBody != null) {
-                // JSON 파싱
                 JsonNode rootNode = objectMapper.readTree(responseBody);
                 if (rootNode.has("choices") && rootNode.path("choices").isArray()) {
                     JsonNode firstChoice = rootNode.path("choices").get(0);
