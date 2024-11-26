@@ -5,7 +5,10 @@ import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegisterRequest;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryUpdateRequest;
 import com.ssafy.trip.traveldiary.dto.response.TravelDiaryDetailResponse;
 import com.ssafy.trip.traveldiary.dto.response.TravelDiaryListResponse;
+
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,10 +23,34 @@ public interface TravelDiaryMapper {
     @Insert("INSERT INTO travel_diary (field, title, description, created_at, updated_at, user_id) VALUES (#{field}, #{title}, #{description}, #{createdAt}, #{updatedAt}, #{userId})")
     void regist(TravelDiaryRegisterRequest request);
 
-    @Select("SELECT td.id, td.user_id AS userId, u.name as username, td.title, td.image_name AS imageName, td.description, td.created_at AS createdAt " +
-            "FROM travel_diary td " +
-            "JOIN user u ON td.user_id = u.id")
-    List<TravelDiaryListResponse> selectAll();
+    @Select("""
+                SELECT 
+                    td.id, 
+                    td.user_id AS userId, 
+                    u.name AS username, 
+                    td.title, 
+                    td.image_name AS imageName, 
+                    td.description, 
+                    td.created_at AS createdAt,
+                    (ug.sea * tg.sea +
+                     ug.mountain * tg.mountain +
+                     ug.valley * tg.valley +
+                     ug.city * tg.city +
+                     ug.festival * tg.festival) AS score
+                FROM 
+                    travel_diary td
+                JOIN 
+                    user u ON td.user_id = u.id
+                JOIN 
+                    travel_graph ug ON ug.user_id = u.id
+                JOIN 
+                    travel_diary_graph tg ON tg.diary_id = td.id
+                WHERE 
+                    u.id = #{userId} -- 특정 유저 ID로 필터링
+                ORDER BY 
+                    score DESC
+            """)
+    List<TravelDiaryListResponse> selectAll(Long userId);
 
     @Select("SELECT td.*, " +
             "CASE WHEN p.user_id IS NOT NULL THEN TRUE ELSE FALSE END AS isPurchased, " +
@@ -54,4 +81,12 @@ public interface TravelDiaryMapper {
     })
     void insertTravelDiaryPosts(@Param("travelDiaryId") long travelDiaryId,
                                 @Param("selectedPosts") List<Long> selectedPosts);
+
+    @Select("select post_id from travel_diary_post where travel_diary_id=#{travelDiaryId}")
+    String selectTravelDiaryPost(Long travelDiaryId);
+
+    @Insert("insert into travel_diary_graph(travel_diary_id, sea, mountain, valley, city, festival)" +
+            "values (#{diaryId}, #{sea}, #{mountain},#{valley}, #{city}, #{festival}")
+    void saveDiaryGraph(Map<String, Long> map);
+
 }

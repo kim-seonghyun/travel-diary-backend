@@ -12,4 +12,5 @@ public class TravelDiaryListResponse {
     private String imageName;
     private String description;
     private LocalDateTime createdAt;
+    private Long matchScore;
 }
