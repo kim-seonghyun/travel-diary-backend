@@ -5,9 +5,7 @@ import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
-
 import java.util.List;
-
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -25,29 +23,31 @@ public interface PostMapper {
     void regist(Post request);
 
     @Select("""
-                SELECT p.post_image AS postImage,
-                    p.trip_id AS tripId,
-                    p.created_at AS createdAt,
-                    t.facility_name AS facilityName,
-                    p.user_id AS userId,
-                    u.name AS username,
-                    p.id AS id,
-                    p.content AS content,
-                    (SELECT COUNT(DISTINCT pl.user_id)
-                     FROM post_like pl
-                     WHERE pl.post_id = p.id) AS postLikes,
-                    (SELECT COALESCE(SUM(pv.views_count), 0)
-                     FROM post_view pv
-                     WHERE pv.post_id = p.id) AS viewsCount
-                FROM 
-                    post p
-                JOIN 
-                    trip t ON p.trip_id = t.id
-                JOIN 
-                    user u ON p.user_id = u.id
-                GROUP BY 
-                    p.id, p.post_image, p.trip_id, p.created_at, 
-                    t.facility_name, p.user_id, u.name, p.content
+                        SELECT p.post_image AS postImage,
+                            p.trip_id AS tripId,
+                            p.created_at AS createdAt,
+                            t.facility_name AS facilityName,
+                            p.user_id AS userId,
+                            u.name AS username,
+                            p.id AS id,
+                            p.content AS content,
+                            (SELECT COUNT(DISTINCT pl.user_id)
+                             FROM post_like pl
+                             WHERE pl.post_id = p.id) AS postLikes,
+                            (SELECT COALESCE(SUM(pv.views_count), 0)
+                             FROM post_view pv
+                             WHERE pv.post_id = p.id) AS viewsCount
+                        FROM 
+                            post p
+                        JOIN 
+                            trip t ON p.trip_id = t.id
+                        JOIN 
+                            user u ON p.user_id = u.id
+                        GROUP BY 
+                            p.id, p.post_image, p.trip_id, p.created_at, 
+                            t.facility_name, p.user_id, u.name, p.content
+                        ORDER BY
+                            p.created_at DESC
             """)
     List<PostListResponse> list();
 
