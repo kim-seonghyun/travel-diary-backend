@@ -12,7 +12,9 @@ import io.jsonwebtoken.Claims;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -63,7 +65,7 @@ public class PostController {
         return ResponseEntity.status(HttpStatus.OK).body(posts);
     }
 
-    @GetMapping("/list/All/{tripId}")
+    @GetMapping("/list/all/{tripId}")
     public ResponseEntity<List<PostListResponse>> getListByTripId(@PathVariable Long tripId) {
         List<PostListResponse> posts = postService.getListByTripId(tripId);
         return ResponseEntity.status(HttpStatus.OK).body(posts);
@@ -72,6 +74,18 @@ public class PostController {
     @GetMapping("/list/{tripId}")
     public ResponseEntity<List<PostListResponse>> getListOnlyThree(@PathVariable Long tripId) {
         List<PostListResponse> posts = postService.getListOnlyThree(tripId);
+        return ResponseEntity.status(HttpStatus.OK).body(posts);
+    }
+
+    @GetMapping("/list/all/{tripId}/like")
+    public ResponseEntity<List<PostListResponse>> getListByTripIdOrderByLikes(@PathVariable Long tripId) {
+        List<PostListResponse> posts = postService.getListByTripIdOrderByLikes(tripId);
+        return ResponseEntity.status(HttpStatus.OK).body(posts);
+    }
+
+    @GetMapping("/list/{tripId}/like")
+    public ResponseEntity<List<PostListResponse>> getListByTripIdOrderByLikesOnlyThree(@PathVariable Long tripId) {
+        List<PostListResponse> posts = postService.getListByTripIdOrderByLikesOnlyThree(tripId);
         return ResponseEntity.status(HttpStatus.OK).body(posts);
     }
 
@@ -112,6 +126,7 @@ public class PostController {
     @GetMapping("/{postId}/increment-likes")
     public ResponseEntity<Void> incrementLikes(@RequestHeader("Authorization") String accessToken,
                                                @PathVariable Long postId) {
+        System.out.println(postId);
         accessToken = accessToken.substring(7);
         Claims claims = jwtUtil.parseToken(accessToken);
         Long userId = claims.get("userId", Long.class);

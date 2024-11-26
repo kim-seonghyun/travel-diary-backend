@@ -5,7 +5,9 @@ import com.ssafy.trip.post.dto.request.PostUpdateRequest;
 import com.ssafy.trip.post.dto.response.PostDetailResponse;
 import com.ssafy.trip.post.dto.response.PostListResponse;
 import com.ssafy.trip.post.dto.response.PostLocationResponseDto;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -49,11 +51,130 @@ public interface PostMapper {
             """)
     List<PostListResponse> list();
 
-    @Select("select * from post where trip_id = #{tripId}")
+    @Select("""
+                SELECT p.post_image AS postImage,
+                    p.trip_id AS tripId,
+                    p.created_at AS createdAt,
+                    t.facility_name AS facilityName,
+                    p.user_id AS userId,
+                    u.name AS username,
+                    p.id AS id,
+                    p.content AS content,
+                    (SELECT COUNT(DISTINCT pl.user_id)
+                     FROM post_like pl
+                     WHERE pl.post_id = p.id) AS postLikes,
+                    (SELECT COALESCE(SUM(pv.views_count), 0)
+                     FROM post_view pv
+                     WHERE pv.post_id = p.id) AS viewsCount
+                FROM 
+                    post p
+                JOIN 
+                    trip t ON p.trip_id = t.id
+                JOIN 
+                    user u ON p.user_id = u.id
+                WHERE trip_id = #{tripId}
+                GROUP BY 
+                    p.id, p.post_image, p.trip_id, p.created_at, 
+                    t.facility_name, p.user_id, u.name, p.content
+                ORDER BY 
+                    p.created_at DESC              -- 최신 작성일순 정렬
+                LIMIT 3                           -- 결과를 최대 3개로 제한
+            """)
     List<PostListResponse> getListOnlyThree(Long tripId);
 
-    @Select("select * from post where trip_id = #{tripId} order by created_at desc limit 3")
+    @Select("""
+                SELECT p.post_image AS postImage,
+                    p.trip_id AS tripId,
+                    p.created_at AS createdAt,
+                    t.facility_name AS facilityName,
+                    p.user_id AS userId,
+                    u.name AS username,
+                    p.id AS id,
+                    p.content AS content,
+                    (SELECT COUNT(DISTINCT pl.user_id)
+                     FROM post_like pl
+                     WHERE pl.post_id = p.id) AS postLikes,
+                    (SELECT COALESCE(SUM(pv.views_count), 0)
+                     FROM post_view pv
+                     WHERE pv.post_id = p.id) AS viewsCount
+                FROM 
+                    post p
+                JOIN 
+                    trip t ON p.trip_id = t.id
+                JOIN 
+                    user u ON p.user_id = u.id
+                WHERE trip_id = #{tripId}
+                GROUP BY 
+                    p.id, p.post_image, p.trip_id, p.created_at, 
+                    t.facility_name, p.user_id, u.name, p.content
+                ORDER BY
+                    p.created_at DESC;
+            """)
     List<PostListResponse> getListByTripId(Long tripId);
+
+
+    @Select("""
+                SELECT p.post_image AS postImage,
+                    p.trip_id AS tripId,
+                    p.created_at AS createdAt,
+                    t.facility_name AS facilityName,
+                    p.user_id AS userId,
+                    u.name AS username,
+                    p.id AS id,
+                    p.content AS content,
+                    (SELECT COUNT(DISTINCT pl.user_id)
+                     FROM post_like pl
+                     WHERE pl.post_id = p.id) AS postLikes,
+                    (SELECT COALESCE(SUM(pv.views_count), 0)
+                     FROM post_view pv
+                     WHERE pv.post_id = p.id) AS viewsCount
+                FROM 
+                    post p
+                JOIN 
+                    trip t ON p.trip_id = t.id
+                JOIN 
+                    user u ON p.user_id = u.id
+                WHERE trip_id = #{tripId}
+                GROUP BY 
+                    p.id, p.post_image, p.trip_id, p.created_at, 
+                    t.facility_name, p.user_id, u.name, p.content
+                ORDER BY
+                    postLikes DESC;
+            """)
+    List<PostListResponse> getListByTripIdOrderByLikes(Long tripId);
+
+    @Select("""
+                SELECT
+                           p.post_image AS postImage,
+                           p.trip_id AS tripId,
+                           p.created_at AS createdAt,
+                           t.facility_name AS facilityName,
+                           p.user_id AS userId,
+                           u.name AS username,
+                           p.id AS id,
+                           p.content AS content,
+                           COUNT(DISTINCT pl.user_id) AS postLikes,
+                           COALESCE(SUM(pv.views_count), 0) AS viewsCount
+                       FROM
+                           post p
+                       JOIN
+                           trip t ON p.trip_id = t.id
+                       JOIN
+                           user u ON p.user_id = u.id
+                       LEFT JOIN
+                           post_like pl ON pl.post_id = p.id
+                       LEFT JOIN
+                           post_view pv ON pv.post_id = p.id
+                       WHERE
+                           p.trip_id = #{tripId}
+                       GROUP BY
+                           p.id, p.post_image, p.trip_id, p.created_at,
+                           t.facility_name, p.user_id, u.name, p.content
+                       ORDER BY
+                           postLikes DESC
+                       LIMIT 3;
+            """)
+    List<PostListResponse> getListByTripIdOrderByLikesOnlyThree(Long tripId);
 
     @Select("SELECT \n" +
             "    p.post_image AS postImage,\n" +

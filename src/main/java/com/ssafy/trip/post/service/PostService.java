@@ -61,6 +61,14 @@ public class PostService {
         return mapper.getListOnlyThree(tripId);
     }
 
+    public List<PostListResponse> getListByTripIdOrderByLikes(Long tripId) {
+        return mapper.getListByTripIdOrderByLikes(tripId);
+    }
+
+    public List<PostListResponse> getListByTripIdOrderByLikesOnlyThree(Long tripId) {
+        return mapper.getListByTripIdOrderByLikesOnlyThree(tripId);
+    }
+
     public PostDetailResponse detail(Long postId) {
         PostDetailResponse response = mapper.selectById(postId);
         List<CommentListResponse> commentListResponse = commentMapper.selectByPostIdIncludeUserName(postId);
