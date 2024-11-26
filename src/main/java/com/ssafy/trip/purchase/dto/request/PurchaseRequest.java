@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class PurchaseRequest {
-    private Long travelDiaryId;
+    private Long traveldiaryId;
     private Long ownerId;
     private Long userId;
     private Long buyPrice;

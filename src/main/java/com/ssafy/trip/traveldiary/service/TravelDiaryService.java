@@ -1,6 +1,7 @@
 package com.ssafy.trip.traveldiary.service;
 
 import com.ssafy.trip.post.mapper.PostMapper;
+import com.ssafy.trip.post.mapper.TravelDiaryPostMapper;
 import com.ssafy.trip.traveldiary.dto.entity.TravelDiary;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryRegisterRequest;
 import com.ssafy.trip.traveldiary.dto.request.TravelDiaryUpdateRequest;
@@ -14,10 +15,14 @@ import org.springframework.stereotype.Service;
 public class TravelDiaryService {
     private final TravelDiaryMapper mapper;
     private final PostMapper postMapper;
+    private final TravelDiaryPostMapper travelDiaryPostMapper;
 
-    public TravelDiaryService(TravelDiaryMapper mapper, PostMapper postMapper) {
+
+    public TravelDiaryService(TravelDiaryMapper mapper, PostMapper postMapper,
+                              TravelDiaryPostMapper travelDiaryPostMapper) {
         this.mapper = mapper;
         this.postMapper = postMapper;
+        this.travelDiaryPostMapper = travelDiaryPostMapper;
     }
 
 
@@ -35,8 +40,10 @@ public class TravelDiaryService {
         mapper.deleteById(travelDiaryId);
     }
 
-    public TravelDiaryDetailResponse selectById(long travelDiaryId) {
-        return mapper.selectById(travelDiaryId);
+    public TravelDiaryDetailResponse selectById(long travelDiaryId, long userId) {
+        TravelDiaryDetailResponse travelDiary = mapper.selectById(travelDiaryId, userId);
+        travelDiary.setPosts(travelDiaryPostMapper.getListByTravelDiaryId(travelDiaryId));
+        return travelDiary;
     }
 
     public void register(TravelDiaryRegisterRequest request) {

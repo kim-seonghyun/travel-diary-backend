@@ -25,8 +25,14 @@ public interface TravelDiaryMapper {
             "JOIN user u ON td.user_id = u.id")
     List<TravelDiaryListResponse> selectAll();
 
-    @Select("select * from travel_diary where id = #{travelDiaryId}")
-    TravelDiaryDetailResponse selectById(long travelDiaryId);
+    @Select("SELECT td.*, " +
+            "CASE WHEN p.user_id IS NOT NULL THEN TRUE ELSE FALSE END AS isPurchased, " +
+            "u.name AS username " +
+            "FROM travel_diary td " +
+            "LEFT JOIN purchase p ON td.id = p.traveldiary_id AND p.user_id = #{userId} " +
+            "JOIN user u ON td.user_id = u.id " +
+            "WHERE td.id = #{travelDiaryId}")
+    TravelDiaryDetailResponse selectById(@Param("travelDiaryId") long travelDiaryId, @Param("userId") long userId);
 
     @Update("update travel_diary set title = #{title}, description = #{description} where id = #{id}")
     void update(TravelDiaryUpdateRequest request);
