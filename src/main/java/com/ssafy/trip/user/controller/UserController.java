@@ -12,19 +12,23 @@ import com.ssafy.trip.user.service.UserService;
 import com.ssafy.trip.utils.ImageUtils;
 import com.ssafy.trip.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
@@ -54,7 +58,8 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "이메일과 비밀번호를 사용하여 로그인하고 세션에 사용자 정보를 저장합니다.")
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody @Parameter(description = "사용자 로그인", required = true) UserLoginRequest userLoginRequest) {
+    public ResponseEntity<?> login(
+            @RequestBody @Parameter(description = "사용자 로그인", required = true) UserLoginRequest userLoginRequest) {
         //validation
         UserResponse loggedUser = userService.login(userLoginRequest.getEmail(), userLoginRequest.getPassword());
         List<String> role = List.of("user");
@@ -76,16 +81,17 @@ public class UserController {
     }
 
     @PostMapping("/upload/image")
-    public ResponseEntity<String> uploadProfileImg(@RequestHeader("Authorization")  String accessToken, @RequestPart("image") MultipartFile image) {
+    public ResponseEntity<String> uploadProfileImg(@RequestHeader("Authorization") String accessToken,
+                                                   @RequestPart("image") MultipartFile image) {
 
         String imageName = ImageUtils.upload(image);
         String token = accessToken.substring(7);
         Claims claim = jwtUtil.parseToken(token);
         Long userId = claim.get("userId", Long.class);
 
-        try{
+        try {
             userService.setProfileImg(userId, imageName);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("업로드를 다시 시도해 주세요", e);
         }
         return ResponseEntity.status(HttpStatus.OK).body("프로필 이미지 업데이트 완료");
@@ -101,18 +107,18 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public ResponseEntity<String> logout(@RequestHeader("Authorization")  String accessToken) {
+    public ResponseEntity<String> logout(@RequestHeader("Authorization") String accessToken) {
 
         accessToken = accessToken.substring(7);
         Claims claim = jwtUtil.parseToken(accessToken);
 
-        try{
+        try {
             Long userId = claim.get("userId", Long.class);
             UserResponse user = userService.findByUserId(userId);
             if (user != null) {
                 userService.deleteRefreshToken(userId);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -139,15 +145,16 @@ public class UserController {
     }
 
     @PostMapping("/reset/confirm-password")
-    public ResponseEntity<String> confirmResetPassword(@RequestBody PasswordResetConfirmRequest passwordResetConfirmRequest) {
+    public ResponseEntity<String> confirmResetPassword(
+            @RequestBody PasswordResetConfirmRequest passwordResetConfirmRequest) {
 
-        if(passwordResetConfirmRequest ==  null) {
+        if (passwordResetConfirmRequest == null) {
             throw new IllegalArgumentException("입력된 비밀번호 변경 정보가 없습니다.");
         }
 
         try {
-            System.out.println(passwordResetConfirmRequest);
-            userService.resetPassword(passwordResetConfirmRequest.getToken(), passwordResetConfirmRequest.getNewPassword());
+            userService.resetPassword(passwordResetConfirmRequest.getToken(),
+                    passwordResetConfirmRequest.getNewPassword());
         } catch (Exception e) {
             e.printStackTrace();
         }

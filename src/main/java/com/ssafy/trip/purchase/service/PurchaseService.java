@@ -6,9 +6,9 @@ import com.ssafy.trip.purchase.entity.Purchase;
 import com.ssafy.trip.purchase.mapper.PurchaseMapper;
 import com.ssafy.trip.user.dto.response.UserResponse;
 import com.ssafy.trip.user.service.UserService;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PurchaseService {
@@ -24,6 +24,7 @@ public class PurchaseService {
         purchaseMapper.addPurchaseHistory(purchaseRequest);
     }
 
+    @Transactional
     public void confirmTransaction(PurchaseRequest purchaseRequest) throws IllegalAccessException {
 
         UserResponse customer = userService.findByUserId(purchaseRequest.getUserId());
@@ -44,7 +45,7 @@ public class PurchaseService {
     }
 
 
-    public boolean isVerifyPurchase(Long traveldiaryId, Long userId){
+    public boolean isVerifyPurchase(Long traveldiaryId, Long userId) {
         Purchase purchaseEntity = purchaseMapper.isVerifyPurchase(traveldiaryId, userId);
         if (purchaseEntity == null) {
             return false;

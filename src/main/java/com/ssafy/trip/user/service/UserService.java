@@ -5,20 +5,17 @@ import com.ssafy.trip.travelgraph.mapper.TravelGraphMapper;
 import com.ssafy.trip.user.dto.request.UserRequest;
 import com.ssafy.trip.user.dto.response.RefreshTokenResponse;
 import com.ssafy.trip.user.dto.response.UserMypageResponse;
-import com.ssafy.trip.user.entity.User;
 import com.ssafy.trip.user.dto.response.UserResponse;
+import com.ssafy.trip.user.entity.User;
 import com.ssafy.trip.user.mapper.UserMapper;
 import com.ssafy.trip.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
-import org.springframework.stereotype.Service;
-
-import javax.swing.text.html.Option;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
@@ -27,7 +24,8 @@ public class UserService {
     private final JwtUtil jwtUtil;
     private final EmailService emailService;
 
-    public UserService(UserMapper userMapper, TravelGraphMapper travelGraphMapper, JwtUtil jwtUtil, EmailService emailService) {
+    public UserService(UserMapper userMapper, TravelGraphMapper travelGraphMapper, JwtUtil jwtUtil,
+                       EmailService emailService) {
         this.userMapper = userMapper;
         this.travelGraphMapper = travelGraphMapper;
         this.jwtUtil = jwtUtil;
@@ -44,7 +42,6 @@ public class UserService {
     }
 
     public void requestResetPassword(String email) {
-        // 비밀번호 변경요청
         String resetToken = jwtUtil.generateResetToken(email);
         emailService.sendPasswordResetEmail(email, resetToken);
         userMapper.saveResetToken(resetToken);
@@ -60,7 +57,6 @@ public class UserService {
 
     public void resetPassword(String resetToken, String newPassword) {
 
-        System.out.println(resetToken);
         if (!validateResetToken(resetToken)) {
             throw new JwtException("잘못된 인증 접근입니다");
         }
