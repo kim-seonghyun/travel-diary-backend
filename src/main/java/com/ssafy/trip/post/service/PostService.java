@@ -50,11 +50,10 @@ public class PostService {
         post.setPostImage(request.getPostImage());
         post.setTripId(request.getTripId());
         mapper.regist(post);
+
         try {
             String result = openAiService.analyzeText(request.getContent());
             TagWeights tagWeights = new TagWeights();
-            TravelDiaryGraphRequestDto travelDiaryGraphRequestDto = new TravelDiaryGraphRequestDto();
-            travelDiaryGraphRequestDto.setTravelDiaryId(post.getTripId());
             tagWeights.setUserId(post.getUserId());
 
             result = result.substring(1, result.length() - 1);
@@ -69,28 +68,22 @@ public class PostService {
                 switch (key) {
                     case "sea":
                         tagWeights.setSea(value);
-                        travelDiaryGraphRequestDto.setSea(value);
                         break;
                     case "mountain":
                         tagWeights.setMountain(value);
-                        travelDiaryGraphRequestDto.setMountain(value);
                         break;
                     case "valley":
                         tagWeights.setValley(value);
-                        travelDiaryGraphRequestDto.setValley(value);
                         break;
                     case "city":
                         tagWeights.setCity(value);
-                        travelDiaryGraphRequestDto.setCity(value);
                         break;
                     case "festival":
                         tagWeights.setFestival(value);
-                        travelDiaryGraphRequestDto.setFestival(value);
                         break;
                 }
             }
-            travelGraphMapper.updateTravelGraph(tagWeights);
-            travelDiaryGraphMapper.updateTravelDiaryGraph(travelDiaryGraphRequestDto);
+            travelGraphMapper.updateTravelGraph(tagWeights); // 유저에 그래프 수치 저장
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

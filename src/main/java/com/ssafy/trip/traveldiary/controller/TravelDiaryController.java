@@ -44,7 +44,7 @@ public class TravelDiaryController {
     @PostMapping("/register")
     public ResponseEntity<Void> register(
             @RequestPart("payload") TravelDiaryRegisterRequest request, @RequestPart("imageName") MultipartFile image,
-            @RequestPart("selectedPosts") List<Long> selectedPosts) {
+            @RequestPart("selectedPosts") List<Long> selectedPosts) throws Exception {
         String imageName = ImageUtils.upload(image);
         request.setImageName(imageName);
         request.setSelectedPosts(selectedPosts);
@@ -53,8 +53,11 @@ public class TravelDiaryController {
     }
     @Operation(summary = "여행 일지 목록 조회", description = "모든 여행 일지 목록을 조회합니다.")
     @GetMapping("/list")
-    public ResponseEntity<List<TravelDiaryListResponse>> list() {
-        List<TravelDiaryListResponse> response = service.selectAll();
+    public ResponseEntity<List<TravelDiaryListResponse>> list(@RequestHeader("Authorization") String accessToken) {
+        accessToken = accessToken.substring(7);
+        Claims claim = jwtUtil.parseToken(accessToken);
+        Long userId = claim.get("userId", Long.class);
+        List<TravelDiaryListResponse> response = service.selectAll(userId);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

@@ -37,6 +37,8 @@ public class TravelGraphController {
                 .body(travelGraph);
     }
 
+
+
     @PostMapping("/update")
     public ResponseEntity<Void> updateDegree(@RequestBody List<String> taglist, HttpSession session) {
         // validation
