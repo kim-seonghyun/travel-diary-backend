@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.trip.tosspayment.mapper.TossPaymentMapper">
+
+    <resultMap id="dotori" type="com.ssafy.trip.tosspayment.entity.CashToDotori">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="rechargeAt" column="recharge_at"/>
+        <result property="quantity" column="quantity"/>
+        <result property="orderId" column="order_id"/>
+        <result property="orderName" column="order_name"/>
+        <result property="status" column="status"/>
+        <result property="provider" column="provider"/>
+        <result property="amount" column="amount"/>
+        <result property="discountAmount" column="discount_amount"/>
+    </resultMap>
+
+    <resultMap id="bills" type="com.ssafy.trip.tosspayment.dto.response.BillsResponse">
+        <id property="id" column="id"/>
+        <result property="rechargeAt" column="recharge_at"/>
+        <result property="quantity" column="quantity"/>
+        <result property="orderName" column="order_name"/>
+        <result property="status" column="status"/>
+        <result property="provider" column="provider"/>
+        <result property="amount" column="amount"/>
+        <result property="paymentId" column="payment_id"/>
+    </resultMap>
+
+    <select id="searchBillsByUserId" parameterType="Long" resultMap="bills">
+        select * from cash_to_dotori where user_id = #{userId}
+    </select>
+
+    <insert id="savePayment" parameterType="com.ssafy.trip.tosspayment.entity.CashToDotori">
+        INSERT INTO cash_to_dotori (
+            user_id,
+            recharge_at,
+            quantity,
+            order_id,
+            order_name,
+            status,
+            provider,
+            amount,
+            discount_amount,
+            payment_id
+        ) VALUES (
+            #{userId},
+            #{rechargeAt},
+            #{quantity},
+            #{orderId},
+            #{orderName},
+            #{status},
+            #{provider},
+            #{amount},
+            #{discountAmount},
+            #{paymentId}
+        )
+    </insert>
+
+</mapper>

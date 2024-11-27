@@ -15,6 +15,16 @@
         <result property="festival" column="festival"/>
     </resultMap>
 
+    <resultMap id="diary" type="com.ssafy.trip.travelgraph.entity.DiaryGraph">
+        <id property="id" column="id"/>
+        <result property="travelDiaryId" column="travel_diary_id"/>
+        <result property="mountain" column="mountain"/>
+        <result property="sea" column="sea"/>
+        <result property="valley" column="valley"/>
+        <result property="city" column="city"/>
+        <result property="festival" column="festival"/>
+    </resultMap>
+
     <select id="findTravelGraphByUserId" parameterType="Long" resultMap="graph">
         select * from travel_graph where user_id = #{id}
     </select>
@@ -43,9 +53,13 @@
         where user_id = #{userId}
     </update>
 
+    <select id="findDiaryGraphByDiaryId" parameterType="Long" resultMap="diary">
+        select * from travel_diary_graph where travel_diary_id = #{diaryId}
+    </select>
+
     <insert id="generateTravelGraph" parameterType="Long">
         insert into travel_graph(user_id, mountain, sea, valley, city, festival)
-        values (#{id}, 0,0,0,0,0)
+        values (#{userId}, 0,0,0,0,0)
     </insert>
 
 

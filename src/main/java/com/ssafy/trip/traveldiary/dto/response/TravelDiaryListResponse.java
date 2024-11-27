@@ -7,9 +7,10 @@ import lombok.Data;
 public class TravelDiaryListResponse {
     private long id;
     private long userId;
-    private String field;
+    private String username;
     private String title;
+    private String imageName;
     private String description;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private Long matchScore;
 }
